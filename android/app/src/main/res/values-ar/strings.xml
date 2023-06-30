@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">تحويل العُمْلة</string>
+    <string name="search_currency_hint">العُمْلة أو الدولة / المنطقة</string>
+    <string name="search_currency_empty_msg">العُمْلة غير موجودة</string>
+    <string name="status">(STATS) الإحصائيات</string>
+    <string name="high">مرتفع</string>
+    <string name="low">منخفض</string>
+    <string name="average">متوسط</string>
+    <string name="change">تغيير</string>
+    <string name="date_1_day">يوم واحد</string>
+    <string name="date_1_week">أسبوع واحد</string>
+    <string name="date_1_month">شهر واحد</string>
+    <string name="date_1_year">سنة واحدة</string>
+    <string name="date_all">ﺍلكل</string>
+    <string name="quote_currency">عُملة العرض</string>
+    <string name="converter_setting">إعداد المُحول</string>
+    <string name="default_currency_value">القيمة الافتراضية للعملة</string>
+    <string name="local_currency">عُملة محلية</string>
+    <string name="currency_symbol">رمز العُملة</string>
+    <string name="set_decimical_digits">ضع ترقيم عشري</string>
+    <string name="more_settings">المزيد من الإعدادات</string>
+    <string name="restore_default_currency_list">استعادة قائمة العملات الافتراضية</string>
+    <string name="legal_tender">عُملة قانونية</string>
+    <string name="cryptocurrency">العُملة الرقمية</string>
+    <string name="none">لا شيء</string>
+    <string name="plugin">إدخال</string>
+    <string name="quote_color">لون الاقتباس</string>
+    <string name="keyboard_sound">صوت لوحة المفاتيح</string>
+    <string name="red_rise_green_fall">ارتفاع احمر و انخفاض اخضر</string>
+    <string name="green_rise_red_fall">ارتفاع اخضر وانخفاض احمر</string>
+    <string name="restore_curreny_list_msg">استعاده قائمة العملات الافتراضية؟</string>
+    <string name="cancel">إلغاء</string>
+    <string name="recovery">استعاده</string>
+    <string name="rate_detail">المعدل التفصيلي</string>
+    <string name="january">يناير</string>
+    <string name="february">فبراير</string>
+    <string name="march">مارس</string>
+    <string name="april">أبريل</string>
+    <string name="may">مايو</string>
+    <string name="june">يونيو</string>
+    <string name="july">يوليو</string>
+    <string name="august">أغسطس</string>
+    <string name="september">سبتمبر</string>
+    <string name="october">أكتوبر</string>
+    <string name="november">نوفمبر</string>
+    <string name="december">ديسمبر</string>
+    <string name="frequently_used">تستخدم بشكل مُتكرر</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">ترقية الإصدار</string>
+    <string name="upgrade">ترقية</string>
+    <string name="location_services" comment="location_services">خِدْمَات الموقع</string>
+    <string name="location_tips" comment="location_tips">الرجاء فتح \"خِدْمَات الموقع\" في إعدادات النظام للسماح لـ \"%s\" بتحديد موقعك.</string>
+    <string name="ok" comment="ok">حسناً</string>
+</resources>

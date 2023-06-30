@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Змінити Валюту</string>
+    <string name="search_currency_hint">Валюта чи Країна / Регіон</string>
+    <string name="search_currency_empty_msg">Валюта не знайдена</string>
+    <string name="status">СТАТИСТИКА</string>
+    <string name="high">Високий</string>
+    <string name="low">Низький</string>
+    <string name="average">Середній</string>
+    <string name="change">Змінити</string>
+    <string name="date_1_day">1Д</string>
+    <string name="date_1_week">1Т</string>
+    <string name="date_1_month">1М</string>
+    <string name="date_1_year">1Р</string>
+    <string name="date_all">Всі</string>
+    <string name="quote_currency">Котирування Валюти</string>
+    <string name="converter_setting">Налаштування Конвертера</string>
+    <string name="default_currency_value">Валютна Вартість За Замовчуванням</string>
+    <string name="local_currency">Місцева Валюта</string>
+    <string name="currency_symbol">Символ Грошової Одиниці</string>
+    <string name="set_decimical_digits">Встановити Десяткові Цифри</string>
+    <string name="more_settings">Більше Налаштувань</string>
+    <string name="restore_default_currency_list">Відновити стандартний список валют</string>
+    <string name="legal_tender">Законний Платіжний Засіб</string>
+    <string name="cryptocurrency">Криптовалюта</string>
+    <string name="none">Жодний</string>
+    <string name="plugin">Плагін</string>
+    <string name="quote_color">Колір цитати</string>
+    <string name="keyboard_sound">Звук Клавіатури</string>
+    <string name="red_rise_green_fall">червоним - підйом, зеленим - падіння</string>
+    <string name="green_rise_red_fall">зеленим - підйом, червоним - падіння</string>
+    <string name="restore_curreny_list_msg">Відновити стандартний список валют?</string>
+    <string name="cancel">Скасувати</string>
+    <string name="recovery">Відновлення</string>
+    <string name="rate_detail">Деталі Тарифів</string>
+    <string name="january">Січ</string>
+    <string name="february">Лют</string>
+    <string name="march">Бер</string>
+    <string name="april">Квіт</string>
+    <string name="may">Трав</string>
+    <string name="june">Чер</string>
+    <string name="july">Лип</string>
+    <string name="august">Сер</string>
+    <string name="september">Вер</string>
+    <string name="october">Жов</string>
+    <string name="november">Лис</string>
+    <string name="december">Гру</string>
+    <string name="frequently_used">Часто Використовується</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Оновлення Версії</string>
+    <string name="upgrade">Оновлення</string>
+    <string name="location_services" comment="location_services">Послуги Локації</string>
+    <string name="location_tips" comment="location_tips">Будь ласка, відкрийте \"Локаційні послуги\" в системних налаштуваннях, щоб дозволити \"%s\" визначити ваше розташування.</string>
+    <string name="ok" comment="ok">ОК</string>
+</resources>

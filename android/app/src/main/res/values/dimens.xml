@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="action_bar_height">60dp</dimen>
+    <!--switch开关按钮宽高-->
+    <dimen name="switch_view_width">43dp</dimen>
+    <dimen name="switch_view_height">26dp</dimen>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Pilih Mata Wang</string>
+    <string name="search_currency_hint">Mata Wang atau Negara/Wilayah</string>
+    <string name="search_currency_empty_msg">Mata Wang tidak dijumpai</string>
+    <string name="status">Statistik</string>
+    <string name="high">Tinggi</string>
+    <string name="low">Rendah</string>
+    <string name="average">Purata</string>
+    <string name="change">Ubah</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Semua</string>
+    <string name="quote_currency">Mata Wang Sebut Harga</string>
+    <string name="converter_setting">Tatapan penukaran</string>
+    <string name="default_currency_value">Nilai mata wang lalai</string>
+    <string name="local_currency">Mata wang tempatan</string>
+    <string name="currency_symbol">Simbol mata wang</string>
+    <string name="set_decimical_digits">Tetapkan Digit Perpuluhan</string>
+    <string name="more_settings">Lebih tetapan</string>
+    <string name="restore_default_currency_list">Mengembalikan tetapan asal senarai mata wang</string>
+    <string name="legal_tender">Tender sah</string>
+    <string name="cryptocurrency">Mata Wang Kripto</string>
+    <string name="none">Tiada</string>
+    <string name="plugin">Pemalam/Pasang Masuk</string>
+    <string name="quote_color">Petikan warna</string>
+    <string name="keyboard_sound">Bunyi Papan Kekunci</string>
+    <string name="red_rise_green_fall">merah menaik hijau menurun</string>
+    <string name="green_rise_red_fall">hijau menaik merah menurun</string>
+    <string name="restore_curreny_list_msg">Mengembalikan tetapan asal senarai mata wang?</string>
+    <string name="cancel">Batal</string>
+    <string name="recovery">Pemulihan</string>
+    <string name="rate_detail">Perincian Kadar</string>
+    <string name="january">Jan</string>
+    <string name="february">Feb</string>
+    <string name="march">Mac</string>
+    <string name="april">Apr</string>
+    <string name="may">Mei</string>
+    <string name="june">Jun</string>
+    <string name="july">Jul</string>
+    <string name="august">Aug</string>
+    <string name="september">Sep</string>
+    <string name="october">Oct</string>
+    <string name="november">Nov</string>
+    <string name="december">Dec</string>
+    <string name="frequently_used">Sering Digunakan</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Peningkatan Versi</string>
+    <string name="upgrade">Peningkatan</string>
+    <string name="location_services" comment="location_services">Lokasi Perkhidmatan</string>
+    <string name="location_tips" comment="location_tips">Sila buka \"Lokasi perkhidmatan\" dalam tetapan sistem untuk membenarkan \"%s\" untuk menentukan lokasi anda.</string>
+    <string name="ok" comment="ok">Ok</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_legal_tender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="0"
+        app:leftText="@string/legal_tender"/>
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_cryptocurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="4"
+        app:leftText="@string/cryptocurrency"/>
+
+</LinearLayout>

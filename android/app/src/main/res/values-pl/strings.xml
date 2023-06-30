@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Zamiana waluty</string>
+    <string name="search_currency_hint">Waluta lub kraj/region</string>
+    <string name="search_currency_empty_msg">Nie odnaleziono waluty</string>
+    <string name="status">STATYSTYKI</string>
+    <string name="high">Max</string>
+    <string name="low">Min</string>
+    <string name="average">Średnia</string>
+    <string name="change">Zmiana</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Wszystko</string>
+    <string name="quote_currency">Wycena w walucie</string>
+    <string name="converter_setting">Ustawienia konwertera</string>
+    <string name="default_currency_value">Wartość domyślna waluty</string>
+    <string name="local_currency">Waluta lokalna</string>
+    <string name="currency_symbol">Symbol waluty</string>
+    <string name="set_decimical_digits">Ustaw cyfry dziesiętne</string>
+    <string name="more_settings">Więcej opcji</string>
+    <string name="restore_default_currency_list">Przywrócić domyślną listę walut</string>
+    <string name="legal_tender">Oferta prawna</string>
+    <string name="cryptocurrency">Kryptowaluta</string>
+    <string name="none">Brak</string>
+    <string name="plugin">Wtyczka</string>
+    <string name="quote_color">Kolory świec</string>
+    <string name="keyboard_sound">Dźwięk klawiatury</string>
+    <string name="red_rise_green_fall">Czerwony wzrost zielony spadek</string>
+    <string name="green_rise_red_fall">Zielony wzrost czerwony spadek</string>
+    <string name="restore_curreny_list_msg">Przywrócić domyślną listę walut?</string>
+    <string name="cancel">Anuluj</string>
+    <string name="recovery">Odzyskanie</string>
+    <string name="rate_detail">Szczegóły dotyczące stawki</string>
+    <string name="january">Styczeń</string>
+    <string name="february">Luty</string>
+    <string name="march">Marzec</string>
+    <string name="april">Kwiecień</string>
+    <string name="may">Maj</string>
+    <string name="june">Czerwiec</string>
+    <string name="july">Lipiec</string>
+    <string name="august">Sierpień</string>
+    <string name="september">Wrzesień</string>
+    <string name="october">Październik</string>
+    <string name="november">Listopad</string>
+    <string name="december">Grudzień</string>
+    <string name="frequently_used">Ostatnio używane</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Aktualizacja wersji</string>
+    <string name="upgrade">Aktualizuj</string>
+    <string name="location_services" comment="location_services">Usługi lokalizacyjne</string>
+    <string name="location_tips" comment="location_tips">Proszę otworzyć \"Usługi lokalizacyjne\" w ustawieniach systemu, aby umożliwić \"%s\" określenie Twojej lokalizacji.</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

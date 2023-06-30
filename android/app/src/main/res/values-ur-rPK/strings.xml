@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">کرنسی کو تبدیل کریں</string>
+    <string name="search_currency_hint">کرنسی یا ملک/علاقہ</string>
+    <string name="search_currency_empty_msg">کرنسی نہیں ملی</string>
+    <string name="status">اعداد و شمار</string>
+    <string name="high">بلند</string>
+    <string name="low">کم ترین</string>
+    <string name="average">اوسط</string>
+    <string name="change">تبدیلی</string>
+    <string name="date_1_day">1دن </string>
+    <string name="date_1_week">1 ہفتہ</string>
+    <string name="date_1_month">1 ماہ </string>
+    <string name="date_1_year">1 سال </string>
+    <string name="date_all">تمام</string>
+    <string name="quote_currency">کوٹ کرنسی</string>
+    <string name="converter_setting">کنورٹر سیٹنگ</string>
+    <string name="default_currency_value">ڈیفالٹ کرنسی کی قدر</string>
+    <string name="local_currency">مقامی کرنسی</string>
+    <string name="currency_symbol">کرنسی کی علامت</string>
+    <string name="set_decimical_digits">اعشاریہ ہندسے سیٹ کریں</string>
+    <string name="more_settings">مزید سیٹنگز</string>
+    <string name="restore_default_currency_list">پہلے سے طے شدہ کرنسی کی فہرست بحال کریں</string>
+    <string name="legal_tender">لیگل ٹینڈر</string>
+    <string name="cryptocurrency">کریپٹو کرنسی</string>
+    <string name="none">کوئی نہیں</string>
+    <string name="plugin">پلگ ان </string>
+    <string name="quote_color">اقتباس رنگ</string>
+    <string name="keyboard_sound">کی بورڈ ساؤنڈ</string>
+    <string name="red_rise_green_fall">سرخ عروج سبز زوال</string>
+    <string name="green_rise_red_fall">سبز عروج سرخ زوال</string>
+    <string name="restore_curreny_list_msg">پہلے سے طے شدہ کرنسی لسٹ کو بحال کریں؟</string>
+    <string name="cancel">منسوخ کریں</string>
+    <string name="recovery">بحالی</string>
+    <string name="rate_detail">ریٹ کی تفصیل</string>
+    <string name="january">جنوری</string>
+    <string name="february">فروری</string>
+    <string name="march">مارچ</string>
+    <string name="april">اپریل</string>
+    <string name="may">مئی</string>
+    <string name="june">جون</string>
+    <string name="july">جولائی</string>
+    <string name="august">جولائی</string>
+    <string name="september">ستمبر</string>
+    <string name="october">اکتوبر</string>
+    <string name="november">نومبر</string>
+    <string name="december">دسمبر</string>
+    <string name="frequently_used">بکثرت استعمال کیا گیا</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">ورژن اپ گریڈ</string>
+    <string name="upgrade">اپ گریڈ</string>
+    <string name="location_services" comment="location_services">لوکیشن سروسز</string>
+    <string name="location_tips" comment="location_tips">براہ کرم \"%s\" کو اپنے مقام کا تعین کرنے کی اجازت دینے کے لیے سسٹم کی ترتیبات میں \"مقام کی خدمات\" کھولیں۔</string>
+    <string name="ok" comment="ok">اوکے</string>
+</resources>

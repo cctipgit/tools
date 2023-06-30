@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_list"
+    app:startDestination="@id/fragment_task_list">
+
+    <fragment
+        android:id="@+id/fragment_task_list"
+        android:name="com.hash.coinconvert.ui2.fragment.TaskListFragment"
+        android:label="TaskListFragment"
+        tools:layout="@layout/fragment_task_list" >
+        <action
+            android:id="@+id/action_fragment_task_list_to_activity_game"
+            app:destination="@id/activity_game" />
+    </fragment>
+
+    <activity
+        android:id="@+id/activity_game"
+        android:name="com.hash.coinconvert.ui2.fragment.GameActivity"
+        android:label="Game"
+        tools:layout="@layout/activity_game" />
+</navigation>

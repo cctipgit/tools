@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">화폐 변경</string>
+    <string name="search_currency_hint">화폐 또는 국가/지역</string>
+    <string name="search_currency_empty_msg">화폐를 찾을 수 없습니다</string>
+    <string name="status">통계</string>
+    <string name="high">최고가</string>
+    <string name="low">최저가</string>
+    <string name="average">평균가</string>
+    <string name="change">변동가</string>
+    <string name="date_1_day">일</string>
+    <string name="date_1_week">주</string>
+    <string name="date_1_month">월</string>
+    <string name="date_1_year">년</string>
+    <string name="date_all">전체</string>
+    <string name="quote_currency">화폐 견적</string>
+    <string name="converter_setting">환전 설정</string>
+    <string name="default_currency_value">기본 화폐 가치</string>
+    <string name="local_currency">현지 화폐</string>
+    <string name="currency_symbol">화폐 기호</string>
+    <string name="set_decimical_digits">소수점 설정</string>
+    <string name="more_settings">추가 설정</string>
+    <string name="restore_default_currency_list">기본 화폐 목록 복원하기</string>
+    <string name="legal_tender">법정 화폐</string>
+    <string name="cryptocurrency">암호화폐</string>
+    <string name="none">없음</string>
+    <string name="plugin">플러그인</string>
+    <string name="quote_color">색상 설정</string>
+    <string name="keyboard_sound">키보드 소리 설정</string>
+    <string name="red_rise_green_fall">빨강 상승 녹색 하락</string>
+    <string name="green_rise_red_fall">녹색 상승 빨강 하락</string>
+    <string name="restore_curreny_list_msg">기본 화폐 목록을 복원하시겠습니까?</string>
+    <string name="cancel">취소하기</string>
+    <string name="recovery">설정 복원</string>
+    <string name="rate_detail">환전 세부 정보</string>
+    <string name="january">1월</string>
+    <string name="february">2월</string>
+    <string name="march">3월</string>
+    <string name="april">4월</string>
+    <string name="may">5월</string>
+    <string name="june">6월</string>
+    <string name="july">7월</string>
+    <string name="august">8월</string>
+    <string name="september">9월</string>
+    <string name="october">10월</string>
+    <string name="november">11월</string>
+    <string name="december">11월</string>
+    <string name="frequently_used">자주 사용 자산</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">버전 업그레이드</string>
+    <string name="upgrade">업그레이드</string>
+    <string name="location_services" comment="location_services">위치 서비스</string>
+    <string name="location_tips" comment="location_tips">\"%s\"이(가) 사용자의 위치를 확인할 수 있도록 시스템 설정에서 \"위치 서비스\"를 여세요.</string>
+    <string name="ok" comment="ok">획인</string>
+</resources>

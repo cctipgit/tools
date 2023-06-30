@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="22dp">
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:id="@+id/ll_red"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingVertical="16dp"
+        app:rv_backgroundColor="@color/keyboard_num_item_bg"
+        app:rv_cornerRadius="16dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@mipmap/red_rise_green_fall"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <RadioButton
+            android:id="@+id/rb_red_up"
+            style="@style/RadioButton.BaseQuoteColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/red_rise_green_fall" />
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:id="@+id/ll_green"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingVertical="16dp"
+        app:rv_backgroundColor="@color/keyboard_num_item_bg"
+        app:rv_cornerRadius="16dp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@mipmap/green_rise_red_fall"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <RadioButton
+            android:id="@+id/rb_green_up"
+            style="@style/RadioButton.BaseQuoteColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/green_rise_red_fall" />
+    </com.flyco.roundview.RoundLinearLayout>
+</LinearLayout>

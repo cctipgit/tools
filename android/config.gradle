@@ -1,0 +1,27 @@
+ext {
+
+    //************************************** 打包时只需修改appBuild配置 **************************************
+    appBuild = [
+            // 是否开启混淆
+            minifyEnabled : true,
+            // 版本号
+            appVersionCode: 2,
+            // 版本名称
+            // dev：开发阶段
+            // beta: 实现软件功能为主（内部测试打包）
+            // release：发布版本
+            appVersionName: "1.0.0.23021501-dev",
+            // 是否上架GooglePlay市场
+            isGooglePlay  : true,
+    ]
+
+
+    //************************************** 以下配置一般不需要修改 **************************************
+    android = [
+            compileSdkVersion: 33,
+            minSdkVersion    : 24,
+            targetSdkVersion : 33,
+            appVersionCode   : appBuild.appVersionCode,
+            appVersionName   : appBuild.appVersionName
+    ]
+}

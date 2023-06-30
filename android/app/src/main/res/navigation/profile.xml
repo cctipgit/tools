@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
+    app:startDestination="@id/fragment_profile">
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.hash.coinconvert.ui2.fragment.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_setting"
+            app:destination="@id/fragment_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_setting"
+        android:name="com.hash.coinconvert.ui2.fragment.SettingFragment"
+        android:label="setting"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_fragment_setting_to_activity_def_currency_value"
+            app:destination="@id/activity_def_currency_value" />
+        <action
+            android:id="@+id/action_fragment_setting_to_activity_quote_color"
+            app:destination="@id/activity_quote_color" />
+    </fragment>
+
+    <activity
+        android:id="@+id/activity_def_currency_value"
+        android:name="com.hash.coinconvert.ui.activity.SettingCurrencyValueActivity"
+        android:label="SettingCurrencyValueActivity" />
+
+    <activity
+        android:id="@+id/activity_quote_color"
+        android:name="com.hash.coinconvert.ui.activity.SettingQuoteColorActivity"
+        android:label="SettingQuoteColorActivity" />
+</navigation>

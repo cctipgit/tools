@@ -1,25 +1,144 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?><!--<manifest xmlns:android="http://schemas.android.com/apk/res/android">-->
 
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
+
+<!--    <application-->
+<!--      android:name=".MainApplication"-->
+<!--      android:label="@string/app_name"-->
+<!--      android:icon="@mipmap/ic_launcher"-->
+<!--      android:roundIcon="@mipmap/ic_launcher_round"-->
+<!--      android:allowBackup="false"-->
+<!--      android:theme="@style/AppTheme">-->
+<!--      <activity-->
+<!--        android:name=".MainActivity"-->
+<!--        android:label="@string/app_name"-->
+<!--        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"-->
+<!--        android:launchMode="singleTask"-->
+<!--        android:windowSoftInputMode="adjustResize"-->
+<!--        android:exported="true">-->
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
+<!--      </activity>-->
+<!--    </application>-->
+<!--</manifest>-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />-->
+
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+
     <application
-      android:name=".MainApplication"
-      android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
-      android:theme="@style/AppTheme">
-      <activity
-        android:name=".MainActivity"
+        android:name=".App"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-        android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustResize"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-      </activity>
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ExchangeRate"
+        tools:replace="android:allowBackup,android:fullBackupContent"
+        tools:targetApi="31">
+        <activity android:name="com.hash.WebActivity" android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Splash">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ui.activity.SwitchCurrencyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SwitchCurrencySearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.RateDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.QuoteCurrencyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingCurrencyValueActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingDecimicalDigitsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingDecimicalDigitsSwitchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingMoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+        <activity
+            android:name=".ui.activity.SettingQuoteColorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ExchangeRate.Dialog" />
+
+        <activity
+            android:name=".ui.activity.DebugActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui2.fragment.GameActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui2.activity.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
+
 </manifest>

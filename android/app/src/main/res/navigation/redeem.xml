@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/redeem"
+    app:startDestination="@id/fragment_redeem">
+
+    <fragment
+        android:id="@+id/fragment_redeem"
+        android:name="com.hash.coinconvert.ui2.fragment.RedeemFragment"
+        android:label="RedeemFragment" />
+</navigation>

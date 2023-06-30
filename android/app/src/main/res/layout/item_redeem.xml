@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="8dp"
+    android:elevation="1dp"
+    app:cardBackgroundColor="@color/theme_bg"
+    app:cardCornerRadius="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_banner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="388:80"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="#080" />
+
+        <TextView
+            android:id="@+id/tv_value"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/theme_bg"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_banner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$5USDT" />
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="-12dp"
+            android:background="@drawable/bg_profile_avatar"
+            android:backgroundTint="@color/theme_bg"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/img_banner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:src="@mipmap/avator01" />
+
+        <TextView
+            android:id="@+id/tv_symbol"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_redeem"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="USDT" />
+
+        <Button
+            android:id="@+id/btn_redeem"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:paddingVertical="0dp"
+            android:text="@string/home_redeem"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_banner" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/sub_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_redeem"
+            tools:text="1000 / 3000" />
+
+        <TextView
+            android:id="@+id/tv_rate_desc"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_rate"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="Redeem for" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/HorizontalProgressBar"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rate"
+            tools:max="100"
+            tools:progress="50" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hash.coinconvert.widget.ActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:abTitle="@string/setting_title"
+        app:abTitleGravity="left" />
+
+    <com.hash.coinconvert.widget.SettingMenuItem
+        android:id="@+id/menu_def_value"
+        style="@style/SettingItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:sm_title="@string/setting_def_value" />
+
+    <com.hash.coinconvert.widget.SettingMenuItem
+        android:id="@+id/menu_point"
+        style="@style/SettingItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sm_title="@string/setting_point" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/bg_divider" />
+
+    <com.hash.coinconvert.widget.SettingMenuItem
+        android:id="@+id/menu_price_color"
+        style="@style/SettingItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sm_title="@string/setting_price_color" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/setting_reset" />
+</LinearLayout>

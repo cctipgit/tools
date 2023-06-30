@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 汇率详情时间周期 -->
+    <string-array name="switch_dates">
+        <item>@string/date_1_day</item>
+        <item>@string/date_1_week</item>
+        <item>@string/date_1_month</item>
+        <item>@string/date_1_year</item>
+        <item>@string/date_all</item>
+    </string-array>
+
+    <!-- 设置页面默认货币数量 -->
+    <integer-array name="default_currency_value">
+        <item>1</item>
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+    </integer-array>
+</resources>

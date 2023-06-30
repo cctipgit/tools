@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:paddingVertical="16dp"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="#00F"/>
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/theme_text_color"
+            android:text="Bitcoin"
+            android:layout_marginHorizontal="8dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/theme_text_color_alpha30"
+            android:text="BTC"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/line_color"
+        android:layout_height="1dp" />
+
+</LinearLayout>

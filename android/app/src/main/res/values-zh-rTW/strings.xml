@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">更改幣種</string>
+    <string name="search_currency_hint">貨幣或國家/地區</string>
+    <string name="search_currency_empty_msg">未搜尋到此幣種</string>
+    <string name="status">統計資料</string>
+    <string name="high">高</string>
+    <string name="low">低</string>
+    <string name="average">平均</string>
+    <string name="change">更改</string>
+    <string name="date_1_day">1天</string>
+    <string name="date_1_week">1週</string>
+    <string name="date_1_month">1月</string>
+    <string name="date_1_year">1年</string>
+    <string name="date_all">全部</string>
+    <string name="quote_currency">報價貨幣</string>
+    <string name="converter_setting">匯率設定</string>
+    <string name="default_currency_value">貨幣預設值</string>
+    <string name="local_currency">當地貨幣</string>
+    <string name="currency_symbol">貨幣符號</string>
+    <string name="set_decimical_digits">設定小數點位</string>
+    <string name="more_settings">更多設定</string>
+    <string name="restore_default_currency_list">恢復為預設幣種清單</string>
+    <string name="legal_tender">法定貨幣</string>
+    <string name="cryptocurrency">加密貨幣</string>
+    <string name="none">無</string>
+    <string name="plugin">插件</string>
+    <string name="quote_color">報價顏色</string>
+    <string name="keyboard_sound">鍵盤音效</string>
+    <string name="red_rise_green_fall">紅漲綠跌</string>
+    <string name="green_rise_red_fall">綠漲紅跌</string>
+    <string name="restore_curreny_list_msg">恢復為預設幣種清單嗎？</string>
+    <string name="cancel">取消</string>
+    <string name="recovery">恢復</string>
+    <string name="rate_detail">匯率細節</string>
+    <string name="january">一月</string>
+    <string name="february">二月</string>
+    <string name="march">三月</string>
+    <string name="april">四月</string>
+    <string name="may">五月</string>
+    <string name="june">六月</string>
+    <string name="july">七月</string>
+    <string name="august">八月</string>
+    <string name="september">九月</string>
+    <string name="october">十月</string>
+    <string name="november">十一月</string>
+    <string name="december">十二月</string>
+    <string name="frequently_used">常用</string>
+    <string name="defaule_value">-</string>
+    <string name="version_upgrade">版本更新</string>
+    <string name="upgrade">更新</string>
+    <string name="location_services" comment="location_services">定位服務</string>
+    <string name="location_tips" comment="location_tips">請打開設定中的「定位服務」以允許 %s 確定地點</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

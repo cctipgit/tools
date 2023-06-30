@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="6dp"
+        app:rv_backgroundColor="@color/theme_bg"
+        app:rv_backgroundPressColor="@color/setting_item_press"
+        app:rv_cornerRadius="16dp">
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:id="@+id/tv_label_1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="NONE"
+            android:textColor="@color/theme_text_color_alpha60"
+            android:textSize="16sp"
+            app:fountType="poppinsMedium" />
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:id="@+id/tv_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,234.00"
+            android:textColor="@color/theme_text_color_alpha30"
+            app:fountType="poppinsRegular" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@mipmap/ic_check_on" />
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="23dp"
+        android:background="@color/line_color2" />
+</androidx.appcompat.widget.LinearLayoutCompat>
