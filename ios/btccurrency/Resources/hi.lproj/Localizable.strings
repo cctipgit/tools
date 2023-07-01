@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  btccurrency
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "हाई";
+"Low" = "लो";
+"Average" = "औसत";
+"Change" = "बदलें";
+"Switch Currency" = "मुद्रा बदलें";
+"Rate Detail" = "दर विवरण";
+"Currency not found" = "मुद्रा नहीं मिली";
+"Currency" = "मुद्रा";
+"Local Currency" = "स्थानीय मुद्रा";
+"Frequently Used" = "प्रायः इस्तेमाल किया जाने वाला";
+"Switch Currency" = "मुद्रा बदलें";
+"Currency symbol" = "मुद्रा चिन्ह";
+"Default Currency Value" = "डिफ़ॉल्ट मुद्रा मान";
+"Set Decimical Digits" = "दशमलव अंक सेट करें";
+"More Settings" = "अधिक सेटिंग";
+"Plugin" = "प्लग-इन";
+"Red rise green fall" = "लाल उठना हरा गिरना";
+"Green rise red fall" = "हरा उठना लाल गिरना";
+"Quote color" = "उद्धरण रंग";
+"Keyboard Sound" = "कीबोर्ड ध्वनि";
+"Cancel" = "रद्द करें";
+"Recovery" = "रिकवरी";
+"Restore the default currency list?" = "डिफ़ॉल्ट मुद्रा सूची पुनर्स्थापित करें?";
+"OK" = "ठीक है";
+"Location Services" = "स्थान सेवाएं";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "कृपया \"btcकैलकुलेटर\" को अपना स्थान निर्धारित करने की अनुमति देने के लिए सिस्टम सेटिंग्स में \"स्थान सेवाएं\" खोलें।";
+"Converter Setting" = "कन्वर्टर सेटिंग";
+"More Setting" = "अधिक सेटिंग";
+"This widget will display the currency list of converter." = "यह विजेट कनवर्टर की मुद्रा सूची प्रदर्शित करेगा।";
+"Set Decimal Digits" = "दशमलव अंक सेट करें";
+"Legal Tender" = "वैध मुद्रा";
+"Cryptocurrency" = "क्रिप्टोकरेंसी";
+"Converter Watchlist" = "कन्वर्टर वॉचलिस्ट";
+"View all your favorite currency conversions in real-time." = "वास्तविक समय में अपने सभी पसंदीदा मुद्रा रूपांतरण देखें।";
+"View the top 2 of your favorites currencies conversions in real-time." = "वास्तविक समय में अपने पसंदीदा मुद्रा रूपांतरणों में से शीर्ष 2 देखें।";
+"Single Rate Comparison" = "एकल दर तुलना";
+"View real-time exchange rate trend comparisons of your favorite currency." = "अपनी पसंदीदा मुद्रा की वास्तविक समय विनिमय दर प्रवृत्ति तुलना देखें।";
+"Rate Comparisons" = "दर तुलना";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "अपनी पसंदीदा मुद्राओं में से शीर्ष 2 की वास्तविक समय की विनिमय दर प्रवृत्ति तुलना देखें।";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

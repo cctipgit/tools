@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  btccurrency
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "Високий";
+"Low" = "Низький";
+"Average" = "Середній";
+"Change" = "Зміна ціни";
+"Switch Currency" = "Перехід на іншу валюту";
+"Rate Detail" = "Докладний опис тарифів, детальна ставка";
+"Currency not found" = "Валюта не знайдена";
+"Currency" = "Валюта";
+"Local Currency" = "Місцева валюта";
+"Frequently Used" = "Часто використовується";
+"Switch Currency" = "Зміна валюти";
+"Currency symbol" = "Символ грошової одиниці";
+"Default Currency Value" = "Вартість валюти за замовчуванням";
+"Set Decimical Digits" = "Встановити десяткові цифри";
+"More Settings" = "Більше налаштувань";
+"Plugin" = "Плагін";
+"Red rise green fall" = "Червоним - підйом, зеленим - падіння";
+"Green rise red fall" = "Зеленим - підйом, червоним - падіння";
+"Quote color" = "Колір цитати";
+"Keyboard Sound" = "Звук клавіатури";
+"Cancel" = "Скасувати";
+"Recovery" = "Відновлення";
+"Restore the default currency list?" = "Відновити стандартний список валют?";
+"OK" = "Ок";
+"Location Services" = "Послуги локалізації";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "Будь ласка відкрийте \"Локалізаційні послуги\" в системних налаштуваннях щоб дозволити \" Currency\" визначити ваше місцезнаходження";
+"Converter Setting" = "Налаштування конвертера";
+"More Setting" = "Більше налаштувань, більше опцій";
+"This widget will display the currency list of converter." = "Цей віджет відображатиме список валют конвертера.";
+"Set Decimal Digits" = "Встановити десяткові цифри, набір десяткових цифр";
+"Legal Tender" = "Законний платіжний засіб";
+"Cryptocurrency" = "Криптовалюта";
+"Converter Watchlist" = "Список спостереження конвертера";
+"View all your favorite currency conversions in real-time." = "Переглянути всі ваші улюблені валютні конвертації в реальному часі.";
+"View the top 2 of your favorites currencies conversions in real-time." = "Переглянути 2 найулюбленіші валютні конвертації в реальному часі.";
+"Single Rate Comparison" = "Порівняння єдиної ставки";
+"View real-time exchange rate trend comparisons of your favorite currency." = "Переглянути порівняння трендів валютного курсу вашої улюбленої валюти в режимі реального часу.";
+"Rate Comparisons" = "Порівняння курсів, порівняння ставок";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "Переглянути порівняння трендів валютного курсу двох ваших найулюбленіших валют в реальному часі.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

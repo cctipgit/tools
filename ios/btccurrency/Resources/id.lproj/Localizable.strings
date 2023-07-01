@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  btccurrency
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "Tinggi";
+"Low" = "Rendah";
+"Average" = "Rata-rata";
+"Change" = "Perubahan";
+"Switch Currency" = "Tukar mata uang";
+"Rate Detail" = "Detail tarif";
+"Currency not found" = "Mata uang tidak di temukan";
+"Currency" = "Mata Uang";
+"Local Currency" = "Mata uang lokal";
+"Frequently Used" = "Sering digunakan";
+"Switch Currency" = "Tukar mata uang";
+"Currency symbol" = "Simbol mata uang";
+"Default Currency Value" = "Nilai Mata Uang bawaan";
+"Set Decimical Digits" = "Tetapkan Digit Desimal";
+"More Settings" = "Lebih banyak pengaturan";
+"Plugin" = "Kode";
+"Red rise green fall" = "Merah naik hijau jatuh";
+"Green rise red fall" = "Hijau naik merah jatuh";
+"Quote color" = "Warna kutipan";
+"Keyboard Sound" = "Suara Papan ketik";
+"Cancel" = "Dibatalkan";
+"Recovery" = "Pemulihan";
+"Restore the default currency list?" = "Pulihkan daftar mata uang bawaan?";
+"OK" = "OKE";
+"Location Services" = "Layanan Lokasi";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "Harap buka \Layanan lokasi\" di setelan sistem untuk memungkinkan \" btcKalkulator\" untuk menentukan lokasi Anda.";
+"Converter Setting" = "Pengaturan penukaran";
+"More Setting" = "Lebih Banyak Pengaturan";
+"This widget will display the currency list of converter." = "Jendela alat ini akan menampilkan daftar mata uang menukarkan.";
+"Set Decimal Digits" = "Tetapkan Digit Desimal";
+"Legal Tender" = "Hukum penawaran";
+"Cryptocurrency" = "Mata uang kripto";
+"Converter Watchlist" = "Daftar pantau penukaran";
+"View all your favorite currency conversions in real-time." = "Lihat semua konversi mata uang favorit Anda secara waktu nyata.";
+"View the top 2 of your favorites currencies conversions in real-time." = "Lihat 2 tertinggi konversi mata uang favorit Anda secara waktu-nyata.";
+"Single Rate Comparison" = "Perbandingan Tarif Tunggal";
+"View real-time exchange rate trend comparisons of your favorite currency." = "Lihat perbandingan kecenderungan nilai tukar waktu-nyata dari mata uang favorit Anda.";
+"Rate Comparisons" = "Perbandingan Tarif";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "Lihat perbandingan kecenderungan nilai tukar waktu nyata dari 2 mata uang tertinggi favorit Anda.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

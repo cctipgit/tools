@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  btccurrency
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "최고가";
+"Low" = "최저가";
+"Average" = "평균가격";
+"Change" = "변동가격";
+"Switch Currency" = "화폐 변경";
+"Rate Detail" = "환전 세부 정보";
+"Currency not found" = "화폐를 찾을 수 없습니다.";
+"Currency" = "화폐";
+"Local Currency" = "현지 화폐";
+"Frequently Used" = "자주 사용 자산";
+"Switch Currency" = "화폐 변경";
+"Currency symbol" = "화폐 기호";
+"Default Currency Value" = "기본 화폐 설정";
+"Set Decimical Digits" = "소수점 설정";
+"More Settings" = "추가 설정";
+"Plugin" = "플러그인";
+"Red rise green fall" = "빨강 상승 녹색 하락";
+"Green rise red fall" = "녹색 상승 빨강 하락";
+"Quote color" = "색상 설정";
+"Keyboard Sound" = "키보드 소리 설정";
+"Cancel" = "취소";
+"Recovery" = "설정 복원";
+"Restore the default currency list?" = "기본 화폐 목록을 복원하시겠습니까?";
+"OK" = "확인";
+"Location Services" = "위치 서비스";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "시스템 설정에서 \위치 서비스\"를 열어 \"Currency\"가 위치를 확인할 수 있도록 하십시오.";
+"Converter Setting" = "환전 설정";
+"More Setting" = "추가 설정";
+"This widget will display the currency list of converter." = "해당 위젯은 환전하는 화폐 목록을 제공합니다.";
+"Set Decimal Digits" = "소수점 설정";
+"Legal Tender" = "법정 화폐";
+"Cryptocurrency" = "가상화폐";
+"Converter Watchlist" = "환전 관심 목록";
+"View all your favorite currency conversions in real-time." = "즐겨 찾는 모든 화폐 변환을 실시간으로 확인할 수 있습니다.";
+"View the top 2 of your favorites currencies conversions in real-time." = "즐겨 찾는 상위 화폐 2개의 환전을 실시간으로 확인할 수 있습니다.";
+"Single Rate Comparison" = "단일 환율 비교";
+"View real-time exchange rate trend comparisons of your favorite currency." = "즐겨 찾는 화폐의 실시간 환율 추세를 비교할 수 있습니다.";
+"Rate Comparisons" = "환율 비교";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "즐겨 찾는 화폐 중 상위 2개의 실시간 환율 추세를 비교할 수 있습니다.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

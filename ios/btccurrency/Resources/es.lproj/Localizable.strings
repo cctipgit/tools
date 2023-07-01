@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  btccurrency
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "Alto";
+"Low" = "Bajo";
+"Average" = "Mediocre";
+"Change" = "Cambio";
+"Switch Currency" = "Cambiar la moneda";
+"Rate Detail" = "Detalles de las comisiones";
+"Currency not found" = "Moneda no encontrada";
+"Currency" = "Moneda";
+"Local Currency" = "Moneda local";
+"Frequently Used" = "Frecuentemente usada";
+"Switch Currency" = "Cambiar la moneda";
+"Currency symbol" = "Símbolo de la moneda";
+"Default Currency Value" = "Valor de la moneda por defecto";
+"Set Decimical Digits" = "Establecer dígitos decimales";
+"More Settings" = "Más configuraciones";
+"Plugin" = "Complemento";
+"Red rise green fall" = "Rojo aumenta, verde cae";
+"Green rise red fall" = "Verde aumenta, rojo cae";
+"Quote color" = "Color de la cita";
+"Keyboard Sound" = "Sonido de teclado";
+"Cancel" = "Cancelar";
+"Recovery" = "Recuperar";
+"Restore the default currency list?" = "Restaurar la lista de monedas por defecto?";
+"OK" = "OK";
+"Location Services" = "Servicios locales";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "Por favor abrir \"Location services\" en las configuraciones de sistemas para permitir que \"Currency\" determine tu localidad.";
+"Converter Setting" = "Configuraciones de conversión";
+"More Setting" = "Más configuraciones";
+"This widget will display the currency list of converter." = "Este widget mostrará la lista de monedas del convertidor";
+"Set Decimal Digits" = "Establecer dígitos decimales";
+"Legal Tender" = "Moneda de curso legal";
+"Cryptocurrency" = "Criptomoneda";
+"Converter Watchlist" = "Lista de seguimiento de conversión";
+"View all your favorite currency conversions in real-time." = "Mira todas las conversiones de tus monedas favoritas en tiempo real.";
+"View the top 2 of your favorites currencies conversions in real-time." = "Mira el top 2 de tus monedas favoritas convertidas en tiempo real.";
+"Single Rate Comparison" = "Comparación de tasa única";
+"View real-time exchange rate trend comparisons of your favorite currency." = "Vea comparaciones de tendencias de tipos de cambio en tiempo real de su moneda favorita.";
+"Rate Comparisons" = "Comparaciones de tarifas";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "Vea comparaciones de tendencias de tipos de cambio en tiempo real de las 2 principales de sus monedas favoritas.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

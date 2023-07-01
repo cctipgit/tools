@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -5,7 +6,7 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-platform :ios, min_ios_version_supported
+platform :ios, '13.0'
 prepare_react_native_project!
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
@@ -25,7 +26,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'MyApp' do
+target 'btccurrency' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -45,11 +46,49 @@ target 'MyApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'MyAppTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
+  pod 'NSObject+Rx', :path => './Local/NSObject+Rx'
+  pod 'SocketTask', :path => './Local/SocketTask'
+  pod 'Localize-Swift', '3.2.0' #https://github.com/marmelroy/Localize-Swift.git
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
+  pod 'RxRelay', '6.5.0'
+  pod 'RxDataSources', '5.0.0'
+  pod 'RxAppState', '1.7.1' #https://github.com/pixeldock/RxAppState.git
+  pod 'GRDB.swift', '6.3.1' #https://github.com/groue/GRDB.swift.git
+  pod 'Kingfisher', '7.6.1' #https://github.com/onevcat/Kingfisher.git
+  pod 'SwifterSwift/SwiftStdlib', '5.2.0' #https://github.com/SwifterSwift/SwifterSwift.git
+  pod 'SwifterSwift/Foundation', '5.2.0'
+  pod 'SwifterSwift/UIKit', '5.2.0'
+  pod 'SwifterSwift/Dispatch', '5.2.0'
+  pod 'FluentDarkModeKit', '1.0.4' #https://github.com/microsoft/FluentDarkModeKit
+  pod 'PinLayout', '1.10.3' #https://github.com/layoutBox/PinLayout.git
+  pod 'Then', '3.0.0' #https://github.com/devxoul/Then.git
+  pod 'Device', '3.3.0'
+  pod 'BetterSegmentedControl', '2.0.1' #https://github.com/gmarm/BetterSegmentedControl.git
+  pod 'SnapKit', '5.6.0' #https://github.com/SnapKit/SnapKit.git
+  pod 'DataCache', '1.7' #https://github.com/huynguyencong/DataCache.git
+  pod 'LookinServer', :configurations => ['Debug']
+  pod 'Charts', '4.1.0' #https://github.com/danielgindi/Charts.git
+  pod 'FDFullscreenPopGesture', :git => 'https://github.com/forkingdog/FDFullscreenPopGesture.git', :modular_headers => true
+  
+  pod 'FirebaseCore', '10.3.0', :modular_headers => true #https://github.com/firebase/firebase-ios-sdk.git
+  pod 'GoogleDataTransport', '9.2.0', :modular_headers => true #https://github.com/google/GoogleDataTransport.git
+  pod 'FirebaseInstallations', '10.3.0', :modular_headers => true #https://github.com/firebase/firebase-ios-sdk.git
+  pod 'FirebaseCoreInternal', '10.3.0', :modular_headers => true #https://github.com/firebase/firebase-ios-sdk.git
+  pod 'FirebaseCrashlytics', '10.3.0', :modular_headers => true #https://github.com/firebase/firebase-ios-sdk.git
+  pod 'GoogleUtilities', '7.8.0', :modular_headers => true #https://github.com/google/GoogleUtilities.git
+  
+  pod 'Moya/RxSwift', '15.0.0' #https://github.com/Moya/Moya.git
+  pod 'CleanJSON', '1.0.9' #https://github.com/Pircate/CleanJSON.git
+  pod 'MJExtension', '3.4.1', :modular_headers => true #https://github.com/CoderMJLee/MJExtension.git
+  pod 'AppsFlyerFramework', '6.11.2' #https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.11.2/AppsFlyerLib-Binaries.zip
+  pod 'RAMAnimatedTabBarController', '5.2.0' #https://github.com/Ramotion/animated-tab-bar.git
+  pod 'Moya', '15.0.0' #https://github.com/Moya/Moya.git
+  pod 'FittedSheets', '2.5.3' #https://github.com/gordontucker/FittedSheets.git
+  pod 'TBEmptyDataSet', '3.0' #https://github.com/teambition/TBEmptyDataSet.git
+  
+  pod 'MJRefresh', '3.7.5', :modular_headers => true ##https://github.com/CoderMJLee/MJRefresh
+  
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
@@ -58,5 +97,16 @@ target 'MyApp' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    
+    # set swift version & iOS target version
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '5.7'
+        end
+        target.build_configurations.each do |bc|
+            bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        end
+    end
+  
   end
 end
