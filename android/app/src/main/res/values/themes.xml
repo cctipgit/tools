@@ -28,8 +28,10 @@
         <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景色透明 -->
         <item name="android:windowIsTranslucent">true</item> <!-- 是否有透明属性 -->
         <item name="android:backgroundDimEnabled">true</item> <!-- 背景是否半透明 -->
+        <item name="android:backgroundDimAmount">0.2</item>
         <item name="android:statusBarColor">@android:color/transparent</item> <!-- 状态栏透明 -->
         <item name="android:textViewStyle">@style/TextView</item>
+        <item name="imageButtonStyle">@style/ImageButton</item>
     </style>
 
     <style name="Theme.ExchangeRate.BottomSheet">

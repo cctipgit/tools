@@ -3,6 +3,7 @@ package com.hash.coinconvert.base;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -44,6 +45,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
 
     protected abstract void initView();
 
+    @CallSuper
     protected void observer() {
         observer(viewModel.getError(), this::onError);
         observer(viewModel.isLoading(), this::onLoading);

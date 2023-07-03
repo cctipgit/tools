@@ -123,6 +123,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        tokenAdapter.destroyView();
         binding = null;
         stopInterval();
     }

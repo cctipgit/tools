@@ -52,10 +52,10 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         setupRecyclerView();
 
         binding.tvGame.setOnClickListener(v -> {
-            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToActivityGame());
+            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery());
         });
         binding.imgGame.setOnClickListener(v -> {
-            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToActivityGame());
+            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery());
         });
     }
 

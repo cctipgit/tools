@@ -180,4 +180,9 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
         }
         notifyItemRangeChanged(0, getItemCount(), PAYLOAD_FOCUS_CHANGE | PAYLOAD_UPDATE_PRICE);
     }
+
+    public void destroyView(){
+        anchorItem = null;
+        focusedView = null;
+    }
 }

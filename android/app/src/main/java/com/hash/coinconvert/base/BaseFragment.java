@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -39,6 +40,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected NavController getNavController() {
         return NavHostFragment.findNavController(this);
+    }
+
+    protected <T> LiveData<T> getLiveDataInCurrentBackstack(String key){
+        return getNavController().getCurrentBackStackEntry().getSavedStateHandle().getLiveData(key);
     }
 
     @Override

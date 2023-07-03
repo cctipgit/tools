@@ -11,4 +11,13 @@ public class PinItem {
     public String reward;
     @SerializedName("pin_reward_desc")
     public String desc;
+
+    public PinItem(){
+        reward = "80 PTS";
+    }
+
+    public PinItem(String id, String reward) {
+        this.id = id;
+        this.reward = reward;
+    }
 }

@@ -29,4 +29,8 @@
     <string name="redeem_points_details">points details</string>
     <string name="redeem_redeem_history">redeem history</string>
     <string name="redeem_for">Redeem for %1$s</string>
+
+    <string name="dialog_reward_title">Congratulation</string>
+    <string name="dialog_reward_message">You win %1$s</string>
+    <string name="dialog_reward_share">Share to friends</string>
 </resources>

@@ -24,4 +24,10 @@
         <item name="android:maxHeight">28dp</item>
         <item name="android:minWidth">80dp</item>
     </style>
+
+    <style name="Button.primary">
+        <item name="android:background">@drawable/btn_blue_ripple_r24</item>
+        <item name="android:textColor">@color/btn_task_check</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
