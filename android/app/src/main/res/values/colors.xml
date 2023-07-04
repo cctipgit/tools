@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#F9A01E</color>
     <color name="red">#EE4900</color>
+    <color name="success">#53F245</color>
+    <color name="pending">#F2AA45</color>
+    <color name="fail">#F24E45</color>
 
     <color name="colorPrimary">#7747F2</color>
     <color name="colorDisable">#E4E4E7</color>

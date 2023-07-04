@@ -39,6 +39,7 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
         super(R.layout.item_home_currency_list);
         this.defaultHint = SPUtils.getInstance().getInt(Constants.SP.KEY.DEFAULT_CURRENCY_VALUE, Constants.SP.DEFAULT.DEFAULT_CURRENCY_VALUE);
         this.decimals = SPUtils.getInstance().getInt(Constants.SP.KEY.DECIMICAL_CRYPTOCURRENCY, Constants.SP.DEFAULT.DECIMICAL_CRYPTOCURRENCY);
+        addChildClickViewIds(R.id.cl_detail);
     }
 
     private String getFormattedNumber(BigDecimal b) {
@@ -63,7 +64,6 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
 
     @Override
     protected void convert(@NonNull BaseViewHolder holder, TokenWrapper token) {
-        addChildClickViewIds(R.id.cl_detail);
         FlagLoader.load(holder.getView(R.id.img_logo), 0, token.getLogo());
         holder.setText(R.id.tv_symbol, token.getSymbol());
         holder.setText(R.id.tv_name, token.getName());

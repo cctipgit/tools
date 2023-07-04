@@ -44,6 +44,12 @@ public class BaseViewModel extends ViewModel {
         }
     }
 
+    protected <T> void startLoadingIfNeeded(LiveData<T> liveData){
+        if(liveData.getValue() != null){
+            startLoading();
+        }
+    }
+
     protected <T> void execute(Observable<T> observable, Consumer<T> action) {
         observable
                 .subscribeOn(Schedulers.computation())

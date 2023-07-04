@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/bg_secondary"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -32,6 +33,7 @@
                 android:textSize="20sp" />
 
             <LinearLayout
+                android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -74,7 +76,11 @@
                 </LinearLayout>
 
                 <com.flyco.roundview.RoundConstraintLayout
+                    android:id="@+id/cl_buttons"
                     android:layout_width="match_parent"
+                    app:rv_isRippleEnable="true"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="34dp"
                     android:layout_marginTop="16dp"
@@ -140,7 +146,9 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            tools:listitem="@layout/item_redeem"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

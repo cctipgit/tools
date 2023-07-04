@@ -68,7 +68,6 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
             if (tokenAdapter.getItemCount() > 0) {
                 //update tokens
                 tokenWrappers.forEach(item -> {
-                    Log.d("HomeActivity", item.getSymbol() + ":" + item.getPrice().toString());
                     boolean exist = false;
                     for (int i = 0; i < tokenAdapter.getData().size(); i++) {
                         TokenWrapper token = tokenAdapter.getItem(i);

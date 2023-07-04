@@ -3,11 +3,13 @@
     <item android:state_enabled="false">
         <shape>
             <solid android:color="@color/colorDisable" />
+            <corners android:radius="4dp"/>
         </shape>
     </item>
     <item>
         <shape>
             <solid android:color="@color/theme_bg" />
+            <corners android:radius="4dp"/>
         </shape>
     </item>
 </selector>

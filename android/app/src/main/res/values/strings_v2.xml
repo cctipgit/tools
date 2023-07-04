@@ -18,6 +18,7 @@
     <string name="profile_privacy_policy">Privacy Policy</string>
     <string name="profile_about">About</string>
     <string name="profile_format_create_time">Member since %1$d/%2$d/%3$d</string>
+    <string name="profile_points_amount">%1$s points</string>
 
     <string name="setting_title">Setting</string>
     <string name="setting_def_value">Default value</string>
@@ -28,7 +29,7 @@
     <string name="redeem_total_points">Total points</string>
     <string name="redeem_points_details">points details</string>
     <string name="redeem_redeem_history">redeem history</string>
-    <string name="redeem_for">Redeem for %1$s</string>
+    <string name="redeem_for">Redeem for %1$d</string>
 
     <string name="dialog_reward_title">Congratulation</string>
     <string name="dialog_reward_message">You win %1$s</string>
@@ -41,4 +42,14 @@
     <string name="err_server_error">Server error</string>
     <string name="err_system_error">System error</string>
     <string name="err_request_faield">Request failed</string>
+
+    <string name="points_details_title">Points details</string>
+    <string name="points_total_points">Total points: %1$s</string>
+
+    <string name="redeem_history_title">Redeem history</string>
+    <string name="redeem_history_state_success">Successful</string>
+    <string name="redeem_history_state_fail">Fail</string>
+    <string name="redeem_history_state_pending">Pending</string>
+
+    <string name="adapter_empty1">No record yet</string>
 </resources>

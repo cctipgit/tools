@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,8 +24,11 @@ import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.http.SocketSender;
 import com.hash.coinconvert.utils.LocationUtils;
+import com.hash.coinconvert.vm.ProfileViewModel;
 
 public class HomeActivity extends BaseActivity {
+
+    private ProfileViewModel profileViewModel;
 
     public static final String TAG = "HomeActivity";
 
@@ -39,6 +43,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         setContentView(R.layout.activity_home);
 
         NavHostFragment fragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_container);
@@ -58,6 +63,12 @@ public class HomeActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        profileViewModel.fetchUserInfo();
     }
 
     private boolean isInNav(int id) {

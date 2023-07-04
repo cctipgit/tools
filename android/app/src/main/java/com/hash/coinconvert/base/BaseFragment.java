@@ -21,12 +21,14 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.hash.coinconvert.R;
+import com.hash.coinconvert.vm.ProfileViewModel;
 
 public abstract class BaseFragment extends Fragment {
     private boolean firstResume = true;
@@ -34,6 +36,11 @@ public abstract class BaseFragment extends Fragment {
     private ActivityResultLauncher<Intent> mIntentActivityResultLauncher;
 
     private ContentLoadingProgressBar progressBar;
+
+    /**
+     * all fragments share a same ProfileViewModel instance
+     */
+    protected ProfileViewModel profileViewModel;
 
     public BaseFragment(int contentLayoutId) {
         super(contentLayoutId);
@@ -49,6 +56,13 @@ public abstract class BaseFragment extends Fragment {
                 onCommonActivityResult(requestCode, result.getResultCode(), result.getData());
             }
         });
+        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        profileViewModel = null;
     }
 
     protected void onCommonActivityResult(int requestCode, int resultCode, Intent data) {

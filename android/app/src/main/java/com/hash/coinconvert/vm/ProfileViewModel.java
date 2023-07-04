@@ -1,24 +1,16 @@
 package com.hash.coinconvert.vm;
 
-import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.duxl.baselib.utils.SPUtils;
-import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.R;
-import com.hash.coinconvert.base.Action;
 import com.hash.coinconvert.base.BaseViewModel;
-import com.hash.coinconvert.entity.ServerUserInfo;
-import com.hash.coinconvert.entity.UserInfo;
+import com.hash.coinconvert.entity.User;
 import com.hash.coinconvert.http.RetrofitHelper;
 import com.hash.coinconvert.http.api.ToolApi;
-import com.hash.coinconvert.utils.GsonHelper;
-
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.UUID;
+import com.hash.coinconvert.repository.UserRepository;
 
 public class ProfileViewModel extends BaseViewModel {
 
@@ -32,55 +24,33 @@ public class ProfileViewModel extends BaseViewModel {
 
     public static final int[] AVATARS = new int[]{R.mipmap.avator01, R.mipmap.avator02, R.mipmap.avator03, R.mipmap.avator04, R.mipmap.avator05, R.mipmap.avator06, R.mipmap.avator07, R.mipmap.avator08,};
 
-    private MutableLiveData<UserInfo> userInfo = new MutableLiveData<>();
+    private MutableLiveData<User> userInfo = new MutableLiveData<>();
+    private UserRepository repository;
 
-    public LiveData<UserInfo> getUserInfo() {
+    public LiveData<User> getUserInfo() {
         return userInfo;
     }
 
     private ToolApi api;
 
+    public static int getAvatarResId(String uid) {
+        return AVATARS[Math.abs(uid.hashCode()) % AVATARS.length];
+    }
+
     public ProfileViewModel() {
+        Log.d("ProfileViewModel", "newinstance");
         api = RetrofitHelper.create(ToolApi.class);
+        repository = new UserRepository();
     }
 
     public void fetchUserInfo() {
-//        String json = SPUtils.getInstance().getString(Constants.SP.KEY.USER_INFO);
-//        UserInfo info;
-//        if (TextUtils.isEmpty(json)) {
-//            info = randomUser();
-//            SPUtils.getInstance().put(Constants.SP.KEY.USER_INFO, GsonHelper.toJsonString(info));
-//        } else {
-//            info = GsonHelper.fromJsonString(json, UserInfo.class);
-//        }
-//        userInfo.postValue(info);
-        fetchUserFromServer();
-    }
-
-    public void fetchUserFromServer() {
-        execute(api.userProfile(), new Action<ServerUserInfo>() {
-            @Override
-            public void invoke(ServerUserInfo serverUserInfo) {
-                UserInfo info = UserInfo.getUserInfo();
-                info.name = serverUserInfo.userName;
-                info.avatarIndex = Math.abs(serverUserInfo.avatar.hashCode()) % AVATARS.length;
-                userInfo.postValue(info);
-            }
+        User local = repository.getFromLocal();
+        if (local != null) {
+            userInfo.postValue(local);
+        }
+        execute(repository.fetch(api), res -> {
+            repository.save(res);
+            userInfo.postValue(res);
         });
-    }
-
-    private UserInfo randomUser() {
-        Calendar calendar = Calendar.getInstance();
-        int second = calendar.get(Calendar.SECOND);
-        int mils = calendar.get(Calendar.MILLISECOND);
-        int seed = second * mils;
-        int nameIndex = seed % DIC.length;
-        int avatarIndex = seed % AVATARS.length;
-        UserInfo userInfo = new UserInfo();
-        userInfo.avatarIndex = avatarIndex;
-        userInfo.name = DIC[nameIndex];
-        userInfo.id = UUID.randomUUID().toString().toLowerCase(Locale.ROOT);
-        userInfo.createTime = calendar.getTimeInMillis();
-        return userInfo;
     }
 }
