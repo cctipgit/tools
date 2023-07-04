@@ -15,9 +15,11 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import androidx.annotation.Nullable;
 
 import com.duxl.baselib.utils.DisplayUtil;
+import com.duxl.baselib.utils.ToastUtils;
+import com.hash.coinconvert.R;
 import com.hash.coinconvert.entity.PinItem;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LotteryView extends View {
@@ -33,6 +35,7 @@ public class LotteryView extends View {
     private float rotateAngle;
 
     private OnRotateFinishListener onRewardListener;
+    private String targetRewardId;
 
     public LotteryView(Context context) {
         super(context);
@@ -54,18 +57,7 @@ public class LotteryView extends View {
     private void init(Context context) {
         lotteryTop = DisplayUtil.dip2px(context, 18f);
         backgroundComponent = new BackgroundComponent(context);
-
-        this.data = new ArrayList<>();
-        this.data.add(new PinItem("1", "30PTS"));
-        this.data.add(new PinItem("2", "35PTS"));
-        this.data.add(new PinItem("3", "10PTS"));
-        this.data.add(new PinItem("4", "50PTS"));
-        this.data.add(new PinItem("5", "20PTS"));
-        this.data.add(new PinItem("6", "20PTS"));
-        this.data.add(new PinItem("7", "5PTS"));
-        this.data.add(new PinItem("8", "25PTS"));
-
-        pointsComponent = new PointsComponent(context, data);
+        pointsComponent = new PointsComponent(context, null);
         anchorComponent = new AnchorComponent(context);
     }
 
@@ -82,12 +74,12 @@ public class LotteryView extends View {
     }
 
     public void startRotate(String targetRewardId) {
+        if (pointsComponent.findItemById(targetRewardId) == null) {
+            ToastUtils.show(R.string.dialog_reward_error_none_pin_item);
+            return;
+        }
+        this.targetRewardId = targetRewardId;
         rotateTo(pointsComponent.getTargetRewardRotateAngleInArc(targetRewardId, rotateAngle));
-    }
-
-    public void test() {
-        int index = (int) (Math.random() * 100 % data.size());
-        startRotate(data.get(index).id);
     }
 
     private void ensureAnimation() {
@@ -104,7 +96,9 @@ public class LotteryView extends View {
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
                     if (onRewardListener != null) {
-                        onRewardListener.onRotateFinished();
+                        PinItem item = pointsComponent.findItemById(targetRewardId);
+                        targetRewardId = null;
+                        onRewardListener.onRotateFinished(item);
                     }
                 }
             });
@@ -116,6 +110,11 @@ public class LotteryView extends View {
         }
     }
 
+    public void setData(PinItem[] data) {
+        pointsComponent.setData(Arrays.copyOf(data, data.length));
+        invalidate();
+    }
+
     private void rotateTo(double dest) {
         ensureAnimation();
         //避免无数次后数字大于Float.MAX
@@ -124,15 +123,6 @@ public class LotteryView extends View {
             rotateAngle -= M;
             dest -= M;
         }
-        Log.d(PointsComponent.TAG, rotateAngle + "," + dest);
-        float dif = (float) (dest - rotateAngle);
-//        rotateAnimation.setFloatValues(rotateAngle,
-//                rotateAngle + dif * 0.03125f,
-//                rotateAngle + dif * 0.0625f,
-//                rotateAngle + dif * 0.125f,
-//                rotateAngle + dif * 0.25f,
-//                rotateAngle + dif * 0.5f,
-//                rotateAngle + dif);
         rotateAnimation.setFloatValues(rotateAngle, (float) dest);
 
         rotateAnimation.start();
@@ -181,6 +171,6 @@ public class LotteryView extends View {
     }
 
     public interface OnRotateFinishListener {
-        void onRotateFinished();
+        void onRotateFinished(PinItem item);
     }
 }

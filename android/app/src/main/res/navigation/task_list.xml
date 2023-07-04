@@ -31,11 +31,15 @@
         <action
             android:id="@+id/action_fragment_lottery_to_dialog_reward"
             app:destination="@id/dialog_reward" />
+
+        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem[]" app:nullable="false"/>
     </fragment>
 
     <dialog android:id="@+id/dialog_reward"
         android:name="com.hash.coinconvert.ui2.dialog.RewardDialog"
         android:label="Reward"
-        tools:layout="@layout/dialog_reward"/>
+        tools:layout="@layout/dialog_reward">
+        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem" app:nullable="false"/>
+    </dialog>
 
 </navigation>

@@ -30,6 +30,20 @@ public class BaseViewModel extends ViewModel {
         return loading;
     }
 
+    protected boolean isInLoading(){
+        return Boolean.TRUE.equals(loading.getValue());
+    }
+
+    protected boolean isNotLoading(){
+        return Boolean.FALSE.equals(loading.getValue());
+    }
+
+    protected void startLoading(){
+        if(isNotLoading()){
+            loading.postValue(true);
+        }
+    }
+
     protected <T> void execute(Observable<T> observable, Consumer<T> action) {
         observable
                 .subscribeOn(Schedulers.computation())
@@ -66,6 +80,7 @@ public class BaseViewModel extends ViewModel {
         call.enqueue(new Callback<TResponse<T>>() {
             @Override
             public void onResponse(Call<TResponse<T>> call, Response<TResponse<T>> response) {
+                finishLoading();
                 TResponse<T> body = response.body();
                 if (body != null) {
                     if (body.isSuccess()) {
@@ -76,13 +91,12 @@ public class BaseViewModel extends ViewModel {
                 } else {
                     error.postValue(new ServerException(TResponse.EMPTY_BODY, "server error"));
                 }
-                finishLoading();
             }
 
             @Override
             public void onFailure(Call<TResponse<T>> call, Throwable t) {
-                error.postValue(t);
                 finishLoading();
+                error.postValue(t);
             }
         });
     }

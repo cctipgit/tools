@@ -16,6 +16,8 @@ import com.duxl.baselib.utils.DisplayUtil;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentTaskListBinding;
+import com.hash.coinconvert.entity.PinItem;
+import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.ui2.adapter.HomeTaskListAdapter;
 import com.hash.coinconvert.utils.StatusBarUtils;
@@ -34,6 +36,8 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     private long expireInMills;
 
     private Drawable clock;
+    private PinList pinList;
+    private boolean isWaitingPinList;
 
     public TaskListFragment() {
         super(R.layout.fragment_task_list);
@@ -48,21 +52,29 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     @Override
     protected void initView() {
         StatusBarUtils.setViewHeightEqualsStatusBarHeight(binding.paddingView);
-
         setupRecyclerView();
-
         binding.tvGame.setOnClickListener(v -> {
-            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery());
+            toLottery();
         });
         binding.imgGame.setOnClickListener(v -> {
-            getNavController().navigate(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery());
+            toLottery();
         });
+    }
+
+    private void toLottery(){
+        if(pinList != null){
+            PinItem[] items = pinList.lists.toArray(new PinItem[0]);
+            navigateTo(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery(items));
+        }else{
+            isWaitingPinList = true;
+        }
     }
 
     @Override
     protected void onFirstResume() {
         super.onFirstResume();
         viewModel.fetchTasks();
+        viewModel.fetchPinList();
     }
 
     @Override
@@ -77,12 +89,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
                 expireInMills = taskList.expireTime;
                 startInterval();
             }
-            if (taskList.pinNum > 0) {
-                binding.tvGame.setVisibility(View.VISIBLE);
-                binding.tvGame.setText(String.valueOf(taskList.pinNum));
-            } else {
-                binding.tvGame.setVisibility(View.INVISIBLE);
-            }
+            updatePinNum(taskList.pinNum);
         });
         observer(viewModel.getCheckResult(), id -> {
             for (int i = 0; i < taskListAdapter.getData().size(); i++) {
@@ -94,6 +101,23 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
                 }
             }
         });
+        observer(viewModel.getPinList(),res->{
+            this.pinList = res;
+            if(isWaitingPinList){
+                isWaitingPinList = false;
+                toLottery();
+            }
+        });
+        observer(viewModel.getPinNum(), this::updatePinNum);
+    }
+
+    private void updatePinNum(int pinNum){
+        if (pinNum > 0) {
+            binding.tvGame.setVisibility(View.VISIBLE);
+            binding.tvGame.setText(String.valueOf(pinNum));
+        } else {
+            binding.tvGame.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void startInterval() {

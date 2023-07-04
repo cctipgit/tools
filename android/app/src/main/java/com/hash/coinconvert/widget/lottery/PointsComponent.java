@@ -33,7 +33,7 @@ public class PointsComponent extends Component {
     public static final float START_CENTER_ANGLE = -90f;
     public static final int MIN_ROTATE_TIMES = 5;
 
-    private List<PinItem> data;
+    private PinItem[] data;
 
     private LinearGradient linear1;
     private LinearGradient linear2;
@@ -47,7 +47,7 @@ public class PointsComponent extends Component {
     private Path textPath;
     private float rewardImageRadiusRate = 4f / 7f;
 
-    private int[] rewardImageArray = new int[]{
+    public static final int[] rewardImageArray = new int[]{
             R.mipmap.ic_lottery_reward_1,
             R.mipmap.ic_lottery_reward_2,
             R.mipmap.ic_lottery_reward_3,
@@ -61,10 +61,10 @@ public class PointsComponent extends Component {
     private List<Drawable> rewardDrawableList;
     private int rewardPicSize;
 
-    public PointsComponent(Context context, List<PinItem> data) {
+    public PointsComponent(Context context, PinItem[] data) {
         this.data = data;
         if (this.data == null) {
-            this.data = Collections.emptyList();
+            this.data = new PinItem[0];
         }
         arcWidth = DisplayUtil.dip2px(context, 34f);
         strokeColor = Color.parseColor("#B671FF");
@@ -86,11 +86,21 @@ public class PointsComponent extends Component {
         for (int id : rewardImageArray) {
             rewardDrawableList.add(ContextCompat.getDrawable(context, id));
         }
+        for (int i = 0; i < this.data.length; i++) {
+            this.data[i].picResId = rewardImageArray[i%this.data.length];
+        }
+    }
+
+    public void setData(PinItem[] data) {
+        this.data = data;
+        for (int i = 0; i < this.data.length; i++) {
+            this.data[i].picResId = rewardImageArray[i%this.data.length];
+        }
     }
 
     @Override
     public void onDraw(LotteryView view, Canvas canvas, float rotateAngle) {
-        if (data.size() == 0) return;
+        if (data.length == 0) return;
         int w = view.getWidth();
         int h = view.getHeight();
         int cx = w / 2;
@@ -101,7 +111,7 @@ public class PointsComponent extends Component {
         }
 
         ensureLinearGradients(w, w);
-        float itemArcAngle = DEGREE_CIRCLE / data.size();
+        float itemArcAngle = DEGREE_CIRCLE / data.length;
         float startDrawAngle = START_CENTER_ANGLE - itemArcAngle / 2 + rotateAngle;
         Paint.FontMetrics fm = textPaint.getFontMetrics();
 
@@ -112,7 +122,7 @@ public class PointsComponent extends Component {
         }
 
         int halfRewardPicSize = rewardPicSize / 2;
-        for (int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < data.length; i++) {
             //gradient
             paint.setShader((i & 1) == 0 ? linear1 : linear2);
             paint.setStyle(Paint.Style.FILL);
@@ -127,7 +137,7 @@ public class PointsComponent extends Component {
             //text
             textPath.reset();
             textPath.addArc(textRectF, startDrawAngle, itemArcAngle);
-            canvas.drawTextOnPath(data.get(i).reward, textPath, 0, 0, textPaint);
+            canvas.drawTextOnPath(data[i].desc, textPath, 0, 0, textPaint);
 
             //pic
             canvas.save();
@@ -168,6 +178,14 @@ public class PointsComponent extends Component {
         }
     }
 
+    public PinItem findItemById(String id) {
+        for (PinItem item : data) {
+            if (Objects.equals(item.id, id)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
     private double getArcX(int cx, double angle, int radius) {
         return cx + radius * Math.cos(angle);
@@ -178,18 +196,18 @@ public class PointsComponent extends Component {
     }
 
     public float getTargetRewardRotateAngleInArc(String id, float from) {
-        float itemArcAngle = DEGREE_CIRCLE / data.size();
+        float itemArcAngle = DEGREE_CIRCLE / data.length;
         float origin = START_CENTER_ANGLE - itemArcAngle / 2;
 
-        for (int i = 0; i < data.size(); i++) {
-            PinItem item = data.get(i);
+        for (int i = 0; i < data.length; i++) {
+            PinItem item = data[i];
             if (Objects.equals(id, item.id)) {
-                float start = i * itemArcAngle - itemArcAngle/2;
+                float start = i * itemArcAngle - itemArcAngle / 2;
                 float end = start + itemArcAngle;
-                float random = (float) (start+(end-start)*Math.random());
+                float random = (float) (start + (end - start) * Math.random());
                 random = DEGREE_CIRCLE - random;
-                while (random < from+DEGREE_CIRCLE*MIN_ROTATE_TIMES){
-                    random+=DEGREE_CIRCLE;
+                while (random < from + DEGREE_CIRCLE * MIN_ROTATE_TIMES) {
+                    random += DEGREE_CIRCLE;
                 }
                 return random;
             }

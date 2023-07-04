@@ -3,6 +3,7 @@ package com.hash.coinconvert.http.api;
 import com.hash.coinconvert.entity.PageRequest;
 import com.hash.coinconvert.entity.PinCheckResponse;
 import com.hash.coinconvert.entity.PinList;
+import com.hash.coinconvert.entity.PinNum;
 import com.hash.coinconvert.entity.RedeemHistoryList;
 import com.hash.coinconvert.entity.RedeemList;
 import com.hash.coinconvert.entity.RedeemPointItem;
@@ -42,6 +43,6 @@ public interface ToolApi {
     Call<TResponse<TaskList>> taskList();
 
     @POST("/rate/tool/task/check")
-    Call<TResponse<String>> taskCheck(@Body TaskCheckRequest body);
+    Call<TResponse<PinNum>> taskCheck(@Body TaskCheckRequest body);
 
 }

@@ -3,7 +3,6 @@ package com.hash.coinconvert.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
@@ -151,6 +150,27 @@ public class ActionBar extends ConstraintLayout {
         ImageButton button = genMenuView(singleMenuViewId == 0);
         button.setImageDrawable(drawable);
         button.setOnClickListener(listener);
+    }
+
+    public void addMenu(View view) {
+        if (singleMenuViewId == 0) {
+            view.setLayoutParams(genMenuLayoutParams());
+            singleMenuViewId = View.generateViewId();
+            view.setId(singleMenuViewId);
+            this.addView(view);
+        } else {
+            if (hasMenusLayout()) {
+                menusLayout.addView(view);
+            } else {
+                ensureMenusLayout();
+                View v = findViewById(singleMenuViewId);
+                if (v != null) {
+                    removeView(v);
+                    menusLayout.addView(v);
+                }
+                menusLayout.addView(view);
+            }
+        }
     }
 
     private ImageButton genMenuView(boolean single) {

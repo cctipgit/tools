@@ -33,4 +33,12 @@
     <string name="dialog_reward_title">Congratulation</string>
     <string name="dialog_reward_message">You win %1$s</string>
     <string name="dialog_reward_share">Share to friends</string>
+    <string name="dialog_reward_error_none_pin_item">error occurs</string>
+
+
+    <string name="err_unknown">Server Error,Please try it again later</string>
+    <string name="err_insufficient_point">Insufficient points</string>
+    <string name="err_server_error">Server error</string>
+    <string name="err_system_error">System error</string>
+    <string name="err_request_faield">Request failed</string>
 </resources>

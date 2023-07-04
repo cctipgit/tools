@@ -114,7 +114,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
             if (view.getId() == R.id.cl_detail) {
                 //go detail
                 NavDirections directions = CurrencyFragmentDirections.actionFragmentCurrencyToFragmentTokenDetail(tokenAdapter.getItem(position).getSymbol());
-                getNavController().navigate(directions);
+                navigateTo(directions);
             }
         });
         recyclerView.setAdapter(tokenAdapter);

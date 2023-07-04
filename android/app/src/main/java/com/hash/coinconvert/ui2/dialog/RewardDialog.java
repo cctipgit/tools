@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle;
 
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.databinding.DialogRewardBinding;
+import com.hash.coinconvert.entity.PinItem;
 
 public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
 
@@ -23,6 +24,11 @@ public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
 
     @Override
     protected void initView() {
+        PinItem item = RewardDialogArgs.fromBundle(getArguments()).getData();
+
+        binding.imgReward.setImageResource(item.picResId);
+        binding.tvMessage.setText(getString(R.string.dialog_reward_message,item.desc));
+
         binding.btnClose.setOnClickListener(v->dismiss());
         binding.btnShare.setOnClickListener(v->onPositiveClick(new AutoCloseAction() {
             @Override

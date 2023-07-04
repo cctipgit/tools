@@ -13,9 +13,15 @@ import androidx.viewbinding.ViewBinding;
 
 import com.duxl.baselib.utils.ToastUtils;
 import com.hash.coinconvert.BuildConfig;
+import com.hash.coinconvert.R;
+import com.hash.coinconvert.error.ServerException;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.net.SocketException;
+import java.util.concurrent.TimeoutException;
+
+import retrofit2.HttpException;
 
 public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends ViewBinding> extends BaseFragment {
 
@@ -64,14 +70,50 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     }
 
     protected void onError(Throwable throwable) {
+        throwable.printStackTrace();
+        if (handleNetworkError(throwable)) return;
+        if (handleServerError(throwable)) return;
         if (BuildConfig.DEBUG) {
             ToastUtils.show(throwable.getMessage());
         }
         onLoading(false);
     }
 
-    protected void onLoading(boolean loading) {
+    public boolean handleServerError(Throwable throwable) {
+        if (throwable instanceof ServerException) {
+            ServerException err = (ServerException) throwable;
+            ToastUtils.show(getErrorStringResIdByCode(err.code));
+            return true;
+        }
+        return false;
+    }
 
+    protected int getErrorStringResIdByCode(int code) {
+        switch (code) {
+            case 400003:
+                return R.string.err_insufficient_point;
+            case 0:
+            case 10009:
+            case 10005:
+            case 10003:
+                return R.string.err_server_error;
+        }
+        return R.string.err_unknown;
+    }
+
+    protected boolean handleNetworkError(Throwable throwable) {
+        if (throwable instanceof SocketException
+                || throwable instanceof TimeoutException
+                || throwable instanceof HttpException) {
+            ToastUtils.show(R.string.err_request_faield);
+            return true;
+        }
+        return false;
+    }
+
+    protected void onLoading(boolean loading) {
+        if(loading)showLoading();
+        else hideLoading();
     }
 
     public abstract Class<? extends VM> getVMClass();
