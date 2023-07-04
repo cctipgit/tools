@@ -110,6 +110,13 @@
 		83CB26092910BE8E00A08EF0 /* CurrencySpecsSwitchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CB26082910BE8E00A08EF0 /* CurrencySpecsSwitchItemView.swift */; };
 		83D567372986750B0043DB2A /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D567362986750B0043DB2A /* LanguageViewController.swift */; };
 		83EEF24A2936608000441DD3 /* CustomAlertConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EEF2492936608000441DD3 /* CustomAlertConfirmView.swift */; };
+		847CF9A22A5264A600AE7CBB /* MonomaniacOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */; };
+		847CF9AE2A52C94100AE7CBB /* TCDrawPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */; };
+		847CF9AF2A52C94100AE7CBB /* TCSectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */; };
+		847CF9B12A53C10200AE7CBB /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B02A53C10200AE7CBB /* NSObject+Extension.swift */; };
+		847CF9B32A53C18700AE7CBB /* LocalUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */; };
+		847CF9B62A53F7C700AE7CBB /* ServerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B52A53F7C700AE7CBB /* ServerModels.swift */; };
+		847CF9B92A54021200AE7CBB /* SmartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B82A54021200AE7CBB /* SmartService.swift */; };
 		84C4FFBD2A42E31F001068B5 /* Moya+Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */; };
 		84C4FFBE2A42E31F001068B5 /* Single+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB42A42E31F001068B5 /* Single+Cache.swift */; };
 		84C4FFBF2A42E31F001068B5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB52A42E31F001068B5 /* Configuration.swift */; };
@@ -363,6 +370,13 @@
 		83D567362986750B0043DB2A /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		83E9599C57AF1EFF6287EE52 /* Pods-btccurrency.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btccurrency.debug.xcconfig"; path = "Target Support Files/Pods-btccurrency/Pods-btccurrency.debug.xcconfig"; sourceTree = "<group>"; };
 		83EEF2492936608000441DD3 /* CustomAlertConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertConfirmView.swift; sourceTree = "<group>"; };
+		847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MonomaniacOne-Regular.ttf"; sourceTree = "<group>"; };
+		847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCDrawPrizeView.swift; sourceTree = "<group>"; };
+		847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSectorModel.swift; sourceTree = "<group>"; };
+		847CF9B02A53C10200AE7CBB /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserModel.swift; sourceTree = "<group>"; };
+		847CF9B52A53F7C700AE7CBB /* ServerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerModels.swift; sourceTree = "<group>"; };
+		847CF9B82A54021200AE7CBB /* SmartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartService.swift; sourceTree = "<group>"; };
 		84B06F902A4EE030009708E4 /* btccurrency-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "btccurrency-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya+Cacheable.swift"; sourceTree = "<group>"; };
 		84C4FFB42A42E31F001068B5 /* Single+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Cache.swift"; sourceTree = "<group>"; };
@@ -535,6 +549,7 @@
 		8330E1D9290A88630026CE4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */,
 				84C4FFE02A42FAF6001068B5 /* Roboto-Black.ttf */,
 				84C4FFDC2A42FAF5001068B5 /* Roboto-BlackItalic.ttf */,
 				84C4FFE22A42FAF6001068B5 /* Roboto-Bold.ttf */,
@@ -655,6 +670,8 @@
 		8352BD412900E25B00A61199 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				847CF9B72A5401EE00AE7CBB /* Service */,
+				847CF9B42A53F73300AE7CBB /* Models */,
 				84F89A802A4967B3000936E0 /* CustomTabViewController.swift */,
 				84D46A102A4BD2C800129E92 /* BaseWebViewController.swift */,
 				84C4FFC72A42E32D001068B5 /* AppConfig.swift */,
@@ -734,7 +751,6 @@
 		8352BD5B2900E25B00A61199 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				84C4FFC92A42E382001068B5 /* Service */,
 				8352BD5E2900E25B00A61199 /* View */,
 				8352BD5C2900E25B00A61199 /* ViewModel */,
 				8352BD5D2900E25B00A61199 /* CurrencyDetailViewController.swift */,
@@ -838,6 +854,7 @@
 				83BB5F71296A67DC00AD1B5C /* Observable+WSResponse.swift */,
 				84D46A1C2A4BFF2100129E92 /* UIDevice+Extension.swift */,
 				84D46A2E2A4D60A200129E92 /* UIScrollView+Extension.swift */,
+				847CF9B02A53C10200AE7CBB /* NSObject+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -870,6 +887,33 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		847CF9A32A52672500AE7CBB /* Spin */ = {
+			isa = PBXGroup;
+			children = (
+				847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */,
+				847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */,
+			);
+			path = Spin;
+			sourceTree = "<group>";
+		};
+		847CF9B42A53F73300AE7CBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */,
+				847CF9B52A53F7C700AE7CBB /* ServerModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		847CF9B72A5401EE00AE7CBB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				847CF9B82A54021200AE7CBB /* SmartService.swift */,
+				84C4FFCA2A42E38D001068B5 /* CurrencyDetailService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		84C4FFB22A42E2F9001068B5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,14 +929,6 @@
 				84C4FFBA2A42E31F001068B5 /* UserAgentPlugin.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		84C4FFC92A42E382001068B5 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				84C4FFCA2A42E38D001068B5 /* CurrencyDetailService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		84C4FFCC2A42EB00001068B5 /* Support */ = {
@@ -940,6 +976,7 @@
 		84F89A7A2A49674C000936E0 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				847CF9A32A52672500AE7CBB /* Spin */,
 				84D46A2B2A4D296D00129E92 /* Cell */,
 				84F89A7C2A496798000936E0 /* TaskIndexViewController.swift */,
 				84D46A292A4D295F00129E92 /* TaskGameViewController.swift */,
@@ -1073,6 +1110,7 @@
 				84C4FFE72A42FAF7001068B5 /* Roboto-MediumItalic.ttf in Resources */,
 				84C4FFCF2A42F38A001068B5 /* db.sqlite in Resources */,
 				84C4FFEC2A42FAF7001068B5 /* Roboto-Black.ttf in Resources */,
+				847CF9A22A5264A600AE7CBB /* MonomaniacOne-Regular.ttf in Resources */,
 				84C4FFED2A42FAF7001068B5 /* Roboto-ThinItalic.ttf in Resources */,
 				84C4FFCD2A42F211001068B5 /* GoogleService-Info.plist in Resources */,
 				84C4FFEA2A42FAF7001068B5 /* Roboto-Italic.ttf in Resources */,
@@ -1238,6 +1276,7 @@
 				832FE1DE29137A84004C27B6 /* PluginSettingViewController.swift in Sources */,
 				83A407BB2941AF6600BE37C5 /* WidgetRouter.swift in Sources */,
 				83911FE529609466003A1197 /* ChartPricePromptView.swift in Sources */,
+				847CF9AF2A52C94100AE7CBB /* TCSectorModel.swift in Sources */,
 				833BB919290797B400B9B831 /* Parser.swift in Sources */,
 				83D567372986750B0043DB2A /* LanguageViewController.swift in Sources */,
 				832FE1EE29139359004C27B6 /* MoreSettingViewModel.swift in Sources */,
@@ -1271,6 +1310,7 @@
 				832FE1C92912C845004C27B6 /* SettingSwitchTableViewCell.swift in Sources */,
 				832FE1DC29137A4E004C27B6 /* DigitSettingViewController.swift in Sources */,
 				8330E1F9290D0F450026CE4B /* SwitchCurrencySectionHeaderView.swift in Sources */,
+				847CF9B92A54021200AE7CBB /* SmartService.swift in Sources */,
 				8330E1D8290A4FD70026CE4B /* String+Extension.swift in Sources */,
 				84C4FFC42A42E31F001068B5 /* UserAgentPlugin.swift in Sources */,
 				84C4FFC32A42E31F001068B5 /* TargetType+Cache.swift in Sources */,
@@ -1283,12 +1323,14 @@
 				83139024292638800016AE34 /* CurrencyIndexBar.swift in Sources */,
 				84D46A112A4BD2C800129E92 /* BaseWebViewController.swift in Sources */,
 				8352BD9329037EF600A61199 /* UIView+Extension.swift in Sources */,
+				847CF9AE2A52C94100AE7CBB /* TCDrawPrizeView.swift in Sources */,
 				84C4FFC62A42E31F001068B5 /* CacheManager.swift in Sources */,
 				83BB5F70296A63F100AD1B5C /* SocketProvider+Rx.swift in Sources */,
 				84F89A912A4ACB27000936E0 /* CurrencySheetViewController.swift in Sources */,
 				833BB915290796BA00B9B831 /* Expression.swift in Sources */,
 				8352BD6A2900E25B00A61199 /* HomeTableViewCell.swift in Sources */,
 				84D46A2F2A4D60A200129E92 /* UIScrollView+Extension.swift in Sources */,
+				847CF9B62A53F7C700AE7CBB /* ServerModels.swift in Sources */,
 				84F89A7F2A4967A1000936E0 /* RedeemIndexViewController.swift in Sources */,
 				833BB9202907B1DD00B9B831 /* Value.swift in Sources */,
 				832FE1F72913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.swift in Sources */,
@@ -1316,6 +1358,7 @@
 				833BB913290796B000B9B831 /* Node.swift in Sources */,
 				84C4FFC02A42E31F001068B5 /* Observable+Cache.swift in Sources */,
 				8330E205290D83000026CE4B /* CurrencyTimeSegementView.swift in Sources */,
+				847CF9B12A53C10200AE7CBB /* NSObject+Extension.swift in Sources */,
 				8330E203290D74FF0026CE4B /* CurrencySearchEmptyView.swift in Sources */,
 				84C4FFC82A42E32D001068B5 /* AppConfig.swift in Sources */,
 				84F89A7D2A496798000936E0 /* TaskIndexViewController.swift in Sources */,
@@ -1323,6 +1366,7 @@
 				84D46A242A4C269D00129E92 /* RedeemIndexCell.swift in Sources */,
 				834685E02987600500C1B35D /* LocalizeManager.swift in Sources */,
 				833BB91B2907991900B9B831 /* Precedence.swift in Sources */,
+				847CF9B32A53C18700AE7CBB /* LocalUserModel.swift in Sources */,
 				84C4FFCB2A42E38D001068B5 /* CurrencyDetailService.swift in Sources */,
 				8352BD6C2900E25B00A61199 /* SwipeTableViewCell.swift in Sources */,
 				84C4FFC52A42E31F001068B5 /* Network.swift in Sources */,

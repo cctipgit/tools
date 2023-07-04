@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 class RedeemIndexCell: UITableViewCell {
     var cellBGView = UIView().then { v in
@@ -67,7 +68,6 @@ class RedeemIndexCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         p_setElements()
         updateConstraints()
-        setData()
         self.contentView.backgroundColor = .bgSecondary
     }
 
@@ -148,12 +148,14 @@ class RedeemIndexCell: UITableViewCell {
     }
     
     // MARK: Public Method
-    public func setData() {
-        bannberImageView.image = UIImage(named: "n_green_banner")
-        titleLabel.text = "$5 USDT"
-        iconImageView.image = UIImage(named: "n_usdt_icon")
-        nameLabel.text = "USDT"
-        leftDesc.text = "Redeem for 3,000"
-        rightDesc.text = "1,000/3,000"
+    public func setData(item: RedeemListItem, index: Int) {
+        let imgs = ["n_green_banner", "n_yellow_banner"]
+        let imgIndex = (index % 2 == 0) ? 0 : 1
+        bannberImageView.kf.setImage(with: URL(string: item.pic), placeholder: UIImage(named: imgs[imgIndex]))
+        titleLabel.text = "$\(item.reward) \(item.symbol)"
+        iconImageView.kf.setImage(with: URL(string: item.ico), placeholder: UIImage(named: "n_usdt_icon"))
+        nameLabel.text = item.id
+        leftDesc.text = "Redeem for".localized() + " \("\(item.pointRequire)".decimalFormat())"
+        rightDesc.text = "\("\(item.left)".decimalFormat()) / \("\(item.total)".decimalFormat())"
     }
 }

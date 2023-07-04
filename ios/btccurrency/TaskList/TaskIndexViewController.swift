@@ -52,9 +52,21 @@ class TaskIndexViewController: YBaseViewController {
         v.contentInset = .zero
     }
     
-    // data
-    private var data = ["", "", "", "", "", "", "", "", "", "", "", ""]
+    let taskLabel = UILabel().then { v in
+        v.font = .robotoRegular(with: 16)
+        v.textColor = .primaryYellow
+    }
     
+    let timeLabel = UILabel().then { v in
+        v.font = .robotoRegular(with: 14)
+        v.frame = CGRect(x: UIDevice.kScreenWidth() - 94, y: 20, width: 74, height: 16)
+        v.text = "0h:0m:0s"
+    }
+    
+    // data
+    private var data = [TaskListItem]()
+    private var leftTime: TimeInterval = 0
+
     // MARK: Super Method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +113,8 @@ class TaskIndexViewController: YBaseViewController {
     private func p_setElements() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetDataSource = self
         _ = tableView.configMJHeader { [unowned self] in
             self.p_refresh()
         }
@@ -112,13 +126,67 @@ class TaskIndexViewController: YBaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         })
         .disposed(by: rx.disposeBag)
+        Observable<Int>.interval(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                if leftTime > 0 {
+                    self.leftTime = self.leftTime - 1
+                    self.timeLabel.text = self.leftTime.customTaskLeftTime()
+                } else {
+                    self.timeLabel.text = "0h:0m:0s"
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        p_setTaskCount(done: 0, total: 0)
         p_refresh()
     }
     
+    private func p_setTaskCount(done: Int, total: Int) {
+        taskLabel.text = "Daily tasks".localized() + " \(done)/\(total)"
+    }
+    
     private func p_refresh() {
-        tableView.reloadData()
-        gameLabel.text = "11"
-        tableView.mj_header?.endRefreshing()
+        SmartService().taskList()
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                guard let res = result else {
+                    self.tableView.mj_header?.endRefreshing()
+                    return
+                }
+                guard let listArray = res.list as? [TaskListItem] else {
+                    self.tableView.mj_header?.endRefreshing()
+                    return
+                }
+                var spinNumStr: String = "\(res.pinNum)"
+                if res.pinNum > 99 {
+                    spinNumStr = "99+"
+                }
+                self.leftTime = TimeInterval(res.expireTime / 1000) - Date().timeIntervalSince1970
+                self.gameLabel.text = spinNumStr
+                self.p_setTaskCount(done: listArray.filter({ $0.done == true }).count, total: res.list.count)
+                self.data = (res.list as? [TaskListItem]) ?? [TaskListItem]()
+                self.tableView.reloadData()
+                self.tableView.mj_header?.endRefreshing()
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    @objc
+    private func p_finishTask(sender: UIButton) {
+        guard data.count > sender.tag else { return }
+        let data = data[sender.tag]
+        self.share(text: data.taskName, image: nil, url: URL(string: data.params))
+        SmartService().taskCheck(param: data.params, taskId: data.taskId)
+            .subscribe(onNext: { [weak self ] result in
+                guard let self = self else { return }
+                self.view.makeToast(result?.msg ?? "", duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
+                self.view.hideAllToasts()
+                if let res = result, res.isSuccess {
+                    self.p_refresh()
+                }
+            }
+        })
+        .disposed(by: rx.disposeBag)
     }
 }
 
@@ -139,7 +207,9 @@ extension TaskIndexViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let mCell = cell as! TaskIndexCell
         mCell.selectionStyle = .none
-        mCell.setData()
+        mCell.setData(item: data[indexPath.row])
+        mCell.statusBtn.tag = indexPath.row
+        mCell.statusBtn.addTarget(self, action: #selector(p_finishTask(sender:)), for: .touchUpInside)
         return mCell
     }
     
@@ -147,19 +217,9 @@ extension TaskIndexViewController: UITableViewDelegate, UITableViewDataSource {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth(), height: 52)).then { v in
             v.backgroundColor = .white
         }
-        let taskLabel = UILabel().then { v in
-            v.font = .robotoRegular(with: 16)
-            v.textColor = .primaryYellow
-        }
-        taskLabel.text = "Daily tasks 0/8"
         let icon = UIImageView().then { v in
             v.image = UIImage(named: "n_clock_icon")
             v.frame = CGRect(x: UIDevice.kScreenWidth() - 126, y: 16, width: 24, height: 24)
-        }
-        let timeLabel = UILabel().then { v in
-            v.font = .robotoRegular(with: 14)
-            v.text = "27h:57m:3s"
-            v.frame = CGRect(x: UIDevice.kScreenWidth() - 94, y: 20, width: 74, height: 16)
         }
         header.addSubviews([taskLabel, icon, timeLabel])
         taskLabel.snp.makeConstraints { make in
@@ -184,5 +244,21 @@ extension TaskIndexViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 52
+    }
+}
+
+extension TaskIndexViewController: TBEmptyDataSetDelegate, TBEmptyDataSetDataSource {
+    func titleForEmptyDataSet(in scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "No record yet".localized(),
+                                  attributes: [NSAttributedString.Key.font: UIFont.robotoRegular(with: 16) ?? .systemFont(ofSize: 16),
+                                               NSAttributedString.Key.foregroundColor: UIColor.contentSecondary])
+    }
+    
+    func verticalOffsetForEmptyDataSet(in scrollView: UIScrollView) -> CGFloat {
+        return -UIDevice.kScreenHeight() * 0.35
+    }
+    
+    func emptyDataSetScrollEnabled(in scrollView: UIScrollView) -> Bool {
+        return true
     }
 }

@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 import Then
 import TBEmptyDataSet
+import RxSwift
+import RxCocoa
+import MJRefresh
 
 class RedeemPointViewController: YBaseViewController {
     private let totalPointLabel = UILabel().then { v in
@@ -25,7 +28,7 @@ class RedeemPointViewController: YBaseViewController {
     }
     
     // data
-    private var data = ["String", "String", "String", "String", "String", "String"]
+    private var data = [PointListItem]()
     
     // MARK: Super Method
     override func viewDidLoad() {
@@ -59,11 +62,27 @@ class RedeemPointViewController: YBaseViewController {
         tableView.emptyDataSetDelegate = self
         tableView.emptyDataSetDataSource = self
         view.addSubviews([totalPointLabel, tableView])
+        _ = tableView.configMJHeader { [weak self] in
+            guard let self = self else { return }
+            self.p_refresh()
+        }
         p_refresh()
     }
     
     private func p_refresh() {
-        totalPointLabel.text = "Total points".localized() + ":" + "1,000"
+        SmartService().redeemPointList(page: 1)
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                guard let res = result else {
+                    self.tableView.mj_header?.endRefreshing()
+                    return
+                }
+                self.totalPointLabel.text = "Total points".localized() + ":" + "\(res.totalPoints)".decimalFormat()
+                self.data = (res.list as? [PointListItem]) ?? [PointListItem]()
+                self.tableView.reloadData()
+                self.tableView.mj_header?.endRefreshing()
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -84,7 +103,7 @@ extension RedeemPointViewController: UITableViewDelegate, UITableViewDataSource 
         }
         let mCell = cell as! RedeemPointCell
         mCell.selectionStyle = .none
-        mCell.setData()
+        mCell.setData(item: data[indexPath.row])
         return mCell
     }
 }
@@ -98,5 +117,9 @@ extension RedeemPointViewController: TBEmptyDataSetDelegate, TBEmptyDataSetDataS
     
     func verticalOffsetForEmptyDataSet(in scrollView: UIScrollView) -> CGFloat {
         return -UIDevice.kScreenHeight() * 0.35
+    }
+    
+    func emptyDataSetScrollEnabled(in scrollView: UIScrollView) -> Bool {
+        return true
     }
 }

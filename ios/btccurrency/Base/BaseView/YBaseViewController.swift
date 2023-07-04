@@ -60,4 +60,23 @@ class YBaseViewController: UIViewController {
 
     func makeLayout() {
     }
+    
+    func share(text: String?, image: UIImage?, url: URL?) {
+        var itemsToShare = [Any]()
+        
+        if let text = text {
+            itemsToShare.append(text)
+        }
+        
+        if let image = image {
+            itemsToShare.append(image)
+        }
+        
+        if let url = url {
+            itemsToShare.append(url)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+    }
 }

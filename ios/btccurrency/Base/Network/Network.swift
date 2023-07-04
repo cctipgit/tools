@@ -51,10 +51,12 @@ extension MoyaProvider {
         let sslSession: Session = {
             let trustPolicy = DefaultTrustEvaluator(validateHost: false)
         
-            let url = URLComponents(string: AppConfig.baseURLString)!
+            let urlChart = URLComponents(string: AppConfig.baseURLForChart)!
+            let urlAPi = URLComponents(string: AppConfig.baseURLForAPI)!
             let trustManager = ServerTrustManager(allHostsMustBeEvaluated: false,
                                                   evaluators: [
-                                                    url.host!: trustPolicy,
+                                                    urlChart.host!: trustPolicy,
+                                                    urlAPi.host!: trustPolicy,
                                                   ])
             
             return Session(

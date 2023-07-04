@@ -32,7 +32,6 @@ class RedeemHistoryCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         p_setElements()
         updateConstraints()
-        setData()
     }
 
     required init?(coder: NSCoder) {
@@ -77,7 +76,7 @@ class RedeemHistoryCell: UITableViewCell {
     }
     
     // MARK: Public Method
-    public func setData() {
+    public func setData(item: RedeemHistoryItem) {
         titleLabel.text = "5 USDT"
         timeLabel.text = "2023.06.19 16:16:16"
         statusLabel.text = "Successful"

@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class ProfileIndexViewController: YBaseViewController {
     private let topBgView = UIView().then { v in
@@ -107,11 +109,9 @@ class ProfileIndexViewController: YBaseViewController {
     }
     
     // MARK: Public Method
-    public func setProfile(image: UIImage?, name: String?, joinTime: String?, point: String?) {
+    public func setLocalProfile(image: UIImage?, name: String?) {
         avatarImgView.image = image
         nameLabel.text = name
-        joinLabel.text = "Member since".localized() + (joinTime ?? "")
-        pointLabel.text = (point ?? "") + "points".localized()
     }
     
     // MARK: Private Method
@@ -120,7 +120,23 @@ class ProfileIndexViewController: YBaseViewController {
         view.addSubviews([topBgView, tableView])
         tableView.delegate = self
         tableView.dataSource = self
-        setProfile(image: UIImage(named: "n_avator-01"), name: "Jack", joinTime: "6/19/2023", point: "1,000")
+        let info = self.getUserInfo()
+        setLocalProfile(image: UIImage(named: info.avatarImgName), name: info.userName)
+        p_refresh()
+        _ = tableView.configMJHeader { [weak self] in
+            guard let self = self else { return }
+            self.p_refresh()
+        }
+    }
+    
+    private func p_refresh() {
+        SmartService().userProfile().subscribe(onNext: { [weak self] result in
+            guard let res = result, res.isSuccess, let self = self else { return }
+            self.joinLabel.text = TimeInterval(res.data.created / 1000).customJoinTime()
+            self.pointLabel.text = "\(res.data.point)".decimalFormat() + " points".localized()
+            self.tableView.mj_header?.endRefreshing()
+        })
+        .disposed(by: rx.disposeBag)
     }
 }
 

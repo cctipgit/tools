@@ -80,4 +80,8 @@ extension UIFont {
     static func robotoThin(with size: CGFloat) -> UIFont? {
         return UIFont(name: "Roboto-Thin", size: size)
     }
+    
+    static func monomaniacOneRegular(with size: CGFloat) -> UIFont? {
+        return UIFont(name: "MonomaniacOne-Regular", size: size)
+    }
 }

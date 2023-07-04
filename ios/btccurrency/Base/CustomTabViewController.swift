@@ -16,22 +16,22 @@ class CustomTabViewController: RAMAnimatedTabBarController {
     private var profileVC: UIViewController? // Profile
     
     override func viewDidLoad() {
-        let currencyItem = CustomTabBarItem(title: "Currency".localized(), image: UIImage(named: "n_tab_currency")!, selectedImage: UIImage(named: "n_tab_currency")!)
+        let currencyItem = CustomTabBarItem(title: "currency".localized(), image: UIImage(named: "n_tab_currency")!, selectedImage: UIImage(named: "n_tab_currency")!)
         currencyItem.animation = CustomTabItemAnimation()
         currencyVC = HomeCurrencyViewController()
         currencyVC?.tabBarItem = currencyItem
         
-        let gameItem = CustomTabBarItem(title: "Game".localized(), image: UIImage(named: "n_tab_game")!, selectedImage: UIImage(named: "n_tab_game")!)
+        let gameItem = CustomTabBarItem(title: "task list".localized(), image: UIImage(named: "n_tab_tasklist")!, selectedImage: UIImage(named: "n_tab_tasklist")!)
         gameItem.animation = CustomTabItemAnimation()
         gameVC = TaskIndexViewController()
         gameVC?.tabBarItem = gameItem
         
-        let redeemItem = CustomTabBarItem(title: "Redeem", image: UIImage(named: "n_tab_redeem")!, selectedImage: UIImage(named: "n_tab_redeem")!)
+        let redeemItem = CustomTabBarItem(title: "redeem", image: UIImage(named: "n_tab_redeem")!, selectedImage: UIImage(named: "n_tab_redeem")!)
         redeemItem.animation = CustomTabItemAnimation()
         redeemVC = RedeemIndexViewController()
         redeemVC?.tabBarItem = redeemItem
         
-        let profileItem = CustomTabBarItem(title: "Profile", image: UIImage(named: "n_tab_profile")!, selectedImage: UIImage(named: "n_tab_profile")!)
+        let profileItem = CustomTabBarItem(title: "profile", image: UIImage(named: "n_tab_profile")!, selectedImage: UIImage(named: "n_tab_profile")!)
         profileItem.animation = CustomTabItemAnimation()
         profileVC = ProfileIndexViewController()
         profileVC?.tabBarItem = profileItem

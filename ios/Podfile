@@ -86,8 +86,9 @@ target 'btccurrency' do
   pod 'Moya', '15.0.0' #https://github.com/Moya/Moya.git
   pod 'FittedSheets', '2.5.3' #https://github.com/gordontucker/FittedSheets.git
   pod 'TBEmptyDataSet', '3.0' #https://github.com/teambition/TBEmptyDataSet.git
-  
+  pod 'KeychainSwift', '20.0.0' #https://github.com/evgenyneu/keychain-swift.git
   pod 'MJRefresh', '3.7.5', :modular_headers => true ##https://github.com/CoderMJLee/MJRefresh
+  pod 'Toast-Swift', '5.0.1' # https://github.com/scalessec/Toast-Swift.git
   
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202

@@ -20,7 +20,7 @@ class RedeemHistoryViewController: YBaseViewController {
     }
     
     // data
-    private var data = ["", "", "", "", ""]
+    private var data = [RedeemHistoryItem]()
     
     // MARK: Super Method
     override func viewDidLoad() {
@@ -48,11 +48,26 @@ class RedeemHistoryViewController: YBaseViewController {
         tableView.emptyDataSetDelegate = self
         tableView.emptyDataSetDataSource = self
         view.addSubview(tableView)
+        _ = tableView.configMJHeader { [weak self] in
+            guard let self = self else { return }
+            self.p_refresh()
+        }
         p_refresh()
     }
     
     private func p_refresh() {
-        tableView.reloadData()
+        SmartService().redeemHistory(page: 1)
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                guard let res = result else {
+                    self.tableView.mj_header?.endRefreshing()
+                    return
+                }
+                self.data = (res.list as? [RedeemHistoryItem]) ?? [RedeemHistoryItem]()
+                self.tableView.reloadData()
+                self.tableView.mj_header?.endRefreshing()
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -73,7 +88,7 @@ extension RedeemHistoryViewController: UITableViewDelegate, UITableViewDataSourc
         }
         let mCell = cell as! RedeemHistoryCell
         mCell.selectionStyle = .none
-        mCell.setData()
+        mCell.setData(item: data[indexPath.row])
         return mCell
     }
 }
@@ -87,5 +102,9 @@ extension RedeemHistoryViewController: TBEmptyDataSetDelegate, TBEmptyDataSetDat
     
     func verticalOffsetForEmptyDataSet(in scrollView: UIScrollView) -> CGFloat {
         return -UIDevice.kScreenHeight() * 0.35
+    }
+    
+    func emptyDataSetScrollEnabled(in scrollView: UIScrollView) -> Bool {
+        return true
     }
 }

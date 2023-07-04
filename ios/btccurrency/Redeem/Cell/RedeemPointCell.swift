@@ -39,7 +39,6 @@ class RedeemPointCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         p_setElements()
         updateConstraints()
-        setData()
     }
 
     required init?(coder: NSCoder) {
@@ -90,7 +89,7 @@ class RedeemPointCell: UITableViewCell {
     }
     
     // MARK: Public Method
-    public func setData() {
+    public func setData(item: PointListItem) {
         titleLabel.text = "Task Completed"
         timeLabel.text = "2023.06.19 16:16:16"
         pointLabel.text = "+15"

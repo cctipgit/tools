@@ -17,7 +17,7 @@ enum CurrencyDetailAPI {
 
 extension CurrencyDetailAPI: Moya.TargetType {
     var baseURL: URL {
-        return URL(string: AppConfig.baseURLString)!
+        return URL(string: AppConfig.baseURLForChart)!
     }
     
     var path: String {

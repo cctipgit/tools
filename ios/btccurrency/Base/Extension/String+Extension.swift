@@ -14,6 +14,39 @@ extension String {
 
         return lhs == rhs
     }
+    
+    func decimalFormat() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        if let number = numberFormatter.number(from: self), let result = numberFormatter.string(from: number) {
+            return result
+        }
+        return self
+    }
+}
+
+extension TimeInterval {
+    func customJoinTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = Date(timeIntervalSince1970: self)
+        let formattedString = dateFormatter.string(from: date)
+        return "Member since " + formattedString
+    }
+    
+    func customTaskLeftTime() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        if let resString = formatter.string(from: self) {
+            let resArray = resString.components(separatedBy: ":")
+            if resArray.count == 3 {
+                return resArray[0] + "h:" + resArray[1] + "m:" + resArray[2] + "s"
+            }
+        }
+        return "\(self)" + "s"
+    }
 }
 
 extension Optional<Bool> {

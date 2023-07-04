@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
+import Toast_Swift
 
 class RedeemIndexViewController: YBaseViewController {
 
@@ -97,7 +100,7 @@ class RedeemIndexViewController: YBaseViewController {
     }
     
     // data
-    private var data = ["", "", ""]
+    private var data = [RedeemListItem]()
     
     // MARK: Super Method
     override func viewDidLoad() {
@@ -144,7 +147,7 @@ class RedeemIndexViewController: YBaseViewController {
             make.height.equalTo(52)
             make.centerX.equalToSuperview()
             make.top.equalTo(pointTitleLabel.snp.bottom).offset(4)
-            make.width.greaterThanOrEqualTo(136)
+            make.width.greaterThanOrEqualTo(60)
         }
         pointIconView.snp.makeConstraints { make in
             make.size.equalTo(34)
@@ -221,10 +224,41 @@ class RedeemIndexViewController: YBaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: rx.disposeBag)
         p_refresh()
+        _ = tableView.configMJHeader { [weak self] in
+            guard let self = self else { return }
+            self.p_refresh()
+        }
     }
     
     private func p_refresh() {
-        pointLabel.text = "1,000"
+        let service = SmartService()
+        Observable.zip(service.userProfile(), service.redeemList())
+            .subscribe(onNext: { [weak self] profile, redeemList in
+                guard let self, let userInfo = profile, let listItems = redeemList?.list as? [RedeemListItem] else {
+                    return
+                }
+                self.pointLabel.text = "\(userInfo.data.point)".decimalFormat()
+                self.data = listItems
+                self.tableView.reloadData()
+                self.tableView.mj_header?.endRefreshing()
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    @objc
+    private func redeemBtnClicked(sender: UIButton) {
+        guard data.count > sender.tag else { return }
+        let item = data[sender.tag]
+        SmartService().redeemRedeem(rid: item.id).subscribe(onNext: { [weak self ] result in
+            guard let self = self else { return }
+            self.view.makeToast(result?.msg ?? "", duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
+                self.view.hideAllToasts()
+                if let res = result, res.isSuccess {
+                    self.p_refresh()
+                }
+            }
+        })
+        .disposed(by: rx.disposeBag)
     }
 }
 
@@ -245,7 +279,9 @@ extension RedeemIndexViewController: UITableViewDelegate, UITableViewDataSource 
         }
         let mCell = cell as! RedeemIndexCell
         mCell.selectionStyle = .none
-        mCell.setData()
+        mCell.setData(item: data[indexPath.row], index: indexPath.row)
+        mCell.redeemBtn.tag = indexPath.row
+        mCell.redeemBtn.addTarget(self, action: #selector(redeemBtnClicked(sender:)), for: .touchUpInside)
         return mCell
     }
 }

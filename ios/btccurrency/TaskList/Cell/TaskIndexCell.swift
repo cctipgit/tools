@@ -27,8 +27,6 @@ class TaskIndexCell: UITableViewCell {
     }
     
     var statusBtn = UIButton(type: .custom).then { v in
-        v.setTitle("Go".localized(), for: .normal)
-        v.backgroundColor = .primaryBranding
         v.layer.cornerRadius = 4
         v.clipsToBounds = true
     }
@@ -42,7 +40,6 @@ class TaskIndexCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         p_setElements()
         updateConstraints()
-        setData()
     }
 
     required init?(coder: NSCoder) {
@@ -55,7 +52,7 @@ class TaskIndexCell: UITableViewCell {
             make.left.equalToSuperview().offset(36)
             make.height.equalTo(20)
             make.top.equalToSuperview().offset(8)
-            make.width.greaterThanOrEqualTo(100)
+            make.right.equalTo(statusBtn.snp.left).offset(-16)
         }
         
         iconImageView.snp.makeConstraints { make in
@@ -96,9 +93,20 @@ class TaskIndexCell: UITableViewCell {
     }
     
     // MARK: Public Method
-    public func setData() {
-        titleLabel.text = "Daily check-in"
+    public func setData(item: TaskListItem) {
+        if item.done {
+            statusBtn.isEnabled = false
+            statusBtn.setTitle("Completed".localized(), for: .normal)
+            statusBtn.setTitle("Completed".localized(), for: .disabled)
+            statusBtn.backgroundColor = .contentDisabled
+        } else {
+            statusBtn.isEnabled = true
+            statusBtn.setTitle("Go".localized(), for: .normal)
+            statusBtn.setTitle("Go".localized(), for: .disabled)
+            statusBtn.backgroundColor = .primaryBranding
+        }
+        titleLabel.text = item.taskName
         iconImageView.image = UIImage(named: "n_game_icon")
-        descLabel.text = "+1 chance"
+        descLabel.text = "+\(item.spinTimes) chance"
     }
 }
