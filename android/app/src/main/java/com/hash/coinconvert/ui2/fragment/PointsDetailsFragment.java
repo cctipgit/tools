@@ -19,18 +19,11 @@ import java.util.List;
 
 public class PointsDetailsFragment extends BaseMVVMFragment<PointsDetailsViewModel, FragmentPointsDetailsBinding> {
 
-    private int page;
+    private int page = 0;
     private PointsDetailAdapter adapter;
 
     public PointsDetailsFragment() {
         super(R.layout.fragment_points_details);
-    }
-
-    @Override
-    protected void onFirstResume() {
-        super.onFirstResume();
-        page = 0;
-        viewModel.fetch(page);
     }
 
     @NonNull

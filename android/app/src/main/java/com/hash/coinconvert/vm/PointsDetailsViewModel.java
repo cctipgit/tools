@@ -31,4 +31,9 @@ public class PointsDetailsViewModel extends BaseViewModel {
             pointsList.postValue(data);
         });
     }
+
+    @Override
+    public void onCreate() {
+        fetch(0);
+    }
 }

@@ -1,11 +1,8 @@
 package com.hash.coinconvert.ui2.fragment;
 
-import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.hash.coinconvert.R;
@@ -13,7 +10,6 @@ import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentProfileBinding;
 import com.hash.coinconvert.vm.ProfileViewModel;
 
-import java.text.NumberFormat;
 import java.util.Calendar;
 
 public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, FragmentProfileBinding> {
@@ -26,12 +22,6 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
     @Override
     protected FragmentProfileBinding bindView(View view) {
         return FragmentProfileBinding.bind(view);
-    }
-
-    @Override
-    protected void onFirstResume() {
-        super.onFirstResume();
-        viewModel.fetchUserInfo();
     }
 
     @Override

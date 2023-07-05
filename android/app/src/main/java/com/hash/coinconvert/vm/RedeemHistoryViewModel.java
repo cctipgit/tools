@@ -31,4 +31,9 @@ public class RedeemHistoryViewModel extends BaseViewModel {
             histories.postValue(data);
         });
     }
+
+    @Override
+    public void onCreate() {
+        fetch(0);
+    }
 }

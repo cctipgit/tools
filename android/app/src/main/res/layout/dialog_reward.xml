@@ -16,12 +16,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_close_blue"/>
 
-    <com.flyco.roundview.RoundFrameLayout
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:rv_cornerRadius="24dp"
         app:layout_goneMarginTop="6dp"
-        app:rv_backgroundColor="@color/theme_bg"
+        android:background="@drawable/bg_reward_dialog"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="4dp"

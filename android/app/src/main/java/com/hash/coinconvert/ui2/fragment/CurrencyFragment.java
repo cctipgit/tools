@@ -87,6 +87,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
             }
         });
 
+        //listen the keyboard visibility event
         View rootView = binding.getRoot().getRootView();
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override

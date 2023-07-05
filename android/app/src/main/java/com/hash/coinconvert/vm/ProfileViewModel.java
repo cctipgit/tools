@@ -53,4 +53,9 @@ public class ProfileViewModel extends BaseViewModel {
             userInfo.postValue(res);
         });
     }
+
+    @Override
+    public void onCreate() {
+        fetchUserInfo();
+    }
 }

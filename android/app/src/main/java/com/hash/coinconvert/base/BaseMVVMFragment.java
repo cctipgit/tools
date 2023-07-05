@@ -48,12 +48,12 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
         }else{
             viewModel = new ViewModelProvider(this).get(getVMClass());
         }
+        viewModel.onCreate();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        initViewModel();
         binding = bindView(view);
         initView();
         observer();

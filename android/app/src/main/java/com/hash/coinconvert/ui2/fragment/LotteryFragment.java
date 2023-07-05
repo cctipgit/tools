@@ -57,8 +57,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         binding.lotteryView.setOnRewardListener(this);
         binding.btnStart.setOnClickListener(v -> {
             if(!binding.lotteryView.isRunning()){
-                binding.lotteryView.startRotate("p7");
-//                viewModel.pinCheck();
+                viewModel.pinCheck();
             }
         });
     }
@@ -109,7 +108,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         observer(profileViewModel.getUserInfo(),user-> {
             this.setPointsViewText(user.getFormattedPoint());
             binding.tvChance.setText(getString(R.string.lottery_chance,user.pinChance));
-//            binding.btnStart.setEnabled(user.pinChance>0);
+            binding.btnStart.setEnabled(user.pinChance>0);
         });
     }
 

@@ -1,12 +1,14 @@
 package com.hash.coinconvert.ui2.fragment;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -51,12 +53,6 @@ public class RedeemFragment extends BaseMVVMFragment<RedeemViewModel, FragmentRe
             }
             return true;
         });
-    }
-
-    @Override
-    protected void onFirstResume() {
-        super.onFirstResume();
-        viewModel.fetchRedeemCards();
     }
 
     @Override

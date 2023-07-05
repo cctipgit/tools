@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,6 +68,12 @@ public abstract class BaseFragmentDialog<VB extends ViewBinding> extends DialogF
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding = bind(view);
         initView();
+    }
+
+    @Nullable
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return super.onCreateAnimation(transit, enter, nextAnim);
     }
 
     protected int getGravity(){

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -46,9 +47,9 @@ public class SideBar extends View {
     }
 
     private void init(Context context) {
-        paint = new Paint();
+        paint = new TextPaint();
         paint.setColor(ContextCompat.getColor(context, R.color.theme_text_color));
-        paint.setTypeface(ResourcesCompat.getFont(context, R.font.roboto));
+//        paint.setTypeface(ResourcesCompat.getFont(context, R.font.roboto));
         paint.setAntiAlias(true);
         paint.setTextSize(DisplayUtil.sp2px(context, 11));
     }

@@ -5,9 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +22,9 @@ import com.hash.coinconvert.entity.PinItem;
 import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.ui2.adapter.HomeTaskListAdapter;
+import com.hash.coinconvert.utils.ShareHelper;
 import com.hash.coinconvert.utils.StatusBarUtils;
+import com.hash.coinconvert.utils.task.TaskHandlerFactory;
 import com.hash.coinconvert.vm.TaskViewModel;
 
 import java.util.concurrent.TimeUnit;
@@ -38,6 +42,10 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     private Drawable clock;
     private PinList pinList;
     private boolean isWaitingPinList;
+
+    private boolean isSharing;
+    private String shareItemId;
+    private String shareItemParams;
 
     public TaskListFragment() {
         super(R.layout.fragment_task_list);
@@ -61,20 +69,22 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         });
     }
 
-    private void toLottery(){
-        if(pinList != null){
+    private void toLottery() {
+        if (pinList != null) {
             PinItem[] items = pinList.lists.toArray(new PinItem[0]);
             navigateTo(TaskListFragmentDirections.actionFragmentTaskListToFragmentLottery(items));
-        }else{
+        } else {
             isWaitingPinList = true;
         }
     }
 
     @Override
-    protected void onFirstResume() {
-        super.onFirstResume();
-        viewModel.fetchTasks();
-        viewModel.fetchPinList();
+    public void onResume() {
+        super.onResume();
+        if (isSharing) {
+            viewModel.checkTask(shareItemId, shareItemParams);
+            isSharing = false;
+        }
     }
 
     @Override
@@ -101,9 +111,9 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
                 }
             }
         });
-        observer(viewModel.getPinList(),res->{
+        observer(viewModel.getPinList(), res -> {
             this.pinList = res;
-            if(isWaitingPinList){
+            if (isWaitingPinList) {
                 isWaitingPinList = false;
                 toLottery();
             }
@@ -111,7 +121,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         observer(viewModel.getPinNum(), this::updatePinNum);
     }
 
-    private void updatePinNum(int pinNum){
+    private void updatePinNum(int pinNum) {
         if (pinNum > 0) {
             binding.tvGame.setVisibility(View.VISIBLE);
             binding.tvGame.setText(String.valueOf(pinNum));
@@ -165,7 +175,13 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         taskListAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             if (view.getId() == R.id.btn_check) {
                 TaskItem item = taskListAdapter.getItem(position);
-                viewModel.checkTask(item.id, item.params);
+                if (TaskHandlerFactory.execute(requireContext(), item, null)) {
+                    isSharing = true;
+                    shareItemId = item.id;
+                    shareItemParams = item.params;
+                } else {
+                    viewModel.checkTask(item.id, item.params);
+                }
             }
         });
         RecyclerView recyclerView = binding.rvTaskList;

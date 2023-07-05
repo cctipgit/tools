@@ -34,6 +34,10 @@ public class BaseViewModel extends ViewModel {
         return Boolean.TRUE.equals(loading.getValue());
     }
 
+    public void onCreate(){
+
+    }
+
     protected boolean isNotLoading(){
         return Boolean.FALSE.equals(loading.getValue());
     }
@@ -44,8 +48,9 @@ public class BaseViewModel extends ViewModel {
         }
     }
 
+
     protected <T> void startLoadingIfNeeded(LiveData<T> liveData){
-        if(liveData.getValue() != null){
+        if(liveData.getValue() == null){
             startLoading();
         }
     }

@@ -35,7 +35,7 @@ public class RedeemViewModel extends BaseViewModel {
     }
 
     public void fetchRedeemCards() {
-        startLoading();
+        startLoadingIfNeeded(redeemList);
         execute(api.redeemList(), list -> {
             Dispatch.I.submit(()->{
                 if (list.list == null) {
@@ -70,5 +70,10 @@ public class RedeemViewModel extends BaseViewModel {
                 fetchRedeemCards();
             });
         }
+    }
+
+    @Override
+    public void onCreate() {
+        fetchRedeemCards();
     }
 }

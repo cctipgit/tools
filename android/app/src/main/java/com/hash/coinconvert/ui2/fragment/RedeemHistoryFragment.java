@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RedeemHistoryFragment extends BaseMVVMFragment<RedeemHistoryViewModel, FragmentRedeemHistoryBinding> {
 
-    private int page;
+    private int page = 0;
     private RedeemHistoryAdapter adapter;
 
     public RedeemHistoryFragment() {
@@ -28,8 +28,6 @@ public class RedeemHistoryFragment extends BaseMVVMFragment<RedeemHistoryViewMod
     @Override
     protected void onFirstResume() {
         super.onFirstResume();
-        page = 0;
-        viewModel.fetch(page);
     }
 
     @NonNull

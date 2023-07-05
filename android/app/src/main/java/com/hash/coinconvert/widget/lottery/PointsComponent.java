@@ -204,8 +204,8 @@ public class PointsComponent extends Component {
             PinItem item = data[i];
             if (Objects.equals(id, item.id)) {
                 float start = i * itemArcAngle - itemArcAngle / 2;
-                float end = start + itemArcAngle;
-                float random = (float) (start + (end - start) * Math.random());
+                float bias = (float) (Math.random()*itemArcAngle);
+                float random = start + bias;
                 random = DEGREE_CIRCLE - random;
                 while (random < from + DEGREE_CIRCLE * MIN_ROTATE_TIMES) {
                     random += DEGREE_CIRCLE;

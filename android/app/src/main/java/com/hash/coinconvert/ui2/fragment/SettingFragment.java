@@ -43,12 +43,10 @@ public class SettingFragment extends BaseFragment {
         });
 
         binding.menuDefValue.setOnClickListener(v -> {
-//            getNavController().navigate(SettingFragmentDirections.actionFragmentSettingToActivityDefCurrencyValue());
             goActivity(SettingCurrencyValueActivity.class, null, CODE_DEF_CURRENCY_VALUE);
         });
 
         binding.menuPriceColor.setOnClickListener(v -> {
-//            getNavController().navigate(SettingFragmentDirections.actionFragmentSettingToActivityQuoteColor());
             goActivity(SettingQuoteColorActivity.class, null, CODE_QUOTE_COLOR);
         });
 
@@ -59,7 +57,6 @@ public class SettingFragment extends BaseFragment {
 
     @Override
     protected void onCommonActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("onCommonActivityResult", "" + requestCode);
         if (resultCode == Activity.RESULT_OK) {
             updateView();
         }

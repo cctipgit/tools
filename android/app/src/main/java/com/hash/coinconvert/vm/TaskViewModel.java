@@ -41,7 +41,7 @@ public class TaskViewModel extends BaseViewModel {
     }
 
     public void fetchTasks() {
-        startLoading();
+        startLoadingIfNeeded(taskList);
         execute(api.taskList(), data -> {
             taskList.postValue(data);
         });
@@ -56,9 +56,15 @@ public class TaskViewModel extends BaseViewModel {
     }
 
     public void fetchPinList(){
-        startLoading();
+        startLoadingIfNeeded(pinList);
         execute(api.pinList(),res -> {
             pinList.postValue(res);
         });
+    }
+
+    @Override
+    public void onCreate() {
+        fetchTasks();
+        fetchPinList();
     }
 }
