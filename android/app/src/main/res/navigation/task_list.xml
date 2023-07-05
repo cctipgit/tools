@@ -11,18 +11,9 @@
         android:label="TaskListFragment"
         tools:layout="@layout/fragment_task_list" >
         <action
-            android:id="@+id/action_fragment_task_list_to_activity_game"
-            app:destination="@id/activity_game" />
-        <action
             android:id="@+id/action_fragment_task_list_to_fragment_lottery"
             app:destination="@id/fragment_lottery" />
     </fragment>
-
-    <activity
-        android:id="@+id/activity_game"
-        android:name="com.hash.coinconvert.ui2.fragment.GameActivity"
-        android:label="Game"
-        tools:layout="@layout/activity_game" />
 
     <fragment android:id="@+id/fragment_lottery"
         android:name="com.hash.coinconvert.ui2.fragment.LotteryFragment"
@@ -33,6 +24,9 @@
             app:destination="@id/dialog_reward" />
 
         <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem[]" app:nullable="false"/>
+        <action
+            android:id="@+id/action_fragment_lottery_to_fragment_redeem2"
+            app:destination="@id/fragment_redeem2" />
     </fragment>
 
     <dialog android:id="@+id/dialog_reward"
@@ -41,5 +35,10 @@
         tools:layout="@layout/dialog_reward">
         <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem" app:nullable="false"/>
     </dialog>
+
+    <fragment android:id="@+id/fragment_redeem2"
+        android:name="com.hash.coinconvert.ui2.fragment.RedeemFragment"
+        tools:layout="@layout/fragment_redeem"
+        android:label="Redeem"/>
 
 </navigation>

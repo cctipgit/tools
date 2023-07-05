@@ -16,6 +16,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textViewStyle">@style/TextView</item>
         <item name="android:buttonStyle">@style/Button</item>
+        <item name="android:imageButtonStyle">@style/ImageButton</item>
         <item name="colorButtonNormal">@android:color/transparent</item>
         <item name="android:windowBackground">@color/theme_bg</item>
     </style>
@@ -92,11 +93,11 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">20dp</item>
         <item name="android:paddingEnd">20dp</item>
-        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:background">@drawable/btn_setting_menu_ripple</item>
     </style>
 
     <style name="SettingItem" parent="@style/Widget.AppCompat.Button.Borderless">
-        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:background">@drawable/btn_setting_menu_ripple</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
         <item name="android:paddingStart">20dp</item>

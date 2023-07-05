@@ -54,6 +54,14 @@ public class ProfileViewModel extends BaseViewModel {
         });
     }
 
+    public void decreasePinNum(){
+        User user = userInfo.getValue();
+        if(user != null){
+            user.pinChance--;
+            userInfo.postValue(user);
+        }
+    }
+
     @Override
     public void onCreate() {
         fetchUserInfo();

@@ -47,8 +47,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:maxWidth="80dp"
-            android:textSize="14sp"
             android:textColor="@color/sub_title"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/tv_symbol"
             app:layout_constraintTop_toBottomOf="@+id/tv_symbol"
@@ -61,7 +61,8 @@
             android:src="@drawable/ic_item_token_next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/img_logo"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/theme_text_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

@@ -31,6 +31,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     }
 
     private TextView pointsView;
+    private int pinNum;
 
     @NonNull
     @Override
@@ -57,6 +58,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         binding.lotteryView.setOnRewardListener(this);
         binding.btnStart.setOnClickListener(v -> {
             if(!binding.lotteryView.isRunning()){
+                profileViewModel.decreasePinNum();
                 viewModel.pinCheck();
             }
         });
@@ -72,7 +74,9 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     private void initMenuPointsView(){
         this.pointsView = genMenuPointsView();
         this.pointsView.setVisibility(View.INVISIBLE);
-        binding.actionBar.addMenu(this.pointsView);
+        binding.actionBar.addMenu(this.pointsView,v->{
+            navigateTo(LotteryFragmentDirections.actionFragmentLotteryToFragmentRedeem2());
+        });
     }
 
     private RoundTextView genMenuPointsView(){

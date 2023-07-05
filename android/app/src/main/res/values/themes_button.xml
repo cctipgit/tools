@@ -9,7 +9,7 @@
         <item name="android:paddingTop">14dp</item>
         <item name="elevation">0dp</item>
         <item name="android:paddingBottom">14dp</item>
-        <item name="textColor">@color/sub_title</item>
+        <item name="android:textColor">@color/btn_primary</item>
     </style>
 
     <style name="Button.round4">

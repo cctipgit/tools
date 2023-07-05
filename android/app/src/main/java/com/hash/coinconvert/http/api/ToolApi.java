@@ -38,7 +38,7 @@ public interface ToolApi {
     Call<TResponse<RedeemPointList>> redeemPointList(@Body PageRequest body);
 
     @POST("/rate/tool/redeem/redeem")
-    Call<TResponse<String>> redeem(@Body RedeemRequest body);
+    Call<TResponse<JsonObject>> redeem(@Body RedeemRequest body);
 
     @POST("/rate/tool/task/list")
     Call<TResponse<TaskList>> taskList();

@@ -89,8 +89,7 @@ public class ActionBar extends ConstraintLayout {
 
     private void ensureTitleView() {
         if (titleView == null) {
-            titleView = new TextView(getContext());
-            titleView.setTypeface(ResourcesCompat.getFont(getContext(), R.font.roboto_bold));
+            titleView = new TextView(getContext(), null, 0, R.style.TextView_Bold);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             int paddingH = DisplayUtil.dip2px(getContext(), 10f);
             titleView.setPadding(paddingH, 0, paddingH, 0);
@@ -120,13 +119,14 @@ public class ActionBar extends ConstraintLayout {
 
     private void ensureBackView() {
         if (backView == null) {
-            backView = new ImageButton(getContext());
+            backView = new ImageButton(getContext(), null, 0, R.style.ImageButton_DayNight);
             backView.setBackground(null);
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.topToTop = LayoutParams.PARENT_ID;
             params.leftToLeft = LayoutParams.PARENT_ID;
             params.bottomToBottom = LayoutParams.PARENT_ID;
+            params.setMarginStart(DisplayUtil.dip2px(getContext(), 20f));
 
             backView.setLayoutParams(params);
             addView(backView);
@@ -173,8 +173,13 @@ public class ActionBar extends ConstraintLayout {
         }
     }
 
+    public void addMenu(View view, OnClickListener listener) {
+        addMenu(view);
+        view.setOnClickListener(listener);
+    }
+
     private ImageButton genMenuView(boolean single) {
-        ImageButton imageButton = new ImageButton(getContext());
+        ImageButton imageButton = new ImageButton(getContext(), null, 0, R.style.ImageButton_DayNight);
         if (single) {
             imageButton.setLayoutParams(genMenuLayoutParams());
             singleMenuViewId = View.generateViewId();

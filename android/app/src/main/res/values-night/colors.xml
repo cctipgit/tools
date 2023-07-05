@@ -17,6 +17,9 @@
 
     <!-- 主题字体颜色（首页货币名称） -->
     <color name="theme_text_color">#FFFFFF</color>
+    <color name="text_unselect">#A1A1AA</color>
+    <color name="title">#FFFFFF</color>
+    <color name="sub_title">#A1A1AA</color>
 
     <!-- 主题输入框字体未输入颜色（首页货币数量输入框） -->
     <color name="theme_text_color_alpha40">#66FFFFFF</color>
@@ -114,4 +117,8 @@
 
     <!-- 字符索引pop背景 -->
     <color name="letter_pop_bg">#69696e</color>
+    <color name="list_divider_line">#40000000</color>
+
+    <color name="bg_secondary">#191920</color>
+    <color name="bg_divider">#F4F4F5</color>
 </resources>

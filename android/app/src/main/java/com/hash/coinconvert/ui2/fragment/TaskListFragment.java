@@ -5,11 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +21,6 @@ import com.hash.coinconvert.entity.PinItem;
 import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.ui2.adapter.HomeTaskListAdapter;
-import com.hash.coinconvert.utils.ShareHelper;
 import com.hash.coinconvert.utils.StatusBarUtils;
 import com.hash.coinconvert.utils.task.TaskHandlerFactory;
 import com.hash.coinconvert.vm.TaskViewModel;
@@ -123,8 +121,16 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
 
     private void updatePinNum(int pinNum) {
         if (pinNum > 0) {
+            String s;
+            if (pinNum > 99) {
+                s = "99+";
+                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP,10);
+            } else {
+                s = String.valueOf(pinNum);
+                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
+            }
             binding.tvGame.setVisibility(View.VISIBLE);
-            binding.tvGame.setText(String.valueOf(pinNum));
+            binding.tvGame.setText(s);
         } else {
             binding.tvGame.setVisibility(View.INVISIBLE);
         }
