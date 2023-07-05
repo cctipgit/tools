@@ -30,8 +30,6 @@ public interface ToolApi {
 
     @POST("/rate/tool/redeem/list")
     Call<TResponse<RedeemList>> redeemList();
-    @POST("/rate/tool/redeem/list")
-    Call<TResponse<JsonObject>> redeemListAsString();
 
     @POST("/rate/tool/redeem/history")
     Call<TResponse<RedeemHistoryList>> redeemHistory(@Body PageRequest body);

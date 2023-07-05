@@ -40,6 +40,7 @@ public class SettingFragment extends BaseFragment {
         binding.btnReset.setOnClickListener(v -> {
             SPUtils.getInstance().put(Constants.SP.KEY.DEFAULT_CURRENCY_VALUE, Constants.SP.DEFAULT.DEFAULT_CURRENCY_VALUE);
             SPUtils.getInstance().put(Constants.SP.KEY.QUOTE_COLOR, Constants.SP.DEFAULT.QUOTE_COLOR);
+            updateView();
         });
 
         binding.menuDefValue.setOnClickListener(v -> {

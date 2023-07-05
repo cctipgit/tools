@@ -16,15 +16,6 @@ public class FontUtil {
     private static Map<FOUNT_TYPE, SoftReference<Typeface>> cache = new HashMap<>();
 
     public static void setType(TextView view, FOUNT_TYPE type) {
-        Typeface tf = null;
-        if (cache.containsKey(type) && cache.get(type).get() != null) {
-            tf = cache.get(type).get();
-        } else {
-            AssetManager mgr = view.getContext().getAssets();
-            tf = Typeface.createFromAsset(mgr, "fonts/" + type.fileName);
-            cache.put(type, new SoftReference(tf));
-        }
-        view.setTypeface(tf);
     }
 
     public enum FOUNT_TYPE {

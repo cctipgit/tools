@@ -16,4 +16,6 @@
     <font android:font="@font/monomaniacone_regular"
         android:fontWeight="400"/>
 
+    <font android:font="@font/roboto_thin"
+        android:fontWeight="300"/>
 </font-family>

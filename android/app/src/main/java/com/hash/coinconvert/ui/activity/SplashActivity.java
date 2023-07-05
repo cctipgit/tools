@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private final String TAG = "SplashActivity";
     private long mStartTime; // page start time
-    private final long mPageDuration = 500; // page duration
+    private final long mPageDuration = 800; // page duration
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -15,6 +15,10 @@
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
 
+    <style name="TextView.Thin">
+        <item name="fontFamily">@font/roboto_thin</item>
+    </style>
+
     <style name="TextView.Home_Tab">
         <item name="android:textSize">11sp</item>
         <item name="android:lineHeight">13sp</item>

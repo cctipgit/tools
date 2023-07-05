@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:textColor="@color/theme_bg"
         android:textSize="24sp"
+        style="@style/TextView.Thin"
         android:textFontWeight="300"
         android:layout_marginTop="16dp"
         android:layout_height="wrap_content"/>

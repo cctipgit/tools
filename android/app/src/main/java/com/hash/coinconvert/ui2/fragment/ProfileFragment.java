@@ -48,7 +48,7 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
 
     @Override
     protected void initView() {
-        binding.menuSettings.setOnClickListener(v -> getNavController().navigate(ProfileFragmentDirections.actionFragmentProfileToFragmentSetting()));
+        binding.menuSettings.setOnClickListener(v -> navigateTo(ProfileFragmentDirections.actionFragmentProfileToFragmentSetting()));
         binding.menuAbout.setOnClickListener(v -> {
         });
         binding.menuPrivacy.setOnClickListener(v -> {
