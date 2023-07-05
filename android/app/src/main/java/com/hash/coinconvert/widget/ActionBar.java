@@ -55,13 +55,13 @@ public class ActionBar extends ConstraintLayout {
 
     public ActionBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        try (TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ActionBar)) {
-            initTitle(ta);
-            initBackView(ta);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ta.getBoolean(R.styleable.ActionBar_abAutoPaddingTop, true)) {
-                setPadding(getPaddingLeft(), getPaddingTop() + getStatusBarHeight(), getPaddingRight(), getPaddingBottom());
-            }
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ActionBar);
+        initTitle(ta);
+        initBackView(ta);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ta.getBoolean(R.styleable.ActionBar_abAutoPaddingTop, true)) {
+            setPadding(getPaddingLeft(), getPaddingTop() + getStatusBarHeight(), getPaddingRight(), getPaddingBottom());
         }
+        ta.recycle();
     }
 
     private void initTitle(TypedArray ta) {

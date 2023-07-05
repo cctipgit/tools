@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CryptoVise</string>
+    <string name="app_slogan">Visualize the world of crypto</string>
     <string name="switch_currency">Switch Currency</string>
     <string name="search_currency_hint">Search</string>
     <string name="search_currency_empty_msg">Currency not found</string>

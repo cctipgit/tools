@@ -117,4 +117,9 @@ public class BaseViewModel extends ViewModel {
     protected void onCleared() {
         super.onCleared();
     }
+
+    public void onViewDestroy(){
+        error.setValue(null);
+        loading.setValue(false);
+    }
 }

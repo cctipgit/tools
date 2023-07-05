@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.duxl.baselib.utils.DisplayUtil;
 
-public class BackgroundComponent extends Component{
+public class BackgroundComponent extends Component {
 
     public static final String TAG = "BackgroundComponent";
 
@@ -28,9 +28,9 @@ public class BackgroundComponent extends Component{
         backgroundColor = Color.parseColor("#7747F2");
 //        dotColor = ContextCompat.getColor(context,R.color.orange);
         dotColor = Color.parseColor("#F9A01E");
-        arcWidth = DisplayUtil.dip2px(context,34f);
-        dotRadius = DisplayUtil.dip2px(context,8f);
-        dotSize = 32;
+        arcWidth = DisplayUtil.dip2px(context, 34f);
+        dotRadius = DisplayUtil.dip2px(context, 8f);
+        dotSize = 33;
     }
 
     @Override
@@ -38,31 +38,22 @@ public class BackgroundComponent extends Component{
         int w = view.getWidth();
         int h = view.getHeight();
         int top = view.getLotteryTop();
-        int bigCircleRadius = w/2;
-        int dotsCircleRadius = bigCircleRadius - arcWidth/2;
+        int bigCircleRadius = w / 2;
+        int dotsCircleRadius = bigCircleRadius - arcWidth / 2;
 
         paint.setColor(backgroundColor);
-        canvas.drawCircle(bigCircleRadius,bigCircleRadius+top,bigCircleRadius,paint);
-
-        double dotAngle = (Math.pow(dotsCircleRadius,2)*2 - Math.pow(dotRadius*2,2))/(2 * dotsCircleRadius * dotsCircleRadius);
-        double dotArcLength = dotAngle * dotsCircleRadius;
-
-        Log.d(TAG,"dotAngle:"+dotAngle+",dotArcLength:"+dotArcLength);
-
-        double dotsCircleLength = Math.PI * 2 * bigCircleRadius;
-        double dotSpace = (dotsCircleLength-dotArcLength*dotSize)/(dotSize-1);
-        double dotSpaceAngle = dotSpace / dotsCircleRadius;
-        Log.d(TAG,"dotSpaceAngle:"+dotSpaceAngle+",dotSpaceArcLength:"+dotsCircleLength);
-
+        canvas.drawCircle(bigCircleRadius, bigCircleRadius + top, bigCircleRadius, paint);
+        float dotAngleInDegree = CIRCLE_DEGREE / dotSize;
         paint.setColor(dotColor);
-        float rotateAngleInArc = parseDegree2Arc(rotateAngle);
-        for (int i = 0; i < dotSize+1; i++) {
-            double angle = (dotAngle+dotSpaceAngle) * i + rotateAngleInArc;
-            double x = getCircleX(bigCircleRadius,angle,dotsCircleRadius);
-            double y = getCircleY(bigCircleRadius+top,angle,dotsCircleRadius);
-            canvas.drawCircle((float) x, (float) y,dotRadius,paint);
+        float rotateAngleMod = Math.abs(rotateAngle % CIRCLE_DEGREE);
+        Log.d(TAG, "angle:" + rotateAngleMod + "," + rotateAngle);
+        for (int i = 0; i < dotSize; i++) {
+            double angle = parseDegree2Arc(dotAngleInDegree * i + rotateAngleMod);
+            double x = getCircleX(bigCircleRadius, angle, dotsCircleRadius);
+            double y = getCircleY(bigCircleRadius + top, angle, dotsCircleRadius);
+            canvas.drawCircle((float) x, (float) y, dotRadius, paint);
         }
         paint.setColor(Color.WHITE);
-        canvas.drawCircle(bigCircleRadius,bigCircleRadius+top,bigCircleRadius-arcWidth,paint);
+        canvas.drawCircle(bigCircleRadius, bigCircleRadius + top, bigCircleRadius - arcWidth, paint);
     }
 }

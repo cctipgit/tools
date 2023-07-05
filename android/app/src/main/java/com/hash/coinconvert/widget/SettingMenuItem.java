@@ -29,13 +29,13 @@ public class SettingMenuItem extends ConstraintLayout {
     public SettingMenuItem(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
-        try (TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SettingMenuItem)) {
-            String title = ta.getString(R.styleable.SettingMenuItem_sm_title);
-            if (TextUtils.isEmpty(title) && isInEditMode()) {
-                title = "Title";
-            }
-            tvTitle.setText(title);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SettingMenuItem);
+        String title = ta.getString(R.styleable.SettingMenuItem_sm_title);
+        if (TextUtils.isEmpty(title) && isInEditMode()) {
+            title = "Title";
         }
+        tvTitle.setText(title);
+        ta.recycle();
     }
 
     private void init(Context context) {

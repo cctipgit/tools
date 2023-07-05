@@ -45,7 +45,7 @@ public class PointsComponent extends Component {
     private RectF rectF;
     private RectF textRectF;
     private Path textPath;
-    private float rewardImageRadiusRate = 4f / 7f;
+    private float rewardImageRadiusRate = 0.5f;
 
     public static final int[] rewardImageArray = new int[]{
             R.mipmap.ic_lottery_reward_1,
@@ -59,7 +59,6 @@ public class PointsComponent extends Component {
     };
 
     private List<Drawable> rewardDrawableList;
-    private int rewardPicSize;
 
     public PointsComponent(Context context, PinItem[] data) {
         this.data = data;
@@ -81,7 +80,6 @@ public class PointsComponent extends Component {
         textPaint.setFakeBoldText(false);
         textPath = new Path();
 
-        rewardPicSize = DisplayUtil.dip2px(context, 50);
         rewardDrawableList = new ArrayList<>();
         for (int id : rewardImageArray) {
             rewardDrawableList.add(ContextCompat.getDrawable(context, id));
@@ -117,6 +115,9 @@ public class PointsComponent extends Component {
 
         int radiusOfTextCircle = (int) (radius - textPaint.getTextSize() * 1.5f);
         int radiusOfRewardPic = (int) (radius * rewardImageRadiusRate);
+        float rewardPicMaxSize = parseDegree2Arc(itemArcAngle)*radiusOfRewardPic;
+        int rewardPicSize = (int) (rewardPicMaxSize*0.75f);
+
         if (textRectF == null) {
             textRectF = new RectF(cx - radiusOfTextCircle, cy - radiusOfTextCircle, cx + radiusOfTextCircle, cy + radiusOfTextCircle);
         }

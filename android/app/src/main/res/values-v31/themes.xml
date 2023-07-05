@@ -2,7 +2,8 @@
 
     <style name="Theme.ExchangeRate.Splash" parent="Theme.ExchangeRate">
         <!--<item name="android:windowSplashScreenAnimatedIcon">@color</item>-->
-        <item name="android:windowSplashScreenBackground">@color/theme_bg</item>
+<!--        <item name="android:windowSplashScreenBackground">@drawable/bg_splash</item>-->
+        <item name="android:windowBackground">@drawable/bg_splash</item>
         <!--<item name="android:windowSplashScreenIconBackgroundColor">@color/track_open_bg</item>-->
         <!--<item name="android:windowSplashScreenBrandingImage">@mipmap/ic_splash</item>-->
     </style>

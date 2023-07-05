@@ -77,12 +77,14 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        viewModel.isLoading().removeObservers(requireActivity());
-        viewModel.getError().removeObservers(requireActivity());
+        viewModel.isLoading().removeObservers(this);
+        viewModel.getError().removeObservers(this);
+        viewModel.onViewDestroy();
         binding = null;
     }
 
     protected void onError(Throwable throwable) {
+        if(throwable == null)return;
         throwable.printStackTrace();
         if (handleNetworkError(throwable)) return;
         if (handleServerError(throwable)) return;

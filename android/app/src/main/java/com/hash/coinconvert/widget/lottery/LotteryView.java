@@ -52,8 +52,6 @@ public class LotteryView extends View {
         init(context);
     }
 
-    private List<PinItem> data;
-
     private void init(Context context) {
         lotteryTop = DisplayUtil.dip2px(context, 18f);
         backgroundComponent = new BackgroundComponent(context);

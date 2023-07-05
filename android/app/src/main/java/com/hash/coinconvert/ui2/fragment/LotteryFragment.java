@@ -20,6 +20,7 @@ import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentLotteryBinding;
 import com.hash.coinconvert.entity.PinItem;
 import com.hash.coinconvert.ui2.dialog.RewardDialog;
+import com.hash.coinconvert.utils.ShareHelper;
 import com.hash.coinconvert.vm.LotteryViewModel;
 import com.hash.coinconvert.widget.lottery.LotteryView;
 
@@ -27,7 +28,6 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     public static final String TAG = "LotteryFragment";
     public LotteryFragment() {
         super(R.layout.fragment_lottery);
-        Log.d(TAG,"newinstance");
     }
 
     private TextView pointsView;
@@ -41,7 +41,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     @Override
     protected void onFirstResume() {
         super.onFirstResume();
-        viewModel.userInfo();
+        profileViewModel.fetchUserInfo();
     }
 
     @Override
@@ -57,7 +57,8 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         binding.lotteryView.setOnRewardListener(this);
         binding.btnStart.setOnClickListener(v -> {
             if(!binding.lotteryView.isRunning()){
-                viewModel.pinCheck();
+                binding.lotteryView.startRotate("p7");
+//                viewModel.pinCheck();
             }
         });
     }
@@ -101,10 +102,15 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         observer(liveData, s -> {
             Log.d("RewardDialog", "s:" + s);
             //share here
+            ShareHelper.shareText(requireContext(),s);
         });
         observer(viewModel.getPinCheckId(),id-> binding.lotteryView.startRotate(id));
 
-        observer(viewModel.getPoints(), this::setPointsViewText);
+        observer(profileViewModel.getUserInfo(),user-> {
+            this.setPointsViewText(user.getFormattedPoint());
+            binding.tvChance.setText(getString(R.string.lottery_chance,user.pinChance));
+//            binding.btnStart.setEnabled(user.pinChance>0);
+        });
     }
 
     @Override
@@ -120,7 +126,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         }
         Log.d("LotteryFragment", "onRotateFinished");
         navigateTo(LotteryFragmentDirections.actionFragmentLotteryToDialogReward(item));
-        viewModel.userInfo();
+        profileViewModel.fetchUserInfo();
     }
 
     @Override
