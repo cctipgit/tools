@@ -43,6 +43,7 @@
             <enum name="left" value="1" />
             <enum name="right" value="2" />
         </attr>
+        <attr name="abTitleColor" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="wheelSurfView">

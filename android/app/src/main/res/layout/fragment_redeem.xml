@@ -17,8 +17,8 @@
             android:background="@drawable/bg_profile_header"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
             android:paddingTop="16dp"
+            android:paddingHorizontal="20dp"
             android:paddingBottom="24dp">
 
             <TextView
@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="54dp"
                 android:paddingVertical="16dp"
                 android:text="@string/home_redeem"
                 android:textColor="@color/theme_bg"
@@ -36,7 +35,6 @@
                 android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:background="@drawable/bg_gradient_r24"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"

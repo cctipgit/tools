@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:paddingVertical="16dp"
             android:layout_gravity="start"
-            android:layout_marginTop="54dp"
             android:text="@string/home_profile"
             android:textColor="@color/theme_bg"
             android:textSize="20sp" />

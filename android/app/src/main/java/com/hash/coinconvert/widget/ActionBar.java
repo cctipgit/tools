@@ -3,6 +3,7 @@ package com.hash.coinconvert.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
@@ -21,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.duxl.baselib.utils.DisplayUtil;
 import com.hash.coinconvert.R;
@@ -36,6 +36,8 @@ public class ActionBar extends ConstraintLayout {
     private TextView titleView;
     private LinearLayout menusLayout;
     private int singleMenuViewId = 0;
+    private int titleLeftMargin;
+    private boolean backViewVisible = true;
 
     @IntDef({CENTER, LEFT, RIGHT})
     public @interface Gravity {
@@ -56,6 +58,8 @@ public class ActionBar extends ConstraintLayout {
     public ActionBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ActionBar);
+        backViewVisible = ta.getBoolean(R.styleable.ActionBar_abBackIconVisible, true);
+        titleLeftMargin = DisplayUtil.dip2px(context, backViewVisible ? 56f : 20f);
         initTitle(ta);
         initBackView(ta);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ta.getBoolean(R.styleable.ActionBar_abAutoPaddingTop, true)) {
@@ -70,12 +74,16 @@ public class ActionBar extends ConstraintLayout {
         if (!TextUtils.isEmpty(title)) {
             ensureTitleView();
             titleView.setText(title);
+
+            int titleColor = ta.getColor(R.styleable.ActionBar_abTitleColor, Color.TRANSPARENT);
+            if (titleColor != Color.TRANSPARENT) {
+                titleView.setTextColor(titleColor);
+            }
         }
     }
 
     private void initBackView(TypedArray ta) {
-        boolean visible = ta.getBoolean(R.styleable.ActionBar_abBackIconVisible, true);
-        if (!visible) {
+        if (!backViewVisible) {
             return;
         }
         ensureBackView();
@@ -99,7 +107,7 @@ public class ActionBar extends ConstraintLayout {
             switch (titleGravity) {
                 case LEFT:
                     params.leftToLeft = LayoutParams.PARENT_ID;
-                    params.leftMargin = DisplayUtil.dip2px(getContext(), 56f);
+                    params.leftMargin = titleLeftMargin;
                     break;
                 case RIGHT:
                     params.rightToRight = LayoutParams.PARENT_ID;

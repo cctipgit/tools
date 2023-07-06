@@ -107,7 +107,10 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
             //share here
             ShareHelper.shareText(requireContext(),s);
         });
-        observer(viewModel.getPinCheckId(),id-> binding.lotteryView.startRotate(id));
+        observer(viewModel.getPinCheckId(),id-> {
+            binding.lotteryView.startRotate(id);
+            profileViewModel.fetchUserInfo();
+        });
 
         observer(profileViewModel.getUserInfo(),user-> {
             this.setPointsViewText(user.getFormattedPoint());
@@ -129,7 +132,6 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         }
         Log.d("LotteryFragment", "onRotateFinished");
         navigateTo(LotteryFragmentDirections.actionFragmentLotteryToDialogReward(item));
-        profileViewModel.fetchUserInfo();
     }
 
     @Override

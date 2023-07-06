@@ -44,9 +44,12 @@ public class ProfileViewModel extends BaseViewModel {
     }
 
     public void fetchUserInfo() {
-        User local = repository.getFromLocal();
-        if (local != null) {
-            userInfo.postValue(local);
+        if(userInfo.getValue() == null) {
+            //use local data first
+            User local = repository.getFromLocal();
+            if (local != null) {
+                userInfo.postValue(local);
+            }
         }
         execute(repository.fetch(api), res -> {
             repository.save(res);
