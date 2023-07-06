@@ -1,5 +1,8 @@
 package com.hash.coinconvert.ui2.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -8,11 +11,14 @@ import com.bumptech.glide.Glide;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentProfileBinding;
+import com.hash.coinconvert.ui2.activity.QAActivity;
 import com.hash.coinconvert.vm.ProfileViewModel;
 
 import java.util.Calendar;
 
 public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, FragmentProfileBinding> {
+
+    public static final int REQUEST_CODE_QA = 1815;
 
     public ProfileFragment() {
         super(R.layout.fragment_profile);
@@ -53,5 +59,16 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
         });
         binding.menuPrivacy.setOnClickListener(v -> {
         });
+        binding.menuQa.setOnClickListener(v -> {
+            goActivity(QAActivity.class, null, REQUEST_CODE_QA);
+        });
+    }
+
+    @Override
+    protected void onCommonActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("onCommonActivityResult","onCommonActivityResult");
+        if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_QA){
+            profileViewModel.fetchUserInfo();
+        }
     }
 }

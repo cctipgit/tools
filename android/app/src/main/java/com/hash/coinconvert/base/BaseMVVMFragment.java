@@ -1,7 +1,6 @@
 package com.hash.coinconvert.base;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.CallSuper;
@@ -31,6 +30,12 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     protected VM viewModel;
     protected VB binding;
 
+    /**
+     * all fragments share a same ProfileViewModel instance
+     * only for fragment in HomeActivity
+     */
+    protected ProfileViewModel profileViewModel;
+
     public BaseMVVMFragment(int contentLayoutId) {
         super(contentLayoutId);
     }
@@ -41,11 +46,12 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
         initViewModel();
     }
 
-    private void initViewModel(){
+    protected void initViewModel() {
+        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
         Class<?> clz = getVMClass();
-        if(Objects.equals(clz.getCanonicalName(), ProfileViewModel.class.getCanonicalName())){
+        if (Objects.equals(clz.getCanonicalName(), ProfileViewModel.class.getCanonicalName())) {
             viewModel = (VM) profileViewModel;
-        }else{
+        } else {
             viewModel = new ViewModelProvider(this).get(getVMClass());
         }
         viewModel.onCreate();
@@ -75,6 +81,12 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        profileViewModel = null;
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         viewModel.isLoading().removeObservers(this);
@@ -84,7 +96,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     }
 
     protected void onError(Throwable throwable) {
-        if(throwable == null)return;
+        if (throwable == null) return;
         throwable.printStackTrace();
         if (handleNetworkError(throwable)) return;
         if (handleServerError(throwable)) return;
@@ -107,6 +119,8 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
         switch (code) {
             case 400003:
                 return R.string.err_insufficient_point;
+            case 10057:
+                return R.string.err_repeat_submit;
             case 0:
             case 10009:
             case 10005:
@@ -127,7 +141,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     }
 
     protected void onLoading(boolean loading) {
-        if(loading)showLoading();
+        if (loading) showLoading();
         else hideLoading();
     }
 

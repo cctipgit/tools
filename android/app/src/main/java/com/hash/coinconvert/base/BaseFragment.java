@@ -1,14 +1,11 @@
 package com.hash.coinconvert.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -17,18 +14,17 @@ import android.widget.FrameLayout;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.hash.coinconvert.R;
-import com.hash.coinconvert.vm.ProfileViewModel;
 
 public abstract class BaseFragment extends Fragment {
     private boolean firstResume = true;
@@ -36,11 +32,6 @@ public abstract class BaseFragment extends Fragment {
     private ActivityResultLauncher<Intent> mIntentActivityResultLauncher;
 
     private ContentLoadingProgressBar progressBar;
-
-    /**
-     * all fragments share a same ProfileViewModel instance
-     */
-    protected ProfileViewModel profileViewModel;
 
     public BaseFragment(int contentLayoutId) {
         super(contentLayoutId);
@@ -56,13 +47,17 @@ public abstract class BaseFragment extends Fragment {
                 onCommonActivityResult(requestCode, result.getResultCode(), result.getData());
             }
         });
-        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        profileViewModel = null;
     }
 
     protected void onCommonActivityResult(int requestCode, int resultCode, Intent data) {
@@ -73,17 +68,21 @@ public abstract class BaseFragment extends Fragment {
         return NavHostFragment.findNavController(this);
     }
 
-    public void navigateTo(NavDirections d){
-        NavOptions options=new NavOptions.Builder()
+    public void navigateTo(NavDirections d) {
+        NavOptions options = new NavOptions.Builder()
                 .setExitAnim(R.anim.slide_out_left)
                 .setEnterAnim(R.anim.slide_in_right)
                 .setPopEnterAnim(R.anim.slide_in_left)
                 .setPopExitAnim(R.anim.slide_out_right)
                 .build();
-        getNavController().navigate(d,options);
+        getNavController().navigate(d, options);
     }
 
-    protected <T> LiveData<T> getLiveDataInCurrentBackstack(String key){
+    public boolean navigateBack() {
+        return getNavController().popBackStack();
+    }
+
+    protected <T> LiveData<T> getLiveDataInCurrentBackstack(String key) {
         return getNavController().getCurrentBackStackEntry().getSavedStateHandle().getLiveData(key);
     }
 
@@ -112,39 +111,39 @@ public abstract class BaseFragment extends Fragment {
         mIntentActivityResultLauncher.launch(intent);
     }
 
-    public FrameLayout getContentView(){
+    public FrameLayout getContentView() {
         return findContentView(requireView());
     }
 
-    protected void showLoading(){
+    protected void showLoading() {
         ensureLoadingView();
         progressBar.show();
     }
 
-    private synchronized void ensureLoadingView(){
-        if(progressBar == null){
+    private synchronized void ensureLoadingView() {
+        if (progressBar == null) {
             FrameLayout root = getContentView();
-            if(root.getChildCount() > 1){
-                View view = root.getChildAt(root.getChildCount()-1);
-                if(view instanceof ContentLoadingProgressBar){
+            if (root.getChildCount() > 1) {
+                View view = root.getChildAt(root.getChildCount() - 1);
+                if (view instanceof ContentLoadingProgressBar) {
                     progressBar = (ContentLoadingProgressBar) view;
                 }
             }
-            if(progressBar == null) {
+            if (progressBar == null) {
                 getLayoutInflater().inflate(R.layout.view_page_loading, root, true);
-                progressBar = root.findViewById(R.id.progress_bar);
+                progressBar = root.findViewById(R.id.global_progress_bar);
             }
         }
         progressBar.getIndeterminateDrawable().setColorFilter(getProgressBarTint(), PorterDuff.Mode.MULTIPLY);
     }
 
     @ColorInt
-    protected int getProgressBarTint(){
+    protected int getProgressBarTint() {
         return requireContext().getColor(R.color.colorPrimary);
     }
 
-    protected void hideLoading(){
-        if(progressBar != null){
+    protected void hideLoading() {
+        if (progressBar != null) {
             progressBar.hide();
         }
     }
@@ -155,14 +154,15 @@ public abstract class BaseFragment extends Fragment {
         progressBar = null;
     }
 
-    private FrameLayout findContentView(View view){
-        if(view == null)return null;
+    private FrameLayout findContentView(View view) {
+        requireActivity().getWindow().getDecorView();
+        if (view == null) return null;
         ViewParent parent = view.getParent();
-        if(parent instanceof ViewGroup){
-            Log.d("findContentView",parent.getClass().getCanonicalName());
-            if("android.widget.FrameLayout".equals(parent.getClass().getCanonicalName())){
+        if (parent instanceof ViewGroup) {
+            Log.d("findContentView", parent.getClass().getCanonicalName());
+            if ("android.widget.FrameLayout".equals(parent.getClass().getCanonicalName())) {
                 return ((FrameLayout) parent);
-            }else{
+            } else {
                 return findContentView(((ViewGroup) parent));
             }
         }

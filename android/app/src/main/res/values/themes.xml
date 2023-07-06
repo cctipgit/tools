@@ -103,4 +103,14 @@
         <item name="android:paddingStart">20dp</item>
         <item name="android:paddingEnd">20dp</item>
     </style>
+
+    <style name="QAAnswer">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_checktext_qa</item>
+        <item name="android:textColor">@color/qa_check_text</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
 </resources>

@@ -133,6 +133,9 @@
         <activity
             android:name=".ui2.activity.HomeActivity"
             android:exported="true"/>
+        <activity
+            android:name=".ui2.activity.QAActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

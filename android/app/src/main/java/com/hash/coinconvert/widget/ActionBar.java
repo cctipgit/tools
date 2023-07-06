@@ -97,7 +97,8 @@ public class ActionBar extends ConstraintLayout {
 
     private void ensureTitleView() {
         if (titleView == null) {
-            titleView = new TextView(getContext(), null, 0, R.style.TextView_Bold);
+            titleView = new TextView(getContext(), null, android.R.attr.textViewStyle, R.style.TextView_Bold);
+            titleView.setTextAppearance(R.style.TextView_Bold);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             int paddingH = DisplayUtil.dip2px(getContext(), 10f);
             titleView.setPadding(paddingH, 0, paddingH, 0);

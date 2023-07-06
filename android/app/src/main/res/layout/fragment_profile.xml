@@ -89,4 +89,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:psm_Title="@string/profile_about" />
+    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+        android:id="@+id/menu_qa"
+        style="@style/ProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:psm_Title="@string/profile_question" />
 </LinearLayout>

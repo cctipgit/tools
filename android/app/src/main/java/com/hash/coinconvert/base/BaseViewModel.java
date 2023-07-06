@@ -42,7 +42,7 @@ public class BaseViewModel extends ViewModel {
         return Boolean.FALSE.equals(loading.getValue());
     }
 
-    protected void startLoading(){
+    public void startLoading(){
         if(isNotLoading()){
             loading.postValue(true);
         }
