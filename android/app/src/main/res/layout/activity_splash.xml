@@ -4,31 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ui.activity.SplashActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/ic_logo_splash" />
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
-        android:textColor="@color/theme_bg"
-        android:textSize="24sp"
         style="@style/TextView.Bold"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/theme_bg"
+        android:textSize="24sp" />
 
     <TextView
-        android:text="@string/app_slogan"
-        android:layout_width="wrap_content"
-        android:textColor="@color/theme_bg"
-        android:textSize="24sp"
         style="@style/TextView.Thin"
-        android:textFontWeight="300"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_height="wrap_content"/>
+        android:text="@string/app_slogan"
+        android:textColor="@color/theme_bg"
+        android:textFontWeight="300"
+        android:textSize="24sp" />
 </LinearLayout>
