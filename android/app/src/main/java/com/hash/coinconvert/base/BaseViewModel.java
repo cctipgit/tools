@@ -118,6 +118,10 @@ public class BaseViewModel extends ViewModel {
         }
     }
 
+    public void clearError(){
+        error.postValue(null);
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

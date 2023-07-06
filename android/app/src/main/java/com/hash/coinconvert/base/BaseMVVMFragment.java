@@ -97,6 +97,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
 
     protected void onError(Throwable throwable) {
         if (throwable == null) return;
+        viewModel.clearError();
         throwable.printStackTrace();
         if (handleNetworkError(throwable)) return;
         if (handleServerError(throwable)) return;
