@@ -14,6 +14,13 @@ import MJExtension
 enum kCustomChartItemType: Int {
     case currency = 1
     case token = 2
+    
+    static func initBy(str: String) -> kCustomChartItemType {
+        if str == "currency" {
+            return .currency
+        }
+        return .token
+    }
 }
 
 enum kCustomChartTimeType: Int {
@@ -21,6 +28,21 @@ enum kCustomChartTimeType: Int {
     case week = 2
     case month = 3
     case year = 4
+    
+    static func initBy(type: SegementTapedKind) -> kCustomChartTimeType {
+        switch type {
+        case .day:
+            return .day
+        case .week:
+            return .week
+        case .month:
+            return .month
+        case .year:
+            return .year
+        case .all:
+            return .year
+        }
+    }
 }
 
 enum CurrencyDetailAPI {

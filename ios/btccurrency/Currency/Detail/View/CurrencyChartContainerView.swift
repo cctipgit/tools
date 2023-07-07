@@ -38,7 +38,9 @@ class CurrencyChartContainerView: UIView {
     var floatPointView = FloatPointView()
     var marker = BalloonMarker(frame: .zero)
 
-    var pricePromptView = ChartPricePromptView(frame: .zero)
+    var pricePromptView = ChartPricePromptView(frame: .zero).then { v in
+        v.isHidden = true
+    }
 
     lazy var transformer = Transformer(viewPortHandler: chart.viewPortHandler).then { transformer in
         transformer.prepareMatrixOffset(inverted: false)
@@ -49,13 +51,12 @@ class CurrencyChartContainerView: UIView {
         dataSet.drawCircleHoleEnabled = false
         dataSet.lineWidth = 2.28
         dataSet.drawValuesEnabled = false
-        dataSet.mode = .horizontalBezier
+        dataSet.mode = .linear
         dataSet.highlightEnabled = true
-        dataSet.lineCapType = .round
+        dataSet.lineCapType = .square
         dataSet.highlightLineWidth = 1
-        dataSet.highlightColor = .primaryTextColor.alpha(0.3)
+        dataSet.highlightColor = .primaryBranding
         dataSet.axisDependency = .left
-
         dataSet.drawHorizontalHighlightIndicatorEnabled = false
     }
 
@@ -84,9 +85,7 @@ class CurrencyChartContainerView: UIView {
         segmentView.segement
     }
 
-    var infoView = CurrencyChartInfoView(frame: .zero).then { _ in
-    }
-
+    var infoView = CurrencyChartInfoView(frame: .zero)
     var isReverse = false
     var tapSwitchHandler: ((Int) -> Void)?
 
@@ -332,7 +331,7 @@ class CurrencyChartContainerView: UIView {
 
     func changeChartColor(isRaise: Bool) {
         let lineSet = lineDataSet
-        let color = isRaise ? UIColor.upColor : .downColor
+        let color = isRaise ? UIColor.primarySuccess : .downColor
         let gradientColors = [color.cgColor,
                               color.alpha(0).cgColor]
 

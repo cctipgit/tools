@@ -150,7 +150,7 @@ extension UIColor {
             return .color(with: "#FA5B64", darkHexString: "#FA5B64")
         }
     }
-
+    
     static func color(with lightHexString: String, lightAlpha: CGFloat = 1,
                       darkHexString: String, darkAlpha: CGFloat = 1) -> UIColor {
         let lightColor = UIColor(hexString: lightHexString, transparency: lightAlpha)
@@ -215,5 +215,9 @@ extension UIColor {
     
     static var primaryNegative: UIColor {
         return .color(with: "#F24E45", darkHexString: "#F24E45")
+    }
+    
+    static var primarySuccess: UIColor {
+        return .color(with: "#0CC96A", darkHexString: "#0CC96A")
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class CurrencySpecsSwitchView: UIView {
     var forwardButton = {
         UIButton().then {
-            $0.setImage(UIImage(named: "switch_forward"), for: .normal)
+            $0.setImage(UIImage(named: "n_forward_icon"), for: .normal)
         }
     }()
 
@@ -30,9 +30,9 @@ class CurrencySpecsSwitchView: UIView {
         borderWidth = 0.5
         borderColor = .b6cefeColorOf20Alpha
         if DMTraitCollection.override.userInterfaceStyle == .dark {
-            backgroundColor = .backgroundColor
+            backgroundColor = .bgSecondary
         } else {
-            backgroundColor = .b6cefeColorOf20Alpha
+            backgroundColor = .bgSecondary
         }
         makeUI()
     }
@@ -91,7 +91,7 @@ class CurrencySpecsSwitchView: UIView {
         }
 
         forwardButton.snp.remakeConstraints {
-            $0.size.equalTo(24)
+            $0.size.equalTo(20)
             $0.top.bottom.equalToSuperview().inset(12)
             $0.centerX.equalToSuperview()
         }

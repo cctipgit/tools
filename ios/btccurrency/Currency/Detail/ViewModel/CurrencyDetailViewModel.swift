@@ -80,6 +80,8 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
     var tokenTo: BehaviorRelay<TokenSpecModel>
 
     var response: BehaviorRelay<GetQuotationResponse?>
+    var newResponse: BehaviorRelay<ResultCurrencyDetail?>
+    
     let min = BehaviorRelay(value: "--")
     let max = BehaviorRelay(value: "--")
     let quote = BehaviorRelay(value: "--")
@@ -116,6 +118,7 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
         tokenFrom = BehaviorRelay(value: TokenSpecModel(model: fromItem))
         tokenTo = BehaviorRelay(value: TokenSpecModel(model: toItem))
 
+        newResponse = BehaviorRelay(value: nil)
         super.init()
     }
 
@@ -127,11 +130,8 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
         } else {
             isLoadCache = false
         }
-        
-
         let request = makeQuotationRequest(from: tokenFrom, to: tokenTo, dateUnit: dateUnit)
         provider.removeLast(request: request.cmd)
-
         provider
             .rx
             .request(.target(PriceService.quotation(request)))
@@ -163,182 +163,190 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
         var request = GetQuotationStopRequest()
         request.cmd = RequestCmd.quotationStopRequest.rawValue
         request.cid = UUID().uuidString
-        provider.request(.target(PriceService.quotationStop(request)),
-                             option: .deleteWhenRequest) { _ in }
+        provider.request(.target(PriceService.quotationStop(request)), option: .deleteWhenRequest) { _ in }
     }
-
+    
+    // new
+    func requestNew(fromItem: GetCurrencyTokensResponse, toItem: GetCurrencyTokensResponse, dateUnit: String) {
+        currentDateRange = dateUnit
+        isBeginReceiveData = false
+        isRequesting.accept(true)
+        
+        self.lastResponseDateRange = dateUnit
+        CurrencyDetailService().queryDetail(fromSymbol: fromItem.token,
+                                            fromType: kCustomChartItemType.initBy(str: fromItem.currencyType),
+                                            toSymbol: toItem.token,
+                                            toType: kCustomChartItemType.initBy(str: toItem.currencyType),
+                                            interval: kCustomChartTimeType.initBy(type: SegementTapedKind.init(with: dateUnit)))
+        .subscribe(onNext: { [weak self] res in
+            
+            guard let self = self else { return }
+            self.isRequesting.accept(false)
+            
+            self.newResponse.accept(res)
+        })
+        .disposed(by: rx.disposeBag)
+    }
+    
     func transform(input: Input) -> Output {
-        let requestSingal = Observable.combineLatest(input.inputTrigger,
-                                                     input.tokenRange)
-
+        let requestSingal = Observable.combineLatest(input.inputTrigger, input.tokenRange)
         requestSingal
             .throttle(.milliseconds(1000), latest: false, scheduler: MainScheduler())
             .subscribe(onNext: { [weak self] tuple in
-                guard let self
-                else { return }
+                guard let self else {
+                    return
+                }
                 let (_, range) = tuple
-                self.request(tokenFrom: self.fromItem.token,
-                             tokenTo: self.toItem.token,
-                             dateUnit: range)
+                //self.request(tokenFrom: self.fromItem.token, tokenTo: self.toItem.token, dateUnit: range)
+                // custom
+                self.lastResponseDateRange = range
+                self.requestNew(fromItem: self.fromItem, toItem: self.toItem, dateUnit: range)
             })
             .disposed(by: rx.disposeBag)
 
         let chart = BehaviorRelay<[ChartDataEntry]>(value: [])
         let dynamicChart = BehaviorRelay<[ChartDataEntry]>(value: [])
-
-        response
-            .unwrap()
-            .ignoreWhen({ [weak self] response in
-                guard let self
-                else { return true }
-
-                if self.isLoadCache {
-                    return false
-                }
-
-                return response.tokenTo != self.toItem.token
-                    || response.tokenFrom != self.fromItem.token
-                    || response.dateUnit != self.currentDateRange
-            })
-//            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] response in
-                guard let self
-                else { return }
-
-                if response.amount == "-1" {
-                    self.isRequesting.accept(false)
-
-                    if self.isBeginReceiveData == false {
-                        self.isBeginReceiveData = true
-                    }
-                }
-
-                if !self.isLoadCache {
-                    if !self.isBeginReceiveData {
-                        return
-                    }
-
-                    let isSameDateRange = response.dateUnit == self.lastResponseDateRange
-                    self.lastResponseDateRange = response.dateUnit
-
-                    if !isSameDateRange
-                        && !self.entries.isEmpty
-                        && response.data.count > 10 {
-                        self.entries.removeAll()
-                    }
-                }
-
-                let datas = response.data.sorted(by: \.priceTime)
-
-                var entries: [ChartDataEntry] = []
-                for item in datas {
-                    if item.priceFrom.isEmpty
-                        || item.priceTo.isEmpty {
-                        continue
-                    }
-                    if let convertValue = self.makePriceConvert(fromPrice: item.priceFrom,
-                                                                toPrice: item.priceTo).double() {
-                        let point = ChartDataEntry(x: Double(item.priceTime), y: convertValue)
-                        entries.append(point)
-                        debugPrint(item.priceTime)
-                    }
-                }
-
-                if self.entries.isEmpty {
-                    self.entries.append(contentsOf: entries)
-                } else {
-                    for item in entries {
-                        var i = self.entries.count - 1
-                        while i >= 0 {
-                            if self.entries[i].x == item.x {
-                                self.entries[i] = item
-                                debugPrint("replace:\(i)" + "\(item)")
-                                break
-                            } else if item.x > self.entries[i].x {
-                                self.entries.insert(item, at: i)
-                                self.entries.removeFirst()
-
-                                debugPrint("insert:\(i)" + "\(item)")
-                                break
-                            } else if item.x < self.entries[i].x {
-                                if i == 0 {
-                                    self.entries.insert(item, at: i)
-                                    break
-                                }
-
-                                i -= 1
-
-                                debugPrint("index:\(i)")
-                                continue
-                            }
-                        }
-                    }
-                }
-
-                var low = 0.0
-                var high = 0.0
-
-                if let tuple = self.entries.minAndMax(by: { $0.y < $1.y }) {
-                    low = tuple.0.y
-                    high = tuple.1.y
-                }
-
-                
-                var average = 0.0
-                
-                for (index,value) in self.entries.enumerated() {
-                    let doubleIndex = index.double
-                    average = average * doubleIndex / (doubleIndex + 1) + value.y / (doubleIndex + 1)
-                }
-                
-                
-                var change = 0.double
-
-                if self.entries.count > 0 {
-                    change = (self.entries.last!.y - self.entries.first!.y) / self.entries.first!.y
-                }
-
-                self.makeIndicators(high: high,
-                                    low: low,
-                                    change: change,
-                                    avg: average)
-
-                if self.entries.count > entries.count {
-                    dynamicChart.accept(entries)
-                } else {
-                    chart.accept(self.entries)
-                    if SegementTapedKind.day.toString() == response.dateUnit {
-                        saveCurrencyDetail(tokenFrom: self.fromItem.token,
-                                           tokenTo: self.toItem.token,
-                                           response: response)
-                    }
-                }
-            })
-            .disposed(by: rx.disposeBag)
-
+        
+        
+//        response
+//            .unwrap()
+//            .ignoreWhen({ [weak self] response in
+//                guard let self else { return true }
+//                if self.isLoadCache {
+//                    return false
+//                }
+//                return response.tokenTo != self.toItem.token
+//                    || response.tokenFrom != self.fromItem.token
+//                    || response.dateUnit != self.currentDateRange
+//            })
+//            .subscribe(onNext: { [weak self] response in
+//                guard let self else { return }
+//                if response.amount == "-1" {
+//                    self.isRequesting.accept(false)
+//                    if self.isBeginReceiveData == false {
+//                        self.isBeginReceiveData = true
+//                    }
+//                }
+//                if !self.isLoadCache {
+//                    if !self.isBeginReceiveData {
+//                        return
+//                    }
+//                    let isSameDateRange = response.dateUnit == self.lastResponseDateRange
+//                    self.lastResponseDateRange = response.dateUnit
+//                    if !isSameDateRange && !self.entries.isEmpty && response.data.count > 10 {
+//                        self.entries.removeAll()
+//                    }
+//                }
+//                let datas = response.data.sorted(by: \.priceTime)
+//                var entries: [ChartDataEntry] = []
+//                for item in datas {
+//                    if item.priceFrom.isEmpty || item.priceTo.isEmpty {
+//                        continue
+//                    }
+//                    if let convertValue = self.makePriceConvert(fromPrice: item.priceFrom,
+//                                                                toPrice: item.priceTo).double() {
+//                        let point = ChartDataEntry(x: Double(item.priceTime), y: convertValue)
+//                        entries.append(point)
+//                        debugPrint(item.priceTime)
+//                    }
+//                }
+//                if self.entries.isEmpty {
+//                    self.entries.append(contentsOf: entries)
+//                } else {
+//                    for item in entries {
+//                        var i = self.entries.count - 1
+//                        while i >= 0 {
+//                            if self.entries[i].x == item.x {
+//                                self.entries[i] = item
+//                                debugPrint("replace:\(i)" + "\(item)")
+//                                break
+//                            } else if item.x > self.entries[i].x {
+//                                self.entries.insert(item, at: i)
+//                                self.entries.removeFirst()
+//                                debugPrint("insert:\(i)" + "\(item)")
+//                                break
+//                            } else if item.x < self.entries[i].x {
+//                                if i == 0 {
+//                                    self.entries.insert(item, at: i)
+//                                    break
+//                                }
+//                                i -= 1
+//                                debugPrint("index:\(i)")
+//                                continue
+//                            }
+//                        }
+//                    }
+//                }
+//                var low = 0.0
+//                var high = 0.0
+//                if let tuple = self.entries.minAndMax(by: { $0.y < $1.y }) {
+//                    low = tuple.0.y
+//                    high = tuple.1.y
+//                }
+//                var average = 0.0
+//                for (index,value) in self.entries.enumerated() {
+//                    let doubleIndex = index.double
+//                    average = average * doubleIndex / (doubleIndex + 1) + value.y / (doubleIndex + 1)
+//                }
+//                var change = 0.double
+//                if self.entries.count > 0 {
+//                    change = (self.entries.last!.y - self.entries.first!.y) / self.entries.first!.y
+//                }
+//                self.makeIndicators(high: high, low: low, change: change, avg: average)
+//                if self.entries.count > entries.count {
+//                    dynamicChart.accept(entries)
+//                } else {
+//                    chart.accept(self.entries)
+//                    if SegementTapedKind.day.toString() == response.dateUnit {
+//                        saveCurrencyDetail(tokenFrom: self.fromItem.token,
+//                                           tokenTo: self.toItem.token,
+//                                           response: response)
+//                    }
+//                }
+//            })
+//            .disposed(by: rx.disposeBag)
+//        let price = BehaviorRelay(value: "--")
+//        response.subscribe(onNext: { [weak self] response in
+//            guard let self, let response else { return }
+//            let priceFrom = response.priceFrom
+//            let priceTo = response.priceTo
+//            if priceFrom.isEmpty || priceTo.isEmpty {
+//                return
+//            }
+//            let value = self.makePriceConvert(fromPrice: priceFrom, toPrice: priceTo)
+//            let text = CurrencyFormatter.format(with: value, type: self.fromItem.currencyType)
+//            price.accept(text)
+//        })
+//        .disposed(by: rx.disposeBag)
+        
+        // custom
         let price = BehaviorRelay(value: "--")
-        response
-//            .throttle(.milliseconds(1000), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] response in
-                guard let self,
-                      let response
-                else { return }
-
-                let priceFrom = response.priceFrom
-                let priceTo = response.priceTo
-
-                if priceFrom.isEmpty || priceTo.isEmpty {
-                    return
-                }
-
-                let value = self.makePriceConvert(fromPrice: priceFrom,
-                                                  toPrice: priceTo)
-                let text = CurrencyFormatter.format(with: value,
-                                                    type: self.fromItem.currencyType)
-                price.accept(text)
-            })
-            .disposed(by: rx.disposeBag)
-
+        newResponse.subscribe(onNext: { [weak self] resp in
+            guard let self = self else { return }
+            self.isRequesting.accept(false)
+            guard let result = resp, let listItem = result.data as? [ResultCurrencyDetailListItem] else { return }
+            var entries: [ChartDataEntry] = []
+            listItem.forEach { item in
+                let point = ChartDataEntry(x: Double(item.t), y: Double(item.c) ?? 0)
+                entries.append(point)
+            }
+            self.entries = entries
+            dynamicChart.accept(entries)
+            chart.accept(entries)
+            price.accept("") // set empty
+            
+            let first: CGFloat = self.entries.first?.y ?? 1
+            let last: CGFloat = self.entries.last?.y ?? 0
+            
+            let high = self.entries.map({ $0.y }).sorted { $0 > $1 }.first ?? 0
+            let low = self.entries.map({ $0.y }).sorted { $0 < $1 }.first ?? 0
+            var num = (self.entries.count > 0) ? self.entries.count : 1
+            let avg = self.entries.map({ $0.y }).reduce(0, +) / Double(num)
+            let change = ((last - first) / first) / 100.0
+            self.makeIndicators(high: high, low: low, change: change, avg: avg)
+        })
+        .disposed(by: rx.disposeBag)
+        
         return Output(tokenFrom: tokenFrom,
                       tokenTo: tokenTo,
                       totolChartPoints: chart,
