@@ -33,6 +33,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item> <!-- 状态栏透明 -->
         <item name="android:textViewStyle">@style/TextView</item>
         <item name="imageButtonStyle">@style/ImageButton</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
     </style>
 
     <style name="Theme.ExchangeRate.BottomSheet">

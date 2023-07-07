@@ -64,6 +64,14 @@ public abstract class BaseFragmentDialog<VB extends ViewBinding> extends DialogF
         window.setGravity(getGravity());
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().getAttributes().windowAnimations = getTheme();
+        return dialog;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding = bind(view);

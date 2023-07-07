@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
@@ -260,6 +261,15 @@ public class ActionBar extends ConstraintLayout {
     public void setOnBackButtonClickListener(OnClickListener listener) {
         if (backView != null) {
             backView.setOnClickListener(listener);
+        }
+    }
+
+    public void setBackViewTintColor(int color) {
+        if (backView != null) {
+            Drawable drawable = backView.getDrawable();
+            if (drawable != null) {
+                drawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+            }
         }
     }
 }

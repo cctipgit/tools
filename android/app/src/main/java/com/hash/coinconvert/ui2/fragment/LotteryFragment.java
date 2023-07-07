@@ -3,7 +3,6 @@ package com.hash.coinconvert.ui2.fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,12 +25,12 @@ import com.hash.coinconvert.widget.lottery.LotteryView;
 
 public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, FragmentLotteryBinding> implements LotteryView.OnRotateFinishListener {
     public static final String TAG = "LotteryFragment";
+
     public LotteryFragment() {
         super(R.layout.fragment_lottery);
     }
 
     private TextView pointsView;
-    private int pinNum;
 
     @NonNull
     @Override
@@ -47,6 +46,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
 
     @Override
     protected void initView() {
+        binding.actionBar.setBackViewTintColor(Color.WHITE);
         initMenuPointsView();
         PinItem[] data = LotteryFragmentArgs.fromBundle(getArguments()).getData();
         if (data.length == 0) {
@@ -57,44 +57,42 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
 
         binding.lotteryView.setOnRewardListener(this);
         binding.btnStart.setOnClickListener(v -> {
-            if(!binding.lotteryView.isRunning()){
+            if (!binding.lotteryView.isRunning()) {
                 profileViewModel.decreasePinNum();
                 viewModel.pinCheck();
             }
         });
     }
 
-    public void setPointsViewText(String points){
-        if(pointsView != null){
+    public void setPointsViewText(String points) {
+        if (pointsView != null) {
             pointsView.setVisibility(View.VISIBLE);
             pointsView.setText(points);
         }
     }
 
-    private void initMenuPointsView(){
+    private void initMenuPointsView() {
         this.pointsView = genMenuPointsView();
         this.pointsView.setVisibility(View.INVISIBLE);
-        binding.actionBar.addMenu(this.pointsView,v->{
-            navigateTo(LotteryFragmentDirections.actionFragmentLotteryToFragmentRedeem2());
-        });
+        binding.actionBar.addMenu(this.pointsView, v -> navigateTo(LotteryFragmentDirections.actionFragmentLotteryToFragmentRedeem2()));
     }
 
-    private RoundTextView genMenuPointsView(){
+    private RoundTextView genMenuPointsView() {
         Context context = requireContext();
         RoundTextView roundTextView = new RoundTextView(requireContext());
-        roundTextView.setTextColor(ContextCompat.getColor(context,R.color.theme_bg));
+        roundTextView.setTextColor(ContextCompat.getColor(context, R.color.theme_bg));
         RoundViewDelegate delegate = roundTextView.getDelegate();
         delegate.setCornerRadius(8);
         delegate.setStrokeWidth(2);
-        delegate.setStrokeColor(ContextCompat.getColor(context,R.color.orange));
+        delegate.setStrokeColor(ContextCompat.getColor(context, R.color.orange));
 
-        Drawable drawable = ContextCompat.getDrawable(context,R.drawable.ic_points);
-        int size = DisplayUtil.dip2px(context,20f);
-        drawable.setBounds(0,0,size,size);
-        roundTextView.setCompoundDrawables(drawable,null,null,null);
-        int dp8 = DisplayUtil.dip2px(context,8f);
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_points);
+        int size = DisplayUtil.dip2px(context, 20f);
+        drawable.setBounds(0, 0, size, size);
+        roundTextView.setCompoundDrawables(drawable, null, null, null);
+        int dp8 = DisplayUtil.dip2px(context, 8f);
         roundTextView.setCompoundDrawablePadding(dp8);
-        roundTextView.setPadding(dp8,dp8/2,dp8,dp8/2);
+        roundTextView.setPadding(dp8, dp8 / 2, dp8, dp8 / 2);
         return roundTextView;
     }
 
@@ -102,20 +100,16 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     protected void observer() {
         super.observer();
         LiveData<String> liveData = getLiveDataInCurrentBackstack(RewardDialog.KEY);
-        observer(liveData, s -> {
-            Log.d("RewardDialog", "s:" + s);
-            //share here
-            ShareHelper.shareText(requireContext(),s);
-        });
-        observer(viewModel.getPinCheckId(),id-> {
+        observer(liveData, s -> ShareHelper.shareText(requireContext(), s));
+        observer(viewModel.getPinCheckId(), id -> {
             binding.lotteryView.startRotate(id);
             profileViewModel.fetchUserInfo();
         });
 
-        observer(profileViewModel.getUserInfo(),user-> {
+        observer(profileViewModel.getUserInfo(), user -> {
             this.setPointsViewText(user.getFormattedPoint());
-            binding.tvChance.setText(getString(R.string.lottery_chance,user.pinChance));
-            binding.btnStart.setEnabled(user.pinChance>0);
+            binding.tvChance.setText(getString(R.string.lottery_chance, user.pinChance));
+            binding.btnStart.setEnabled(user.pinChance > 0);
         });
     }
 
@@ -126,11 +120,10 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
 
     @Override
     public void onRotateFinished(PinItem item) {
-        if(item == null){
+        if (item == null) {
             ToastUtils.show(R.string.dialog_reward_error_none_pin_item);
             return;
         }
-        Log.d("LotteryFragment", "onRotateFinished");
         navigateTo(LotteryFragmentDirections.actionFragmentLotteryToDialogReward(item));
     }
 

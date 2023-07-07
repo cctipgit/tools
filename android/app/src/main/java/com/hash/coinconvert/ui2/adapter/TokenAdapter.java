@@ -146,13 +146,13 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
         if (anchorItem != null) {
             try {
                 if (s.length() == 0) {
-                    anchorItem.input = BigDecimal.ONE;
+                    anchorItem.input = BigDecimal.valueOf(defaultHint);
                 } else {
                     anchorItem.input = new BigDecimal(s.toString());
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                anchorItem.input = BigDecimal.ONE;
+                anchorItem.input = BigDecimal.valueOf(defaultHint);
             }
             notifyItemRangeChanged(0, getItemCount(), PAYLOAD_UPDATE_PRICE);
         }

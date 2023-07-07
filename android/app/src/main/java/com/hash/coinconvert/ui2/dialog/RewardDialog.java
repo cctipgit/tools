@@ -33,7 +33,7 @@ public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
         binding.btnShare.setOnClickListener(v->onPositiveClick(new AutoCloseAction() {
             @Override
             public void invoke(SavedStateHandle stateHandle) {
-                stateHandle.set(KEY,"asdfasdfasdf");
+                stateHandle.set(KEY,"https://www.ratetool.com");
             }
         }));
     }

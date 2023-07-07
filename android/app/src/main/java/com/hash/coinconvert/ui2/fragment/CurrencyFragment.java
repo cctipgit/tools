@@ -1,6 +1,7 @@
 package com.hash.coinconvert.ui2.fragment;
 
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -29,6 +30,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, FragmentCurrencyBinding> {
+    public static final String TAG = "CurrencyFragment";
     public CurrencyFragment() {
         super(R.layout.fragment_currency);
     }
@@ -78,6 +80,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
                         TokenWrapper item = adapterTokenMap.get(key);
                         if (item != null) {
                             item.setToken(value.getToken());
+                            tokenAdapter.notifyItemChanged(tokenAdapter.getItemPosition(item),TokenAdapter.PAYLOAD_UPDATE_PRICE);
                         }
                     } else {
                         tokenAdapter.addData(value);

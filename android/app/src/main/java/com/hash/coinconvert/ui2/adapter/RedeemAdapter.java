@@ -35,7 +35,7 @@ public class RedeemAdapter extends BaseQuickAdapter<RedeemItem, com.chad.library
 
         ProgressBar progressBar = holder.getView(R.id.progress);
         progressBar.setMax((int) item.pointRequire);
-        progressBar.setProgress((int) (item.total - item.left));
+        progressBar.setProgress((int) item.left);
 
         holder.setImageResource(R.id.img_banner, Objects.equals(item.currencyType, Token.TOKEN_TYPE_CURRENCY)
                 ? R.mipmap.redeem_banner_currency : R.mipmap.redeem_banner_crypto);
@@ -44,10 +44,8 @@ public class RedeemAdapter extends BaseQuickAdapter<RedeemItem, com.chad.library
     }
 
     private SpannableString getProgressText(long left, long total) {
-        long points = total - left;
-        if(points < 0)points = 0;
         String requireS = String.valueOf(total);
-        SpannableString ss = new SpannableString(points + "/" + requireS);
+        SpannableString ss = new SpannableString(left + "/" + requireS);
         int end = ss.length();
         int start = end - requireS.length();
 
