@@ -11,8 +11,25 @@ import RxSwift
 import Then
 import MJExtension
 
+enum kCustomChartItemType: Int {
+    case currency = 1
+    case token = 2
+}
+
+enum kCustomChartTimeType: Int {
+    case day = 1
+    case week = 2
+    case month = 3
+    case year = 4
+}
+
 enum CurrencyDetailAPI {
-    case queryDetail(tokenFrom: String, tokenTo: String, dateUnitType: SegementTapedKind)
+    case queryDetail(fromSymbol: String,
+                     fromType: kCustomChartItemType,
+                     toSymbol: String,
+                     toType: kCustomChartItemType,
+                     interval: kCustomChartTimeType
+    )
 }
 
 extension CurrencyDetailAPI: Moya.TargetType {
@@ -22,16 +39,13 @@ extension CurrencyDetailAPI: Moya.TargetType {
     
     var path: String {
         switch self {
-        case .queryDetail(_, _, _):
-            return "/walletsolidity/getnowblock"
+        case .queryDetail(_, _, _, _, _):
+            return "/charts"
         }
     }
     
     var method: Moya.Method {
-        switch self {
-        case .queryDetail(_, _, _):
-            return .get
-        }
+        return .post
     }
     
     var headers: [String : String]? {
@@ -41,24 +55,54 @@ extension CurrencyDetailAPI: Moya.TargetType {
     
     var task: Moya.Task {
         switch self {
-        case let .queryDetail(tokenFrom, tokenTo, dateUnitType):
-            return .requestParameters(parameters: ["tokenFrom": tokenFrom, "tokenTo": tokenTo, "dateUnitType": dateUnitType.toString()], encoding: URLEncoding.default)
+        case let .queryDetail(fromSymbol, fromType, toSymbol, toType, interval):
+            return .requestParameters(parameters: ["fromSymbol": fromSymbol,
+                                                   "fromType": fromType.rawValue,
+                                                   "toSymbol": toSymbol,
+                                                   "toType": toType.rawValue,
+                                                   "interval": interval.rawValue],
+                                      encoding: JSONEncoding.default)
         }
     }
 }
 
 class CurrencyDetailService {
-    func queryDetail(tokenFrom: String, tokenTo: String, dateUnitType: SegementTapedKind) -> Observable<CurrencyDetailModel?> {
+    func queryDetail(fromSymbol: String,
+                     fromType: kCustomChartItemType,
+                     toSymbol: String,
+                     toType: kCustomChartItemType,
+                     interval: kCustomChartTimeType) -> Observable<ResultCurrencyDetail?> {
         return CurrencyDetailAPI
-            .queryDetail(tokenFrom: tokenFrom, tokenTo: tokenTo, dateUnitType: dateUnitType)
+            .queryDetail(fromSymbol: fromSymbol,
+                         fromType: fromType,
+                         toSymbol: toSymbol,
+                         toType: toType,
+                         interval: interval)
             .cache
             .request()
-            .map( { CurrencyDetailModel.mj_object(withKeyValues: $0.data) } )
+            .map( { ResultCurrencyDetail.mj_object(withKeyValues: $0.data) } )
             .asObservable()
     }
 }
 
 @objcMembers
-class CurrencyDetailModel: NSObject, Codable {
-    var blockID: String = ""
+class ResultCurrencyDetail: NSObject {
+    var code: Int = 0
+    var message = ""
+    var data = NSArray()
+    
+    @nonobjc
+    var isSuccess: Bool {
+        return code == 0
+    }
+    
+    override class func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["data": ResultCurrencyDetailListItem.self]
+    }
+}
+
+@objcMembers
+class ResultCurrencyDetailListItem: NSObject {
+    var c = "0"
+    var t: TimeInterval = Date().timeIntervalSince1970
 }

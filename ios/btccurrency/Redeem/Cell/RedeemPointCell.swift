@@ -90,8 +90,8 @@ class RedeemPointCell: UITableViewCell {
     
     // MARK: Public Method
     public func setData(item: PointListItem) {
-        titleLabel.text = "Task Completed"
-        timeLabel.text = "2023.06.19 16:16:16"
-        pointLabel.text = "+15"
+        titleLabel.text = item.title
+        timeLabel.text = TimeInterval(item.time / 1000).customPointDetailTime()
+        pointLabel.text = item.pointChange
     }
 }

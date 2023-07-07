@@ -51,7 +51,10 @@ class ProfileIndexViewController: YBaseViewController {
         v.clipsToBounds = true
     }
     
-    private let titles: [String] = ["Settings".localized(), "Privacy Policy".localized(), "About".localized()]
+    private let titles: [String] = ["Settings".localized(),
+                                    "Questions".localized(),
+                                    "Privacy Policy".localized(),
+                                    "About".localized()]
     private let tableView = UITableView(frame: .zero, style: .plain).then { tb in
         tb.rowHeight = 64
         tb.separatorStyle = .none
@@ -163,6 +166,8 @@ extension ProfileIndexViewController: UITableViewDataSource, UITableViewDelegate
         if indexPath.row == 0 {
             vc = SettingViewController()
         } else if indexPath.row == 1 {
+            vc = QuestionsViewController()
+        } else if indexPath.row == 2 {
             vc = ProfileAboutViewController()
         } else {
             vc = ProfilePrivacyViewController()

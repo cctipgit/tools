@@ -61,7 +61,7 @@ class YBaseViewController: UIViewController {
     func makeLayout() {
     }
     
-    func share(text: String?, image: UIImage?, url: URL?) {
+    func share(text: String?, image: UIImage?, url: URL?, completion: @escaping (() -> Void)) {
         var itemsToShare = [Any]()
         
         if let text = text {
@@ -77,6 +77,12 @@ class YBaseViewController: UIViewController {
         }
         
         let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: completion)
+    }
+    
+    func showAlert(message: String) {
+        self.view.makeToast(message, duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
+            self.view.hideAllToasts()
+        }
     }
 }

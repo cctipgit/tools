@@ -38,8 +38,61 @@ class PinListItem: NSObject {
 }
 
 @objcMembers
+class QuizAnswerListItem: NSObject {
+    var id: String = ""
+    var options: [Int] = [Int]()
+    
+    convenience init(id: String, options: [Int]) {
+        self.init()
+        self.id = id
+        self.options = options
+    }
+}
+
+enum kQuestionType: Int {
+    case single
+    case multi
+}
+
+@objcMembers
+class QuizSonQuestionItem: NSObject {
+    var id: String = ""
+    var options = [String]()
+    var qType: Int = 0
+    var title = ""
+    
+    var questionType: kQuestionType {
+        if qType == 1 {
+            return .single
+        } else {
+            return .multi
+        }
+    }
+    
+    override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
+        return ["qType": "q_type"]
+    }
+}
+
+@objcMembers
+class QuizPageQuestionItem: NSObject {
+    var sonQuestion = NSArray()
+    var title = ""
+    
+    override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
+        return ["sonQuestion": "son_question"]
+    }
+    
+    override class func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["sonQuestion": QuizSonQuestionItem.self]
+    }
+}
+
+@objcMembers
 class RedeemHistoryItem: NSObject {
-    var xxx = ""
+    var status: Int = 0
+    var time: TimeInterval = Date().timeIntervalSince1970
+    var title: String = ""
 }
 
 @objcMembers
@@ -59,7 +112,13 @@ class RedeemListItem: NSObject {
 
 @objcMembers
 class PointListItem: NSObject {
-    var xxx = ""
+    var title = ""
+    var pointChange = ""
+    var time: TimeInterval = Date().timeIntervalSince1970
+    
+    override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
+        return ["pointChange": "point_change"]
+    }
 }
 
 @objcMembers
@@ -94,7 +153,7 @@ class ResultBase: NSObject {
 
 @objcMembers
 class ResultPinCheck: ResultBase {
- 
+    var data = PinListItem()
 }
 
 @objcMembers
@@ -108,6 +167,22 @@ class ResultPinList: ResultBase {
         return ["list": PinListItem.self]
     }
 }
+
+@objcMembers
+class ResultQuizQuestions: ResultBase {
+    var list = NSArray()
+    
+    override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
+        return ["list": "data.lists"]
+    }
+    
+    override class func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["list": QuizPageQuestionItem.self]
+    }
+}
+
+@objcMembers
+class ResultQuizSubmit: ResultBase {}
 
 @objcMembers
 class ResultRedeemHistory: ResultBase {
@@ -152,14 +227,10 @@ class ResultPointList: ResultBase {
 }
 
 @objcMembers
-class ResultRedeemRedeem: ResultBase {
-
-}
+class ResultRedeemRedeem: ResultBase {}
 
 @objcMembers
-class ResultTaskCheck: ResultBase {
-    
-}
+class ResultTaskCheck: ResultBase {}
 
 @objcMembers
 class ResultTaskList: ResultBase {

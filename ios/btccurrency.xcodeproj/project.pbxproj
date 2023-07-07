@@ -117,6 +117,10 @@
 		847CF9B32A53C18700AE7CBB /* LocalUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */; };
 		847CF9B62A53F7C700AE7CBB /* ServerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B52A53F7C700AE7CBB /* ServerModels.swift */; };
 		847CF9B92A54021200AE7CBB /* SmartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9B82A54021200AE7CBB /* SmartService.swift */; };
+		847CF9BB2A5652E800AE7CBB /* TCDrawSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9BA2A5652E800AE7CBB /* TCDrawSuccessView.swift */; };
+		847CF9BD2A56A11300AE7CBB /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */; };
+		847CF9BF2A56A32500AE7CBB /* QuestionMultiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */; };
+		847CF9C12A56A33600AE7CBB /* QuestionSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */; };
 		84C4FFBD2A42E31F001068B5 /* Moya+Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */; };
 		84C4FFBE2A42E31F001068B5 /* Single+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB42A42E31F001068B5 /* Single+Cache.swift */; };
 		84C4FFBF2A42E31F001068B5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB52A42E31F001068B5 /* Configuration.swift */; };
@@ -377,6 +381,10 @@
 		847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserModel.swift; sourceTree = "<group>"; };
 		847CF9B52A53F7C700AE7CBB /* ServerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerModels.swift; sourceTree = "<group>"; };
 		847CF9B82A54021200AE7CBB /* SmartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartService.swift; sourceTree = "<group>"; };
+		847CF9BA2A5652E800AE7CBB /* TCDrawSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCDrawSuccessView.swift; sourceTree = "<group>"; };
+		847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
+		847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMultiCell.swift; sourceTree = "<group>"; };
+		847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSimpleCell.swift; sourceTree = "<group>"; };
 		84B06F902A4EE030009708E4 /* btccurrency-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "btccurrency-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya+Cacheable.swift"; sourceTree = "<group>"; };
 		84C4FFB42A42E31F001068B5 /* Single+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Cache.swift"; sourceTree = "<group>"; };
@@ -480,6 +488,7 @@
 				84D46A162A4BD75A00129E92 /* ProfileIndexViewController.swift */,
 				84D46A122A4BD4EC00129E92 /* ProfileAboutViewController.swift */,
 				84D46A142A4BD50400129E92 /* ProfilePrivacyViewController.swift */,
+				847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -506,6 +515,8 @@
 				832FE1F52913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.swift */,
 				832FE1F62913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.xib */,
 				84D46A182A4BD8B400129E92 /* ProfileIndexCell.swift */,
+				847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */,
+				847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -892,6 +903,7 @@
 			children = (
 				847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */,
 				847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */,
+				847CF9BA2A5652E800AE7CBB /* TCDrawSuccessView.swift */,
 			);
 			path = Spin;
 			sourceTree = "<group>";
@@ -1288,6 +1300,7 @@
 				84D46A1F2A4C266300129E92 /* RedeemPointViewController.swift in Sources */,
 				833BB90D2907948A00B9B831 /* Token.swift in Sources */,
 				831113822922150D003E65F6 /* CurrencyDetailUtil.swift in Sources */,
+				847CF9BD2A56A11300AE7CBB /* QuestionsViewController.swift in Sources */,
 				83BB5F6C29697A0E00AD1B5C /* SocketAPI.swift in Sources */,
 				83BB5F72296A67DC00AD1B5C /* Observable+WSResponse.swift in Sources */,
 				8352BD8B290296E700A61199 /* CurrencySpecsSwitchView.swift in Sources */,
@@ -1325,6 +1338,7 @@
 				8352BD9329037EF600A61199 /* UIView+Extension.swift in Sources */,
 				847CF9AE2A52C94100AE7CBB /* TCDrawPrizeView.swift in Sources */,
 				84C4FFC62A42E31F001068B5 /* CacheManager.swift in Sources */,
+				847CF9BF2A56A32500AE7CBB /* QuestionMultiCell.swift in Sources */,
 				83BB5F70296A63F100AD1B5C /* SocketProvider+Rx.swift in Sources */,
 				84F89A912A4ACB27000936E0 /* CurrencySheetViewController.swift in Sources */,
 				833BB915290796BA00B9B831 /* Expression.swift in Sources */,
@@ -1345,6 +1359,7 @@
 				833BB90F290794A500B9B831 /* TokenKind.swift in Sources */,
 				8352BD6F2900E25B00A61199 /* CalculatorKey.swift in Sources */,
 				833BB9222907B28400B9B831 /* Evaluator.swift in Sources */,
+				847CF9C12A56A33600AE7CBB /* QuestionSimpleCell.swift in Sources */,
 				84C4FFBD2A42E31F001068B5 /* Moya+Cacheable.swift in Sources */,
 				84C4FFC12A42E31F001068B5 /* CustomJsonAdaptor.swift in Sources */,
 				8352BD732900E25B00A61199 /* CurrencyDetailViewController.swift in Sources */,
@@ -1352,6 +1367,7 @@
 				8352BD6D2900E25B00A61199 /* CurrencyRate.swift in Sources */,
 				8330E1EF290BE5FB0026CE4B /* SwitchCurrencyItemView.swift in Sources */,
 				833BB91D29079A1500B9B831 /* ParserError.swift in Sources */,
+				847CF9BB2A5652E800AE7CBB /* TCDrawSuccessView.swift in Sources */,
 				832FE20629156949004C27B6 /* TextFieldInputView.swift in Sources */,
 				832FE1D12912D6AB004C27B6 /* Observable+Operators.swift in Sources */,
 				833BB9172907971000B9B831 /* Statement.swift in Sources */,

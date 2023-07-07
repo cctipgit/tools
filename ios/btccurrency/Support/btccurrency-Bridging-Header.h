@@ -11,7 +11,7 @@
 #import "React/RCTUIManager.h" // required for calling methods on ViewManagers
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
+#import <UICollectionViewLeftAlignedLayout.h>
 #endif
 
 

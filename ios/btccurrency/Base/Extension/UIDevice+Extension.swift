@@ -15,6 +15,14 @@ extension UIDevice {
         return statusBarManager.statusBarFrame.height
     }
     
+    static func kSafeBottomHeight() -> CGFloat {
+        var height: CGFloat = 0
+        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            height = keyWindow.safeAreaInsets.bottom
+        }
+        return height
+    }
+    
     static func kScreenWidth() -> CGFloat {
         return UIScreen.main.bounds.width
     }

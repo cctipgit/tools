@@ -618,6 +618,7 @@ PODS:
   - TBEmptyDataSet (3.0)
   - Then (3.0.0)
   - Toast-Swift (5.0.1)
+  - UICollectionViewLeftAlignedLayout (1.1.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -726,6 +727,7 @@ DEPENDENCIES:
   - TBEmptyDataSet (= 3.0)
   - Then (= 3.0.0)
   - Toast-Swift (= 5.0.1)
+  - UICollectionViewLeftAlignedLayout (= 1.1.0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -785,6 +787,7 @@ SPEC REPOS:
     - TBEmptyDataSet
     - Then
     - Toast-Swift
+    - UICollectionViewLeftAlignedLayout
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -976,9 +979,10 @@ SPEC CHECKSUMS:
   TBEmptyDataSet: 349add79095bf66d0d11ef9464edd1a8cf5354b5
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  UICollectionViewLeftAlignedLayout: 7ac8b0a34e5c8cf41445b2dd19438c8e9aeca521
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: adf1b8011de74cf207c64ccccc97331b4c65939f
+PODFILE CHECKSUM: b326a254f7bbd2d2206d3c9edf9c3fb0e9faf896
 
 COCOAPODS: 1.12.1

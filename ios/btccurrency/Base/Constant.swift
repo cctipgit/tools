@@ -19,3 +19,4 @@ let compareCurrencyDestinationCacheKey = "compareCurrencyDestinationCacheKey"
 let widgetDidTappedConvertLineNotification = "widgetDidTappedConvertLineNotification"
 let widgetDidTappedQuotationNotification = "widgetDidTappedQuotationNotification"
 
+let drawPrizeChanceChangedNofification = "drawPrizeChanceChangedNofification"

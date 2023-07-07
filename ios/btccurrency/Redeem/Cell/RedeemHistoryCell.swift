@@ -77,8 +77,8 @@ class RedeemHistoryCell: UITableViewCell {
     
     // MARK: Public Method
     public func setData(item: RedeemHistoryItem) {
-        titleLabel.text = "5 USDT"
-        timeLabel.text = "2023.06.19 16:16:16"
+        titleLabel.text = item.title
+        timeLabel.text = TimeInterval(item.time / 1000).customRedeemHistoryTime()
         statusLabel.text = "Successful"
         statusLabel.textColor = .primaryPositive
     }

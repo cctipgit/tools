@@ -26,6 +26,17 @@ extension String {
 }
 
 extension TimeInterval {
+    func customPointDetailTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
+        let date = Date(timeIntervalSince1970: self)
+        return dateFormatter.string(from: date)
+    }
+    
+    func customRedeemHistoryTime() -> String {
+        return self.customPointDetailTime()
+    }
+    
     func customJoinTime() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"

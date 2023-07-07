@@ -41,8 +41,6 @@ class RedeemIndexViewController: YBaseViewController {
         v.text = "Total points".localized()
     }
     
-    private let pointContainer = UIView()
-    
     private let pointIconView = UIImageView().then { v in
         v.image = UIImage(named: "n_point_icon")
     }
@@ -143,26 +141,21 @@ class RedeemIndexViewController: YBaseViewController {
             make.top.equalToSuperview().offset(16)
             make.left.right.equalToSuperview()
         }
-        pointContainer.snp.makeConstraints { make in
-            make.height.equalTo(52)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(pointTitleLabel.snp.bottom).offset(4)
-            make.width.greaterThanOrEqualTo(60)
-        }
         pointIconView.snp.makeConstraints { make in
             make.size.equalTo(34)
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview()
+            make.centerY.equalTo(pointLabel)
+            make.right.equalTo(pointLabel.snp.left).offset(-8)
         }
         pointLabel.snp.makeConstraints { make in
-            make.left.equalTo(pointIconView.snp.right).offset(8)
-            make.top.bottom.equalToSuperview()
             make.width.greaterThanOrEqualTo(40)
+            make.centerX.equalToSuperview().offset(20)
+            make.height.equalTo(52)
+            make.top.equalTo(pointTitleLabel.snp.bottom).offset(4)
         }
         iconContainer.snp.makeConstraints { make in
             make.height.equalTo(60)
             make.centerX.equalToSuperview()
-            make.top.equalTo(pointContainer.snp.bottom).offset(16)
+            make.top.equalTo(pointLabel.snp.bottom).offset(16)
             make.width.equalTo(240)
         }
         detailIcon.snp.makeConstraints { make in
@@ -210,10 +203,10 @@ class RedeemIndexViewController: YBaseViewController {
         topBGView.addSubviews([vcTitle, topContentBgView])
         topContentBgView.addSubviews([
             pointTitleLabel,
-            pointContainer,
+            pointIconView,
+            pointLabel,
             iconContainer
         ])
-        pointContainer.addSubviews([pointIconView, pointLabel])
         iconContainer.addSubviews([detailIcon, detailLabel, sepLine, historyIcon, historyLabel, detailBtn, historyBtn])
         detailBtn.rx.tap.subscribe(onNext: { _ in
             let vc = RedeemPointViewController()

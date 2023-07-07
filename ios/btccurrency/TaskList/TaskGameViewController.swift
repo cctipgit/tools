@@ -10,6 +10,7 @@ import SnapKit
 import Then
 import RxCocoa
 import RxSwift
+import Toast_Swift
 
 class TaskGameViewController: YBaseViewController {
     private let fullBGView = UIImageView().then { v in
@@ -51,7 +52,11 @@ class TaskGameViewController: YBaseViewController {
     private let spinBtn = UIButton().then { v in
         v.setImage(UIImage(named: "n_spin_normal"), for: .normal)
         v.setImage(UIImage(named: "n_spin_highlighted"), for: .disabled)
+        v.isHidden = true
     }
+    
+    private var pinList: [PinListItem] = [PinListItem]()
+    private var pinResult: Int?
     
     // MARK: Super Method
     override func viewDidLoad() {
@@ -65,6 +70,7 @@ class TaskGameViewController: YBaseViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
+        
         fullBGView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -130,24 +136,72 @@ class TaskGameViewController: YBaseViewController {
         })
         .disposed(by: rx.disposeBag)
         
-        spinBtn.rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let self = self else { return }
-            self.drawPrizeView.startDrawPrizeAction()
+        spinBtn.rx.tap
+            .throttle(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.p_startDraw()
+            })
+            .disposed(by: rx.disposeBag)
+        p_refresh()
+    }
+    
+    private func p_startDraw() {
+        SmartService().pinCheck()
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                guard let res = result, res.isSuccess else {
+                    self.showAlert(message: result?.msg ?? "")
+                    return
+                }
+                guard let pinItem = pinList.filter({ $0.pinId == res.data.pinId }).first, let pinIndex = pinList.firstIndex(where: { item in
+                    return item.pinId == pinItem.pinId
+                }) else {
+                    self.showAlert(message: "got no point")
+                    return
+                }
+                self.pinResult = pinIndex
+                self.drawPrizeView.startDrawPrizeAction()
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func p_refresh() {
+        let service = SmartService()
+        service.userProfile()
+            .retry()
+            .subscribe(onNext: { [weak self] result in
+                guard let res = result, res.isSuccess, let self = self else { return }
+                self.changeLeftLabel.text = "Chance left".localized() + " " + "\(res.data.pinChance)"
+                self.pointLabel.text = "\(res.data.point)".decimalFormat()
+                self.spinBtn.isEnabled = !(res.data.pinChance == 0)
+                self.spinBtn.isHidden = false
+                
         })
         .disposed(by: rx.disposeBag)
         
-        setData()
+        service.pinList()
+            .retry()
+            .subscribe(onNext: { [weak self] result in
+                guard let res = result, res.isSuccess, let self = self else { return }
+                self.pinList = (res.list as? [PinListItem]) ?? [PinListItem]()
+                self.drawPrizeView.reloadData()
+        })
+        .disposed(by: rx.disposeBag)
     }
     
-    private func setData() {
-        changeLeftLabel.text = "Chance left 10"
-        pointLabel.text = "1,000"
+    private func p_share(content: String) {
+        self.share(text: content, image: nil, url: nil, completion: {
+            self.view.hideAllToasts()
+            ToastManager.shared.isTapToDismissEnabled = true
+        })
     }
 }
 
 extension TaskGameViewController: TCDrawPrizeDataSource {
     func tcDrawPrize(prizeView: TCDrawPrizeView, descAt index: NSInteger) -> String? {
-        return "25 PTS"
+        guard pinList.count > index else { return nil }
+        return pinList.reversed()[index].pinRewardDesc
     }
     
     func tcDrawPrize(prizeView: TCDrawPrizeView, imageAt index: NSInteger) -> UIImage? {
@@ -185,32 +239,37 @@ extension TaskGameViewController: TCDrawPrizeDataSource {
 extension TaskGameViewController: TCDrawPrizeDelegate {
 
     func tcDrawPrizeStartAction(prizeView: TCDrawPrizeView) {
-        //这里是本地测试的 随机 奖品 index
-        //具体可根据业务数据，定位到index (顺时针顺序)
-        let prizeIndex = Int(arc4random() % (UInt32(gridCount)))
-        print("random index:\(prizeIndex)")
-        //执行动画
+        guard let prizeIndex = self.pinResult else { return }
         self.drawPrizeView.drawPrize(at: NSInteger(prizeIndex), reject: {
             [unowned self] reject in
             if !reject {
                 self.drawEnd = false
             }
         })
-        //不关注是否正在执行动画，直接调用这个
-        //self.drawPrizeView.drawPrize(at: NSInteger(prizeIndex))
     }
-    ///动画执行结束
+
     func tcDrawPrizeEndAction(prizeView: TCDrawPrizeView, prize index: NSInteger) {
-        //本地测试
         self.drawEnd = true
-        var value = ""
-        if index == 3 {
-            value = "已抽完"
-        } else if index == (self.gridCount - 1) {
-            value = "谢谢参与"
-        } else {
-            value = "\((index + 1) % 7)"
-        }
-        print("Index:\(index), 奖品:\(value)")
+        self.p_refresh()
+        
+        guard let index = self.pinResult else { return }
+        guard self.pinList.count > index else { return }
+        ToastManager.shared.isTapToDismissEnabled = false
+        let alertView = TCDrawSuccessView(iconName: "n_ring_" + "\(index + 1)", desc: self.pinList[index].pinRewardDesc)
+        alertView.prizeShareBtn.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.p_share(content: self.pinList[index].pinRewardDesc)
+            })
+            .disposed(by: rx.disposeBag)
+        alertView.closeBtn.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.view.hideAllToasts()
+                ToastManager.shared.isTapToDismissEnabled = true
+            })
+            .disposed(by: rx.disposeBag)
+        
+        self.view.showToast(alertView, duration: TimeInterval(Int.max), position: .center)
     }
 }

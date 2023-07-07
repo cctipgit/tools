@@ -137,6 +137,14 @@ class TaskIndexViewController: YBaseViewController {
                 }
             })
             .disposed(by: rx.disposeBag)
+        NotificationCenter.default
+                .rx
+                .notification(Notification.Name(drawPrizeChanceChangedNofification))
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self else { return }
+                    self.p_refresh()
+                })
+                .disposed(by: rx.disposeBag)
         p_setTaskCount(done: 0, total: 0)
         p_refresh()
     }
@@ -175,18 +183,19 @@ class TaskIndexViewController: YBaseViewController {
     private func p_finishTask(sender: UIButton) {
         guard data.count > sender.tag else { return }
         let data = data[sender.tag]
-        self.share(text: data.taskName, image: nil, url: URL(string: data.params))
-        SmartService().taskCheck(param: data.params, taskId: data.taskId)
-            .subscribe(onNext: { [weak self ] result in
-                guard let self = self else { return }
-                self.view.makeToast(result?.msg ?? "", duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
-                self.view.hideAllToasts()
-                if let res = result, res.isSuccess {
-                    self.p_refresh()
+        self.share(text: data.taskName, image: nil, url: URL(string: data.params)) {
+            SmartService().taskCheck(param: data.params, taskId: data.taskId)
+                .subscribe(onNext: { [weak self ] result in
+                    guard let self = self else { return }
+                    self.view.makeToast(result?.msg ?? "", duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
+                    self.view.hideAllToasts()
+                    if let res = result, res.isSuccess {
+                        self.p_refresh()
+                    }
                 }
-            }
-        })
-        .disposed(by: rx.disposeBag)
+            })
+                .disposed(by: self.rx.disposeBag)
+        }
     }
 }
 

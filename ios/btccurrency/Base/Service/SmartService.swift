@@ -14,6 +14,8 @@ import MJExtension
 enum SmartServiceAPI {
     case pinCheck(Void)
     case pinList(Void)
+    case quizQuestions(Void)
+    case quizSubmitAnswers(answers: [QuizAnswerListItem])
     case redeemHistory(page: Int)
     case redeemList(Void)
     case redeemPointList(page: Int)
@@ -34,6 +36,10 @@ extension SmartServiceAPI: Moya.TargetType {
             return "/pin/check"
         case .pinList(_):
             return "/pin/list"
+        case .quizQuestions(_):
+            return "/quiz/questions"
+        case .quizSubmitAnswers(answers: _):
+            return "/quiz/submit_answer"
         case .redeemHistory(_):
             return "/redeem/history"
         case .redeemList(_):
@@ -68,6 +74,10 @@ extension SmartServiceAPI: Moya.TargetType {
             return .requestParameters(parameters: [String: String](), encoding: JSONEncoding.default)
         case .pinList(_):
             return .requestParameters(parameters: [String: String](), encoding: JSONEncoding.default)
+        case .quizQuestions(_):
+            return .requestParameters(parameters: [String: String](), encoding: JSONEncoding.default)
+        case let .quizSubmitAnswers(answers):
+            return .requestParameters(parameters: ["answers": answers.map({ $0.mj_JSONObject() })], encoding: JSONEncoding.default)
         case let .redeemHistory(page):
             return .requestParameters(parameters: ["page": page], encoding: JSONEncoding.default)
         case .redeemList(_):
@@ -91,7 +101,6 @@ class SmartService {
     func pinCheck() -> Observable<ResultPinCheck?> {
         return SmartServiceAPI
             .pinCheck(Void())
-            .cache
             .request()
             .map({ ResultPinCheck.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -100,16 +109,30 @@ class SmartService {
     func pinList() -> Observable<ResultPinList?> {
         return SmartServiceAPI
             .pinList(Void())
-            .cache
             .request()
             .map({ ResultPinList.mj_object(withKeyValues: $0.data) })
             .asObservable()
     }
     
+    func quizQuestions() -> Observable<ResultQuizQuestions?> {
+        return SmartServiceAPI
+            .quizQuestions(Void())
+            .request()
+            .map({ ResultQuizQuestions.mj_object(withKeyValues: $0.data) })
+            .asObservable()
+    }
+    
+    func quizSubmit(answers: [QuizAnswerListItem]) -> Observable<ResultQuizSubmit?> {
+        return SmartServiceAPI
+            .quizSubmitAnswers(answers: answers)
+            .request()
+            .map({ ResultQuizSubmit.mj_object(withKeyValues: $0.data) })
+            .asObservable()
+    }
+
     func redeemHistory(page: Int) -> Observable<ResultRedeemHistory?> {
         return SmartServiceAPI
             .redeemHistory(page: page)
-            .cache
             .request()
             .map({ ResultRedeemHistory.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -118,7 +141,6 @@ class SmartService {
     func redeemList() -> Observable<ResultRedeemList?> {
         return SmartServiceAPI
             .redeemList(Void())
-            .cache
             .request()
             .map({ ResultRedeemList.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -127,7 +149,6 @@ class SmartService {
     func redeemPointList(page: Int) -> Observable<ResultPointList?> {
         return SmartServiceAPI
             .redeemPointList(page: page)
-            .cache
             .request()
             .map({ ResultPointList.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -136,7 +157,6 @@ class SmartService {
     func redeemRedeem(rid: String) -> Observable<ResultRedeemRedeem?> {
         return SmartServiceAPI
             .redeemRedeem(rid: rid)
-            .cache
             .request()
             .map({ ResultRedeemRedeem.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -145,7 +165,6 @@ class SmartService {
     func taskCheck(param: String, taskId: String) -> Observable<ResultTaskCheck?> {
         return SmartServiceAPI
             .taskCheck(param: param, taskId: taskId)
-            .cache
             .request()
             .map({ ResultTaskCheck.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -154,7 +173,6 @@ class SmartService {
     func taskList() -> Observable<ResultTaskList?> {
         return SmartServiceAPI
             .taskList(Void())
-            .cache
             .request()
             .map({ ResultTaskList.mj_object(withKeyValues: $0.data) })
             .asObservable()
@@ -163,7 +181,6 @@ class SmartService {
     func userProfile() -> Observable<ResultUserProfile?> {
         return SmartServiceAPI
             .userProfile(Void())
-            .cache
             .request()
             .map({ ResultUserProfile.mj_object(withKeyValues: $0.data) })
             .asObservable()

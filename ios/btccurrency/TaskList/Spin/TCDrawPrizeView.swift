@@ -112,6 +112,7 @@ class TCDrawPrizeView: UIView {
     
     public func startDrawPrizeAction() {
         self.reset()
+        NotificationCenter.default.post(name: Notification.Name(drawPrizeChanceChangedNofification), object: nil)
         delegate?.tcDrawPrizeStartAction(prizeView: self)
     }
     

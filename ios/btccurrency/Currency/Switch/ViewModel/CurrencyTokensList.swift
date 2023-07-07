@@ -194,4 +194,21 @@ class CurrencyTokensList: NSObject {
         req.lang = "" // 默认语言
         return req
     }
+    
+    func filterCustomData(type: SwitchVCSelectType) -> [SwitchCurrencyGroup] {
+        self.loadCache()
+        var groups = [SwitchCurrencyGroup]()
+        datasource.value.forEach { gp in
+            let group = gp
+            if type == .selectCurrency {
+                group.items = gp.items.filter({ $0.response.currencyType == "currency" })
+            } else {
+                group.items = gp.items.filter({ $0.response.currencyType != "currency" })
+            }
+            if group.items.count > 0 {
+                groups.append(group)
+            }
+        }
+        return groups
+    }
 }

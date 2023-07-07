@@ -77,7 +77,7 @@ class RedeemPointViewController: YBaseViewController {
                     self.tableView.mj_header?.endRefreshing()
                     return
                 }
-                self.totalPointLabel.text = "Total points".localized() + ":" + "\(res.totalPoints)".decimalFormat()
+                self.totalPointLabel.text = "Total points".localized() + ": " + "\(res.totalPoints)".decimalFormat()
                 self.data = (res.list as? [PointListItem]) ?? [PointListItem]()
                 self.tableView.reloadData()
                 self.tableView.mj_header?.endRefreshing()

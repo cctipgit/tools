@@ -45,9 +45,7 @@ class SwitchCurrencyViewModel: NSObject {
                     }
                 }
             }
-            return [SwitchCurrencyGroup(header: "",
-                                        items: searchResult,
-                                        sectionType: .fixed)]
+            return [SwitchCurrencyGroup(header: "", items: searchResult, sectionType: .fixed)]
         }
         .bind(to: searchResult)
         .disposed(by: rx.disposeBag)
@@ -56,7 +54,7 @@ class SwitchCurrencyViewModel: NSObject {
             .take(1)
             .delay(.milliseconds(100), scheduler: MainScheduler())
             .subscribe(onNext: { [weak self] in
-                self?.datasource.accept(CurrencyTokensList.shared.datasource.value)
+                self?.datasource.accept(CurrencyTokensList.shared.filterCustomData(type: .selectToken))
             })
             .disposed(by: rx.disposeBag)
         return Output(datasource: datasource,

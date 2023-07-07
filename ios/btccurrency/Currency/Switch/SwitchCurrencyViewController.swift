@@ -66,7 +66,7 @@ class SwitchCurrencyViewController: YBaseViewController {
         btn.setAttributedTitle( SwitchVCSelectType.selectToken.attString(), for: .normal)
         btn.titleLabel?.attributedText = SwitchVCSelectType.selectToken.attString()
     }
-    
+ 
     override func makeUI() {
         view.backgroundColor = .backgroundColor
         navigationView.backgroundColor = .backgroundColor
@@ -252,7 +252,6 @@ class SwitchCurrencyViewController: YBaseViewController {
             })
             .disposed(by: rx.disposeBag)
         
-
         Observable.zip(tableView.rx.itemSelected,
                        tableView.rx.modelSelected(SwitchCurrencyCellViewModel.self))
             .subscribe(onNext: { [weak self] indexpath,item in
@@ -286,7 +285,6 @@ class SwitchCurrencyViewController: YBaseViewController {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     return
                 }
-
                 self.didSelectItemHandler.onNext(item.response)
                 CurrencyTokensList.shared.insertFrequent(viewModel: item)
                 if self.presentingViewController != nil {
@@ -294,7 +292,6 @@ class SwitchCurrencyViewController: YBaseViewController {
                 } else {
                     self.navigationController?.popViewController(animated: true)
                 }
-
             })
             .disposed(by: rx.disposeBag)
 
@@ -424,5 +421,6 @@ extension SwitchCurrencyViewController: CurrencySheetDelegate {
         switchBtn.setAttributedTitle(type.attString(), for: .normal)
         switchBtn.setAttributedTitle(type.attString(), for: .highlighted)
         self.sheet?.animateOut()
+        self.viewModel.datasource.accept(CurrencyTokensList.shared.filterCustomData(type: type))
     }
 }
