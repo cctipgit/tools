@@ -1,6 +1,7 @@
 package com.hash.coinconvert.ui.activity;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.duxl.baselib.utils.EmptyUtils;
