@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Chuyển đổi tiền tệ</string>
+    <string name="search_currency_hint">Tiền tệ hoặc Quốc gia/Khu vực</string>
+    <string name="search_currency_empty_msg">Không tìm thấy</string>
+    <string name="status">THỐNG KÊ</string>
+    <string name="high">Cao</string>
+    <string name="low">Thấp</string>
+    <string name="average">Trung bình</string>
+    <string name="change">Biến động</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Tất cả</string>
+    <string name="quote_currency">Báo giá tiền tệ</string>
+    <string name="converter_setting">Cài đặt chuyển đổi</string>
+    <string name="default_currency_value">Giá trị tiền tệ mặc định</string>
+    <string name="local_currency">Việt Nam đồng</string>
+    <string name="currency_symbol">Biểu tượng tiền tệ</string>
+    <string name="set_decimical_digits">Cài đặt Decimal Digits</string>
+    <string name="more_settings">Thêm cài đặt</string>
+    <string name="restore_default_currency_list">Khôi phục danh sách tiền tệ mặc định</string>
+    <string name="legal_tender">Đồng tiền pháp định</string>
+    <string name="cryptocurrency">Tiền điện tử</string>
+    <string name="none">Không có</string>
+    <string name="plugin">Plugin</string>
+    <string name="quote_color">Chọn lựa màu sắc</string>
+    <string name="keyboard_sound">Âm thanh bàn phím</string>
+    <string name="red_rise_green_fall">đỏ tăng, xanh giảm</string>
+    <string name="green_rise_red_fall">xanh tăng, đỏ giảm</string>
+    <string name="restore_curreny_list_msg">Bạn có muốn khôi phục danh sách mặc định?</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="recovery">Khôi phục</string>
+    <string name="rate_detail">Tỷ lệ chi tiết</string>
+    <string name="january">Tháng 1</string>
+    <string name="february">Tháng 2</string>
+    <string name="march">Tháng 3</string>
+    <string name="april">Tháng 4</string>
+    <string name="may">Tháng 5</string>
+    <string name="june">Tháng 6</string>
+    <string name="july">Tháng 7</string>
+    <string name="august">Tháng 8</string>
+    <string name="september">Tháng 9</string>
+    <string name="october">Tháng 10</string>
+    <string name="november">Tháng 11</string>
+    <string name="december">Tháng 12</string>
+    <string name="frequently_used">Thường xuyên sử dụng</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Nâng cấp phiên bản</string>
+    <string name="upgrade">Nâng cấp</string>
+    <string name="location_services" comment="location_services">Dịch vụ định vị</string>
+    <string name="location_tips" comment="location_tips">Vui lòng mở \"Dịch vụ định vị\" trong cài đặt hệ thống để cho phép \"%s\" xác định vị trí của bạn.</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

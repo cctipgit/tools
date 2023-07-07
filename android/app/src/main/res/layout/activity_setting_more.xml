@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_plugin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:leftText="@string/plugin" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:layout_marginHorizontal="24dp"
+        android:background="@color/line_color" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_quote_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/quote_color"
+        app:rightText="Red rise green fall" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_keyboard_sound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/keyboard_sound"
+        app:showMore="false"
+        app:showSwitch="true" />
+
+</LinearLayout>

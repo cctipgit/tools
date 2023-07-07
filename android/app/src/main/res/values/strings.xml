@@ -1,3 +1,107 @@
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">CryptoVise</string>
+    <string name="app_slogan">Visualize the world of crypto</string>
+    <string name="switch_currency">Switch Currency</string>
+    <string name="search_currency_hint">Search</string>
+    <string name="search_currency_empty_msg">Currency not found</string>
+    <string name="status">STATS</string>
+    <string name="high">High</string>
+    <string name="low">Low</string>
+    <string name="average">Average</string>
+    <string name="change">Change</string>
+
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">All</string>
+    <string name="quote_currency">Quote Currency</string>
+    <string name="converter_setting">Converter Setting</string>
+    <string name="default_currency_value">Default Currency Value</string>
+    <string name="local_currency">Local Currency</string>
+    <string name="currency_symbol">Currency symbol</string>
+    <string name="set_decimical_digits">Set Decimical Digits</string>
+    <string name="more_settings">More Settings</string>
+    <string name="restore_default_currency_list">Restore the default curreny list</string>
+
+    <string name="legal_tender">Legal Tender</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="none">None</string>
+    <string name="plugin">Plugin</string>
+    <string name="quote_color">Price color</string>
+    <string name="keyboard_sound">Keyboard sound</string>
+    <string name="red_rise_green_fall">red up, green down</string>
+    <string name="green_rise_red_fall">green up, red down</string>
+    <string name="restore_curreny_list_msg">Restore the default curreny list?</string>
+    <string name="cancel">Cancel</string>
+    <string name="recovery">Recovery</string>
+    <string name="rate_detail">Rate Detail</string>
+
+
+    <string name="january">Jan</string>
+    <string name="february">Feb</string>
+    <string name="march">Mar</string>
+    <string name="april">Apr</string>
+    <string name="may">May</string>
+
+    <string name="june">Jun</string>
+    <string name="july">Jul</string>
+
+    <string name="august">Aug</string>
+    <string name="september">Sep</string>
+    <string name="october">Oct</string>
+    <string name="november">Nov</string>
+    <string name="december">Dec</string>
+    <string name="frequently_used">Frequently Used</string>
+
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Version Upgrade</string>
+    <string name="upgrade">Upgrade</string>
+
+    <string name="location_services">Location Services</string>
+    <string name="location_tips">Please open "Location services" in the system settings to allow \"%s\" to determine your location.</string>
+    <string name="ok">OK</string>
+    <string name="home_task_list_title">Task list</string>
+    <string name="home_task_list_time">%dh:%dm:%ds</string>
+    <string name="home_task_list_expired">Expired</string>
+    <string name="home_task_list_preview">Daily task %1$d/%2$d</string>
+    <string name="home_task_item_chance">+%d chance</string>
+    <string name="home_task_item_go">Go</string>
+    <string name="home_task_item_completed">Completed</string>
+    <string name="game_point">2,700</string>
+
+
+    <string-array name="names">
+        <item>5 PTS</item>
+        <item>25 PTS</item>
+        <item>30 PTS</item>
+        <item>35 PTS</item>
+        <item>10 PTS</item>
+        <item>50 PTS</item>
+        <item>20 PTS</item>
+        <item>20 PTS</item>
+    </string-array>
+
+    <string-array name="icons">
+        <item>ic_bracelet2</item>
+        <item>ic_bracele</item>
+        <item>ic_ring2</item>
+        <item>ic_goldchain</item>
+        <item>ic_bracele</item>
+        <item>ic_earing</item>
+        <item>ic_ring2</item>
+        <item>ic_ring2</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>#94D1FF</item>
+        <item>#B671FF</item>
+        <item>#94D1FF</item>
+        <item>#B671FF</item>
+        <item>#94D1FF</item>
+        <item>#B671FF</item>
+        <item>#94D1FF</item>
+        <item>#B671FF</item>
+    </string-array>
+
 </resources>

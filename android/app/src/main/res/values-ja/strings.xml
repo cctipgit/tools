@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">通貨の切り替え</string>
+    <string name="search_currency_hint">通貨または国/地域</string>
+    <string name="search_currency_empty_msg">通貨が見つかりません</string>
+    <string name="status">統計</string>
+    <string name="high">高</string>
+    <string name="low">低</string>
+    <string name="average">平均</string>
+    <string name="change">変更</string>
+    <string name="date_1_day">1日</string>
+    <string name="date_1_week">１週</string>
+    <string name="date_1_month">１ヵ月</string>
+    <string name="date_1_year">１年</string>
+    <string name="date_all">全て</string>
+    <string name="quote_currency">引用通貨</string>
+    <string name="converter_setting">コンバーターの設定</string>
+    <string name="default_currency_value">デフォルトの通貨価値</string>
+    <string name="local_currency">現地通貨</string>
+    <string name="currency_symbol">通貨記号</string>
+    <string name="set_decimical_digits">小数点以下の桁数を設定</string>
+    <string name="more_settings">その他の設定</string>
+    <string name="restore_default_currency_list">デフォルトの通貨リストに戻す</string>
+    <string name="legal_tender">法定通貨</string>
+    <string name="cryptocurrency">暗号通貨</string>
+    <string name="none">なし</string>
+    <string name="plugin">プラグイン</string>
+    <string name="quote_color">引用のカラー</string>
+    <string name="keyboard_sound">キーボードサウンド</string>
+    <string name="red_rise_green_fall">上昇は赤色、下降は緑色</string>
+    <string name="green_rise_red_fall">上昇は緑色、下降は赤色</string>
+    <string name="restore_curreny_list_msg">デフォルトの通貨リストに戻しますか？</string>
+    <string name="cancel">キャンセル</string>
+    <string name="recovery">リカバリー</string>
+    <string name="rate_detail">レートの詳細</string>
+    <string name="january">1月</string>
+    <string name="february">２月</string>
+    <string name="march">3月</string>
+    <string name="april">４月</string>
+    <string name="may">5月</string>
+    <string name="june">6月</string>
+    <string name="july">７月</string>
+    <string name="august">8月</string>
+    <string name="september">９月</string>
+    <string name="october">1０月</string>
+    <string name="november">１１月</string>
+    <string name="december">１2月</string>
+    <string name="frequently_used">使用頻度の高い</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">バージョンアップ</string>
+    <string name="upgrade">アップグレード</string>
+    <string name="location_services" comment="location_services">位置情報サービス</string>
+    <string name="location_tips" comment="location_tips">システム設定の「位置情報サービス」を開いて「%s」による位置情報の取得を許可してください。</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

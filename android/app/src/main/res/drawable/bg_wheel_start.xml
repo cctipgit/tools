@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceCycle">
+    <item android:drawable="@drawable/ic_wheel_start_disable" android:state_enabled="false" />
+    <item android:drawable="@drawable/ic_wheel_start_disable" android:state_pressed="true" />
+    <item android:drawable="@drawable/ic_wheel_start" android:state_pressed="false" />
+</selector>

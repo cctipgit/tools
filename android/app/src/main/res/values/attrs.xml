@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ConvertItemView">
+
+    </declare-styleable>
+    <declare-styleable name="NumberKeyboardView">
+
+    </declare-styleable>
+    <declare-styleable name="SettingItemView">
+        <attr name="leftText" format="string|reference" />
+        <attr name="rightText" format="string|reference" />
+        <attr name="showMore" format="boolean" />
+        <attr name="showPress" format="boolean" />
+        <attr name="showSwitch" format="boolean" />
+    </declare-styleable>
+
+    <attr name="fountType" format="enum">
+        <enum name="none" value="-1" />
+        <enum name="poppinsBold" value="0" />
+        <enum name="poppinsExtraLight" value="1" />
+        <enum name="poppinsLight" value="2" />
+        <enum name="poppinsMedium" value="3" />
+        <enum name="poppinsRegular" value="4" />
+        <enum name="poppinsSemiBold" value="5" />
+    </attr>
+
+    <declare-styleable name="AppTextView">
+        <attr name="fountType" />
+    </declare-styleable>
+
+    <declare-styleable name="AppEditText">
+        <attr name="fountType" />
+    </declare-styleable>
+
+    <declare-styleable name="ActionBar">
+        <attr name="abTitle" format="string|reference" />
+        <attr name="abBackIcon" format="reference" />
+        <attr name="abMenuIcon" format="reference" />
+        <attr name="abBackIconVisible" format="boolean" />
+        <attr name="abAutoPaddingTop" format="boolean" />
+        <attr name="abTitleGravity" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="abTitleColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="wheelSurfView">
+        <attr name="type" format="integer" />
+        <attr name="minTimes" format="integer" />
+        <attr name="typenum" format="integer" />
+        <attr name="vartime" format="integer" />
+        <attr name="deses" format="reference" />
+        <attr name="icons" format="reference" />
+        <attr name="colors" format="reference" />
+        <attr name="goImg" format="reference" />
+        <attr name="huanImg" format="reference" />
+        <attr name="mainImg" format="reference" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="ProfileSettingMenuItem">
+        <attr name="psm_Title" format="string|reference" />
+    </declare-styleable>
+    <declare-styleable name="SettingMenuItem">
+        <attr name="sm_title" format="string|reference" />
+    </declare-styleable>
+
+    <attr name="RoundButtonStyle" format="reference" />
+    <declare-styleable name="RoundButton">
+        <attr name="rb_background" format="color"/>
+        <attr name="rb_radius" format="dimension"/>
+        <attr name="rb_ripple" format="boolean"/>
+    </declare-styleable>
+</resources>

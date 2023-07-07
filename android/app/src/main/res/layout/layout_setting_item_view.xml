@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flyco.roundview.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:layout_marginHorizontal="8dp"
+    android:duplicateParentState="true"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="16dp"
+    app:rv_backgroundColor="@color/theme_bg"
+    app:rv_cornerRadius="16dp"
+    tools:context=".widget.SettingItemView">
+
+    <TextView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Default Currency Value"
+        android:textColor="@color/theme_text_color"
+        android:textSize="16sp"
+        app:fountType="poppinsRegular" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <com.hash.coinconvert.widget.AppTextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        tools:text="10"
+        android:textColor="@color/theme_text_color_alpha50"
+        android:textSize="16sp"
+        app:fountType="poppinsRegular" />
+
+    <Switch
+        android:id="@+id/v_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/switch_view_height"
+        android:switchMinWidth="@dimen/switch_view_width"
+        android:textOff=""
+        android:textOn=""
+        android:thumb="@drawable/switch_thumb_selector"
+        android:track="@drawable/switch_track_selector" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_more" />
+
+</com.flyco.roundview.RoundLinearLayout>

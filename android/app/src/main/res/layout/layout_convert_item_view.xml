@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.billy.android.swipe.SmartSwipeWrapper xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <com.hash.coinconvert.widget.AppTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/swipe_left_bg"
+        android:drawableRight="@mipmap/switch_horizontal"
+        android:drawablePadding="8dp"
+        android:gravity="right|center_vertical"
+        android:paddingRight="20dp"
+        android:text="@string/switch_currency"
+        android:textColor="@color/swipe_left_text"
+        android:textSize="16sp"
+        app:swipe_gravity="left" />
+
+    <FrameLayout
+        android:id="@+id/fl_root_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/v_rate_quote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/rate_quote_red"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:id="@+id/rl_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="24dp"
+            android:gravity="center_vertical"
+            android:paddingVertical="4dp">
+
+            <!--app:rv_backgroundColor="@color/convert_item_select_bg"
+            app:rv_cornerRadius="16dp"
+            app:rv_strokeColor="@color/theme_text_color_alpha5"
+            app:rv_strokeWidth="1dp"-->
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:scaleType="fitXY"
+                tools:background="#F00" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical">
+
+                <com.hash.coinconvert.widget.AppTextView
+                    android:id="@+id/tv_token"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/theme_text_color"
+                    android:textSize="16sp"
+                    tools:text="USD" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:src="@mipmap/ic_location"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <com.hash.coinconvert.widget.ShaderEditText
+                        android:id="@+id/et_formula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fadingEdgeLength="50dp"
+                        android:focusable="true"
+                        android:gravity="right"
+                        android:includeFontPadding="false"
+                        android:requiresFadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:textColor="@color/theme_text_color_alpha60"
+                        android:textColorHint="@color/theme_text_color_alpha40"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:textSize="12sp"
+                        android:visibility="invisible"
+                        app:fountType="poppinsRegular"
+                        tools:text="1+2"
+                        tools:visibility="visible" />
+
+                    <com.hash.coinconvert.widget.ShaderEditText
+                        android:id="@+id/et_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fadingEdgeLength="50dp"
+                        android:gravity="right"
+                        android:hint="0.00"
+                        android:includeFontPadding="false"
+                        android:requiresFadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:textColor="@color/theme_text_color"
+                        android:textColorHint="@color/theme_text_color_alpha40"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:textSize="20sp"
+                        app:fountType="poppinsRegular" />
+
+                    <com.hash.coinconvert.widget.AppTextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-4dp"
+                        android:gravity="right"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/theme_text_color_alpha60"
+                        android:textSize="10sp"
+                        app:fountType="poppinsRegular"
+                        tools:text="US Dollar $" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:id="@+id/v_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:background="#60000000" />
+    </FrameLayout>
+
+    <com.hash.coinconvert.widget.AppTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/swipe_right_bg"
+        android:drawableLeft="@mipmap/rate_detail"
+        android:drawablePadding="8dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:text="@string/rate_detail"
+        android:textColor="@color/swipe_right_text"
+        android:textSize="16sp"
+        app:swipe_gravity="right" />
+</com.billy.android.swipe.SmartSwipeWrapper>

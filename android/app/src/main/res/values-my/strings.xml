@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">ငွေကြေးပြောင်းလဲသည်</string>
+    <string name="search_currency_hint">ငွေကြေး သို့မဟုတ် နိုင်ငံ/ဒေသ</string>
+    <string name="search_currency_empty_msg">ငွေကြေးရှာမတွေ့ပါ</string>
+    <string name="status">STATS</string>
+    <string name="high">မြင့်သည်။</string>
+    <string name="low">နိမ့်သည်။</string>
+    <string name="average">ပျမ်းမျှ</string>
+    <string name="change">ပြောင်းလဲသည်</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">အားလုံး</string>
+    <string name="quote_currency">ကိုးကားငွေကြေး</string>
+    <string name="converter_setting">စက်တင်ချိန်ရန်</string>
+    <string name="default_currency_value">ပုံသေငွေကြေးတန်ဖိုး</string>
+    <string name="local_currency">ပြည်တွင်းငွေကြေး</string>
+    <string name="currency_symbol">ငွေကြေးသကေင်္ံတ</string>
+    <string name="set_decimical_digits">ဒသမဂဏန်းများသတ်မှတ်ပါ</string>
+    <string name="more_settings">နောက်ထပ်ဆက်တင်များ</string>
+    <string name="restore_default_currency_list">မူရင်းငွေကြေးစာရင်းကို ပြန်ယူပါ။</string>
+    <string name="legal_tender">တရားဝင်တင်ဒါ</string>
+    <string name="cryptocurrency">ခရစ်ပတို ငွေကြေးများ</string>
+    <string name="none">တခုမှ မဟုတ်ပါ</string>
+    <string name="plugin">ပလပ်အင်</string>
+    <string name="quote_color">ကိုးကားရောင်</string>
+    <string name="keyboard_sound">ကီးဘုတ်အသံ</string>
+    <string name="red_rise_green_fall">အနီရောင် မြင့်တက် အစိမ်းရောင် ကြွေကျခြင်း။</string>
+    <string name="green_rise_red_fall">အစိမ်းရောင် မြင့်တက် အနီရောင် ကြွေကျခြင်း။</string>
+    <string name="restore_curreny_list_msg">မူရင်းငွေကြေးစာရင်းကို ပြန်ယူလိုပါသလား။?</string>
+    <string name="cancel">ပယ်ဖျက်သည်</string>
+    <string name="recovery">ပြန်လည်ထူထောင်ရေး</string>
+    <string name="rate_detail">အချက်အလက်နှုန်းထား</string>
+    <string name="january">ဇန်နဝါရီ</string>
+    <string name="february">ဖေဖော်ဝါရီ</string>
+    <string name="march">မတ်လ</string>
+    <string name="april">ဧပြီလ</string>
+    <string name="may">မေ</string>
+    <string name="june">ဇွန်</string>
+    <string name="july">ဇူလိုင်လ</string>
+    <string name="august">သြဂုတ်လ</string>
+    <string name="september">စက်တင်ဘာ</string>
+    <string name="october">အောက်တိုဘာ</string>
+    <string name="november">နိုဝင်ဘာ</string>
+    <string name="december">ဒီဇင်ဘာ</string>
+    <string name="frequently_used">မကြာခဏအသုံးပြုသည်။</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">ဗားရှင်းအဆင့်မြှင့်တင်ခြင်း။</string>
+    <string name="upgrade">အဆင့်မြှင့်ပါ။</string>
+    <string name="location_services" comment="location_services">နေရာဒေသအလိုက်ဝန်ဆောင်မှုများ</string>
+    <string name="location_tips" comment="location_tips">သင်၏တည်နေရာကိုဆုံးဖြတ်ရန် \"%s\" ကိုခွင့်ပြုရန် စနစ်ဆက်တင်များတွင် \"တည်နေရာဝန်ဆောင်မှုများ\" ကိုဖွင့်ပါ.</string>
+    <string name="ok" comment="ok">ဟူတ်ပြီ</string>
+</resources>

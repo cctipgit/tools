@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height">
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/action_bar_setting"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@mipmap/action_bar_refresh"
+            android:drawablePadding="5dp"
+            android:textColor="@color/main_refresh_time_color"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:fountType="poppinsRegular"
+            tools:text="Last Update: 12:23, Today"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/action_bar_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:padding="10dp"
+            android:src="@mipmap/action_bar_settings" />
+
+    </RelativeLayout>
+
+    <com.hash.coinconvert.widget.ConvertGroupView
+        android:id="@+id/convert_group_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.hash.coinconvert.widget.NumberKeyboardView
+        android:id="@+id/num_keyboard_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:flexDirection="row"
+    android:id="@+id/date_switch_view_wrapper"
+    app:justifyContent="space_between"
+    android:layout_height="wrap_content">
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_day"
+        style="@style/switch_date_item_style"
+        app:rv_backgroundColor="@color/theme_text_color"
+        android:textColor="@color/theme_bg"
+        android:text="@string/date_1_day"/>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_week"
+        style="@style/switch_date_item_style"
+        android:textColor="@color/theme_text_color"
+        android:text="@string/date_1_week"/>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_month"
+        style="@style/switch_date_item_style"
+        android:textColor="@color/theme_text_color"
+        android:text="@string/date_1_month"/>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_year"
+        style="@style/switch_date_item_style"
+        android:textColor="@color/theme_text_color"
+        android:text="@string/date_1_year"/>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_all"
+        style="@style/switch_date_item_style"
+        android:textColor="@color/theme_text_color"
+        android:text="@string/date_all"/>
+
+</com.google.android.flexbox.FlexboxLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Изменить Валюту</string>
+    <string name="search_currency_hint">Валюта или Страна/Регион</string>
+    <string name="search_currency_empty_msg">Валюта не найдена</string>
+    <string name="status">Статистика</string>
+    <string name="high">Высокая</string>
+    <string name="low">Низкая</string>
+    <string name="average">Средняя</string>
+    <string name="change">Изменить</string>
+    <string name="date_1_day">1 День</string>
+    <string name="date_1_week">1 Неделя</string>
+    <string name="date_1_month">1 Месяц</string>
+    <string name="date_1_year">1 Год</string>
+    <string name="date_all">Все</string>
+    <string name="quote_currency">Валюта Котировки</string>
+    <string name="converter_setting">Настройка Конвертера</string>
+    <string name="default_currency_value">Значение Валюты по умолчанию</string>
+    <string name="local_currency">Местная Валюта</string>
+    <string name="currency_symbol">Символ валюты</string>
+    <string name="set_decimical_digits">Установка Десятичных Цифр</string>
+    <string name="more_settings">Дополнительные Настройки</string>
+    <string name="restore_default_currency_list">Восстановить список валют по умолчанию</string>
+    <string name="legal_tender">Законное Платёжное Средство</string>
+    <string name="cryptocurrency">Криптовалюта</string>
+    <string name="none">Отсутствует</string>
+    <string name="plugin">Плагин</string>
+    <string name="quote_color">Цвет Котировки</string>
+    <string name="keyboard_sound">Звук Клавиатуры</string>
+    <string name="red_rise_green_fall">красный рост, зеленый падение</string>
+    <string name="green_rise_red_fall">красный падение, зеленый рост</string>
+    <string name="restore_curreny_list_msg">Восстановить список валют по умолчанию?</string>
+    <string name="cancel">Отмена</string>
+    <string name="recovery">Восстановление</string>
+    <string name="rate_detail">Детали Тарифов</string>
+    <string name="january">Янв</string>
+    <string name="february">Фев</string>
+    <string name="march">Мар</string>
+    <string name="april">Апр</string>
+    <string name="may">Май</string>
+    <string name="june">Июн</string>
+    <string name="july">Июл</string>
+    <string name="august">Авг</string>
+    <string name="september">Септ</string>
+    <string name="october">Окт</string>
+    <string name="november">Ноя</string>
+    <string name="december">Дек</string>
+    <string name="frequently_used">Часто Используемые</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Обновление Версии</string>
+    <string name="upgrade">Обновление</string>
+    <string name="location_services" comment="location_services">Службы Геолокации</string>
+    <string name="location_tips" comment="location_tips">Пожалуйста, откройте «Службы геолокации» в системных настройках, чтобы разрешить «%s» определять ваше местоположение.</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

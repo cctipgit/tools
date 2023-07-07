@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">मुद्रा स्विच गर्नुहोस्</string>
+    <string name="search_currency_hint">मुद्रा वा देश/क्षेत्र</string>
+    <string name="search_currency_empty_msg">मुद्रा फेला परेन</string>
+    <string name="status">तथ्याङ्क</string>
+    <string name="high">उच्च</string>
+    <string name="low">कम</string>
+    <string name="average">औसत</string>
+    <string name="change">परिवर्तन</string>
+    <string name="date_1_day">१दिन</string>
+    <string name="date_1_week">१ हप्ता</string>
+    <string name="date_1_month">१ महिना</string>
+    <string name="date_1_year">१ वर्ष</string>
+    <string name="date_all">सबै</string>
+    <string name="quote_currency">उद्धरण मुद्रा</string>
+    <string name="converter_setting">कन्भर्टर सेटिङ</string>
+    <string name="default_currency_value">पूर्वनिर्धारित मुद्रा मूल्य</string>
+    <string name="local_currency">स्थानीय मुद्रा</string>
+    <string name="currency_symbol">मुद्रा प्रतीक</string>
+    <string name="set_decimical_digits">दशमलव अंकहरू सेट गर्नुहोस्</string>
+    <string name="more_settings">थप सेटिङहरू</string>
+    <string name="restore_default_currency_list">पूर्वनिर्धारित मुद्रा सूची पुनर्स्थापित गर्नुहोस्</string>
+    <string name="legal_tender">कानूनी टेन्डर</string>
+    <string name="cryptocurrency">क्रिप्टोकरेन्सी</string>
+    <string name="none">कुनै पनि छैन</string>
+    <string name="plugin">जोड्नु</string>
+    <string name="quote_color">उद्धरण रंग</string>
+    <string name="keyboard_sound">किबोर्ड ध्वनि</string>
+    <string name="red_rise_green_fall">रातो उदय हरियो पतन</string>
+    <string name="green_rise_red_fall">हरियो उदय रातो पतन</string>
+    <string name="restore_curreny_list_msg">पूर्वनिर्धारित मुद्रा सूची पुनर्स्थापित गर्ने?</string>
+    <string name="cancel">रद्द गर्नुहोस्</string>
+    <string name="recovery">रिकभरी</string>
+    <string name="rate_detail">दर विवरण</string>
+    <string name="january">जनवरी</string>
+    <string name="february">फेब्रुअरी</string>
+    <string name="march">मार्च</string>
+    <string name="april">अप्रिल</string>
+    <string name="may">सक्छ</string>
+    <string name="june">जुन</string>
+    <string name="july">जुलाइ</string>
+    <string name="august">अगस्ट</string>
+    <string name="september">सेप्टेम्बर</string>
+    <string name="october">अक्टोबर</string>
+    <string name="november">नोभेम्बर</string>
+    <string name="december">डिसेम्बर</string>
+    <string name="frequently_used">बारम्बार प्रयोग गरिन्छ</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">संस्करण अपग्रेड</string>
+    <string name="upgrade">अपग्रेड गर्नुहोस्</string>
+    <string name="location_services" comment="location_services">स्थान सेवाहरू</string>
+    <string name="location_tips" comment="location_tips">कृपया \"%s\" लाई तपाइँको स्थान निर्धारण गर्न अनुमति दिन प्रणाली सेटिङहरूमा \"स्थान सेवाहरू\" खोल्नुहोस्।</string>
+    <string name="ok" comment="ok">ठिक छ</string>
+</resources>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 789除 -->
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_7"
+        style="@style/keyboard_num_item_style"
+        android:text="7"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_8"
+        style="@style/keyboard_num_item_style"
+        android:text="8"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_7"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_9"
+        app:layout_constraintTop_toTopOf="@id/tv_num_7" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_9"
+        style="@style/keyboard_num_item_style"
+        android:text="9"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_8"
+        app:layout_constraintRight_toLeftOf="@id/tv_fun_div"
+        app:layout_constraintTop_toTopOf="@id/tv_num_7" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_fun_div"
+        style="@style/keyboard_fun_item_style"
+        android:text="÷"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_9"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_num_7" />
+
+
+    <!-- 456乘 -->
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_4"
+        style="@style/keyboard_num_item_style"
+        android:layout_marginTop="8dp"
+        android:text="4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_8"
+        app:layout_constraintTop_toBottomOf="@id/tv_num_7" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_5"
+        style="@style/keyboard_num_item_style"
+        android:text="5"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_4"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_6"
+        app:layout_constraintTop_toTopOf="@id/tv_num_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_6"
+        style="@style/keyboard_num_item_style"
+        android:text="6"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_5"
+        app:layout_constraintRight_toLeftOf="@id/tv_fun_times"
+        app:layout_constraintTop_toTopOf="@id/tv_num_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_fun_times"
+        style="@style/keyboard_fun_item_style"
+        android:text="×"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_6"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_num_4" />
+
+    <!-- 123减 -->
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_1"
+        style="@style/keyboard_num_item_style"
+        android:layout_marginTop="8dp"
+        android:text="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_2"
+        app:layout_constraintTop_toBottomOf="@id/tv_num_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_2"
+        style="@style/keyboard_num_item_style"
+        android:text="2"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_1"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_3"
+        app:layout_constraintTop_toTopOf="@id/tv_num_1" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_3"
+        style="@style/keyboard_num_item_style"
+        android:text="3"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_2"
+        app:layout_constraintRight_toLeftOf="@id/tv_fun_minus"
+        app:layout_constraintTop_toTopOf="@id/tv_num_1" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_fun_minus"
+        style="@style/keyboard_fun_item_style"
+        android:text="-"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_num_1" />
+
+    <!-- .0删除加 -->
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_dot"
+        style="@style/keyboard_num_item_style"
+        android:layout_marginTop="8dp"
+        android:text="."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_num_0"
+        app:layout_constraintTop_toBottomOf="@id/tv_num_1" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_num_0"
+        style="@style/keyboard_num_item_style"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_dot"
+        app:layout_constraintRight_toLeftOf="@id/fl_fun_del"
+        app:layout_constraintTop_toTopOf="@id/tv_num_dot" />
+
+    <com.flyco.roundview.RoundFrameLayout
+        android:id="@+id/fl_fun_del"
+        style="@style/keyboard_num_item_style"
+        app:layout_constraintLeft_toRightOf="@id/tv_num_0"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        app:layout_constraintRight_toLeftOf="@id/tv_fun_plus"
+        app:layout_constraintTop_toTopOf="@id/tv_num_dot">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            android:src="@mipmap/icon_del" />
+    </com.flyco.roundview.RoundFrameLayout>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_fun_plus"
+        style="@style/keyboard_fun_item_style"
+        android:text="+"
+        app:layout_constraintLeft_toRightOf="@id/fl_fun_del"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_num_dot" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

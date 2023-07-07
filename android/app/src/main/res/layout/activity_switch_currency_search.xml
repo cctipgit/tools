@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height">
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:text="@string/switch_currency"
+            android:textColor="@color/theme_text_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@id/iv_action_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:padding="10dp"
+            android:rotation="180"
+            android:src="@mipmap/ic_action_bar_back" />
+
+    </RelativeLayout>
+
+    <com.flyco.roundview.RoundFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        app:rv_backgroundColor="@color/search_edit_bg"
+        app:rv_cornerRadius="16dp"
+        app:rv_strokeColor="@color/search_edit_border"
+        app:rv_strokeWidth="1dp">
+
+        <com.duxl.baselib.widget.ClearEditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/search_currency_hint"
+            android:imeOptions="actionSearch"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:paddingLeft="16dp"
+            android:paddingRight="50dp"
+            android:singleLine="true"
+            android:textColor="@color/theme_text_color"
+            android:textColorHint="@color/search_edit_hint"
+            android:textSize="16sp"
+            app:clear_viewId="@+id/iv_edit_clear" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/ic_search" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_edit_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="6dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_edit_clear" />
+
+    </com.flyco.roundview.RoundFrameLayout>
+
+    <com.duxl.baselib.widget.SmartRecyclerView
+        android:id="@id/smart_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

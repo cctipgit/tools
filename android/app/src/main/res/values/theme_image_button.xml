@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ImageButton.DayNight">
+        <item name="android:tint">@color/theme_text_color</item>
+        <item name="tint">@color/theme_text_color</item>
+    </style>
+</resources>

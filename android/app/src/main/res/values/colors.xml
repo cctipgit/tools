@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange">#F9A01E</color>
+    <color name="red">#EE4900</color>
+    <color name="success">#53F245</color>
+    <color name="pending">#F2AA45</color>
+    <color name="fail">#F24E45</color>
+
+    <color name="colorPrimary">#7747F2</color>
+    <color name="colorDisable">#E4E4E7</color>
+
+    <!-- 主题背景色 -->
+    <color name="theme_bg">#FFFFFF</color>
+    <color name="global_background_color">@color/theme_bg</color>
+
+    <!-- 首页更新时间字体颜色 -->
+    <color name="main_refresh_time_color">#99000000</color>
+
+    <!-- 主题字体颜色（首页货币名称） -->
+    <color name="theme_text_color">#000000</color>
+    <color name="text_unselect">#A1A1AA</color>
+    <color name="title">#000000</color>
+    <color name="sub_title">#A1A1AA</color>
+
+    <!-- 主题输入框字体未输入颜色（首页货币数量输入框） -->
+    <color name="theme_text_color_alpha40">#66000000</color>
+
+    <!-- 主题字体次颜色（首页货币全称及符号） -->
+    <color name="theme_text_color_alpha60">#99000000</color>
+
+    <!-- 键盘数字按键背景色 -->
+    <color name="keyboard_num_item_bg">#F2F2F5</color>
+    <color name="keyboard_num_item_press_bg">#E4E5EB</color>
+    <!-- 键盘功能按键背景色 -->
+    <color name="keyboard_fun_item_bg">#1E1E1E</color>
+    <color name="keyboard_fun_item_press_bg">#3D3D3D</color>
+    <!-- 键盘功能按键文字颜色 -->
+    <color name="keyboard_fun_text_color">#B6CEFE</color>
+
+    <!-- 首页汇率换算item选中背景 -->
+    <color name="convert_item_select_bg">#f5f6f7</color>
+    <!-- 首页汇率换算item选中边框 -->
+    <color name="theme_text_color_alpha5">#0D000000</color>
+    <!-- 首页汇率换算光标颜色 -->
+    <color name="cursor_color">#B6CEFE</color>
+
+    <!-- 搜索框背景色 -->
+    <color name="search_edit_bg">#F2F2F5</color>
+    <!-- 搜索框背景色 -->
+    <color name="search_edit_border">#E7E7EC</color>
+    <!-- 搜索框提示文字颜色 -->
+    <color name="search_edit_hint">#919193</color>
+
+    <!-- 列表次文本颜色（搜索货币列表-货币简称颜色） -->
+    <color name="theme_text_color_alpha30">#4D000000</color>
+
+    <!-- 列表分割线颜色 -->
+    <color name="line_color">#1A000000</color>
+    <!-- 列表分割线颜色 -->
+    <color name="line_color2">#0D000000</color>
+
+    <!-- 汇率详情顶部币对底色 -->
+    <color name="rate_detail_currency_pair_bg">#33B6CEFE</color>
+    <!-- 汇率详情顶部币对边框 -->
+    <color name="rate_detail_currency_pair_border">#1AB6CEFE</color>
+    <!-- 汇率详情顶部币对方向 -->
+    <color name="rate_detail_currency_pair_to_bg">#66B6CEFE</color>
+    <!-- 汇率详情时间tab选中背景 -->
+    <color name="rate_detail_tab_selected_bg">#000000</color>
+    <!-- 汇率详情时间tab选中背景 -->
+    <color name="rate_detail_tab_selected_text">#B6CEFE</color>
+
+    <!-- 主题字体半透明颜色（设置右边字体颜色） -->
+    <color name="theme_text_color_alpha50">#80000000</color>
+    <!-- 设置item按压颜色 -->
+    <color name="setting_item_press">#f3f2f4</color>
+
+    <!-- 滑动开关track-关闭边框 -->
+    <color name="track_close_border">#000000</color>
+    <!-- 滑动开关track-关闭背景 -->
+    <color name="track_close_bg">#FFFFFF</color>
+    <!-- 滑动开关track-打开边框 -->
+    <color name="track_open_border">#000000</color>
+    <!-- 滑动开关track-打开背景 -->
+    <color name="track_open_bg">#000000</color>
+    <!-- 滑动开关thumb关闭背景 -->
+    <color name="thumb_close_bg">#000000</color>
+    <!-- 滑动开关thumb打开背景 -->
+    <color name="thumb_open_bg">#B6CEFE</color>
+
+    <!-- 设置列表选中项字体颜色 -->
+    <color name="list_checked">#4A80EE</color>
+    <color name="list_checked_alpha80">#CC4A80EE</color>
+    <color name="list_checked_alpha60">#994A80EE</color>
+
+    <!-- 首页侧滑view背景色 -->
+    <color name="swipe_left_bg">#1E1E1E</color>
+    <color name="swipe_left_text">#B6CEFE</color>
+    <color name="swipe_right_bg">#bbcdfa</color>
+    <color name="swipe_right_text">#000000</color>
+
+    <!-- 滑动关闭条 -->
+    <color name="slide_close_bar">#000000</color>
+
+    <!-- 图表顶部横向线条 -->
+    <color name="chart_red_h_border">#4DF24E45</color>
+    <color name="chart_green_h_border">#4D53F245</color>
+
+    <!-- 图表背景色 -->
+    <color name="chart_red_bg">#33FA5B64</color>
+    <color name="chart_green_bg">#33AAFA5B</color>
+
+    <!-- 图表选中线条色 -->
+    <color name="chart_select_line">#B6CEFE</color>
+    <!-- 图表选中圆点颜色 -->
+    <color name="chart_select_point1">#4D4A80EE</color>
+    <color name="chart_select_point2">#4A80EE</color>
+
+    <!-- 字符索引pop背景 -->
+    <color name="letter_pop_bg">#F5F6F7</color>
+    <color name="list_divider_line">#F4F4F6</color>
+
+    <color name="bg_secondary">#FAFAFA</color>
+    <color name="bg_divider">#F4F4F5</color>
+
+    <!--wheel view bg color-->
+    <color name="bg_stroke_wheel_button">#F9A01E</color>
+    <color name="bg_wheel_button">#8458F3</color>
+
+    <!--task list color-->
+    <color name="task_list_item_chance">#F9A01E</color>
+    <color name="bg_group_branding">#AB8DF7</color>
+</resources>
