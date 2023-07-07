@@ -23,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.http.SocketSender;
+import com.hash.coinconvert.ui2.fragment.RedeemFragment;
 import com.hash.coinconvert.utils.LocationUtils;
 import com.hash.coinconvert.vm.ProfileViewModel;
 
@@ -55,14 +56,17 @@ public class HomeActivity extends BaseActivity {
         controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                Log.d("onDestinationChanged", navDestination.getDisplayName());
-                if (isInNav(navDestination.getId())) {
+                if (isInNav(navDestination.getId()) && notTheSecondRedeemFragment(bundle)) {
                     bottomNavigationView.setVisibility(View.VISIBLE);
                 } else {
                     bottomNavigationView.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    private boolean notTheSecondRedeemFragment(Bundle bundle){
+        return bundle == null || !bundle.getBoolean(RedeemFragment.SHOW_NAVIGATION,false);
     }
 
     @Override

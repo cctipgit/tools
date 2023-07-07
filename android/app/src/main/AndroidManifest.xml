@@ -136,6 +136,7 @@
         <activity
             android:name=".ui2.activity.QAActivity"
             android:exported="true" />
+        <activity android:name="com.hash.coinconvert.ui2.activity.RedeemActivity" />
     </application>
 
 </manifest>

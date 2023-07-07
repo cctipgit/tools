@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.TextView;
 
 import androidx.annotation.IntDef;
@@ -98,15 +99,18 @@ public abstract class SearchCurrencyActivity extends BaseRecyclerViewActivity im
     private void actionBarAddArrow() {
         actionBar = findViewById(R.id.action_bar);
         if (actionBar != null) {
+            actionBar.setFitsSystemWindows(false);
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_arrow_down);
             int size = DisplayUtil.dip2px(this, 24f);
             drawable.setBounds(0, 0, size, size);
             actionBar.getTitleView().setCompoundDrawables(null, null, drawable, null);
             actionBar.getTitleView().setCompoundDrawablePadding(DisplayUtil.dip2px(this, 8f));
+            actionBar.getTitleView().setPadding(0,0,0,0);
             actionBar.getTitleView().setOnClickListener(v -> {
                 //show dialog
                 SelectTypeDialog.newInstance(selectType).show(getSupportFragmentManager(), "select_type");
             });
+            actionBar.setPadding(0,0,0,0);
         }
     }
 

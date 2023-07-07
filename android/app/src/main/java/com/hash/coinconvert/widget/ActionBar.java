@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -32,13 +31,14 @@ public class ActionBar extends ConstraintLayout {
     public static final int CENTER = 0;
     public static final int LEFT = 1;
     public static final int RIGHT = 2;
+    public static final int ICON_SIZE = 24;
 
     private ImageButton backView;
     private TextView titleView;
     private LinearLayout menusLayout;
     private int singleMenuViewId = 0;
-    private int titleLeftMargin;
     private boolean backViewVisible = true;
+    private boolean autoPaddingTop;
 
     @IntDef({CENTER, LEFT, RIGHT})
     public @interface Gravity {
@@ -60,13 +60,10 @@ public class ActionBar extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ActionBar);
         backViewVisible = ta.getBoolean(R.styleable.ActionBar_abBackIconVisible, true);
-        titleLeftMargin = DisplayUtil.dip2px(context, backViewVisible ? 56f : 20f);
-        initTitle(ta);
         initBackView(ta);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ta.getBoolean(R.styleable.ActionBar_abAutoPaddingTop, true)) {
-            setPadding(getPaddingLeft(), getPaddingTop() + getStatusBarHeight(), getPaddingRight(), getPaddingBottom());
-        }
+        initTitle(ta);
         ta.recycle();
+        setFitsSystemWindows(true);
     }
 
     private void initTitle(TypedArray ta) {
@@ -75,7 +72,8 @@ public class ActionBar extends ConstraintLayout {
         if (!TextUtils.isEmpty(title)) {
             ensureTitleView();
             titleView.setText(title);
-
+            int paddingV = DisplayUtil.dip2px(getContext(), 16f);
+            titleView.setPadding(0, paddingV, 0, paddingV);
             int titleColor = ta.getColor(R.styleable.ActionBar_abTitleColor, Color.TRANSPARENT);
             if (titleColor != Color.TRANSPARENT) {
                 titleView.setTextColor(titleColor);
@@ -84,9 +82,6 @@ public class ActionBar extends ConstraintLayout {
     }
 
     private void initBackView(TypedArray ta) {
-        if (!backViewVisible) {
-            return;
-        }
         ensureBackView();
         Drawable drawable = ta.getDrawable(R.styleable.ActionBar_abBackIcon);
         if (drawable == null) {
@@ -94,6 +89,45 @@ public class ActionBar extends ConstraintLayout {
         } else {
             backView.setImageDrawable(drawable);
         }
+        backView.setVisibility(backViewVisible ? View.VISIBLE : View.GONE);
+    }
+
+    public void setBackViewVisible(boolean visible) {
+        if (visible == this.backViewVisible) return;
+        this.backViewVisible = visible;
+        backView.setVisibility(backViewVisible ? View.VISIBLE : View.GONE);
+    }
+
+    private void updateTitleViewLayoutParams() {
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.topToTop = LayoutParams.PARENT_ID;
+        params.bottomToBottom = LayoutParams.PARENT_ID;
+        int margin = DisplayUtil.dip2px(getContext(), 16f);
+        switch (titleGravity) {
+            case LEFT:
+                params.leftToRight = backView.getId();
+                if (backViewVisible) {
+                    params.leftMargin = margin;
+                }else{
+                    params.leftMargin = DisplayUtil.dip2px(getContext(),20f);
+                }
+                break;
+            case RIGHT:
+                if (menusLayout != null) {
+                    params.rightToLeft = menusLayout.getId();
+                } else if (singleMenuViewId > 0) {
+                    params.rightToLeft = singleMenuViewId;
+                } else {
+                    params.rightToRight = LayoutParams.PARENT_ID;
+                }
+                params.rightMargin = margin;
+                break;
+            case CENTER:
+                params.leftToLeft = LayoutParams.PARENT_ID;
+                params.rightToRight = LayoutParams.PARENT_ID;
+                break;
+        }
+        titleView.setLayoutParams(params);
     }
 
     private void ensureTitleView() {
@@ -101,48 +135,30 @@ public class ActionBar extends ConstraintLayout {
             titleView = new TextView(getContext(), null, android.R.attr.textViewStyle, R.style.TextView_Bold);
             titleView.setTextAppearance(R.style.TextView_Bold);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-            int paddingH = DisplayUtil.dip2px(getContext(), 10f);
-            int paddingV = DisplayUtil.dip2px(getContext(),16f);
-            titleView.setPadding(paddingH, paddingV, paddingH, paddingV);
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.topToTop = LayoutParams.PARENT_ID;
-            params.bottomToBottom = LayoutParams.PARENT_ID;
-            switch (titleGravity) {
-                case LEFT:
-                    params.leftToLeft = LayoutParams.PARENT_ID;
-                    params.leftMargin = titleLeftMargin;
-                    break;
-                case RIGHT:
-                    params.rightToRight = LayoutParams.PARENT_ID;
-                    params.rightToRight = DisplayUtil.dip2px(getContext(), 56f);
-                    break;
-                case CENTER:
-                    params.leftToLeft = LayoutParams.PARENT_ID;
-                    params.rightToRight = LayoutParams.PARENT_ID;
-                    break;
-            }
-
-            titleView.setLayoutParams(params);
-
+            updateTitleViewLayoutParams();
             addView(titleView);
         }
     }
 
     private void ensureBackView() {
         if (backView == null) {
-            backView = new ImageButton(getContext(), null, 0, R.style.ImageButton_DayNight);
+            Context context = getContext();
+            backView = new ImageButton(context, null, 0, R.style.ImageButton_DayNight);
             backView.setBackground(null);
-
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            backView.setId(View.generateViewId());
+            int marginV = DisplayUtil.dip2px(getContext(), 16f);
+            int size = DisplayUtil.dip2px(context, 24f);
+            LayoutParams params = new LayoutParams(size, size);
             params.topToTop = LayoutParams.PARENT_ID;
             params.leftToLeft = LayoutParams.PARENT_ID;
             params.bottomToBottom = LayoutParams.PARENT_ID;
-            params.setMarginStart(DisplayUtil.dip2px(getContext(), 20f));
+            params.leftMargin = DisplayUtil.dip2px(context, 20f);
+            params.topMargin = marginV;
+            params.bottomMargin = marginV;
 
             backView.setLayoutParams(params);
             addView(backView);
             backView.setOnClickListener(v -> {
-                Context context = getContext();
                 if (context instanceof Activity) {
                     ((Activity) context).onBackPressed();
                 }
@@ -158,6 +174,10 @@ public class ActionBar extends ConstraintLayout {
     }
 
     public void addMenu(Drawable drawable, OnClickListener listener) {
+        if (drawable != null) {
+            int size = DisplayUtil.dip2px(getContext(), ICON_SIZE);
+            drawable.setBounds(0, 0, size, size);
+        }
         ImageButton button = genMenuView(singleMenuViewId == 0);
         button.setImageDrawable(drawable);
         button.setOnClickListener(listener);
@@ -210,16 +230,6 @@ public class ActionBar extends ConstraintLayout {
                 menusLayout.addView(imageButton);
             }
         }
-        this.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                ViewGroup.LayoutParams layoutParams = imageButton.getLayoutParams();
-                layoutParams.width = getMeasuredHeight();
-                layoutParams.height = getMeasuredHeight();
-                imageButton.setLayoutParams(layoutParams);
-                ActionBar.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
         return imageButton;
     }
 
@@ -228,12 +238,14 @@ public class ActionBar extends ConstraintLayout {
         params.topToTop = LayoutParams.PARENT_ID;
         params.bottomToBottom = LayoutParams.PARENT_ID;
         params.rightToRight = LayoutParams.PARENT_ID;
+        params.rightMargin = DisplayUtil.dip2px(getContext(), 20f);
         return params;
     }
 
     private void ensureMenusLayout() {
         menusLayout = new LinearLayout(getContext());
         menusLayout.setLayoutParams(genMenuLayoutParams());
+        menusLayout.setId(View.generateViewId());
         addView(menusLayout);
     }
 
