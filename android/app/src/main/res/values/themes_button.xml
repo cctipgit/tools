@@ -31,4 +31,32 @@
         <item name="android:textColor">@color/btn_task_check</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="RoundButton">
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/btn_primary</item>
+        <item name="rb_background">@color/btn_primary_bg</item>
+        <item name="textSize">16sp</item>
+    </style>
+
+    <style name="RoundButton.R4">
+        <item name="rb_radius">4dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="RoundButton.R8">
+        <item name="rb_radius">8dp</item>
+    </style>
+
+    <style name="RoundButton.Disabled">
+        <item name="rb_background">@color/colorDisable</item>
+        <item name="android:textColor">@color/sub_title</item>
+    </style>
+
+    <style name="RoundButton.Disabled.R8">
+        <item name="rb_radius">8dp</item>
+    </style>
 </resources>

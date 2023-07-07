@@ -67,4 +67,11 @@
     <declare-styleable name="SettingMenuItem">
         <attr name="sm_title" format="string|reference" />
     </declare-styleable>
+
+    <attr name="RoundButtonStyle" format="reference" />
+    <declare-styleable name="RoundButton">
+        <attr name="rb_background" format="color"/>
+        <attr name="rb_radius" format="dimension"/>
+        <attr name="rb_ripple" format="boolean"/>
+    </declare-styleable>
 </resources>

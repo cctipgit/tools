@@ -5,23 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.hash.coinconvert.widget.RoundButton
         android:id="@+id/btn_back"
-        style="@style/Button.round4"
+        style="@style/RoundButton.R8"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:paddingVertical="0dp"
         android:layout_marginEnd="8dp"
         android:text="@string/qa_btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_next" />
 
-    <Button
+    <com.hash.coinconvert.widget.RoundButton
         android:id="@+id/btn_next"
+        style="@style/RoundButton.R8"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:paddingVertical="0dp"
         android:text="@string/qa_btn_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/btn_back"
@@ -41,7 +40,6 @@
             android:id="@+id/ll_questions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        </LinearLayout>
+            android:orientation="vertical"/>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

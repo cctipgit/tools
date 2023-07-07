@@ -17,6 +17,7 @@
         <item name="android:textViewStyle">@style/TextView</item>
         <item name="android:buttonStyle">@style/Button</item>
         <item name="android:imageButtonStyle">@style/ImageButton</item>
+        <item name="RoundButtonStyle">@style/RoundButton</item>
         <item name="colorButtonNormal">@android:color/transparent</item>
         <item name="android:windowBackground">@color/theme_bg</item>
     </style>

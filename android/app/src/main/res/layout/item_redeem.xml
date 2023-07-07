@@ -6,9 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_marginTop="8dp"
-    app:cardElevation="0.1dp"
     app:cardBackgroundColor="@color/theme_bg"
-    app:cardCornerRadius="24dp">
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0.1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,12 +60,14 @@
             app:layout_constraintLeft_toLeftOf="parent"
             tools:text="USDT" />
 
-        <Button
+        <com.hash.coinconvert.widget.RoundButton
             android:id="@+id/btn_redeem"
+            style="@style/RoundButton.R4"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:paddingHorizontal="10dp"
             android:paddingVertical="0dp"
             android:text="@string/home_redeem"
             android:textSize="14sp"
