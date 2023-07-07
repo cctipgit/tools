@@ -67,7 +67,6 @@ public class ActionBar extends ConstraintLayout {
             setPadding(getPaddingLeft(), getPaddingTop() + getStatusBarHeight(), getPaddingRight(), getPaddingBottom());
         }
         ta.recycle();
-        setBackgroundResource(R.color.colorDisable);
     }
 
     private void initTitle(TypedArray ta) {
