@@ -102,7 +102,8 @@ public class ActionBar extends ConstraintLayout {
             titleView.setTextAppearance(R.style.TextView_Bold);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             int paddingH = DisplayUtil.dip2px(getContext(), 10f);
-            titleView.setPadding(paddingH, 0, paddingH, 0);
+            int paddingV = DisplayUtil.dip2px(getContext(),16f);
+            titleView.setPadding(paddingH, paddingV, paddingH, paddingV);
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.topToTop = LayoutParams.PARENT_ID;
             params.bottomToBottom = LayoutParams.PARENT_ID;

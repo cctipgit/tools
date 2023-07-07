@@ -59,8 +59,8 @@ public class RedeemFragment extends BaseMVVMFragment<RedeemViewModel, FragmentRe
     protected void observer() {
         super.observer();
         observer(viewModel.getRedeemList(), list -> {
-            list.forEach(redeemItem -> Log.d("Redeem", redeemItem.reward + "," + redeemItem.pic));
             redeemAdapter.setNewInstance(list);
+            profileViewModel.fetchUserInfo();
         });
         observer(profileViewModel.getUserInfo(),user -> {
             //adjust text size in case of overflow

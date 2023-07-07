@@ -117,6 +117,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
             }
         });
         observer(viewModel.getPinNum(), this::updatePinNum);
+        observer(profileViewModel.getUserInfo(),user->updatePinNum(user.pinChance));
     }
 
     private void updatePinNum(int pinNum) {

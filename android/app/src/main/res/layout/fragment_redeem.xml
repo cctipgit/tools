@@ -56,8 +56,8 @@
 
                     <ImageView
                         android:id="@+id/img_points"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
                         android:layout_marginTop="2dp"
                         android:src="@drawable/ic_points"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_points_title" />
