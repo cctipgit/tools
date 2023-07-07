@@ -9,23 +9,22 @@
 
     <TextView
         android:id="@+id/tv_task_name"
+        style="@style/TextView.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:textSize="16sp"
-        style="@style/TextView.Medium"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_check"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Daily check-in" />
 
-    <Button
+    <com.hash.coinconvert.widget.RoundButton
         android:id="@+id/btn_check"
-        style="@style/Button.TaskDo"
+        style="@style/RoundButton.R4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:enabled="false"
-        android:gravity="center"
+        android:minWidth="80dp"
         android:paddingHorizontal="10dp"
         android:paddingVertical="4dp"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,7 +1,5 @@
 package com.hash.coinconvert.ui2.adapter;
 
-import android.widget.Button;
-
 import androidx.annotation.NonNull;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -9,6 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.utils.StringUtils;
+import com.hash.coinconvert.widget.RoundButton;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class HomeTaskListAdapter extends BaseQuickAdapter<TaskItem, BaseViewHold
     }
 
     private void bindButtonCheck(@NonNull BaseViewHolder holder, TaskItem item) {
-        Button btnCheck = holder.getView(R.id.btn_check);
+        RoundButton btnCheck = holder.getView(R.id.btn_check);
         btnCheck.setEnabled(!item.done);
         btnCheck.setText(item.done ? R.string.home_task_item_completed : R.string.home_task_item_go);
     }
