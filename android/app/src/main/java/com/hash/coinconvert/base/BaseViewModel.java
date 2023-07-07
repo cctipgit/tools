@@ -30,10 +30,6 @@ public class BaseViewModel extends ViewModel {
         return loading;
     }
 
-    protected boolean isInLoading(){
-        return Boolean.TRUE.equals(loading.getValue());
-    }
-
     public void onCreate(){
 
     }
@@ -80,9 +76,7 @@ public class BaseViewModel extends ViewModel {
 
                     @Override
                     public void onComplete() {
-                        if (Boolean.TRUE.equals(loading.getValue())) {
-                            loading.postValue(false);
-                        }
+                        loading.postValue(false);
                     }
                 });
     }
@@ -112,7 +106,7 @@ public class BaseViewModel extends ViewModel {
         });
     }
 
-    protected void finishLoading() {
+    public void finishLoading() {
         if (Boolean.TRUE.equals(loading.getValue())) {
             loading.postValue(false);
         }

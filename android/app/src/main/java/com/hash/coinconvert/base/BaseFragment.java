@@ -41,7 +41,7 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mIntentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            int requestCode = 0;
+            int requestCode;
             if (result != null && result.getData() != null) {
                 requestCode = result.getData().getIntExtra(KEY_INTERNAL_REQUEST_CODE, 0);
                 onCommonActivityResult(requestCode, result.getResultCode(), result.getData());

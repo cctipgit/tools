@@ -44,6 +44,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initViewModel();
+        viewModel.finishLoading();
     }
 
     protected void initViewModel() {
@@ -88,9 +89,9 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel, VB extends View
 
     @Override
     public void onDestroyView() {
+        hideLoading();
+        viewModel.finishLoading();
         super.onDestroyView();
-        viewModel.isLoading().removeObservers(this);
-        viewModel.getError().removeObservers(this);
         viewModel.onViewDestroy();
         binding = null;
     }

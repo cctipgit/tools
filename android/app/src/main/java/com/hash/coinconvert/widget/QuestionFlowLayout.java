@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duxl.baselib.utils.DisplayUtil;
-import com.google.android.material.internal.FlowLayout;
 
 import java.util.ArrayList;
 import java.util.List;

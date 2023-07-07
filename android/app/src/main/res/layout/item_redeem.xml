@@ -62,7 +62,7 @@
 
         <com.hash.coinconvert.widget.RoundButton
             android:id="@+id/btn_redeem"
-            style="@style/RoundButton.R4"
+            style="@style/RoundButton.Disabled.R4"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_marginTop="24dp"

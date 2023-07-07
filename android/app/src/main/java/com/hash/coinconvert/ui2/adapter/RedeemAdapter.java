@@ -39,7 +39,6 @@ public class RedeemAdapter extends BaseQuickAdapter<RedeemItem, com.chad.library
 
         holder.setImageResource(R.id.img_banner, Objects.equals(item.currencyType, Token.TOKEN_TYPE_CURRENCY)
                 ? R.mipmap.redeem_banner_currency : R.mipmap.redeem_banner_crypto);
-        holder.setEnabled(R.id.btn_redeem, item.left >= item.pointRequire);
         FlagLoader.load(holder.getView(R.id.img_logo),0,item.pic);
     }
 
