@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/redeem"
+    app:startDestination="@id/fragment_redeem">
+
+    <fragment
+        android:id="@+id/fragment_redeem"
+        android:name="com.hash.coinconvert.ui2.fragment.RedeemFragment"
+        android:label="RedeemFragment"
+        tools:layout="@layout/fragment_redeem">
+        <action
+            android:id="@+id/action_fragment_redeem_to_fragment_points_details"
+            app:destination="@id/fragment_points_details" />
+        <action
+            android:id="@+id/action_fragment_redeem_to_fragment_redeem_history"
+            app:destination="@id/fragment_redeem_history" />
+    </fragment>
+
+    <fragment android:id="@+id/fragment_points_details"
+        android:name="com.hash.coinconvert.ui2.fragment.PointsDetailsFragment"
+        android:label="PointsDetails"
+        tools:layout="@layout/fragment_points_details"/>
+
+    <fragment android:id="@+id/fragment_redeem_history"
+        android:name="com.hash.coinconvert.ui2.fragment.RedeemHistoryFragment"
+        android:label="RedeemHistory"
+        tools:layout="@layout/fragment_redeem_history"/>
+</navigation>

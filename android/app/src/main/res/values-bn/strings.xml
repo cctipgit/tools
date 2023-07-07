@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">মুদ্রা পরিবর্তন</string>
+    <string name="search_currency_hint">মুদ্রা বা দেশ/অঞ্চল</string>
+    <string name="search_currency_empty_msg">মুদ্রা পাওয়া যায়নি</string>
+    <string name="status">পরিসংখ্যান</string>
+    <string name="high">উচ্চ</string>
+    <string name="low">নিন্ম</string>
+    <string name="average">গড়</string>
+    <string name="change">পরিবর্তন</string>
+    <string name="date_1_day">১দিন</string>
+    <string name="date_1_week">১সপ্তাহ</string>
+    <string name="date_1_month">১মাস</string>
+    <string name="date_1_year">১বছর</string>
+    <string name="date_all">সব</string>
+    <string name="quote_currency">উদ্ধৃতি মুদ্রা</string>
+    <string name="converter_setting">কনভার্টার সেটিং</string>
+    <string name="default_currency_value">ডিফল্ট মুদ্রার মান</string>
+    <string name="local_currency">স্থানীয় মুদ্রা</string>
+    <string name="currency_symbol">মুদ্রার প্রতীক</string>
+    <string name="set_decimical_digits">দশমিক সংখ্যা সেট করুন</string>
+    <string name="more_settings">আরও সেটিং</string>
+    <string name="restore_default_currency_list">ডিফল্ট মুদ্রা তালিকা পুনরুদ্ধার করুন</string>
+    <string name="legal_tender">আইন স্বীকৃত</string>
+    <string name="cryptocurrency">ক্রিপ্টোকারেন্সি</string>
+    <string name="none">কোনোটিই নয়</string>
+    <string name="plugin">প্লাগিন</string>
+    <string name="quote_color">উদ্ধৃতি রঙ</string>
+    <string name="keyboard_sound">কীবোর্ড শব্দ</string>
+    <string name="red_rise_green_fall">লাল বৃদ্ধি  সবুজ পতন</string>
+    <string name="green_rise_red_fall">সবুজ বৃদ্ধি লাল পতন</string>
+    <string name="restore_curreny_list_msg">ডিফল্ট মুদ্রা তালিকা পুনরুদ্ধার করবেন?</string>
+    <string name="cancel">বাতিল করুন</string>
+    <string name="recovery">পুনরুদ্ধার</string>
+    <string name="rate_detail">রেট বিস্তারিত</string>
+    <string name="january">জানু</string>
+    <string name="february">ফেব্রু</string>
+    <string name="march">মার</string>
+    <string name="april">এপ্রি</string>
+    <string name="may">মে</string>
+    <string name="june">জুন</string>
+    <string name="july">জুল</string>
+    <string name="august">অগা</string>
+    <string name="september">সেপ</string>
+    <string name="october">অক্টো</string>
+    <string name="november">নভে</string>
+    <string name="december">ডিসে</string>
+    <string name="frequently_used">ঘন ঘন ব্যবহৃত</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">ভার্সন আপগ্রেড</string>
+    <string name="upgrade">আপগ্রেড</string>
+    <string name="location_services" comment="location_services">অবস্থান সঙ্ক্রান্ত সেবা</string>
+    <string name="location_tips" comment="location_tips">আপনার অবস্থান নির্ধারণ করতে \"%s\" কে অনুমতি দিতে অনুগ্রহ করে সিস্টেম সেটিংসে \"অবস্থান পরিষেবা\" খুলুন।</string>
+    <string name="ok" comment="ok">ঠিক আছে</string>
+</resources>

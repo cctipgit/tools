@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_local_currency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/local_currency"
+        app:showSwitch="true"
+        app:showMore="false" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_currency_symbol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/currency_symbol"
+        app:showSwitch="true"
+        app:showMore="false" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/line_color" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_default_currency_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/default_currency_value"
+        app:rightText="100" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_set_decimical_digits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/set_decimical_digits" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/line_color" />
+
+    <com.hash.coinconvert.widget.SettingItemView
+        android:id="@+id/v_more_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/more_settings" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/line_color" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_restore_default_currency_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/restore_default_currency_list"
+        android:textColor="@color/theme_text_color"
+        android:textSize="16sp"
+        app:rv_backgroundColor="@color/theme_bg"
+        app:rv_backgroundPressColor="@color/setting_item_press"
+        app:rv_isRadiusHalfHeight="true"
+        app:rv_strokeColor="@color/theme_text_color"
+        app:rv_strokeWidth="1dp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

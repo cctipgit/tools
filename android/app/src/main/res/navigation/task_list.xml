@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_list"
+    app:startDestination="@id/fragment_task_list">
+
+    <fragment
+        android:id="@+id/fragment_task_list"
+        android:name="com.hash.coinconvert.ui2.fragment.TaskListFragment"
+        android:label="TaskListFragment"
+        tools:layout="@layout/fragment_task_list" >
+        <action
+            android:id="@+id/action_fragment_task_list_to_fragment_lottery"
+            app:destination="@id/fragment_lottery" />
+    </fragment>
+
+    <fragment android:id="@+id/fragment_lottery"
+        android:name="com.hash.coinconvert.ui2.fragment.LotteryFragment"
+        android:label="Lottery"
+        tools:layout="@layout/fragment_lottery">
+        <action
+            android:id="@+id/action_fragment_lottery_to_dialog_reward"
+            app:destination="@id/dialog_reward" />
+
+        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem[]" app:nullable="false"/>
+        <action
+            android:id="@+id/action_fragment_lottery_to_fragment_redeem2"
+            app:destination="@id/fragment_redeem2" />
+    </fragment>
+
+    <dialog android:id="@+id/dialog_reward"
+        android:name="com.hash.coinconvert.ui2.dialog.RewardDialog"
+        android:label="Reward"
+        tools:layout="@layout/dialog_reward">
+        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem" app:nullable="false"/>
+    </dialog>
+
+    <fragment android:id="@+id/fragment_redeem2"
+        android:name="com.hash.coinconvert.ui2.fragment.RedeemFragment"
+        tools:layout="@layout/fragment_redeem"
+        android:label="Redeem"/>
+
+</navigation>

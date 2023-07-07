@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Magpalit ng Pera</string>
+    <string name="search_currency_hint">Pera o Bansa/Rehiyon</string>
+    <string name="search_currency_empty_msg">Hindi nahanap ang pera</string>
+    <string name="status">STATS</string>
+    <string name="high">Mataas</string>
+    <string name="low">Mababa</string>
+    <string name="average">Katamtaman</string>
+    <string name="change">Baguhin</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Lahat</string>
+    <string name="quote_currency">I-quote ang Pera</string>
+    <string name="converter_setting">Setting ng Palitan</string>
+    <string name="default_currency_value">Default na Halaga ng Pera</string>
+    <string name="local_currency">Lokal na Pera</string>
+    <string name="currency_symbol">Simbolo ng Pera</string>
+    <string name="set_decimical_digits">Ilagay ang mga Decimal Digit</string>
+    <string name="more_settings">Iba pang mga setting</string>
+    <string name="restore_default_currency_list">Ibalik ang default na listahan ng pera</string>
+    <string name="legal_tender">Ligal na Pera</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="none">Wala</string>
+    <string name="plugin">Plugin</string>
+    <string name="quote_color">Kulay ng quote</string>
+    <string name="keyboard_sound">Tunog ng Keyboard</string>
+    <string name="red_rise_green_fall">pula pataas berde pababa</string>
+    <string name="green_rise_red_fall">berde pataas pula pababa</string>
+    <string name="restore_curreny_list_msg">Ibalik ang default na listahan ng pera?</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="recovery">Pagbawi</string>
+    <string name="rate_detail">Detalye ng Presyo</string>
+    <string name="january">Enero</string>
+    <string name="february">Peb</string>
+    <string name="march">Mar</string>
+    <string name="april">Abr</string>
+    <string name="may">Mayo</string>
+    <string name="june">Hun</string>
+    <string name="july">Hul</string>
+    <string name="august">Ag</string>
+    <string name="september">Sep</string>
+    <string name="october">Okt</string>
+    <string name="november">Nob</string>
+    <string name="december">Dis</string>
+    <string name="frequently_used">Madalas na Ginagamit</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Pag-upgrade ng Bersyon</string>
+    <string name="upgrade">Pag-upgrade</string>
+    <string name="location_services" comment="location_services">Mga serbisyo sa lokasyon</string>
+    <string name="location_tips" comment="location_tips">Mangyaring buksan ang \"Mga Serbisyo ng Lokasyon\"\" sa mga setting ng system upang payagan ang \"\"%s\"\" na matukoy ang iyong lokasyon.</string>
+    <string name="ok" comment="ok">Sige</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Cambia Valuta</string>
+    <string name="search_currency_hint">Valuta o Paese/Regione</string>
+    <string name="search_currency_empty_msg">Valuta non trovata</string>
+    <string name="status">STATISTICHE</string>
+    <string name="high">Alto</string>
+    <string name="low">Basso</string>
+    <string name="average">Medio</string>
+    <string name="change">Cambiamento</string>
+    <string name="date_1_day">1D</string>
+    <string name="date_1_week">1W</string>
+    <string name="date_1_month">1M</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Tutto</string>
+    <string name="quote_currency">Valuta della Quota</string>
+    <string name="converter_setting">Impostazioni Convertitore</string>
+    <string name="default_currency_value">Valore Valuta Predefinito</string>
+    <string name="local_currency">Valuta locale</string>
+    <string name="currency_symbol">Simbolo di valuta</string>
+    <string name="set_decimical_digits">Imposta cifre decimali</string>
+    <string name="more_settings">Più impostazioni</string>
+    <string name="restore_default_currency_list">Ripristinare l\'elenco base di valute</string>
+    <string name="legal_tender">a Corso Legale</string>
+    <string name="cryptocurrency">Cryptovaluta</string>
+    <string name="none">Nessuno</string>
+    <string name="plugin">Plugin</string>
+    <string name="quote_color">Colore del preventivo</string>
+    <string name="keyboard_sound">Suono della tastiera</string>
+    <string name="red_rise_green_fall">rosso sale, verde scende</string>
+    <string name="green_rise_red_fall">verde sale, rosso scende</string>
+    <string name="restore_curreny_list_msg">Ripristinare l\'elenco base di valute?</string>
+    <string name="cancel">Annulla</string>
+    <string name="recovery">Recupera</string>
+    <string name="rate_detail">Dettagli tasso</string>
+    <string name="january">Gen</string>
+    <string name="february">Feb</string>
+    <string name="march">Mar</string>
+    <string name="april">Apr</string>
+    <string name="may">Mag</string>
+    <string name="june">Giu</string>
+    <string name="july">Lug</string>
+    <string name="august">Ago</string>
+    <string name="september">Set</string>
+    <string name="october">Ott</string>
+    <string name="november">Nov</string>
+    <string name="december">Dic</string>
+    <string name="frequently_used">Usata di frequente</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Aggiornamento Versione</string>
+    <string name="upgrade">Aggiornamento</string>
+    <string name="location_services" comment="location_services">Servizi di Localizzazione</string>
+    <string name="location_tips" comment="location_tips">Vai su \"Servizi di Localizzazione\" dalle impostazioni di sistema e permetti a \"%s\" di accedere alla tua posizione.</string>
+    <string name="ok" comment="ok">OK</string>
+</resources>

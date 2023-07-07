@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="switch_currency">Para Birimi Değiştir</string>
+    <string name="search_currency_hint">Para Birimi veya Ülke/Bölge</string>
+    <string name="search_currency_empty_msg">Para Birimi bulunamadı</string>
+    <string name="status">Değerler</string>
+    <string name="high">Yüksek</string>
+    <string name="low">Düşük</string>
+    <string name="average">Ortalama</string>
+    <string name="change">Değişim</string>
+    <string name="date_1_day">1G</string>
+    <string name="date_1_week">1H</string>
+    <string name="date_1_month">1D</string>
+    <string name="date_1_year">1Y</string>
+    <string name="date_all">Tüm</string>
+    <string name="quote_currency">Para birimi değeri</string>
+    <string name="converter_setting">Dönüştürücü Ayarları</string>
+    <string name="default_currency_value">Varsayılan Para Birimi Değeri</string>
+    <string name="local_currency">Yerel Para Birimi</string>
+    <string name="currency_symbol">Para Birimi sembolü</string>
+    <string name="set_decimical_digits">Ondalık Değeri Ayarla</string>
+    <string name="more_settings">Daha Fazla Seçenek</string>
+    <string name="restore_default_currency_list">Varsayılan para birimi listesini geri yüklemek ister misin</string>
+    <string name="legal_tender">Yasal Teklif</string>
+    <string name="cryptocurrency">Kripto Para</string>
+    <string name="none">Hiçbiri</string>
+    <string name="plugin">Eklenti</string>
+    <string name="quote_color">Fiyatlandırma rengi</string>
+    <string name="keyboard_sound">Klavye Sesi</string>
+    <string name="red_rise_green_fall">kırmızı yükseliş, yeşil düşüş</string>
+    <string name="green_rise_red_fall">yeşil yükseliş, kırmızı düşüş</string>
+    <string name="restore_curreny_list_msg">Varsayılan para birimi listesini geri yüklemek ister misin?</string>
+    <string name="cancel">İptal</string>
+    <string name="recovery">Geri Yükle</string>
+    <string name="rate_detail">Puan Detayı</string>
+    <string name="january">Ocak</string>
+    <string name="february">Şub</string>
+    <string name="march">Mar</string>
+    <string name="april">Nis</string>
+    <string name="may">May</string>
+    <string name="june">Haz</string>
+    <string name="july">Tem</string>
+    <string name="august">Ağu</string>
+    <string name="september">Eyl</string>
+    <string name="october">Eki</string>
+    <string name="november">Kas</string>
+    <string name="december">Ara</string>
+    <string name="frequently_used">Sıklıkla Kullanılan</string>
+    <string name="defaule_value">--</string>
+    <string name="version_upgrade">Sürüm Güncelleme</string>
+    <string name="upgrade">Güncelle</string>
+    <string name="location_services" comment="location_services">Konum Servisleri</string>
+    <string name="location_tips" comment="location_tips">\"%s\"in konumunuzu belirlemesine izin vermek için lütfen sistem ayarlarından \"Konum servisleri\"ni açın.</string>
+    <string name="ok" comment="ok">Tamam</string>
+</resources>

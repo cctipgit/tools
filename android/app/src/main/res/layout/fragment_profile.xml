@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_profile_header"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:layout_gravity="start"
+            android:text="@string/home_profile"
+            android:textColor="@color/theme_bg"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_profile_avatar"
+            android:padding="2dp"
+            android:layout_marginTop="16dp"
+            tools:src="@mipmap/avator01" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/theme_bg"
+            android:textSize="18sp"
+            tools:text="asdadsa" />
+
+        <TextView
+            android:id="@+id/tv_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/theme_bg"
+            android:textSize="16sp"
+            tools:text="Member since 6/19/2023" />
+
+        <TextView
+            android:id="@+id/tv_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_gradient"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/theme_bg"
+            android:textSize="16sp"
+            tools:text="1000 points" />
+    </LinearLayout>
+
+    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+        android:id="@+id/menu_settings"
+        style="@style/ProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:psm_Title="@string/profile_settings" />
+
+    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+        android:id="@+id/menu_privacy"
+        style="@style/ProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:psm_Title="@string/profile_privacy_policy" />
+
+    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+        android:id="@+id/menu_about"
+        style="@style/ProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:psm_Title="@string/profile_about" />
+    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+        android:id="@+id/menu_qa"
+        style="@style/ProfileSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:psm_Title="@string/profile_question" />
+</LinearLayout>

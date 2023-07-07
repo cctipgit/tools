@@ -1,0 +1,121 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ExchangeRate" parent="Theme.AppCompat.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/theme_bg</item>
+        <item name="colorPrimaryVariant">@color/theme_bg</item>
+        <item name="colorOnPrimary">@color/theme_bg</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="android:buttonStyle">@style/Button</item>
+        <item name="android:imageButtonStyle">@style/ImageButton</item>
+        <item name="RoundButtonStyle">@style/RoundButton</item>
+        <item name="colorButtonNormal">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/theme_bg</item>
+    </style>
+
+    <style name="Theme.ExchangeRate.Splash" parent="Theme.ExchangeRate">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="Theme.ExchangeRate.Dialog" parent="Theme.Design.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景色透明 -->
+        <item name="android:windowIsTranslucent">true</item> <!-- 是否有透明属性 -->
+        <item name="android:backgroundDimEnabled">true</item> <!-- 背景是否半透明 -->
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:statusBarColor">@android:color/transparent</item> <!-- 状态栏透明 -->
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="imageButtonStyle">@style/ImageButton</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
+    </style>
+
+    <style name="Theme.ExchangeRate.BottomSheet">
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.2</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Widget.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <!-- 键盘按键item样式 -->
+    <style name="keyboard_item_style">
+        <item name="rv_isRadiusHalfHeight">true</item>
+        <item name="rv_backgroundColor">@color/keyboard_num_item_bg</item>
+        <item name="rv_backgroundPressColor">@color/keyboard_num_item_press_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- 键盘数字按键item样式 -->
+    <style name="keyboard_num_item_style" parent="keyboard_item_style">
+        <item name="android:textColor">@color/theme_text_color</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <!-- 键盘功能按键item样式 -->
+    <style name="keyboard_fun_item_style" parent="keyboard_num_item_style">
+        <item name="rv_backgroundColor">@color/keyboard_fun_item_bg</item>
+        <item name="rv_backgroundPressColor">@color/keyboard_fun_item_press_bg</item>
+        <item name="android:textColor">@color/keyboard_fun_text_color</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <!-- 汇率详情时间选择item样式 -->
+    <style name="switch_date_item_style">
+        <item name="android:layout_width">52dp</item>
+        <item name="android:layout_height">43dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="rv_cornerRadius">12dp</item>
+    </style>
+
+    <style name="ProfileSetting" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:background">@drawable/btn_setting_menu_ripple</item>
+    </style>
+
+    <style name="SettingItem" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/btn_setting_menu_ripple</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+    </style>
+
+    <style name="QAAnswer">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_checktext_qa</item>
+        <item name="android:textColor">@color/qa_check_text</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+</resources>

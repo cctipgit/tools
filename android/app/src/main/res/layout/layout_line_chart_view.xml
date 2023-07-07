@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_top_market"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="0.0040"
+            android:textStyle="bold"
+            android:textColor="@color/theme_text_color"
+            android:textSize="22sp" />
+
+        <com.hash.coinconvert.widget.AppTextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="October 26 06:15"
+            android:textColor="@color/theme_text_color_alpha60"
+            android:textSize="13sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/tv_anim_market"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:gravity="center"
+            android:textSize="6sp"
+            android:visibility="invisible"
+            app:rv_backgroundColor="@color/chart_select_point2"
+            app:rv_isRadiusHalfHeight="true"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/rl_income"
+            android:visibility="visible"
+            android:layout_marginTop="180dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@mipmap/up_down"
+            android:layout_height="wrap_content">
+
+            <com.hash.coinconvert.widget.AutoSplitTextView
+                android:id="@+id/tv_income"
+                android:padding="8dp"
+                android:textSize="9sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="-0.000000%"
+                android:singleLine="false"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:gravity="center"
+                android:background="@mipmap/up_down"/>
+        </FrameLayout>
+
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

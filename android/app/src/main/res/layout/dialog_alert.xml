@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flyco.roundview.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    app:rv_backgroundColor="@color/theme_bg"
+    app:rv_cornerRadius="16dp">
+
+    <com.hash.coinconvert.widget.AppTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingVertical="20dp"
+        android:text="title"
+        android:textColor="@color/theme_text_color"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <com.hash.coinconvert.widget.AppTextView
+        android:id="@+id/tv_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Restore the default curreny list?"
+        android:textColor="@color/theme_text_color"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="18dp">
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/tv_option_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="14dp"
+            android:text="@string/cancel"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:rv_backgroundColor="#f2f2f5"
+            app:rv_cornerRadius="16dp" />
+
+        <TextView
+            android:id="@+id/v_option_space"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/tv_option_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="14dp"
+            android:text="@string/recovery"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:rv_backgroundColor="#bbcdfa"
+            app:rv_cornerRadius="16dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.flyco.roundview.RoundLinearLayout>

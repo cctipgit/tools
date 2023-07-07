@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="#080">
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_close_blue"
+        app:layout_constraintBottom_toTopOf="@+id/ll"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_reward_dialog"
+        app:layout_constraintBottom_toBottomOf="@+id/ll"
+        app:layout_constraintLeft_toLeftOf="@+id/ll"
+        app:layout_constraintRight_toRightOf="@+id/ll"
+        app:layout_constraintTop_toTopOf="@+id/ll"
+        app:layout_goneMarginTop="6dp" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@mipmap/bg_dialog_reward"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_close">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/dialog_reward_title"
+            android:textColor="@color/theme_bg"
+            android:textSize="32sp"
+            app:fontFamily="@font/monomaniacone_regular" />
+
+        <ImageView
+            android:id="@+id/img_reward"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="20dp"
+            tools:src="@mipmap/ic_lottery_reward_1" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/dialog_reward_message"
+            android:textSize="20sp" />
+
+        <com.hash.coinconvert.widget.RoundButton
+            android:id="@+id/btn_share"
+            style="@style/RoundButton.R8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/dialog_reward_share" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

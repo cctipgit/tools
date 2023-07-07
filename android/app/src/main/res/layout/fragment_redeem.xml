@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_secondary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_profile_header"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:paddingVertical="16dp"
+                android:text="@string/home_redeem"
+                android:textColor="@color/theme_bg"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_gradient_r24"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:id="@+id/tv_total_points_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/redeem_total_points"
+                    android:textColor="@color/theme_bg"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/img_points"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_points"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_total_points_title" />
+
+                    <TextView
+                        android:id="@+id/tv_total_points"
+                        style="@style/TextView.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textColor="@color/theme_bg"
+                        android:textSize="40sp"
+                        tools:text="1,000" />
+                </LinearLayout>
+
+                <com.flyco.roundview.RoundConstraintLayout
+                    android:id="@+id/cl_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="34dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    app:rv_cornerRadius="16dp"
+                    app:rv_isRippleEnable="true"
+                    app:rv_strokeColor="@color/theme_bg"
+                    app:rv_strokeWidth="1dp">
+
+                    <View
+                        android:id="@+id/mid"
+                        android:layout_width="1dp"
+                        android:layout_height="40dp"
+                        android:background="@color/theme_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_record"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_record"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/mid"
+                        app:tint="@color/theme_bg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/redeem_points_details"
+                        android:textColor="@color/theme_bg"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/mid"
+                        app:layout_constraintTop_toBottomOf="@+id/img_record" />
+
+                    <ImageView
+                        android:id="@+id/img_gift"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_gift"
+                        app:layout_constraintLeft_toRightOf="@+id/mid"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:tint="@color/theme_bg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/redeem_redeem_history"
+                        android:textColor="@color/theme_bg"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@+id/mid"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_gift" />
+
+                </com.flyco.roundview.RoundConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_redeem" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

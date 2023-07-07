@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/currency"
+    app:startDestination="@id/fragment_currency">
+
+    <fragment
+        android:id="@+id/fragment_currency"
+        android:name="com.hash.coinconvert.ui2.fragment.CurrencyFragment"
+        android:label="CurrencyFragment"
+        tools:layout="@layout/fragment_currency">
+        <action
+            android:id="@+id/action_fragment_currency_to_fragment_token_detail"
+            app:destination="@id/fragment_token_detail">
+            <argument
+                android:name="symbol"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_fragment_currency_to_activity_select_tokens"
+            app:destination="@id/activity_select_tokens" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_token_detail"
+        android:name="com.hash.coinconvert.ui2.fragment.TokenDetailsFragment"
+        android:label="TokenDetailFragment"
+        tools:layout="@layout/fragment_token_details">
+        <argument
+            android:name="symbol"
+            app:argType="string" />
+    </fragment>
+
+    <activity
+        android:id="@+id/activity_select_tokens"
+        android:name="com.hash.coinconvert.ui.activity.SwitchCurrencyActivity"
+        tools:layout="@layout/activity_switch_currency" />
+</navigation>

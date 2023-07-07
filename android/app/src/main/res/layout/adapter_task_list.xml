@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp"
+    tools:background="#080">
+
+    <TextView
+        android:id="@+id/tv_task_name"
+        style="@style/TextView.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_check"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Daily check-in" />
+
+    <com.hash.coinconvert.widget.RoundButton
+        android:id="@+id/btn_check"
+        style="@style/RoundButton.R4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="80dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/home_task_item_go" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:padding="1dp"
+        android:src="@drawable/ic_task_list_wheel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_name" />
+
+    <TextView
+        android:id="@+id/tv_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:textColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/img1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_name"
+        app:layout_constraintTop_toTopOf="@+id/img1"
+        tools:text="@string/home_task_item_chance" />
+</androidx.constraintlayout.widget.ConstraintLayout>

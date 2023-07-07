@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hash.coinconvert.widget.ActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:abTitle="@string/token_details_title"
+        app:abTitleGravity="left" />
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        android:paddingVertical="16dp"
+        app:rv_backgroundColor="@color/bg_secondary"
+        app:rv_cornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/img_base"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@mipmap/leak_canary_icon" />
+
+        <TextView
+            android:id="@+id/tv_base"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="1 USDT" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:rotation="180"
+            android:src="@drawable/ic_actionbar_arrow_left" />
+
+        <ImageView
+            android:id="@+id/img_quote"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@mipmap/leak_canary_icon" />
+
+        <TextView
+            android:id="@+id/tv_quote"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            tools:drawableEnd="@drawable/ic_arrow_down"
+            tools:text="USD" />
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp">
+
+        <com.hash.coinconvert.widget.KLineView
+            android:id="@+id/k_line_view"
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:foregroundTint="@color/colorPrimary"
+            android:secondaryProgressTint="@color/colorPrimary" />
+    </FrameLayout>
+
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="64dp"
+        android:background="@drawable/bg_round_secondary"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        app:justifyContent="space_around">
+
+        <RadioButton
+            style="@style/RadioButton.KLineTimeSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1D" />
+
+        <RadioButton
+            style="@style/RadioButton.KLineTimeSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1D" />
+
+        <RadioButton
+            style="@style/RadioButton.KLineTimeSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1D" />
+
+        <RadioButton
+            style="@style/RadioButton.KLineTimeSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1D" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <TextView
+        style="@style/TextView.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="54dp"
+        android:text="@string/token_details_title_statistics"
+        android:textSize="18sp" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:paddingTop="8dp"
+        app:flexWrap="wrap"
+        app:justifyContent="space_around">
+
+        <com.hash.coinconvert.widget.TokenDetailStatItemView
+            android:id="@+id/stat_high"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_flexBasisPercent="48.97%" />
+
+        <com.hash.coinconvert.widget.TokenDetailStatItemView
+            android:id="@+id/stat_low"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_flexBasisPercent="48.97%" />
+
+        <com.hash.coinconvert.widget.TokenDetailStatItemView
+            android:id="@+id/stat_avg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_flexBasisPercent="48.97%" />
+
+        <com.hash.coinconvert.widget.TokenDetailStatItemView
+            android:id="@+id/stat_change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_flexBasisPercent="48.97%" />
+    </com.google.android.flexbox.FlexboxLayout>
+</LinearLayout>
