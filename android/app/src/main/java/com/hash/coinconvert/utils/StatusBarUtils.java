@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  *  about status bar
@@ -27,6 +28,10 @@ public class StatusBarUtils {
 
     public static void setViewHeightEqualsStatusBarHeight(View view){
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                StatusBarUtils.getStatusBarHeight(view.getContext())));
+    }
+    public static void setViewHeightEqualsStatusBarHeightLinear(View view){
+        view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 StatusBarUtils.getStatusBarHeight(view.getContext())));
     }
 }
