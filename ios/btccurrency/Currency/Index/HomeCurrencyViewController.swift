@@ -125,6 +125,7 @@ class HomeCurrencyViewController: YBaseViewController {
                     })
                     .disposed(by: self.rx.disposeBag)
             cell.detailMaskView.rx.tap
+                .throttle(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
                 .subscribe(onNext: {
                     self.navigationController?.delegate = nil
                     let from = cellViewModel.model

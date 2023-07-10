@@ -83,16 +83,21 @@ extension GetCurrencyTokensResponse {
     }
 
     static public func readHomeList(tokens: [String]) -> [GetCurrencyTokensResponse]? {
-        try? dbReader.read({ db in
-
-            var data: [GetCurrencyTokensResponse] = []
-            for token in tokens {
-                if let current = try? GetCurrencyTokensResponse.fetchOne(db, key: token) {
-                    data.append(current)
-                }
-            }
-
-            return data
+//        try? dbReader.read({ db in
+//
+//            var data: [GetCurrencyTokensResponse] = []
+//            for token in tokens {
+//                if let current = try? GetCurrencyTokensResponse.fetchOne(db, key: token) {
+//                    data.append(current)
+//                }
+//            }
+//
+//            return data
+//        })
+        
+        return try? dbReader.read({ db in
+            let data = try? GetCurrencyTokensResponse.fetchAll(db, keys: tokens)
+            return data?.sorted(like: tokens, keyPath: \.token)
         })
     }
 
