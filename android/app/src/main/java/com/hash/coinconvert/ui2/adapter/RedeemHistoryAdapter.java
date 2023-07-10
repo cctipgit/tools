@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class RedeemHistoryAdapter extends BaseQuickAdapter<RedeemHistoryItem, BaseViewHolder> implements LoadMoreModule {
-    private SimpleDateFormat format;
+    private final SimpleDateFormat format;
 
     public RedeemHistoryAdapter() {
         super(R.layout.item_point_detail);
@@ -31,11 +31,11 @@ public class RedeemHistoryAdapter extends BaseQuickAdapter<RedeemHistoryItem, Ba
 
     private void setStateView(TextView textView, int state) {
         switch (state) {
-            case 1:
+            case RedeemHistoryItem.STATUS_SUCCESS:
                 textView.setText(R.string.redeem_history_state_success);
                 textView.setTextColor(getContext().getColor(R.color.success));
                 break;
-            case 2:
+            case RedeemHistoryItem.STATUS_FAIL:
                 textView.setText(R.string.redeem_history_state_fail);
                 textView.setTextColor(getContext().getColor(R.color.fail));
                 break;

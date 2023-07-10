@@ -69,7 +69,7 @@ public class RedeemFragment extends BaseMVVMFragment<RedeemViewModel, FragmentRe
 
     private void updateNavigationButton() {
         binding.actionBar.setBackViewVisible(showNavigation);
-        binding.actionBar.setFitsSystemWindows(false);
+//        binding.actionBar.setFitsSystemWindows(false);
         binding.actionBar.setBackViewTintColor(ContextCompat.getColor(requireContext(), R.color.theme_bg));
     }
 
