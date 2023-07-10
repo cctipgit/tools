@@ -119,6 +119,10 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
         RadioButton button = ((RadioButton) v);
         int interval = (int) button.getTag();
         if (interval == TokenDetailsFragment.this.interval) return;
+        if (binding.progressBar.getVisibility() == View.VISIBLE) {
+            button.setChecked(false);
+            return;
+        }
         for (int i = 0; i < binding.flex.getChildCount(); i++) {
             RadioButton b = (RadioButton) binding.flex.getChildAt(i);
             if (b.isChecked() && b != button) {

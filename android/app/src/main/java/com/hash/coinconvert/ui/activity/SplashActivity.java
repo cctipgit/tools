@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
     private void toNextPage() {
         long pageDuration = Math.min(SystemClock.elapsedRealtime() - mStartTime, mPageDuration);
         Dispatch.I.postUIDelayed(() -> {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }, mPageDuration - pageDuration);
     }
