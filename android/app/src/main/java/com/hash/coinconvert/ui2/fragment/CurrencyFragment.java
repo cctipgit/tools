@@ -1,7 +1,6 @@
 package com.hash.coinconvert.ui2.fragment;
 
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -32,6 +31,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, FragmentCurrencyBinding> {
     public static final String TAG = "CurrencyFragment";
+
     public CurrencyFragment() {
         super(R.layout.fragment_currency);
     }
@@ -83,7 +83,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
                         TokenWrapper item = adapterTokenMap.get(key);
                         if (item != null) {
                             item.setToken(value.getToken());
-                            tokenAdapter.notifyItemChanged(tokenAdapter.getItemPosition(item),TokenAdapter.PAYLOAD_UPDATE_PRICE);
+                            tokenAdapter.notifyItemChanged(tokenAdapter.getItemPosition(item), TokenAdapter.PAYLOAD_UPDATE_PRICE);
                         }
                     } else {
                         tokenAdapter.addData(value);
@@ -110,7 +110,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
         });
 
         //listen the keyboard visibility event
-        View rootView = binding.getRoot().getRootView();
+        View rootView = binding.getRoot();
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
         startInterval();
     }
@@ -120,7 +120,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
         public void onGlobalLayout() {
             if (binding == null) return;
             Rect rect = new Rect();
-            binding.getRoot().getRootView().getWindowVisibleDisplayFrame(rect);
+            binding.getRoot().getWindowVisibleDisplayFrame(rect);
             int height = rect.bottom - rect.top;
             int screenHeight = requireContext().getResources().getDisplayMetrics().heightPixels;
             boolean visible = height < screenHeight * 0.75f;
@@ -147,7 +147,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
 
     @Override
     public void onDestroyView() {
-        binding.getRoot().getRootView().getViewTreeObserver().removeOnGlobalLayoutListener(globalLayoutListener);
+        binding.getRoot().getViewTreeObserver().removeOnGlobalLayoutListener(globalLayoutListener);
         super.onDestroyView();
         tokenAdapter.destroyView();
         stopInterval();

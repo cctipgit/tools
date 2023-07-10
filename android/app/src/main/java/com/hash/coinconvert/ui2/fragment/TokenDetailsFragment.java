@@ -168,12 +168,6 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
     }
 
     @Override
-    protected void onLoading(boolean loading) {
-        super.onLoading(loading);
-        Log.d("OnLoading", "" + loading);
-    }
-
-    @Override
     public void onStat(float high, float low, float avg, float change) {
         binding.statHigh.setValue(formatNumber(high));
         binding.statLow.setValue(formatNumber(low));
