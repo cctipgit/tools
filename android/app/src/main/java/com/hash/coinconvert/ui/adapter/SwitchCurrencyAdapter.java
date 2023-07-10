@@ -79,11 +79,6 @@ public class SwitchCurrencyAdapter extends BaseMultiItemQuickAdapter<SwitchCurre
             itemType = ItemType.TITLE;
         }
 
-        public ItemEntity(CurrencyInfo currency, boolean isChecked) {
-            itemType = ItemType.CONTENT;
-            this.isChecked = isChecked;
-        }
-
         public ItemEntity(Token token) {
             itemType = ItemType.CONTENT;
             this.token = token;

@@ -17,6 +17,7 @@ import com.hash.coinconvert.databinding.FragmentCurrencyBinding;
 import com.hash.coinconvert.entity.TokenWrapper;
 import com.hash.coinconvert.ui2.adapter.LineItemDecoration;
 import com.hash.coinconvert.ui2.adapter.TokenAdapter;
+import com.hash.coinconvert.utils.StatusBarUtils;
 import com.hash.coinconvert.vm.CurrencyViewModel;
 
 import java.util.HashMap;
@@ -67,6 +68,8 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
 
     @Override
     protected void initView() {
+        StatusBarUtils.setViewHeightEqualsStatusBarHeightLinear(binding.paddingView);
+        binding.actionBar.setFitsSystemWindows(false);
         binding.actionBar.addMenu(R.drawable.ic_home_currency_add, (v) -> navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToActivitySelectTokens()));
         initRecyclerView(binding.recyclerview);
         DBHolder.getInstance().prepareTokenAsync(requireContext()).subscribeOn(Schedulers.io()).subscribe(ignore -> viewModel.loadAllCurrencyInfo());

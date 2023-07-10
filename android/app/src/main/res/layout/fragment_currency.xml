@@ -7,10 +7,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui2.activity.HomeActivity">
 
+    <View
+        android:id="@+id/padding_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toTopOf="parent" />
     <com.hash.coinconvert.widget.ActionBar
         android:id="@+id/actionBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         app:abAutoPaddingTop="false"
         app:abBackIconVisible="false"
         app:abTitle="@string/home_currency_title" />

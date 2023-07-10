@@ -66,7 +66,7 @@ public class SwitchCurrencyActivity extends SearchCurrencyActivity {
         SwitchCurrencyAdapter adapter = (SwitchCurrencyAdapter) super.getAdapter();
         adapter.setOnItemClickListener((adp, view, position) -> {
             SwitchCurrencyAdapter.ItemEntity item = adapter.getItemOrNull(position);
-            if (item != null) {
+            if (item != null && item.token != null) {
                 item.token.revertFavorite();
                 item.isChecked = !item.isChecked;
                 Dispatch.I.submit(() -> TokenRepository.updateFavorite(item.token.token, item.token.isFavorite()));
