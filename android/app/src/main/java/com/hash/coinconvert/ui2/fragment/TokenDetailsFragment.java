@@ -51,6 +51,16 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
     }
 
     @Override
+    protected void showLoading() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void hideLoading() {
+        binding.progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
     protected void initView() {
         baseToken = TokenDetailsFragmentArgs.fromBundle(getArguments()).getSymbol();
         initDefaultCurrency();
@@ -155,7 +165,8 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
 
     @Override
     protected void onLoading(boolean loading) {
-        binding.progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
+        super.onLoading(loading);
+        Log.d("OnLoading", "" + loading);
     }
 
     @Override
