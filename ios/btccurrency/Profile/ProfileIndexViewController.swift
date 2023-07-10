@@ -130,6 +130,14 @@ class ProfileIndexViewController: YBaseViewController {
             guard let self = self else { return }
             self.p_refresh()
         }
+        NotificationCenter.default
+                .rx
+                .notification(Notification.Name(drawPrizeChanceChangedNofification))
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self else { return }
+                    self.p_refresh()
+                })
+                .disposed(by: rx.disposeBag)
     }
     
     private func p_refresh() {

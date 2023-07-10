@@ -382,8 +382,17 @@ class HomeViewModel: NSObject, ViewModel {
         //        section.first?.items.removeAll()
         //        section.first?.items.append(contentsOf: originItems)
         //        self.datasource.value(section)
+       
+        //self.loadCache()
+        
+        if let list = GetCurrencyTokensResponse.readHomeList(tokens: self.showListTokens) {
+            var response = GetCurrentCurrencyTokensResponse()
+            response.data = list
+            self.currentResponseSubject.accept(response)
+        }
         loadCurrencyRate()
         
+
         func doNothing() {
             if AppSetting.shared.localCurrencyMark.value {
                 if index == 0 && LocationManager.shared.getCurrentLocationCurrencyToken() == showListTokens.first {

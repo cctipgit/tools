@@ -44,6 +44,10 @@ class CurrencyDetailViewController: YBaseViewController {
 
         navigationView.backgroundColor = .backgroundColor
         navigationView.backMode = .normal
+        navigationView.pinMode = .none
+        navigationView.titleMode = .left
+        navigationView.titleLabel.text = "Token details".localized()
+
         view.addSubview(containerView)
 
         containerView.segmentView.segement.addTarget(self, action: #selector(didTapped(segment:)), for: .valueChanged)
@@ -114,11 +118,11 @@ class CurrencyDetailViewController: YBaseViewController {
                 
     
         // 测试代码 LocationManager.shared.requestLocation()
-        CurrencyDetailService().queryDetail(tokenFrom: "", tokenTo: "", dateUnitType: .day)
-        .subscribe(onNext: { result in
-            print("test")
-        })
-        .disposed(by: rx.disposeBag)
+//        CurrencyDetailService().queryDetail(tokenFrom: "", tokenTo: "", dateUnitType: .day)
+//        .subscribe(onNext: { result in
+//            print("test")
+//        })
+//        .disposed(by: rx.disposeBag)
     }
 
     @objc func didTouchedForward(button: UIButton) {

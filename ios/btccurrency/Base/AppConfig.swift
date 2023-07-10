@@ -7,7 +7,8 @@
 
 import Foundation
 import KeychainSwift
-
+// com.hellpeng.abcWT
+// com.cwallet.btccurrency
 struct AppConfig {
     static let baseURLForChart = "http://46.51.243.83/coinconvert" // http server
     static let baseURLForAPI = "https://7697d200.cwallet.com/rate/tool"

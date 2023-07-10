@@ -35,19 +35,20 @@ class CurrencyTimeSegementView: UIView {
     }
 
     func makeUI() {
+        backgroundView.isHidden = true
         addSubviews([backgroundView, segement])
-        segement.segments = LabelSegment.segments(withTitles: ["1D", "1W", "1M", "1Y", "ALL"],
-                                                  normalBackgroundColor: .backgroundColor,
-                                                  normalFont: .regularPoppin(with: 14),
-                                                  normalTextColor: .primaryTextColor,
-                                                  selectedBackgroundColor: .segementViewSelectBackgroundColor,
-                                                  selectedFont: .mediumPoppin(with: 14),
-                                                  selectedTextColor: .segementViewSelectTitleColor)
+        segement.segments = LabelSegment.segments(withTitles: ["1D", "1W", "1M", "1Y"],
+                                                  normalBackgroundColor: .bgSecondary,
+                                                  normalFont: .robotoBold(with: 14),
+                                                  normalTextColor: .contentSecondary,
+                                                  selectedBackgroundColor: .primaryBranding,
+                                                  selectedFont: .robotoBold(with: 14),
+                                                  selectedTextColor: .white)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundView.pin.all()
-        segement.pin.horizontally(16).vCenter().height(43)
+        segement.pin.horizontally(77).vCenter().height(24)
     }
 }

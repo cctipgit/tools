@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SnapKit
 
 class CurrencyChartInfoView: UIView {
     var maxItemView: CurrencyChartInfoItemView = {
         CurrencyChartInfoItemView().then { item in
             item.titleLabel.text = "High".localized()
             item.valueLabel.text = "--"
+            item.layer.cornerRadius = 16
+            item.layer.borderColor = UIColor.black.alpha(0.04).cgColor
+            item.layer.borderWidth = 1
         }
     }()
 
@@ -19,6 +23,9 @@ class CurrencyChartInfoView: UIView {
         CurrencyChartInfoItemView().then { item in
             item.titleLabel.text = "Low".localized()
             item.valueLabel.text = "--"
+            item.layer.cornerRadius = 16
+            item.layer.borderColor = UIColor.black.alpha(0.04).cgColor
+            item.layer.borderWidth = 1
         }
     }()
 
@@ -26,6 +33,9 @@ class CurrencyChartInfoView: UIView {
         CurrencyChartInfoItemView().then { item in
             item.titleLabel.text = "Average".localized()
             item.valueLabel.text = "--"
+            item.layer.cornerRadius = 16
+            item.layer.borderColor = UIColor.black.alpha(0.04).cgColor
+            item.layer.borderWidth = 1
         }
     }()
 
@@ -33,13 +43,17 @@ class CurrencyChartInfoView: UIView {
         CurrencyChartInfoItemView().then { item in
             item.titleLabel.text = "Change".localized()
             item.valueLabel.text = "--"
+            item.layer.cornerRadius = 16
+            item.layer.borderColor = UIColor.black.alpha(0.04).cgColor
+            item.layer.borderWidth = 1
         }
     }()
 
     var infoLabel: UILabel = {
         UILabel().then { label in
-            label.textColor = .primaryTextColor
-            label.font = .mediumPoppin(with: 18)
+            label.textColor = .basicBlk
+            label.font = .robotoBold(with: 18)
+            label.text = "Statistics".localized()
         }
     }()
 
@@ -59,34 +73,37 @@ class CurrencyChartInfoView: UIView {
                      minItemView,
                      avgItemView,
                      quoteChangeItemView])
+        updateConstraints()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        performLayout()
-    }
-
-    func performLayout() {
-        infoLabel.pin.top().horizontally().margin(24)
-            .sizeToFit()
-        
-        if self.width <= 0 {
-            return
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        infoLabel.snp.makeConstraints { make in
+            make.height.equalTo(24)
+            make.left.equalToSuperview().offset(20)
+            make.top.right.equalToSuperview()
         }
-        let width = (self.width - 24 * 2 - 10) / 2
-        
-        maxItemView.pin.below(of: infoLabel, aligned: .left)
-            .marginTop(16).width(width).sizeToFit(.width)
-        minItemView.pin.after(of: maxItemView, aligned: .top)
-            .marginLeft(10).width(width).sizeToFit(.width)
-
-        avgItemView.pin.below(of: maxItemView, aligned: .left)
-            .marginTop(20).width(width).sizeToFit(.width)
-        quoteChangeItemView.pin.after(of: avgItemView, aligned: .top)
-            .marginLeft(10).width(width).sizeToFit(.width)
+        maxItemView.snp.makeConstraints { make in
+            make.left.equalTo(infoLabel)
+            make.right.equalTo(self.snp.centerX).offset(-4)
+            make.height.equalTo(56)
+            make.top.equalTo(infoLabel.snp.bottom).offset(16)
+        }
+        minItemView.snp.makeConstraints { make in
+            make.width.height.top.centerY.equalTo(maxItemView)
+            make.left.equalTo(maxItemView.snp.right).offset(8)
+        }
+        avgItemView.snp.makeConstraints({ make in
+            make.left.right.height.equalTo(maxItemView)
+            make.top.equalTo(maxItemView.snp.bottom).offset(8)
+        })
+        quoteChangeItemView.snp.makeConstraints { make in
+            make.left.right.height.equalTo(minItemView)
+            make.top.equalTo(minItemView.snp.bottom).offset(8)
+        }
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return autoSizeThatFits(size, layoutClosure: performLayout)
+        return CGSize(width: UIDevice.kScreenWidth(), height: 100)
     }
 }

@@ -10,15 +10,15 @@ import UIKit
 class CurrencyChartInfoItemView: UIView {
     var titleLabel: UILabel = {
         UILabel().then { label in
-            label.textColor = .textColorOf60Alpha
-            label.font = .regularPoppin(with: 16)
+            label.textColor = .contentSecondary
+            label.font = .robotoBold(with: 14)
         }
     }()
 
     var valueLabel: UILabel = {
         UILabel().then { label in
-            label.textColor = .primaryTextColor
-            label.font = .mediumPoppin(with: 18)
+            label.textColor = .basicBlk
+            label.font = .robotoRegular(with: 14)
         }
     }()
 
@@ -33,8 +33,7 @@ class CurrencyChartInfoItemView: UIView {
     }
 
     func makeUI() {
-        addSubviews([titleLabel,
-                    valueLabel])
+        addSubviews([titleLabel, valueLabel])
     }
 
     override func layoutSubviews() {
@@ -43,15 +42,14 @@ class CurrencyChartInfoItemView: UIView {
     }
     
     func performLayout() {
-        titleLabel.pin.top().left().right()
+        titleLabel.pin.top(8).left(16).right().height(16)
             .sizeToFit()
-        valueLabel.pin.below(of: titleLabel,aligned: .left)
-            .marginTop(4)
+        valueLabel.pin.below(of: titleLabel, aligned: .left)
+            .marginTop(8)
             .horizontally()
-            .height(valueLabel.font.lineHeight)
+            .height(16)
     }
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return autoSizeThatFits(size, layoutClosure: performLayout)
     }
-    
 }

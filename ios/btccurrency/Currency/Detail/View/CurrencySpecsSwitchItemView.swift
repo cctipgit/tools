@@ -10,25 +10,26 @@ import UIKit
 
 class CurrencySpecsSwitchItemView: UIView {
     var currencyImageView = UIImageView().then {
-        $0.cornerRadius = 4
+        $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
 
     var amountLabel = UILabel().then { label in
-        label.font = .regularPoppin(with: 16)
-        label.textColor = .primaryTextColor.alpha(0.6)
+        label.font = .robotoBold(with: 16)
+        label.textColor = .basicBlk
     }
 
     var tokenLabel = {
         UILabel().then {
-            $0.font = .mediumPoppin(with: 16)
-            $0.textColor = .primaryTextColor
+            $0.font = .robotoBold(with: 16)
+            $0.textColor = .basicBlk
         }
     }()
 
     var selectIconView = {
         UIImageView().then {
-            $0.image = UIImage(named: "dropdown_arrow")
+            $0.image = UIImage(named: "n_arrow_down")
         }
     }()
 
@@ -62,7 +63,7 @@ class CurrencySpecsSwitchItemView: UIView {
                 selectIconView.snp.removeConstraints()
                 
                 currencyImageView.snp.remakeConstraints({
-                    $0.size.equalTo(16)
+                    $0.size.equalTo(20)
                     $0.left.equalToSuperview()
                     $0.centerY.equalToSuperview()
                     $0.top.bottom.equalToSuperview().inset(4)
@@ -76,7 +77,7 @@ class CurrencySpecsSwitchItemView: UIView {
                 }
 
                 currencyImageView.snp.remakeConstraints({
-                    $0.size.equalTo(16)
+                    $0.size.equalTo(20)
                     $0.left.equalTo(selectIconView.snp.right).offset(5)
                     $0.centerY.equalToSuperview()
                     $0.top.bottom.equalToSuperview().inset(4)
@@ -95,7 +96,7 @@ class CurrencySpecsSwitchItemView: UIView {
         } else {
             amountLabel.isHidden = true
             currencyImageView.snp.remakeConstraints({
-                $0.size.equalTo(CGSizeMake(16, 16))
+                $0.size.equalTo(20)
                 $0.left.equalToSuperview()
                 $0.centerY.equalToSuperview()
                 $0.top.bottom.equalToSuperview().inset(4)
