@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.hash.WebActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentProfileBinding;
@@ -56,8 +57,10 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
     protected void initView() {
         binding.menuSettings.setOnClickListener(v -> navigateTo(ProfileFragmentDirections.actionFragmentProfileToFragmentSetting()));
         binding.menuAbout.setOnClickListener(v -> {
+            WebActivity.load(requireContext(),"");
         });
         binding.menuPrivacy.setOnClickListener(v -> {
+            WebActivity.load(requireContext(),"");
         });
         binding.menuQa.setOnClickListener(v -> {
             goActivity(QAActivity.class, null, REQUEST_CODE_QA);
