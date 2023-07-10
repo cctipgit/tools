@@ -51,24 +51,16 @@
         android:theme="@style/Theme.ExchangeRate"
         tools:replace="android:allowBackup,android:fullBackupContent"
         tools:targetApi="31">
-        <activity android:name="com.hash.WebActivity" android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+        <activity
+            android:name="com.hash.WebActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true"
@@ -132,7 +124,8 @@
 
         <activity
             android:name=".ui2.activity.HomeActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui2.activity.QAActivity"
             android:exported="true" />

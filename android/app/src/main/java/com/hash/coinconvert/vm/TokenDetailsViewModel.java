@@ -31,7 +31,7 @@ public class TokenDetailsViewModel extends BaseViewModel {
     }
 
     public void fetchData(TokenDetailsFragment.UIData ui, int interval) {
-        loading.postValue(true);
+        startLoading();
         data.postValue(ui);
 
         ChartRequestBody body = new ChartRequestBody();
@@ -49,8 +49,7 @@ public class TokenDetailsViewModel extends BaseViewModel {
 
     public void fetchData(String base, String quote, int interval) {
         if (Boolean.TRUE.equals(isLoading().getValue())) return;
-        loading.postValue(true);
-
+        startLoading();
         Observable<TokenDetailsFragment.UIData> observable = Observable.create(sub -> {
             TokenDetailsFragment.UIData uiData = new TokenDetailsFragment.UIData();
             uiData.base = queryBySymbol(base);

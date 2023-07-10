@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hash.coinconvert.MainActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.ui2.activity.HomeActivity;
 import com.hash.coinconvert.utils.Dispatch;
@@ -28,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
     private void toNextPage() {
         long pageDuration = Math.min(SystemClock.elapsedRealtime() - mStartTime, mPageDuration);
         Dispatch.I.postUIDelayed(() -> {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
         }, mPageDuration - pageDuration);
     }

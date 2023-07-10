@@ -26,6 +26,7 @@ import com.hash.coinconvert.database.DBInit;
 import com.hash.coinconvert.entity.CurrencyInfo;
 import com.hash.coinconvert.http.AppGlobalHttpConfig;
 import com.hash.coinconvert.http.SocketGlobalListener;
+import com.hash.coinconvert.rnmodule.ToolModulePackage;
 import com.hash.coinconvert.ui.activity.BaseActivity;
 import com.hash.coinconvert.utils.AppsFlyerHelper;
 import com.hash.coinconvert.utils.SoundPoolManager;
@@ -157,6 +158,7 @@ public class App extends BaseApplication implements ReactApplication {
                     List<ReactPackage> packages = new PackageList(this).getPackages();
                     // Packages that cannot be autolinked yet can be added manually here, for example:
                     // packages.add(new MyReactNativePackage());
+                    packages.add(new ToolModulePackage());
                     return packages;
                 }
 

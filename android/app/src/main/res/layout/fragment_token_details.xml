@@ -79,9 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/colorPrimary"
-            android:foregroundTint="@color/colorPrimary"
-            android:secondaryProgressTint="@color/colorPrimary" />
+            android:progressTint="@color/colorPrimary" />
     </FrameLayout>
 
 
