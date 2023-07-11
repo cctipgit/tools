@@ -9,7 +9,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RCT_EXTERN_REMAP_MODULE(ToolModule, ToolModule, NSObject)
+@interface RCT_EXTERN_MODULE(ToolModule, NSObject)
 
 RCT_EXTERN_METHOD(openNative:(RCTPromiseResolveBlock)resolve reject: (RCTPromiseRejectBlock)reject);
 

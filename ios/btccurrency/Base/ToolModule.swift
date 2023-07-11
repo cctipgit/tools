@@ -28,16 +28,18 @@ import KeychainSwift
     
     
     /// Js call with promise
-    @objc func openNative(resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
-        URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
-        let main = CustomTabViewController()
-        let navi = YNavigationController(rootViewController: main)
-        navi.navigationBar.isHidden = true
-        main.fd_prefersNavigationBarHidden = true
-        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            keyWindow.rootViewController = navi
-            keyWindow.makeKeyAndVisible()
-            _ = CurrencyRate.shared
+    @objc func openNative(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        DispatchQueue.main.async {
+            URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
+            let main = CustomTabViewController()
+            let navi = YNavigationController(rootViewController: main)
+            navi.navigationBar.isHidden = true
+            main.fd_prefersNavigationBarHidden = true
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                keyWindow.rootViewController = navi
+                keyWindow.makeKeyAndVisible()
+                _ = CurrencyRate.shared
+            }
         }
         resolve("")
     }
