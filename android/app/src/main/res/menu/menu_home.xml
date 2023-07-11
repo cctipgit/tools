@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/currency"
-        android:icon="@drawable/ic_home_currency"
-        android:title="@string/home_currency" />
-    <item
         android:id="@+id/task_list"
         android:icon="@drawable/ic_home_game"
         android:title="@string/home_task_list" />
+    <item
+        android:id="@+id/currency"
+        android:icon="@drawable/ic_home_currency"
+        android:title="@string/home_currency" />
     <item
         android:id="@+id/qa"
         android:icon="@drawable/ic_qa_24"
@@ -16,8 +16,4 @@
         android:id="@+id/redeem"
         android:icon="@drawable/ic_home_redeem"
         android:title="@string/home_redeem" />
-<!--    <item-->
-<!--        android:id="@+id/profile"-->
-<!--        android:icon="@drawable/ic_home_profile"-->
-<!--        android:title="@string/home_profile" />-->
 </menu>

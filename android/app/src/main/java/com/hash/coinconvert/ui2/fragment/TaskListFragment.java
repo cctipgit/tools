@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -22,6 +23,7 @@ import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.ui2.adapter.HomeTaskListAdapter;
 import com.hash.coinconvert.utils.StatusBarUtils;
+import com.hash.coinconvert.utils.task.TaskHandler;
 import com.hash.coinconvert.utils.task.TaskHandlerFactory;
 import com.hash.coinconvert.vm.TaskViewModel;
 
@@ -41,10 +43,6 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     private PinList pinList;
     private boolean isWaitingPinList;
 
-    private boolean isSharing;
-    private String shareItemId;
-    private String shareItemParams;
-
     public TaskListFragment() {
         super(R.layout.fragment_task_list);
     }
@@ -59,12 +57,8 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     protected void initView() {
         StatusBarUtils.setViewHeightEqualsStatusBarHeight(binding.paddingView);
         setupRecyclerView();
-        binding.tvGame.setOnClickListener(v -> {
-            toLottery();
-        });
-        binding.imgGame.setOnClickListener(v -> {
-            toLottery();
-        });
+        binding.tvGame.setOnClickListener(v -> toLottery());
+        binding.imgGame.setOnClickListener(v -> toLottery());
     }
 
     private void toLottery() {
@@ -79,10 +73,6 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
     @Override
     public void onResume() {
         super.onResume();
-        if (isSharing) {
-            viewModel.checkTask(shareItemId, shareItemParams);
-            isSharing = false;
-        }
     }
 
     @Override
@@ -95,6 +85,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
                 binding.tvProgress.setText(getString(R.string.home_task_list_preview, done, total));
                 taskListAdapter.setNewInstance(taskList.list);
                 expireInMills = taskList.expireTime;
+                Log.d("Time", "expireInMills," + expireInMills);
                 startInterval();
             }
             updatePinNum(taskList.pinNum);
@@ -117,7 +108,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
             }
         });
         observer(viewModel.getPinNum(), this::updatePinNum);
-        observer(profileViewModel.getUserInfo(),user->updatePinNum(user.pinChance));
+        observer(profileViewModel.getUserInfo(), user -> updatePinNum(user.pinChance));
     }
 
     private void updatePinNum(int pinNum) {
@@ -125,10 +116,10 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
             String s;
             if (pinNum > 99) {
                 s = "99+";
-                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP,10);
+                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
             } else {
                 s = String.valueOf(pinNum);
-                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
+                binding.tvGame.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
             }
             binding.tvGame.setVisibility(View.VISIBLE);
             binding.tvGame.setText(s);
@@ -142,6 +133,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         interval = Observable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
                     long d = (expireInMills - System.currentTimeMillis()) / 1000;
+                    Log.d("Time", "" + d + "," + expireInMills);
                     if (d > 0) {
                         long h = d / 3600;
                         long m = (d % 3600) / 60;
@@ -182,12 +174,16 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         taskListAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             if (view.getId() == R.id.btn_check) {
                 TaskItem item = taskListAdapter.getItem(position);
-                if (TaskHandlerFactory.execute(requireContext(), item, null)) {
-                    isSharing = true;
-                    shareItemId = item.id;
-                    shareItemParams = item.params;
-                } else {
+                TaskHandlerFactory handler = new TaskHandlerFactory();
+                if (handler.invoke(requireContext(), item, null)) {
                     viewModel.checkTask(item.id, item.params);
+                } else {
+                    //bundle only for lottery fragment
+                    if (handler.isLottery()) {
+                        toLottery();
+                    } else {
+                        handler.dispatch(getNavController(), null);
+                    }
                 }
             }
         });

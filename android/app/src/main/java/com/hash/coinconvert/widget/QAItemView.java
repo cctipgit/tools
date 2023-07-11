@@ -113,7 +113,9 @@ public class QAItemView extends LinearLayout implements View.OnClickListener {
         CheckedTextView textView = new CheckedTextView(getContext(), null, 0, R.style.QAAnswer);
         textView.setText(answer);
         textView.setChecked(false);
-        textView.setGravity(Gravity.CENTER);
+        if (matchParent) {
+            textView.setGravity(Gravity.CENTER);
+        }
         textView.setOnClickListener(this);
 
         FlexboxLayout.LayoutParams params = new FlexboxLayout.LayoutParams(
