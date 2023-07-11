@@ -14,6 +14,7 @@ import com.hash.coinconvert.database.repository.TokenRepository;
 import com.hash.coinconvert.databinding.ActivitySwitchCurrencyBinding;
 import com.hash.coinconvert.ui.adapter.SwitchCurrencyAdapter;
 import com.hash.coinconvert.utils.Dispatch;
+import com.hash.coinconvert.utils.task.TaskHelper;
 import com.hash.coinconvert.widget.SearchView;
 import com.hash.coinconvert.widget.SideBar;
 
@@ -69,6 +70,9 @@ public class SwitchCurrencyActivity extends SearchCurrencyActivity {
             if (item != null && item.token != null) {
                 item.token.revertFavorite();
                 item.isChecked = !item.isChecked;
+                if (item.isChecked) {
+                    TaskHelper.addToken();
+                }
                 Dispatch.I.submit(() -> TokenRepository.updateFavorite(item.token.token, item.token.isFavorite()));
                 adapter.notifyItemChanged(adapter.getItemPosition(item), SwitchCurrencyAdapter.PAYLOAD_UPDATE_CHECK);
             }

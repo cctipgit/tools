@@ -67,6 +67,10 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
+    public void switchTab(int idInNavigation) {
+        bottomNavigationView.setSelectedItemId(idInNavigation);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

@@ -21,6 +21,7 @@ import com.hash.coinconvert.databinding.FragmentTokenDetailsBinding;
 import com.hash.coinconvert.entity.ChartItem;
 import com.hash.coinconvert.ui.activity.QuoteCurrencyActivity;
 import com.hash.coinconvert.utils.FlagLoader;
+import com.hash.coinconvert.utils.task.TaskHelper;
 import com.hash.coinconvert.vm.TokenDetailsViewModel;
 import com.hash.coinconvert.widget.KLineView;
 
@@ -94,6 +95,7 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
     protected void onFirstResume() {
         super.onFirstResume();
         loadData();
+        TaskHelper.viewTokenDetail();
     }
 
     @Override
