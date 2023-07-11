@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.hash.WebActivity;
@@ -55,22 +56,16 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
 
     @Override
     protected void initView() {
+        binding.actionBar.setBackViewTintColor(ContextCompat.getColor(requireContext(), R.color.theme_bg));
         binding.menuSettings.setOnClickListener(v -> navigateTo(ProfileFragmentDirections.actionFragmentProfileToFragmentSetting()));
-        binding.menuAbout.setOnClickListener(v -> {
-            WebActivity.load(requireContext(),"");
-        });
-        binding.menuPrivacy.setOnClickListener(v -> {
-            WebActivity.load(requireContext(),"");
-        });
-        binding.menuQa.setOnClickListener(v -> {
-            goActivity(QAActivity.class, null, REQUEST_CODE_QA);
-        });
+        binding.menuAbout.setOnClickListener(v -> WebActivity.load(requireContext(), ""));
+        binding.menuPrivacy.setOnClickListener(v -> WebActivity.load(requireContext(), ""));
     }
 
     @Override
     protected void onCommonActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("onCommonActivityResult","onCommonActivityResult");
-        if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_QA){
+        Log.d("onCommonActivityResult", "onCommonActivityResult");
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_QA) {
             profileViewModel.fetchUserInfo();
         }
     }

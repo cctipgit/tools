@@ -70,7 +70,10 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
     protected void initView() {
         StatusBarUtils.setViewHeightEqualsStatusBarHeightLinear(binding.paddingView);
         binding.actionBar.setFitsSystemWindows(false);
-        binding.actionBar.addMenu(R.drawable.ic_home_currency_add, (v) -> navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToActivitySelectTokens()));
+        binding.actionBar.setOnBackButtonClickListener(v -> navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToActivitySelectTokens()));
+        binding.actionBar.addMenu(R.drawable.ic_setting_24, (v) -> {
+            navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToFragmentProfile());
+        });
         initRecyclerView(binding.recyclerview);
         DBHolder.getInstance().prepareTokenAsync(requireContext()).subscribeOn(Schedulers.io()).subscribe(ignore -> viewModel.loadAllCurrencyInfo());
 

@@ -5,6 +5,7 @@
     app:startDestination="@+id/currency">
     <include app:graph="@navigation/currency"/>
     <include app:graph="@navigation/task_list"/>
+    <include app:graph="@navigation/qa"/>
     <include app:graph="@navigation/redeem"/>
-    <include app:graph="@navigation/profile"/>
+<!--    <include app:graph="@navigation/profile"/>-->
 </navigation>
