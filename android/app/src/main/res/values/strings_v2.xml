@@ -62,5 +62,8 @@
     <string name="qa_btn_next">Next</string>
     <string name="qa_btn_done">Done</string>
     <string name="qa_progress">Question %1$d out of %2$d</string>
-    <string name="qa_submit_succ">Submitted</string>
+    <string name="qa_submit_succ">Congratulations</string>
+    <string name="qa_submit_succ_sub">You were successfully completed all those questions.</string>
+    <string name="qa_notice_submitted_title">Congratulations! You already completed all questions today</string>
+    <string name="qa_notice_submitted_sub_title">Please try it tomorrow</string>
 </resources>

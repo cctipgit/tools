@@ -160,7 +160,7 @@ public abstract class BaseFragment extends Fragment {
         ViewParent parent = view.getParent();
         if (parent instanceof ViewGroup) {
             Log.d("findContentView", parent.getClass().getCanonicalName());
-            if ("android.widget.FrameLayout".equals(parent.getClass().getCanonicalName())) {
+            if ("android.widget.FrameLayout".equals(parent.getClass().getCanonicalName()) && ((ViewGroup) parent).getId() != R.id.fl_qa) {
                 return ((FrameLayout) parent);
             } else {
                 return findContentView(((ViewGroup) parent));

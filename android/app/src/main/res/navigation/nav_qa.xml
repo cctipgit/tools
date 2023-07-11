@@ -13,6 +13,18 @@
         <action
             android:id="@+id/action_fragment_qa_to_fragment_qa"
             app:destination="@id/fragment_qa" />
-        <argument android:name="index" app:argType="integer" android:defaultValue="0" />
+        <argument
+            android:name="index"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragment_qa_to_dialog_qa_submitted"
+            app:destination="@id/dialog_qa_submitted" />
     </fragment>
+
+    <dialog
+        android:id="@+id/dialog_qa_submitted"
+        android:name="com.hash.coinconvert.ui2.dialog.QASubmittedDialog"
+        android:label="QASubmitted"
+        tools:layout="@layout/dialog_qa_submitted" />
 </navigation>
