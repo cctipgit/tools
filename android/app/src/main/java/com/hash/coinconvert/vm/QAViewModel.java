@@ -39,6 +39,10 @@ public class QAViewModel extends ToolApiViewModel {
         execute(api.questionList(), questionList -> questions.postValue(questionList));
     }
 
+    public void refetch() {
+        execute(api.questionList(), questionList -> questions.postValue(questionList));
+    }
+
     public void submitAnswers() {
         startLoading();
         List<AnswerBody> list = new ArrayList<>();
@@ -59,7 +63,7 @@ public class QAViewModel extends ToolApiViewModel {
     public void complete() {
         int size = getQuestionSize();
         progress.postValue(new Progress(size, size));
-        fetchQuestions();
+        refetch();
     }
 
     private int getQuestionSize() {

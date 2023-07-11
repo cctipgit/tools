@@ -57,6 +57,7 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
             if (progress.progress > progress.max) {
                 profileViewModel.fetchUserInfo();
                 viewModel.complete();
+                navigateTo(QAAllFragmentDirections.actionFragmentQaAllToDialogQaSubmitted());
             } else {
                 startProgressBarAnimation(progress);
             }
