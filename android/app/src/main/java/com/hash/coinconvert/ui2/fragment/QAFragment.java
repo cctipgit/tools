@@ -50,7 +50,7 @@ public class QAFragment extends BaseMVVMFragment<QAViewModel, FragmentQaBinding>
         binding.btnBack.setVisibility(questionIndex == 0 ? View.GONE : View.VISIBLE);
         binding.btnNext.setEnabled(false);
         //for first page loading
-        if(questionIndex == 0){
+        if (questionIndex == 0) {
             binding.getRoot().setVisibility(View.INVISIBLE);
         }
     }
@@ -60,6 +60,7 @@ public class QAFragment extends BaseMVVMFragment<QAViewModel, FragmentQaBinding>
         super.observer();
         observer(viewModel.getQuestions(), list -> {
             binding.getRoot().setVisibility(View.VISIBLE);
+            binding.llQuestions.removeAllViews();
             //index is start from 0,show text must start from 1
             viewModel.updateProgress(questionIndex + 1);
 

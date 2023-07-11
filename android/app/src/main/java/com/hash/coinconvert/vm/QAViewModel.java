@@ -56,6 +56,11 @@ public class QAViewModel extends ToolApiViewModel {
         }
     }
 
+    public void complete() {
+        int size = questions.getValue().size();
+        progress.postValue(new Progress(size, size));
+    }
+
     public void answer(List<AnswerBody> list, boolean last) {
         if (list == null) return;
         list.forEach(item -> answers.put(item.id, item.options));
@@ -73,12 +78,6 @@ public class QAViewModel extends ToolApiViewModel {
             }
         });
         answer.postValue(map);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        fetchQuestions();
     }
 
     public static class Progress {

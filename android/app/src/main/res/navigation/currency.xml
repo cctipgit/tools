@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_fragment_currency_to_activity_select_tokens"
             app:destination="@id/activity_select_tokens" />
+        <action
+            android:id="@+id/action_fragment_currency_to_fragment_profile"
+            app:destination="@+id/fragment_profile" />
     </fragment>
 
     <fragment
@@ -36,4 +39,37 @@
         android:id="@+id/activity_select_tokens"
         android:name="com.hash.coinconvert.ui.activity.SwitchCurrencyActivity"
         tools:layout="@layout/activity_switch_currency" />
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.hash.coinconvert.ui2.fragment.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_setting"
+            app:destination="@id/fragment_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_setting"
+        android:name="com.hash.coinconvert.ui2.fragment.SettingFragment"
+        android:label="setting"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_fragment_setting_to_activity_def_currency_value"
+            app:destination="@id/activity_def_currency_value" />
+        <action
+            android:id="@+id/action_fragment_setting_to_activity_quote_color"
+            app:destination="@id/activity_quote_color" />
+    </fragment>
+
+    <activity
+        android:id="@+id/activity_def_currency_value"
+        android:name="com.hash.coinconvert.ui.activity.SettingCurrencyValueActivity"
+        android:label="SettingCurrencyValueActivity" />
+
+    <activity
+        android:id="@+id/activity_quote_color"
+        android:name="com.hash.coinconvert.ui.activity.SettingQuoteColorActivity"
+        android:label="SettingQuoteColorActivity" />
 </navigation>

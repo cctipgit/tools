@@ -23,13 +23,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.http.SocketSender;
-import com.hash.coinconvert.ui2.fragment.RedeemFragment;
 import com.hash.coinconvert.utils.LocationUtils;
 import com.hash.coinconvert.vm.ProfileViewModel;
+import com.hash.coinconvert.vm.QAViewModel;
 
 public class HomeActivity extends BaseActivity {
 
     private ProfileViewModel profileViewModel;
+    private QAViewModel qaViewModel;
 
     public static final String TAG = "HomeActivity";
 
@@ -38,13 +39,14 @@ public class HomeActivity extends BaseActivity {
             R.id.fragment_currency,
             R.id.fragment_task_list,
             R.id.fragment_redeem,
-            R.id.fragment_profile
+            R.id.fragment_qa_all
     };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        qaViewModel = new ViewModelProvider(this).get(QAViewModel.class);
         setContentView(R.layout.activity_home);
 
         NavHostFragment fragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_container);
@@ -56,17 +58,13 @@ public class HomeActivity extends BaseActivity {
         controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                if (isInNav(navDestination.getId()) && notTheSecondRedeemFragment(bundle)) {
+                if (isInNav(navDestination.getId())) {
                     bottomNavigationView.setVisibility(View.VISIBLE);
                 } else {
                     bottomNavigationView.setVisibility(View.GONE);
                 }
             }
         });
-    }
-
-    private boolean notTheSecondRedeemFragment(Bundle bundle){
-        return bundle == null || !bundle.getBoolean(RedeemFragment.SHOW_NAVIGATION,false);
     }
 
     @Override

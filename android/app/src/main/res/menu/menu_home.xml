@@ -9,12 +9,15 @@
         android:icon="@drawable/ic_home_game"
         android:title="@string/home_task_list" />
     <item
+        android:id="@+id/qa"
+        android:icon="@drawable/ic_qa_24"
+        android:title="@string/qa_title" />
+    <item
         android:id="@+id/redeem"
         android:icon="@drawable/ic_home_redeem"
         android:title="@string/home_redeem" />
-    <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_home_profile"
-        android:title="@string/home_profile" />
-
+<!--    <item-->
+<!--        android:id="@+id/profile"-->
+<!--        android:icon="@drawable/ic_home_profile"-->
+<!--        android:title="@string/home_profile" />-->
 </menu>

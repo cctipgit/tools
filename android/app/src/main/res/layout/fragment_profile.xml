@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.hash.coinconvert.widget.ActionBar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:abTitle="@string/home_profile"
+        app:abTitleColor="@color/theme_bg"
+        app:abTitleGravity="left" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,26 +22,15 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="16dp"
         android:paddingBottom="24dp">
-
-        <TextView
-            style="@style/TextView.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
-            android:layout_gravity="start"
-            android:text="@string/home_profile"
-            android:textColor="@color/theme_bg"
-            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/img_avatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bg_profile_avatar"
             android:padding="2dp"
-            android:layout_marginTop="16dp"
             tools:src="@mipmap/avator01" />
 
         <TextView
@@ -89,11 +87,4 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:psm_Title="@string/profile_about" />
-    <com.hash.coinconvert.widget.ProfileSettingMenuItem
-        android:id="@+id/menu_qa"
-        style="@style/ProfileSetting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:psm_Title="@string/profile_question" />
 </LinearLayout>
