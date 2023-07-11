@@ -29,37 +29,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         // origin
-        URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
-        let main = CustomTabViewController()
-        let navi = YNavigationController(rootViewController: main)
-        navi.navigationBar.isHidden = true
-        main.fd_prefersNavigationBarHidden = true
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navi
-        window!.makeKeyAndVisible()
-        _ = CurrencyRate.shared
+        // URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
+        // let main = CustomTabViewController()
+        // let navi = YNavigationController(rootViewController: main)
+        // navi.navigationBar.isHidden = true
+        // main.fd_prefersNavigationBarHidden = true
+        // window = UIWindow(frame: UIScreen.main.bounds)
+        // window?.rootViewController = navi
+        // window!.makeKeyAndVisible()
+        // _ = CurrencyRate.shared
 
 
 
         
         // RN
-//        var rnUrl: URL!
-//        #if DEBUG
-//            rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
-//        #else
-//            rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-//        #endif
-//        let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
-//        rootView.backgroundColor = UIColor.systemPink
-//
-//        let rootViewController = UIViewController()
-//        rootViewController.view = rootView
-//
-//        let navi = YNavigationController(rootViewController: rootViewController)
-//        navi.navigationBar.isHidden = true
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = navi
-//        window?.makeKeyAndVisible()
+       var rnUrl: URL!
+       #if DEBUG
+           rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
+       #else
+           rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+       #endif
+       let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
+       rootView.backgroundColor = UIColor.systemPink
+
+       let rootViewController = UIViewController()
+       rootViewController.view = rootView
+
+       let navi = YNavigationController(rootViewController: rootViewController)
+       navi.navigationBar.isHidden = true
+       window = UIWindow(frame: UIScreen.main.bounds)
+       window?.rootViewController = navi
+       window?.makeKeyAndVisible()
 
         return true
     }
