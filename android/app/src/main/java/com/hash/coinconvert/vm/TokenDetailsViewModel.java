@@ -1,5 +1,7 @@
 package com.hash.coinconvert.vm;
 
+import android.annotation.SuppressLint;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -12,6 +14,8 @@ import com.hash.coinconvert.http.api.KLineApi;
 import com.hash.coinconvert.ui2.fragment.TokenDetailsFragment;
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class TokenDetailsViewModel extends BaseViewModel {
 
@@ -31,7 +35,7 @@ public class TokenDetailsViewModel extends BaseViewModel {
     }
 
     public void fetchData(TokenDetailsFragment.UIData ui, int interval) {
-        loading.postValue(true);
+        startLoading();
         data.postValue(ui);
 
         ChartRequestBody body = new ChartRequestBody();
@@ -47,10 +51,10 @@ public class TokenDetailsViewModel extends BaseViewModel {
         });
     }
 
+    @SuppressLint("CheckResult")
     public void fetchData(String base, String quote, int interval) {
         if (Boolean.TRUE.equals(isLoading().getValue())) return;
-        loading.postValue(true);
-
+        startLoading();
         Observable<TokenDetailsFragment.UIData> observable = Observable.create(sub -> {
             TokenDetailsFragment.UIData uiData = new TokenDetailsFragment.UIData();
             uiData.base = queryBySymbol(base);
@@ -58,8 +62,8 @@ public class TokenDetailsViewModel extends BaseViewModel {
             sub.onNext(uiData);
             sub.onComplete();
         });
-
-        execute(observable, uiData -> fetchData(uiData, interval));
+        observable.subscribeOn(Schedulers.computation())
+                .subscribe(uiData -> fetchData(uiData, interval));
     }
 
     private Token queryBySymbol(String token) {

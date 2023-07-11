@@ -10,11 +10,12 @@ import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
+  Button,
   StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
-  View,
+  View,NativeModules,
 } from 'react-native';
 
 import {
@@ -72,6 +73,9 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <Button title='openNative' onPress={()=>{
+            NativeModules.ToolModule.openNative();
+        }}/>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,

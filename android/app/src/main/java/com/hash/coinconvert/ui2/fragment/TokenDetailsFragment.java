@@ -51,6 +51,16 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
     }
 
     @Override
+    protected void showLoading() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void hideLoading() {
+        binding.progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
     protected void initView() {
         baseToken = TokenDetailsFragmentArgs.fromBundle(getArguments()).getSymbol();
         initDefaultCurrency();
@@ -109,6 +119,10 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
         RadioButton button = ((RadioButton) v);
         int interval = (int) button.getTag();
         if (interval == TokenDetailsFragment.this.interval) return;
+        if (binding.progressBar.getVisibility() == View.VISIBLE) {
+            button.setChecked(false);
+            return;
+        }
         for (int i = 0; i < binding.flex.getChildCount(); i++) {
             RadioButton b = (RadioButton) binding.flex.getChildAt(i);
             if (b.isChecked() && b != button) {
@@ -151,11 +165,6 @@ public class TokenDetailsFragment extends BaseMVVMFragment<TokenDetailsViewModel
         } else {
             this.quoteToken = "USD";
         }
-    }
-
-    @Override
-    protected void onLoading(boolean loading) {
-        binding.progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
     }
 
     @Override

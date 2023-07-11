@@ -74,6 +74,12 @@ public class WebActivity extends BaseActivity {
                 Log.d("WebView", request.getUrl().toString());
                 return super.shouldOverrideUrlLoading(view, request);
             }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.d("WebView", "->"+url);
+                return super.shouldOverrideUrlLoading(view, url);
+            }
         });
         String url = getUrlFromBundle();
         if (TextUtils.isEmpty(url)) {
