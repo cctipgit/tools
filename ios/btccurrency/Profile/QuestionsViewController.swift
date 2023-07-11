@@ -150,9 +150,9 @@ class QuestionsViewController: YBaseViewController {
     
     // MARK: Private Method
     private func p_setElements() {
-        navigationView.backMode = .normal
+        navigationView.backMode = .none
         navigationView.pinMode = .none
-        navigationView.titleMode = .left
+        navigationView.titleMode = .center
         navigationView.titleLabel.text = "Questionnaire".localized()
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: sWidth, height: sHeight))
         scrollView.showsVerticalScrollIndicator = false

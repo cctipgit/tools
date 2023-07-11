@@ -114,15 +114,6 @@ class CurrencyDetailViewController: YBaseViewController {
             .drive(self.containerView.segmentView.segement.rx.isEnabled,
                     self.containerView.loadIndicatorView.rx.isHidden)
             .disposed(by: rx.disposeBag)
-                
-                
-    
-        // 测试代码 LocationManager.shared.requestLocation()
-//        CurrencyDetailService().queryDetail(tokenFrom: "", tokenTo: "", dateUnitType: .day)
-//        .subscribe(onNext: { result in
-//            print("test")
-//        })
-//        .disposed(by: rx.disposeBag)
     }
 
     @objc func didTouchedForward(button: UIButton) {

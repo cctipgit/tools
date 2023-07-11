@@ -18,12 +18,6 @@ class ProfileIndexViewController: YBaseViewController {
         v.backgroundColor = .primaryBranding
     }
     
-    private let mainLabel = UILabel().then { v in
-        v.font = .robotoBold(with: 20)
-        v.textColor = .white
-        v.text = "Profile".localized()
-    }
-    
     private let avatarImgView = UIImageView().then { v in
         v.layer.cornerRadius = 32
         v.layer.borderColor = UIColor(red: 0.98, green: 0.63, blue: 0.12, alpha: 1).cgColor
@@ -52,7 +46,6 @@ class ProfileIndexViewController: YBaseViewController {
     }
     
     private let titles: [String] = ["Settings".localized(),
-                                    "Questions".localized(),
                                     "Privacy Policy".localized(),
                                     "About".localized()]
     private let tableView = UITableView(frame: .zero, style: .plain).then { tb in
@@ -63,22 +56,21 @@ class ProfileIndexViewController: YBaseViewController {
     // MARK: Super Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationView.backMode = .none
+        navigationView.backMode = .normal
         navigationView.pinMode = .none
         navigationView.titleMode = .left
         navigationView.titleLabel.text = "Profile".localized()
+        navigationView.titleLabel.textColor = .white
+        navigationView.backButton.setImage(UIImage(named: "n_back_white"), for: .normal)
+        navigationView.backButton.setImage(UIImage(named: "n_back_white"), for: .highlighted)
+        
+        self.view.sendSubviewToBack(topBgView)
         p_setElements()
         updateViewConstraints()
     }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        mainLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.bottom.equalTo(avatarImgView.snp.top).offset(-32)
-            make.height.equalTo(28)
-            make.width.greaterThanOrEqualTo(60)
-        }
         avatarImgView.snp.makeConstraints { make in
             make.size.equalTo(64)
             make.centerX.equalToSuperview()
@@ -119,8 +111,11 @@ class ProfileIndexViewController: YBaseViewController {
     
     // MARK: Private Method
     private func p_setElements() {
-        topBgView.addSubviews([mainLabel, avatarImgView, nameLabel, joinLabel, pointLabel])
+        topBgView.addSubviews([avatarImgView, nameLabel, joinLabel, pointLabel])
         view.addSubviews([topBgView, tableView])
+        navigationView.backgroundColor = .primaryBranding
+        
+        view.bringSubviewToFront(navigationView)
         tableView.delegate = self
         tableView.dataSource = self
         let info = self.getUserInfo()
@@ -174,11 +169,9 @@ extension ProfileIndexViewController: UITableViewDataSource, UITableViewDelegate
         if indexPath.row == 0 {
             vc = SettingViewController()
         } else if indexPath.row == 1 {
-            vc = QuestionsViewController()
+            vc = ProfilePrivacyViewController()
         } else if indexPath.row == 2 {
             vc = ProfileAboutViewController()
-        } else {
-            vc = ProfilePrivacyViewController()
         }
         self.navigationController?.pushViewController(vc)
     }

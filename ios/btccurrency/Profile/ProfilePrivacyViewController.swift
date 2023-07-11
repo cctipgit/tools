@@ -19,6 +19,6 @@ class ProfilePrivacyViewController: BaseWebViewController {
     }
     
     override var webUrl: URL {
-        return URL(string: "http://www.baidu.com")!
+        return URL(string: "https://www.google.com")!
     }
 }

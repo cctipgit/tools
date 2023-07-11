@@ -46,7 +46,12 @@ class HomeCurrencyViewController: YBaseViewController {
         tv.backgroundColor = .backgroundColor
         tv.rowHeight = 74
     }
-
+    
+    lazy var addButton = UIButton(type: .custom).then { v in
+        v.setImage(UIImage(named: "n_add"), for: .normal)
+        v.setImage(UIImage(named: "n_add"), for: .highlighted)
+    }
+    
     override func makeUI() {
         view.addSubview(tableView)
         view.addSubview(calculatorView)
@@ -54,16 +59,25 @@ class HomeCurrencyViewController: YBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: Notification.Name(rawValue: "websocktConnect"), object: nil)
         
         _ = navigationView.rightButton.then { button in
-            button.setImage(UIImage(named: "n_add"), for: .normal)
-            button.setImage(UIImage(named: "n_add"), for: .highlighted)
-            button.addTarget(self, action: #selector(didTappedAddButton(button:)), for: .touchUpInside)
+            button.setImage(UIImage(named: "n_setting"), for: .normal)
+            button.setImage(UIImage(named: "n_setting"), for: .highlighted)
+            button.addTarget(self, action: #selector(p_settingBtnClicked(sender:)), for: .touchUpInside)
         }
+        addButton.addTarget(self , action: #selector(didTappedAddButton(button:)), for: .touchUpInside)
+        navigationView.addSubview(addButton)
+
         navigationView.backMode = .none
         navigationView.pinMode = .none
         navigationView.titleMode = .center
         navigationView.titleLabel.text = "Cryptovise".localized()
     }
 
+    @objc
+    private func p_settingBtnClicked(sender: UIButton) {
+        let vc = ProfileIndexViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func makeEvent() {
         viewModel = HomeViewModel()
         keyboardController.delegate = self
@@ -99,10 +113,26 @@ class HomeCurrencyViewController: YBaseViewController {
             make.top.equalTo(navigationView.snp.bottom).offset(8)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        addButton.snp.makeConstraints { make in
+            make.size.equalTo(24)
+            make.left.equalToSuperview().offset(36)
+            make.centerY.equalToSuperview()
+        }
         calculatorView.pin.left().bottom().right().height(calculatorHeight())
         tableViewHeightSubject.accept(tableView.height)
     }
-
+    
+    @objc
+    func p_cellItemSelected(sender: UIButton) {
+        self.navigationController?.delegate = nil
+        let from = sender.assoObj as? GetCurrencyTokensResponse
+        let to = self.viewModel.getDefualtCompareModel()
+        if let to, let from {
+            let detailVC = CurrencyDetailViewController(from: from, to: to)
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
     func bindViewModel() {
         let output = viewModel.transform(input: HomeViewModel.Input(tableViewHeight: tableViewHeightSubject,
                 textFieldValueChanged: currentValueChanged,
@@ -117,24 +147,27 @@ class HomeCurrencyViewController: YBaseViewController {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTableViewCell.self),
                     for: indexPath) as! HomeTableViewCell
-
+            
+            cell.detailMaskView.addTarget(self, action: #selector(p_cellItemSelected(sender:)), for: .touchUpInside)
+            cell.detailMaskView.assoObj = cellViewModel.model
+            
             cell.bindViewModel(cellViewModel: cellViewModel)
             cell.textfieldMaskView.rx.tap
                     .subscribe(onNext: {
                         self.tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
                     })
                     .disposed(by: self.rx.disposeBag)
-            cell.detailMaskView.rx.tap
-                .throttle(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
-                .subscribe(onNext: {
-                    self.navigationController?.delegate = nil
-                    let from = cellViewModel.model
-                    let to = self.viewModel.getDefualtCompareModel()
-                    if let to {
-                        let detailVC = CurrencyDetailViewController(from: from, to: to)
-                        self.navigationController?.pushViewController(detailVC, animated: true)
-                    }
-            }).disposed(by: self.rx.disposeBag)
+//            cell.detailMaskView.rx.tap
+//                .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
+//                .subscribe(onNext: {
+//                    self.navigationController?.delegate = nil
+//                    let from = cellViewModel.model
+//                    let to = self.viewModel.getDefualtCompareModel()
+//                    if let to {
+//                        let detailVC = CurrencyDetailViewController(from: from, to: to)
+//                        self.navigationController?.pushViewController(detailVC, animated: true)
+//                    }
+//            }).disposed(by: self.rx.disposeBag)
             
             if cellViewModel.selectedSubject.value == cellViewModel.token {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -216,7 +249,7 @@ class HomeCurrencyViewController: YBaseViewController {
                         return
                     }
 
-                    if let cell = self.tableView.visibleCells[indexPath.row] as? HomeTableViewCell {
+                    if self.tableView.visibleCells.count > indexPath.row, let cell = self.tableView.visibleCells[indexPath.row] as? HomeTableViewCell {
                         self.selectCell = cell
                         self.valueChangedSubscription?.dispose()
 
@@ -319,7 +352,7 @@ class HomeCurrencyViewController: YBaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.hideSwipeCells()
         }

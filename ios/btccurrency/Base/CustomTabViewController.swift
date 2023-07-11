@@ -13,30 +13,30 @@ class CustomTabViewController: RAMAnimatedTabBarController {
     private var currencyVC: UIViewController? // Currency
     private var gameVC: UIViewController? // Game
     private var redeemVC: UIViewController? // Redeem
-    private var profileVC: UIViewController? // Profile
+    private var questionVC: UIViewController? // Question
     
     override func viewDidLoad() {
-        let currencyItem = CustomTabBarItem(title: "currency".localized(), image: UIImage(named: "n_tab_currency")!, selectedImage: UIImage(named: "n_tab_currency")!)
+        let currencyItem = CustomTabBarItem(title: "Currency".localized(), image: UIImage(named: "n_tab_currency")!, selectedImage: UIImage(named: "n_tab_currency")!)
         currencyItem.animation = CustomTabItemAnimation()
         currencyVC = HomeCurrencyViewController()
         currencyVC?.tabBarItem = currencyItem
         
-        let gameItem = CustomTabBarItem(title: "task list".localized(), image: UIImage(named: "n_tab_tasklist")!, selectedImage: UIImage(named: "n_tab_tasklist")!)
+        let gameItem = CustomTabBarItem(title: "Task list".localized(), image: UIImage(named: "n_tab_tasklist")!, selectedImage: UIImage(named: "n_tab_tasklist")!)
         gameItem.animation = CustomTabItemAnimation()
         gameVC = TaskIndexViewController()
         gameVC?.tabBarItem = gameItem
         
-        let redeemItem = CustomTabBarItem(title: "redeem", image: UIImage(named: "n_tab_redeem")!, selectedImage: UIImage(named: "n_tab_redeem")!)
+        let questionItem = CustomTabBarItem(title: "Questionnaire", image: UIImage(named: "n_questionare")!, selectedImage: UIImage(named: "n_questionare")!)
+        questionItem.animation = CustomTabItemAnimation()
+        questionVC = QuestionsViewController()
+        questionVC?.tabBarItem = questionItem
+        
+        let redeemItem = CustomTabBarItem(title: "Redeem", image: UIImage(named: "n_tab_redeem")!, selectedImage: UIImage(named: "n_tab_redeem")!)
         redeemItem.animation = CustomTabItemAnimation()
         redeemVC = RedeemIndexViewController()
         redeemVC?.tabBarItem = redeemItem
         
-        let profileItem = CustomTabBarItem(title: "profile", image: UIImage(named: "n_tab_profile")!, selectedImage: UIImage(named: "n_tab_profile")!)
-        profileItem.animation = CustomTabItemAnimation()
-        profileVC = ProfileIndexViewController()
-        profileVC?.tabBarItem = profileItem
-        
-        self.viewControllers = [currencyVC!, gameVC!, redeemVC!, profileVC!]
+        self.viewControllers = [currencyVC!, gameVC!, questionVC!, redeemVC!]
         super.viewDidLoad()
     }
 }

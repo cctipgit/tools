@@ -38,21 +38,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navi
         window!.makeKeyAndVisible()
         _ = CurrencyRate.shared
-       
+
+
+
         
         // RN
 //        var rnUrl: URL!
-//        if true {
+//        #if DEBUG
 //            rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
-//        } else {
-//            // [CodePush bundleURL]
-//            rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
-//        }
+//        #else
+//            rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+//        #endif
 //        let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
 //        rootView.backgroundColor = UIColor.systemPink
 //
 //        let rootViewController = UIViewController()
-//
 //        rootViewController.view = rootView
 //
 //        let navi = YNavigationController(rootViewController: rootViewController)
