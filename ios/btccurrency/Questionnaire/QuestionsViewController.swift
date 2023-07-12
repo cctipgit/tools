@@ -196,7 +196,7 @@ class QuestionsViewController: YBaseViewController {
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: sWidth, height: sHeight))
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
-        scrollView.tag = 1
+        scrollView.tag = 999
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
 
@@ -357,7 +357,7 @@ class QuestionsViewController: YBaseViewController {
 
 extension QuestionsViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.tag == 1 {
+        if scrollView.tag == 999 {
             self.currentIndex = Int(floor(scrollView.contentOffset.x / sWidth))
             self.currentIndexRelay.accept(currentIndex)
         }
