@@ -1,6 +1,7 @@
 package com.hash.coinconvert.widget;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.duxl.baselib.utils.DisplayUtil;
 import com.google.android.flexbox.FlexDirection;
@@ -113,11 +115,13 @@ public class QAItemView extends LinearLayout implements View.OnClickListener {
         CheckedTextView textView = new CheckedTextView(getContext(), null, 0, R.style.QAAnswer);
         textView.setText(answer);
         textView.setChecked(false);
-//        if (matchParent) {
-//            textView.setGravity(Gravity.CENTER);
-//        }
+        textView.setGravity(Gravity.CENTER_VERTICAL);
         textView.setOnClickListener(this);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            textView.setLineHeight(DisplayUtil.dip2px(getContext(), 16f));
+        }
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        textView.setTypeface(ResourcesCompat.getFont(getContext(), R.font.roboto_regular));
         FlexboxLayout.LayoutParams params = new FlexboxLayout.LayoutParams(
                 matchParent ? ViewGroup.LayoutParams.MATCH_PARENT : ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
