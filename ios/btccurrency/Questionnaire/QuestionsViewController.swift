@@ -113,11 +113,7 @@ class QuestionsViewController: YBaseViewController {
         p_setElements()
         updateViewConstraints()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.p_refresh()
-    }
-    
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
         finishImgView.snp.makeConstraints { make in
@@ -307,6 +303,7 @@ class QuestionsViewController: YBaseViewController {
             }
         })
         .disposed(by: rx.disposeBag)
+        self.p_refresh()
     }
     
     private func p_switchView(isSubmit: Bool) {
@@ -339,6 +336,11 @@ class QuestionsViewController: YBaseViewController {
                     table.dataSource = self
                     table.showsHorizontalScrollIndicator = false
                     table.showsVerticalScrollIndicator = false
+                    table.rowHeight = UITableView.automaticDimension
+                    table.estimatedRowHeight = 92
+                    if #available(iOS 15.0, *) {
+                        table.sectionHeaderTopPadding = 0
+                    }
                     self.scrollView.addSubview(table)
                 }
                 self.tableData = listArray
@@ -363,21 +365,21 @@ extension QuestionsViewController: UIScrollViewDelegate {
 }
 
 extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return QuestionMultiCell.calculateHeaderHeight(str: self.tableData[tableView.tag].title)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth() - 72, height: 80)).then { v in
+        let str = self.tableData[tableView.tag].title
+        let height = QuestionMultiCell.calculateHeaderHeight(str: str)
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth() - 72, height: height)).then { v in
             v.backgroundColor = .white
         }
         let label = UILabel(frame: CGRect(x: 16, y: 0, width: UIDevice.kScreenWidth() - 72, height: 40)).then { v in
             v.font = .robotoBold(with: 32)
-            v.numberOfLines = 2
-            v.adjustsFontSizeToFitWidth = true
+            v.numberOfLines = 100
         }
-        label.text = self.tableData[tableView.tag].title
+        label.text = str
         bgView.addSubview(label)
         label.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
@@ -391,13 +393,13 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let index = tableView.tag
         guard tableData.count > index else { return 0 }
         return tableData[index].sonQuestion.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard tableData.count > tableView.tag else { return UITableViewCell(frame: .zero) }
         let data = tableData[tableView.tag]
@@ -432,35 +434,7 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-        
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = 0
-        guard tableData.count > tableView.tag else {
-            return height
-        }
-        let data = tableData[tableView.tag]
-        if data.sonQuestion.count == 1 {
-            height = 36 + CGFloat((data.sonQuestion.firstObject as? QuizSonQuestionItem)?.options.count ?? 0) * 56
-        } else {
-            guard data.sonQuestion.count > indexPath.row else { return height }
-            let item = (data.sonQuestion[indexPath.row] as? QuizSonQuestionItem) ?? QuizSonQuestionItem()
-            
-            var rowCount: Int = 0
-            let rowWidth: CGFloat = UIDevice.kScreenWidth() - 72.0
-            var totalItemWidth: CGFloat = 0
-            item.options.forEach { str in
-                totalItemWidth += (QuestionMultiCell.calculateItemSize(str: str).width + 8)
-            }
-            if totalItemWidth <= rowWidth {
-                rowCount = 1
-            } else {
-                rowCount = Int((totalItemWidth + rowWidth) / rowWidth)
-            }
-            height = 36 + CGFloat(rowCount) * 56.0   
-        }
-        return height
-    }
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let index = tableView.tag
         guard tableData.count > index else { return }

@@ -14,8 +14,7 @@ class QuestionSimpleCell: UITableViewCell {
     private let titleLabel = UILabel().then { v in
         v.font = .robotoBold(with: 16)
         v.textColor = .basicBlk
-        v.numberOfLines = 2
-        v.adjustsFontSizeToFitWidth = true
+        v.numberOfLines = 5
     }
     
     private var collectView: UICollectionView!
@@ -43,19 +42,26 @@ class QuestionSimpleCell: UITableViewCell {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
         }
-        
         collectView.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(16)
+            make.right.equalToSuperview().inset(16)
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(16)
-            make.width.equalTo(UIDevice.kScreenWidth() - 72)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(24)
         }
+    }
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        let size = super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+        self.collectView.layoutIfNeeded()
+        let height = self.collectView.collectionViewLayout.collectionViewContentSize.height
+        return CGSizeMake(size.width, size.height + height)
     }
     
     // MARK: Private Method
     private func p_setElements() {
         let flowLayout = UICollectionViewLeftAlignedLayout()
-        collectView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth() - 72, height: 90), collectionViewLayout: flowLayout)
+        flowLayout.estimatedItemSize = CGSize(width: 114, height: 40)
+        collectView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectView.dataSource = self
         collectView.delegate = self
         collectView.isScrollEnabled = false
@@ -95,11 +101,7 @@ extension QuestionSimpleCell: UICollectionViewDataSource, UICollectionViewDelega
         cell.label.text = "\(data.options[indexPath.row])"
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIDevice.kScreenWidth() - 72, height: 40)
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         if data.questionType == .single {
