@@ -7,8 +7,6 @@
 
 import Foundation
 
-let sharedGroupName = "group.com.cwallet.btccurrency.group"
-
 let selectIndexPathCacheKey = "SelectIndexPath.Row"
 let selectTokenCacheKey = "SelectTokenCacheKey"
 let showListTokensCacheKey = "ShowInHomeListTokens"

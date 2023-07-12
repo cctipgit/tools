@@ -12,6 +12,7 @@ import OSLog
 import UIKit
 import WidgetKit
 import KeychainSwift
+import Hero
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         setUserInfo()
 
-        
         // origin
         // URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
         // let main = CustomTabViewController()
@@ -39,27 +39,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // window!.makeKeyAndVisible()
         // _ = CurrencyRate.shared
 
-
-
-        
         // RN
-       var rnUrl: URL!
-       #if DEBUG
-           rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
-       #else
-           rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-       #endif
-       let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
-       rootView.backgroundColor = UIColor.systemPink
+        var rnUrl: URL!
+        #if DEBUG
+            rnUrl = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
+        #else
+            rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+        #endif
+        let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
+        rootView.backgroundColor = UIColor.systemPink
 
-       let rootViewController = UIViewController()
-       rootViewController.view = rootView
+        let rootViewController = UIViewController()
+        rootViewController.view = rootView
 
-       let navi = YNavigationController(rootViewController: rootViewController)
-       navi.navigationBar.isHidden = true
-       window = UIWindow(frame: UIScreen.main.bounds)
-       window?.rootViewController = navi
-       window?.makeKeyAndVisible()
+        let navi = YNavigationController(rootViewController: rootViewController)
+        navi.navigationBar.isHidden = true
+        navi.hero.isEnabled = true
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navi
+        window?.makeKeyAndVisible()
 
         return true
     }

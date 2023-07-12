@@ -341,32 +341,25 @@ class HomeViewModel: NSObject, ViewModel {
 
     func saveHomeListTokens() {
         AppSetting.shared.tokensList.accept(showListTokens)
-        if let sharedDefault = UserDefaults(suiteName: sharedGroupName) {
-            sharedDefault.setValue(showListTokens, forKey: showListTokensCacheKey)
-            sharedDefault.synchronize()
-        }
+        let sharedDefault = UserDefaults.standard
+        sharedDefault.setValue(showListTokens, forKey: showListTokensCacheKey)
+        sharedDefault.synchronize()
     }
 
     func readHomeListTokens() -> [String]? {
-        if let sharedDefault = UserDefaults(suiteName: sharedGroupName) {
-            return sharedDefault.stringArray(forKey: showListTokensCacheKey)
-        }
-        return nil
+        return UserDefaults.standard.stringArray(forKey: showListTokensCacheKey)
     }
 
     func saveSelectToken(_ token: String, index: Int) {
-        if let sharedDefault = UserDefaults(suiteName: sharedGroupName) {
-            sharedDefault.setValue(token, forKey: selectTokenCacheKey)
-            sharedDefault.setValue(index, forKey: selectIndexPathCacheKey)
-            sharedDefault.synchronize()
-        }
+        let sharedDefault = UserDefaults.standard
+        sharedDefault.setValue(token, forKey: selectTokenCacheKey)
+        sharedDefault.setValue(index, forKey: selectIndexPathCacheKey)
+        sharedDefault.synchronize()
     }
 
     func readSelectIndex() -> Int {
-        if let sharedDefault = UserDefaults(suiteName: sharedGroupName) {
-            return sharedDefault.integer(forKey: selectIndexPathCacheKey)
-        }
-        return 0
+        let sharedDefault = UserDefaults.standard
+        return sharedDefault.integer(forKey: selectIndexPathCacheKey)
     }
 
     func changeToken(item: GetCurrencyTokensResponse, index: Int) {
@@ -382,8 +375,8 @@ class HomeViewModel: NSObject, ViewModel {
         //        section.first?.items.removeAll()
         //        section.first?.items.append(contentsOf: originItems)
         //        self.datasource.value(section)
-       
-        if let sharedDefault = UserDefaults(suiteName: sharedGroupName), let tokens = sharedDefault.stringArray(forKey: showListTokensCacheKey) {
+        let sharedDefault = UserDefaults.standard
+        if let tokens = sharedDefault.stringArray(forKey: showListTokensCacheKey) {
             if let list = GetCurrencyTokensResponse.readHomeList(tokens: tokens) {
                 var response = GetCurrentCurrencyTokensResponse()
                 response.data = list

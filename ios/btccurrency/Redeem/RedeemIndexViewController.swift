@@ -255,6 +255,11 @@ class RedeemIndexViewController: YBaseViewController {
             self.view.makeToast(result?.msg ?? "", duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
                 self.view.hideAllToasts()
                 if let res = result, res.isSuccess {
+                    // task
+                    let task = self.getTaskInfo()
+                    task.redeemCount += 1
+                    self.setLocalTaskModel(model: task)
+                    
                     self.p_refresh()
                 }
             }
@@ -284,5 +289,17 @@ extension RedeemIndexViewController: UITableViewDelegate, UITableViewDataSource 
         mCell.redeemBtn.tag = indexPath.row
         mCell.redeemBtn.addTarget(self, action: #selector(redeemBtnClicked(sender:)), for: .touchUpInside)
         return mCell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let count = data.count
+        cell.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(count) * 0.01) {
+            cell.layer.transform = CATransform3DMakeTranslation(-cell.width, 0, 0)
+            UIView.animate(withDuration: 0.25, delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 0) {
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1
+            }
+        }
     }
 }

@@ -55,6 +55,11 @@ class CurrencyDetailViewController: YBaseViewController {
     }
 
     override func makeEvent() {
+        // task
+        let task = self.getTaskInfo()
+        task.viewDetailCount += 1
+        self.setLocalTaskModel(model: task)
+        
         fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 64
         bindViewModel()
         navigationView.backButton.rx

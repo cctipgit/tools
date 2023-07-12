@@ -36,7 +36,7 @@ class CustomTabViewController: RAMAnimatedTabBarController {
         redeemVC = RedeemIndexViewController()
         redeemVC?.tabBarItem = redeemItem
         
-        self.viewControllers = [currencyVC!, gameVC!, questionVC!, redeemVC!]
+        self.viewControllers = [gameVC!, currencyVC!, questionVC!, redeemVC!]
         super.viewDidLoad()
     }
 }

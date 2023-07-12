@@ -12,6 +12,8 @@ import TBEmptyDataSet
 import RxCocoa
 import RxSwift
 import MJRefresh
+import RAMAnimatedTabBarController
+import SafariServices
 
 class TaskIndexViewController: YBaseViewController {
 
@@ -181,9 +183,8 @@ class TaskIndexViewController: YBaseViewController {
     
     @objc
     private func p_finishTask(sender: UIButton) {
-        guard data.count > sender.tag else { return }
-        let data = data[sender.tag]
-        self.share(text: data.taskName, image: nil, url: URL(string: data.params)) {
+        sender.isEnabled = false
+        func submitAndRefresh(data: TaskListItem) {
             SmartService().taskCheck(param: data.params, taskId: data.taskId)
                 .subscribe(onNext: { [weak self ] result in
                     guard let self = self else { return }
@@ -193,8 +194,139 @@ class TaskIndexViewController: YBaseViewController {
                         self.p_refresh()
                     }
                 }
-            })
-                .disposed(by: self.rx.disposeBag)
+            }).disposed(by: self.rx.disposeBag)
+        }
+        guard data.count > sender.tag else {
+            sender.isEnabled = true
+            return
+        }
+        let data = data[sender.tag]
+        switch data.taskTypeEnum {
+        case .TaskType_ShareToFacebook,
+                .TaskType_ShareToTwitter,
+                .TaskType_ShareToTelegram,
+                .TaskType_ShareToDiscord,
+                .TaskType_SignIn:
+            self.share(text: data.taskName, image: nil, url: URL(string: data.params)) {
+                submitAndRefresh(data: data)
+            }
+            break
+        case .TaskType_AskFriendToRegister_1,
+                .TaskType_AskFriendToRegister_3,
+                .TaskType_AskFriendToRegister_5:
+            let task = self.getTaskInfo()
+            task.inviteFriendCount += 1
+            self.setLocalTaskModel(model: task)
+            var needCount: Int = 0
+            if data.taskTypeEnum == .TaskType_AskFriendToRegister_1 {
+                needCount = 1
+            } else if data.taskTypeEnum == .TaskType_AskFriendToRegister_3 {
+                needCount = 3
+            } else if data.taskTypeEnum == .TaskType_AskFriendToRegister_5 {
+                needCount = 5
+            }
+            guard task.inviteFriendCount >= needCount else {
+                sender.isEnabled = true
+                let infoDictionary = Bundle.main.infoDictionary!
+                let appDisplayName: String = (infoDictionary["CFBundleDisplayName"] as? String) ?? ""
+                return self.share(text: appDisplayName, image: nil, url: URL(string: data.params)) { }
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_Add_Token_1,
+                .TaskType_Add_Token_3:
+            let task = self.getTaskInfo()
+            var needCount: Int = 1
+            if data.taskTypeEnum == .TaskType_Add_Token_3 {
+                needCount = 3
+            }
+            guard task.addTokenCount >= needCount else {
+                sender.isEnabled = true
+                if let vc = self.navigationController?.viewControllers.first as? RAMAnimatedTabBarController {
+                    vc.setSelectIndex(from: vc.selectedIndex, to: 1)
+                }
+                return
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_View_Token_1,
+                .TaskType_View_Token_3:
+            let task = self.getTaskInfo()
+            var needCount: Int = 1
+            if data.taskTypeEnum == .TaskType_View_Token_3 {
+                needCount = 3
+            }
+            guard task.viewDetailCount >= needCount else {
+                sender.isEnabled = true
+                if let vc = self.navigationController?.viewControllers.first as? RAMAnimatedTabBarController {
+                    vc.setSelectIndex(from: vc.selectedIndex, to: 1)
+                }
+                return
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_Quiz_Done:
+            let task = self.getTaskInfo()
+            guard Date().timeIntervalSince1970.customJoinTime() == task.quizDoneTime else {
+                sender.isEnabled = true
+                if let vc = self.navigationController?.viewControllers.first as? RAMAnimatedTabBarController {
+                    vc.setSelectIndex(from: vc.selectedIndex, to: 2)
+                }
+                return
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_Visit_Website:
+            guard let url = URL(string: data.params) else {
+                sender.isEnabled = true
+                return
+            }
+            let safari = SFSafariViewController(url: url)
+            self.present(safari, animated: true) {
+                submitAndRefresh(data: data)
+            }
+            break
+           
+        case .TaskType_Product_Exchange:
+            let task = self.getTaskInfo()
+            guard task.redeemCount > 0  else {
+                sender.isEnabled = true
+                if let vc = self.navigationController?.viewControllers.first as? RAMAnimatedTabBarController {
+                    vc.setSelectIndex(from: vc.selectedIndex, to: 3)
+                }
+                return
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_Product_Get_During_10_12,
+                .TaskType_Product_Get_During_14_16:
+            let task = self.getTaskInfo()
+            var count: Int = 0
+            if data.taskTypeEnum == .TaskType_Product_Get_During_10_12 {
+                count = task.pin1012Count
+            } else {
+                count = task.pin1416Count
+            }
+            guard count > 0 else {
+                sender.isEnabled = true
+                let vc = TaskGameViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+            submitAndRefresh(data: data)
+            break
+        case .TaskType_Product_Get_App_Star:
+            let url = URL(string: "itms-apps://itunes.apple.com/app/id\(AppConfig.appstoreAppId)")
+            if !UIApplication.shared.canOpenURL(url!) {
+                sender.isEnabled = true
+                return
+            }
+            UIApplication.shared.open(url!, options: [:])
+            submitAndRefresh(data: data)
+            break
+        case .unknown:
+            sender.isEnabled = true
+            break
         }
     }
 }
@@ -246,13 +378,25 @@ extension TaskIndexViewController: UITableViewDelegate, UITableViewDataSource {
             make.height.equalTo(16)
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-20)
-            make.right.greaterThanOrEqualTo(74)
+            make.width.greaterThanOrEqualTo(74)
         }
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 52
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let count = data.count
+        cell.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(count) * 0.01) {
+            cell.layer.transform = CATransform3DMakeTranslation(-cell.width, 0, 0)
+            UIView.animate(withDuration: 0.25, delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 0) {
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1
+            }
+        }
     }
 }
 

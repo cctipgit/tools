@@ -1,5 +1,5 @@
 //
-//  QuestionSimpleCell.swift
+//  QuestionMultiCell.swift
 //  btccurrency
 //
 //  Created by admin on 2023/7/6.
@@ -9,11 +9,16 @@ import UIKit
 import Then
 import SnapKit
 
-class QuestionSimpleCell: UITableViewCell {
+protocol QuestionCellDelegate: AnyObject {
+    func didSelectIndexChange(qID: String, selected: Set<Int>)
+}
 
+class QuestionMultiCell: UITableViewCell, UICollectionViewDelegate {
     private let titleLabel = UILabel().then { v in
         v.font = .robotoBold(with: 16)
         v.textColor = .basicBlk
+        v.numberOfLines = 2
+        v.adjustsFontSizeToFitWidth = true
     }
     
     private var collectView: UICollectionView!
@@ -69,9 +74,23 @@ class QuestionSimpleCell: UITableViewCell {
         self.data = item
         collectView.reloadData()
     }
+    
+    static func calculateItemSize(str: String) -> CGSize {
+        let strSize = NSString(string: str).boundingRect(with: CGSize(width: Double.greatestFiniteMagnitude, height: 40), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.robotoRegular(with: 14) as Any], context: nil)
+        let maxWidth: CGFloat = UIDevice.kScreenWidth() - 72
+        var needWidth: CGFloat = strSize.width + 40
+        var needHeight: CGFloat = 40
+        if needWidth > maxWidth {
+            needHeight = 60
+        }
+        if needWidth > maxWidth {
+            needWidth = maxWidth
+        }
+        return CGSize(width: needWidth, height: needHeight)
+    }
 }
 
-extension QuestionSimpleCell: UICollectionViewDataSource, UICollectionViewDelegateLeftAlignedLayout {
+extension QuestionMultiCell: UICollectionViewDataSource, UICollectionViewDelegateLeftAlignedLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -95,7 +114,7 @@ extension QuestionSimpleCell: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIDevice.kScreenWidth() - 72, height: 40)
+        return QuestionMultiCell.calculateItemSize(str: data.options[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -121,5 +140,40 @@ extension QuestionSimpleCell: UICollectionViewDataSource, UICollectionViewDelega
             }
         }
         delegate?.didSelectIndexChange(qID: data.id, selected: self.selectedIndex)
+    }
+}
+
+class QuizQuestionItemCell: UICollectionViewCell {
+    let label = LabelInset().then { v in
+        v.layer.cornerRadius = 8
+        v.font = .robotoRegular(with: 14)
+        v.textAlignment = .left
+        v.clipsToBounds = true
+        v.numberOfLines = 5
+        v.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(label)
+        contentView.layer.cornerRadius = 8
+        contentView.clipsToBounds = true
+        label.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    public func setSelected(isSelect: Bool) {
+        if isSelect {
+            label.backgroundColor = .primaryBranding
+            label.textColor = .white
+        } else {
+            label.backgroundColor = .bgSecondary
+            label.textColor = .contentDisabled
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

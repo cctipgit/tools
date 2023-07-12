@@ -90,6 +90,7 @@ target 'btccurrency' do
   pod 'MJRefresh', '3.7.5', :modular_headers => true ##https://github.com/CoderMJLee/MJRefresh
   pod 'Toast-Swift', '5.0.1' # https://github.com/scalessec/Toast-Swift.git
   pod 'UICollectionViewLeftAlignedLayout', '1.1.0' #https://github.com/mokagio/UICollectionViewLeftAlignedLayout.git
+  
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
