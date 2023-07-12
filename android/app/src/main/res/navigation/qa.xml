@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/qa"
     app:startDestination="@id/fragment_qa_all">
 
     <fragment
         android:id="@+id/fragment_qa_all"
         android:name="com.hash.coinconvert.ui2.fragment.QAAllFragment"
-        android:label="QAAllFragment" />
+        android:label="QAAllFragment"
+        tools:layout="@layout/activity_qa" >
+        <action
+            android:id="@+id/action_fragment_qa_all_to_dialog_qa_submitted"
+            app:destination="@id/dialog_qa_submitted" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/dialog_qa_submitted"
+        android:name="com.hash.coinconvert.ui2.dialog.QASubmittedDialog"
+        android:label="QASubmitted"
+        tools:layout="@layout/dialog_qa_submitted" />
 </navigation>

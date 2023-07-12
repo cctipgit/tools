@@ -3,6 +3,7 @@ package com.hash.coinconvert.ui2.fragment;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -10,6 +11,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,6 +31,12 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
         super(R.layout.activity_qa);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel.fetchQuestions();
+    }
+
     @NonNull
     @Override
     protected ActivityQaBinding bindView(View view) {
@@ -39,16 +47,27 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
     protected void initView() {
         binding.progressBar.setMax(PROGRESS_RATE);
         binding.progressBar.setVisibility(View.INVISIBLE);
+    }
 
-        viewModel.fetchQuestions();
-        viewModel.getProgress().observe(this, progress -> {
+    @Override
+    protected void observer() {
+        super.observer();
+        observer(viewModel.getProgress(), progress -> {
             updateProgressText(progress);
             if (progress.progress > progress.max) {
                 profileViewModel.fetchUserInfo();
                 viewModel.complete();
-                ToastUtils.show(R.string.qa_submit_succ);
+                navigateTo(QAAllFragmentDirections.actionFragmentQaAllToDialogQaSubmitted());
             } else {
                 startProgressBarAnimation(progress);
+            }
+        });
+
+        observer(viewModel.getQuestions(), questionList -> {
+            if (questionList.submitted) {
+                if (binding.flQa.findViewById(R.id.ll_qa_submitted) == null) {
+                    binding.flQa.addView(getLayoutInflater().inflate(R.layout.layout_qa_submitted, binding.flQa, false));
+                }
             }
         });
     }

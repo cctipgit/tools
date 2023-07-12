@@ -58,7 +58,8 @@ public class QAFragment extends BaseMVVMFragment<QAViewModel, FragmentQaBinding>
     @Override
     protected void observer() {
         super.observer();
-        observer(viewModel.getQuestions(), list -> {
+        observer(viewModel.getQuestions(), questionList -> {
+            List<QuestionsItem> list = questionList.lists;
             binding.getRoot().setVisibility(View.VISIBLE);
             binding.llQuestions.removeAllViews();
             //index is start from 0,show text must start from 1

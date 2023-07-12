@@ -8,11 +8,12 @@ import com.hash.coinconvert.entity.TaskItem;
 
 import java.util.Map;
 
-public class VisitWebsiteTaskHandler extends AbstractTaskHandler {
+public class CommentTaskHandler extends AbstractTaskHandler {
     @Override
     public boolean invoke(Context context, TaskItem taskItem, Map<String, String> params) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(taskItem.params));
+        intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.hash.coinconvert"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
         return true;
     }
