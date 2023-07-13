@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  cryptovise
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "မြင့်သည်။";
+"Low" = "နိမ့်သည်။";
+"Average" = "ပျမ်းမျှ";
+"Change" = "ပြောင်းလဲသည်";
+"Switch Currency" = "ငွေကြေးပြောင်းလဲပါ";
+"Rate Detail" = "အချက်အလက်နှုန်းထား";
+"Currency not found" = "ငွေကြေးရှာမတွေ့ပါ";
+"Currency" = "ငွေကြေး";
+"Local Currency" = "ပြည်တွင်းငွေကြေး";
+"Frequently Used" = "မကြာခဏအသုံးပြုသည်";
+"Switch Currency" = "ငွေကြေးပြောင်းလဲသည်";
+"Currency symbol" = "ငွေကြေးသကေင်္ံတ";
+"Default Currency Value" = "ပုံသေငွေကြေးတန်ဖိုး";
+"Set Decimical Digits" = "ဒသမဂဏန်းများသတ်မှတ်ပါ";
+"More Settings" = "နောက်ထပ်ဆက်တင်များ";
+"Plugin" = "ပလပ်အင်";
+"Red rise green fall" = "အနီမြင့်တက် အစိမ်းကျဆင်း";
+"Green rise red fall" = "အစိမ်းမြင့်တက် အနီကျဆင်း";
+"Quote color" = "အရောင်ကိုးကားသည်";
+"Keyboard Sound" = "ကီးဘုတ်အသံ";
+"Cancel" = "ပယ်ဖျက်သည်";
+"Recovery" = "ပြန်လည်ထူထောင်ရေး";
+"Restore the default currency list?" = "ပုံသေငွေကြေးစာရင်းပြန်လည်ရယူလိုပါသလား?";
+"OK" = "ဟူတ်ပြီ";
+"Location Services" = "နေရာဒေသအလိုက်ဝန်ဆောင်မှုများ";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "သင်၏တည်နေရာကိုဆုံးဖြတ်ရန် \"Currency\" ကိုခွင့်ပြုရန်စနစ်ဆက်တင်များတွင် \"Location services\" ကိုဖွင့်ပါ။";
+"Converter Setting" = "စက်တင်ချိန်ရန်";
+"More Setting" = "နောက်ထပ်အပြင်အဆင်များ";
+"This widget will display the currency list of converter." = "ဤဝစ်ဂျက်သည် ပြောင်းပေးသူ၏ ငွေကြေးစာရင်းကို ပြသပါမည်။.";
+"Set Decimal Digits" = "ဒသမဂဏန်းများသတ်မှတ်ပါ";
+"Legal Tender" = "တရားဝင်တင်ဒါ";
+"Cryptocurrency" = "ခရစ်ပတိုငွေကြေး";
+"Converter Watchlist" = "အပြောင်းအလဲစောင့်ကြည့်စာရင်း";
+"View all your favorite currency conversions in real-time." = "သင့်စိတ်ကြိုက်ငွေကြေးလဲလှယ်မှုအားလုံးကို အချိန်နှင့်တစ်ပြေးညီ ကြည့်ရှုပါ";
+"View the top 2 of your favorites currencies conversions in real-time." = "သင့်စိတ်ကြိုက်ငွေကြေးလဲလှယ်မှုများ၏ ထိပ်တန်း 2 ခုကို အချိန်နှင့်တစ်ပြေးညီ ကြည့်ရှုပါ။.";
+"Single Rate Comparison" = "တစ်ကိုယ်ရေနှုန်း နှိုင်းယှဉ်မှု";
+"View real-time exchange rate trend comparisons of your favorite currency." = "သင့်စိတ်ကြိုက်ငွေကြေး၏ အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းလမ်းကြောင်း နှိုင်းယှဉ်ချက်များကို ကြည့်ပါ။.";
+"Rate Comparisons" = "နှိုင်းယှဥ်မှုနှုန်းထား";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "သင့်စိတ်ကြိုက်ငွေကြေးများ၏ ထိပ်တန်းငွေကြေး 2 ခု၏ အချိန်နှင့်တစ်ပြေးညီ ငွေလဲနှုန်းလမ်းကြောင်း နှိုင်းယှဉ်ချက်များကို ကြည့်ပါ။.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

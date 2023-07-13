@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  cryptovise
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "उच्च";
+"Low" = "न्यून";
+"Average" = "औसत";
+"Change" = "परिवर्तन";
+"Switch Currency" = "मुद्रा परिवर्तन गर्नुहोस्";
+"Rate Detail" = "दर विवरण";
+"Currency not found" = "मुद्रा फेला परेन";
+"Currency" = "मुद्रा";
+"Local Currency" = "स्थानीय मुद्रा";
+"Frequently Used" = "बारम्बार प्रयोग गरिएको";
+"Switch Currency" = "मुद्रा परिवर्तन गर्नुहोस्";
+"Currency symbol" = "मुद्रा सङ्केत";
+"Default Currency Value" = "पूर्वनिर्धारित मुद्रा मान";
+"Set Decimical Digits" = "दशमलव अंकहरू सेट गर्नुहोस्";
+"More Settings" = "थप सेटिङहरू";
+"Plugin" = "प्लगिन";
+"Red rise green fall" = "रातो वृद्धि हरियो घट्दो";
+"Green rise red fall" = "हरियो वृद्धि रातो घट्दो";
+"Quote color" = "रङ निर्धारण गर्नुहोस्";
+"Keyboard Sound" = "किबोर्ड ध्वनि";
+"Cancel" = "रद्द गर्नुहोस्";
+"Recovery" = "रिकभरी";
+"Restore the default currency list?" = "पूर्वनिर्धारित मुद्रा सूची पुनर्स्थापित गर्ने हो ?";
+"OK" = "ठिक छ";
+"Location Services" = "स्थान सम्बन्धी सेवाहरू";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "\"Currency\" लाई तपाईंको स्थान निर्धारण गर्न अनुमति दिन कृपया प्रणाली सेटिङहरूमा \"स्थान सम्बन्धी सेवाहरू\" खोल्नुहोस्।";
+"Converter Setting" = "कन्भर्टर सेटिङ";
+"More Setting" = "थप सेटिङ";
+"This widget will display the currency list of converter." = "यो विजेटले कन्भर्टरको मुद्रा सूची प्रदर्शन गर्ने छ ।";
+"Set Decimal Digits" = "दशमलव अंकहरू सेट गर्नुहोस्";
+"Legal Tender" = "कानुनी टेन्डर";
+"Cryptocurrency" = "क्रिप्टोकरेन्सी";
+"Converter Watchlist" = "कन्भर्टर वाचलिस्ट";
+"View all your favorite currency conversions in real-time." = "आफूलाई मन पर्ने सबै मुद्रा रूपान्तरणहरू तात्किलक समयमा हेर्नुहोस् ।";
+"View the top 2 of your favorites currencies conversions in real-time." = "तपाईंलाई मन पर्ने मुद्रा रूपान्तरणहरूमध्ये शीर्ष 2 रूपान्तरणहरू तात्किलक समयमा हेर्नुहोस् ।";
+"Single Rate Comparison" = "एकल दर तुलना";
+"View real-time exchange rate trend comparisons of your favorite currency." = "तपाईंको मन पर्ने मुद्राको विनिमय दर ट्रेन्ड तुलनाहरू तात्किलक समयमा हेर्नुहोस् ।";
+"Rate Comparisons" = "दरको तुलना";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "तपाईंको मन पर्ने मुद्राहरूमध्ये शीर्ष 2 मुद्राको विनिमय दर ट्रेन्ड तुलनाहरू तात्किलक समयमा हेर्नुहोस् ।";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";
