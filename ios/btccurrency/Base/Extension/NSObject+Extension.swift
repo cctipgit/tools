@@ -22,10 +22,6 @@ extension NSObject {
     }
     
     func userId() -> String {
-        // TODO
-        return "05DF0C25-9551-4FD2-B334-7BCB0C95C056"
-        
-        
         if let userId = KeychainSwift().get(AppConfig.kUserIdKeychain), userId.count > 0 {
             return userId
         }

@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
         #endif
         let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
-        rootView.backgroundColor = UIColor.systemPink
+        rootView.backgroundColor = UIColor.white
 
         let rootViewController = UIViewController()
         rootViewController.view = rootView
