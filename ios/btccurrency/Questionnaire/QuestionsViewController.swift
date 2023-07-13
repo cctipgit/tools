@@ -113,7 +113,12 @@ class QuestionsViewController: YBaseViewController {
         p_setElements()
         updateViewConstraints()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.p_refresh()
+    }
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         finishImgView.snp.makeConstraints { make in
@@ -271,29 +276,37 @@ class QuestionsViewController: YBaseViewController {
             guard let self = self else { return }
             if (self.currentIndex + 1) == self.totalCount {
                 let answers = self.submitData.map({ $0.value })
+                self.view.makeToastActivity(.center)
                 SmartService().quizSubmit(answers: answers)
                     .subscribe(onNext: { [weak self] result in
                         guard let self = self else { return }
-                        guard let res = result, res.isSuccess else {
-                            // task
-                            let task = self.getTaskInfo()
-                            task.quizDoneTime = Date().timeIntervalSince1970.customJoinTime()
-                            self.setLocalTaskModel(model: task)
-                            
-                            ToastManager.shared.isTapToDismissEnabled = false
-                            let alertView = QuestionSuccessView(frame: .zero)
-                            alertView.doneBtn.rx.tap
-                                .subscribe(onNext: { [weak self] _ in
-                                    guard let self = self else { return }
-                                    self.view.hideAllToasts()
-                                    ToastManager.shared.isTapToDismissEnabled = true
-                                    self.p_switchView(isSubmit: true)
-                                })
-                                .disposed(by: rx.disposeBag)
-                            self.view.showToast(alertView, duration: TimeInterval(Int.max), position: .center)
+                        guard let tp = result?.isSuccess, tp == true else {
+                            self.showAlert(message: result?.msg ?? "")
                             return
                         }
-                        self.showAlert(message: result?.msg ?? "")
+                        // task
+                        let task = self.getTaskInfo()
+                        task.quizDoneTime = Date().timeIntervalSince1970.customJoinTime()
+                        self.setLocalTaskModel(model: task)
+                        
+                        ToastManager.shared.isTapToDismissEnabled = false
+                        let alertView = QuestionSuccessView(frame: .zero)
+                        alertView.doneBtn.rx.tap
+                            .subscribe(onNext: { [weak self] _ in
+                                guard let self = self else { return }
+                                self.view.hideAllToasts(includeActivity: true, clearQueue: true)
+                                ToastManager.shared.isTapToDismissEnabled = true
+                                self.p_switchView(isSubmit: true)
+                            })
+                            .disposed(by: rx.disposeBag)
+                        alertView.closeBtn.rx.tap
+                            .subscribe(onNext: { [weak self] _ in
+                                guard let self = self else { return }
+                                self.view.hideAllToasts(includeActivity: true, clearQueue: true)
+                                ToastManager.shared.isTapToDismissEnabled = true
+                                self.p_switchView(isSubmit: true)
+                            }).disposed(by: rx.disposeBag)
+                        self.view.showToast(alertView, duration: TimeInterval(Int.max), position: .center)
                 })
                 .disposed(by: rx.disposeBag)
             } else {
@@ -303,7 +316,6 @@ class QuestionsViewController: YBaseViewController {
             }
         })
         .disposed(by: rx.disposeBag)
-        self.p_refresh()
     }
     
     private func p_switchView(isSubmit: Bool) {
@@ -324,32 +336,34 @@ class QuestionsViewController: YBaseViewController {
             .subscribe(onNext: { [weak self] result in
                 guard let self = self, let res = result else { return }
                 self.p_switchView(isSubmit: res.submitted)
-                guard let listArray = res.list as? [QuizPageQuestionItem] else {
-                    return
-                }
-                let contentWidth: CGFloat = self.sWidth * CGFloat(listArray.count)
-                listArray.enumerated().forEach { item in
-                    let table = UITableView(frame: CGRect(x: CGFloat(item.offset) * self.sWidth, y: 0, width: self.sWidth, height: self.sHeight), style: .plain)
-                    table.tag = item.offset
-                    table.separatorStyle = .none
-                    table.delegate = self
-                    table.dataSource = self
-                    table.showsHorizontalScrollIndicator = false
-                    table.showsVerticalScrollIndicator = false
-                    table.rowHeight = UITableView.automaticDimension
-                    table.estimatedRowHeight = 92
-                    if #available(iOS 15.0, *) {
-                        table.sectionHeaderTopPadding = 0
+                if tableData.count == 0 && res.submitted == false {
+                    guard let listArray = res.list as? [QuizPageQuestionItem] else {
+                        return
                     }
-                    self.scrollView.addSubview(table)
+                    let contentWidth: CGFloat = self.sWidth * CGFloat(listArray.count)
+                    listArray.enumerated().forEach { item in
+                        let table = UITableView(frame: CGRect(x: CGFloat(item.offset) * self.sWidth, y: 0, width: self.sWidth, height: self.sHeight), style: .plain)
+                        table.tag = item.offset
+                        table.separatorStyle = .none
+                        table.delegate = self
+                        table.dataSource = self
+                        table.showsHorizontalScrollIndicator = false
+                        table.showsVerticalScrollIndicator = false
+                        table.rowHeight = UITableView.automaticDimension
+                        table.estimatedRowHeight = 92
+                        if #available(iOS 15.0, *) {
+                            table.sectionHeaderTopPadding = 0
+                        }
+                        self.scrollView.addSubview(table)
+                    }
+                    self.tableData = listArray
+                    scrollView.contentSize = CGSize(width: contentWidth, height: self.sHeight)
+                    self.totalCount = listArray.count
+                    if listArray.count > 0 {
+                        self.currentIndexRelay.accept(0)
+                    }
+                    self.progressDescLabel.text = "out of".localized() + " \(listArray.count)"
                 }
-                self.tableData = listArray
-                scrollView.contentSize = CGSize(width: contentWidth, height: self.sHeight)
-                self.totalCount = listArray.count
-                if listArray.count > 0 {
-                    self.currentIndexRelay.accept(0)
-                }
-                self.progressDescLabel.text = "out of".localized() + " \(listArray.count)"
             })
             .disposed(by: rx.disposeBag)
     }
