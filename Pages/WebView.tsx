@@ -22,8 +22,17 @@ const jscode = `var obj = {
       window.ReactNativeWebView.postMessage(data)
   
     },
-  });
-  window.open = function () {
+  })
+  window.open = function (url) {
+    if(url){
+      let data={
+        type:1,
+        url:url
+      };
+      data=JSON.stringify(data)
+      window.ReactNativeWebView.postMessage(data)
+      retrun
+    };
     return {
       location: obj,
     };
@@ -43,12 +52,12 @@ export default () => {
   React.useEffect(() => {
     setTimeout(() => {
       navigation.setOptions({
-        headerShown:false,
-        headerBackTitleVisible:false,
-        headerBackTitle:'fsafs'
-      })
+        headerShown: false,
+        headerBackTitleVisible: false,
+        headerBackTitle: 'fsafs',
+      });
     }, 100);
-   
+
     if (params?.type == 'login') {
       Alert.alert('登陆');
       webRef.current.postMessage(JSON.stringify(params));
@@ -77,7 +86,7 @@ export default () => {
   };
 
   return (
-    <View style={{flex: 1,backgroundColor:'#25272C'}}>
+    <View style={{flex: 1, backgroundColor: '#25272C'}}>
       <SafeAreaView style={{flex: 1}}>
         <WebView
           source={{uri: url}}
@@ -87,7 +96,7 @@ export default () => {
           javaScriptCanOpenWindowsAutomatically={true}
           mixedContentMode="always"
           injectedJavaScriptBeforeContentLoaded={jscode}
-          style={{flex: 1,backgroundColor:'#25272C'}}
+          style={{flex: 1, backgroundColor: '#25272C'}}
           onMessage={onMessage}
         />
       </SafeAreaView>
