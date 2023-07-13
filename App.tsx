@@ -76,6 +76,9 @@ function App(): JSX.Element {
         <Button title='openNative' onPress={()=>{
             NativeModules.ToolModule.openNative();
         }}/>
+        <Button title='appsflyer data' onPress={()=>{
+            NativeModules.ToolModule.getAppsFlyerConversionData().then(console.log);
+        }}/>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
