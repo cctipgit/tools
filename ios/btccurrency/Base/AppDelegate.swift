@@ -12,7 +12,6 @@ import OSLog
 import UIKit
 import WidgetKit
 import KeychainSwift
-import Hero
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let navi = YNavigationController(rootViewController: rootViewController)
         navi.navigationBar.isHidden = true
-        navi.hero.isEnabled = true
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navi
         window?.makeKeyAndVisible()
