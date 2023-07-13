@@ -82,7 +82,7 @@ class YBaseViewController: UIViewController {
     
     func showAlert(message: String) {
         self.view.makeToast(message, duration: 0.3, point: self.view.center, title: nil, image: nil) { didTap in
-            self.view.hideAllToasts()
+            self.view.hideAllToasts(includeActivity: true, clearQueue: true)
         }
     }
 }
