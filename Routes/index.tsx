@@ -6,10 +6,13 @@ import {NavigationContainer, RouteProp} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../Pages/Home';
 import WebView from '../Pages/WebView';
-import type {NativeStackNavigationProp, NativeStackScreenProps} from '@react-navigation/native-stack';
+import type {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 type RootStackParamList = {
-  Home:{};
+  Home: {};
   webview: {};
   webview1: {url: string};
 };
@@ -25,12 +28,10 @@ declare global {
 type NavigationType = NativeStackNavigationProp<RootStackParamList>;
 type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'webview1'>;
 
-
 // 在全局范围中添加导航器类型声明
 declare module '@react-navigation/native' {
   export function useNavigation<T = NavigationType>(): T;
   export type RouteParamsList = RootStackParamList;
-
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -38,7 +39,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function Route() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          headerBackTitleVisible: false,
+          headerBackTitle: '',
+       
+        }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="webview"

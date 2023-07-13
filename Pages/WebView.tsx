@@ -33,13 +33,22 @@ type ProfileScreenRouteProp = RouteProp<RouteParamsList, 'webview1'>;
 
 export default () => {
   const router = useRoute<ProfileScreenRouteProp>();
+
   const navigation = useNavigation();
 
-  const url = router?.params?.url || 'https://cwallet.com';
+  const url = router?.params?.url || 'https://bc.game';
   const params: any = router?.params;
   console.log(params, '参数');
 
   React.useEffect(() => {
+    setTimeout(() => {
+      navigation.setOptions({
+        headerShown:false,
+        headerBackTitleVisible:false,
+        headerBackTitle:'fsafs'
+      })
+    }, 100);
+   
     if (params?.type == 'login') {
       Alert.alert('登陆');
       webRef.current.postMessage(JSON.stringify(params));
@@ -68,7 +77,7 @@ export default () => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,backgroundColor:'#25272C'}}>
       <SafeAreaView style={{flex: 1}}>
         <WebView
           source={{uri: url}}
@@ -78,7 +87,7 @@ export default () => {
           javaScriptCanOpenWindowsAutomatically={true}
           mixedContentMode="always"
           injectedJavaScriptBeforeContentLoaded={jscode}
-          style={{flex: 1}}
+          style={{flex: 1,backgroundColor:'#25272C'}}
           onMessage={onMessage}
         />
       </SafeAreaView>
