@@ -10,6 +10,8 @@ import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
 import com.appsflyer.attribution.AppsFlyerRequestListener;
 import com.hash.coinconvert.BuildConfig;
+import com.hash.coinconvert.livedatabus.event.AppsFlyerEvent;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.Map;
 
@@ -31,16 +33,23 @@ public final class AppsFlyerHelper {
                         Log.d(TAG, "onConversionDataSuccess:key:" + entry.getKey() + ",value:" + entry.getValue());
                     }
                 }
+                LiveEventBus.get(AppsFlyerEvent.KEY).post(AppsFlyerEvent.success(map));
             }
 
             @Override
             public void onConversionDataFail(String s) {
                 Log.d(TAG, "onConversionDataFail");
+                LiveEventBus.get(AppsFlyerEvent.KEY).post(AppsFlyerEvent.error(s));
             }
 
             @Override
             public void onAppOpenAttribution(Map<String, String> map) {
                 Log.d(TAG, "onAppOpenAttribution");
+                if (map != null) {
+                    for (Map.Entry<String, String> entry : map.entrySet()) {
+                        Log.d(TAG, "onConversionDataSuccess:key:" + entry.getKey() + ",value:" + entry.getValue());
+                    }
+                }
             }
 
             @Override
