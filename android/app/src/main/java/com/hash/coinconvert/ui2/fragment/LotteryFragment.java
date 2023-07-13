@@ -1,7 +1,6 @@
 package com.hash.coinconvert.ui2.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -19,11 +18,9 @@ import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentLotteryBinding;
 import com.hash.coinconvert.entity.PinItem;
-import com.hash.coinconvert.ui2.activity.HomeActivity;
-import com.hash.coinconvert.ui2.activity.RedeemActivity;
 import com.hash.coinconvert.ui2.dialog.RewardDialog;
-import com.hash.coinconvert.ui2.fragment.RedeemFragmentArgs;
 import com.hash.coinconvert.utils.ShareHelper;
+import com.hash.coinconvert.utils.task.TaskHelper;
 import com.hash.coinconvert.vm.LotteryViewModel;
 import com.hash.coinconvert.widget.lottery.LotteryView;
 
@@ -108,6 +105,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         LiveData<String> liveData = getLiveDataInCurrentBackstack(RewardDialog.KEY);
         observer(liveData, s -> ShareHelper.shareText(requireContext(), s));
         observer(viewModel.getPinCheckId(), id -> {
+            TaskHelper.pin();
             binding.lotteryView.startRotate(id);
             profileViewModel.fetchUserInfo();
         });

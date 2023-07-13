@@ -10,13 +10,12 @@ import Foundation
 import SocketTask
 
 func saveDefaultRateCompare(model: GetCurrencyTokensResponse) {
-    let sharedDefauts = UserDefaults(suiteName: sharedGroupName) ?? UserDefaults.standard
-    sharedDefauts.setValue(model.token, forKey: compareCurrencyDestinationCacheKey)
+    UserDefaults.standard.setValue(model.token, forKey: compareCurrencyDestinationCacheKey)
+    UserDefaults.standard.synchronize()
 }
 
 func readDefaultRateCompare() -> GetCurrencyTokensResponse? {
-    let sharedDefauts = UserDefaults(suiteName: sharedGroupName) ?? UserDefaults.standard
-    let token = sharedDefauts.string(forKey: compareCurrencyDestinationCacheKey) ?? ""
+    let token = UserDefaults.standard.string(forKey: compareCurrencyDestinationCacheKey) ?? ""
     if let model = GetCurrencyTokensResponse.fetchOneCurrency(with: token) {
         return model
     }

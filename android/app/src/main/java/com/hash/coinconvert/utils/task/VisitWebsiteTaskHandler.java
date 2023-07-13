@@ -8,7 +8,7 @@ import com.hash.coinconvert.entity.TaskItem;
 
 import java.util.Map;
 
-public class VisitWebsiteTaskHandler implements TaskHandler{
+public class VisitWebsiteTaskHandler extends AbstractTaskHandler {
     @Override
     public boolean invoke(Context context, TaskItem taskItem, Map<String, String> params) {
         Intent intent = new Intent(Intent.ACTION_VIEW);

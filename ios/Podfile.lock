@@ -147,6 +147,7 @@ PODS:
   - hermes-engine (0.72.0):
     - hermes-engine/Pre-built (= 0.72.0)
   - hermes-engine/Pre-built (0.72.0)
+  - Hero (1.6.2)
   - KeychainSwift (20.0.0)
   - Kingfisher (7.6.1)
   - libevent (2.1.12)
@@ -666,6 +667,7 @@ DEPENDENCIES:
   - GoogleUtilities (= 7.8.0)
   - GRDB.swift (= 6.3.1)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - Hero (= 1.6.2)
   - KeychainSwift (= 20.0.0)
   - Kingfisher (= 7.6.1)
   - libevent (~> 2.1.12)
@@ -759,6 +761,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GRDB.swift
+    - Hero
     - KeychainSwift
     - Kingfisher
     - libevent
@@ -917,6 +920,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
   GRDB.swift: d596a9d93ff483fe073ea31d2528d347f86d711c
   hermes-engine: c85f703623cb12d7e1d9db91afe53b3ea8aa7219
+  Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   Kingfisher: 93a3c6d0d551658a31e19f21747e1d15cb39d525
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
@@ -983,6 +987,6 @@ SPEC CHECKSUMS:
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: b326a254f7bbd2d2206d3c9edf9c3fb0e9faf896
+PODFILE CHECKSUM: caa59751aeb3b27d760d42eada19034949abe8b4
 
 COCOAPODS: 1.12.0

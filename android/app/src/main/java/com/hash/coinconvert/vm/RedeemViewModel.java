@@ -13,6 +13,7 @@ import com.hash.coinconvert.entity.RedeemRequest;
 import com.hash.coinconvert.http.RetrofitHelper;
 import com.hash.coinconvert.http.api.ToolApi;
 import com.hash.coinconvert.utils.Dispatch;
+import com.hash.coinconvert.utils.task.TaskHelper;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class RedeemViewModel extends BaseViewModel {
     public void fetchRedeemCards() {
         startLoadingIfNeeded(redeemList);
         execute(api.redeemList(), list -> {
-            Dispatch.I.submit(()->{
+            Dispatch.I.submit(() -> {
                 if (list.list == null) {
                     list.list = Collections.emptyList();
                 }
@@ -50,10 +51,10 @@ public class RedeemViewModel extends BaseViewModel {
                 }
                 for (RedeemItem item : list.list) {
                     Token t = tokenMap.get(item.symbol);
-                    if(t != null){
+                    if (t != null) {
                         item.currencyType = t.currencyType;
                         item.unit = t.unitName;
-                        if(TextUtils.isEmpty(item.pic)){
+                        if (TextUtils.isEmpty(item.pic)) {
                             item.pic = t.icon;
                         }
                     }
@@ -63,11 +64,12 @@ public class RedeemViewModel extends BaseViewModel {
         });
     }
 
-    public void redeem(String id){
-        if(isNotLoading()) {
+    public void redeem(String id) {
+        if (isNotLoading()) {
             startLoading();
-            execute(api.redeem(RedeemRequest.of(id)),ignore->{
+            execute(api.redeem(RedeemRequest.of(id)), ignore -> {
                 fetchRedeemCards();
+                TaskHelper.redeem();
             });
         }
     }

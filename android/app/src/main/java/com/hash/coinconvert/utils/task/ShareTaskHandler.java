@@ -11,7 +11,7 @@ import com.hash.coinconvert.utils.ShareHelper;
 
 import java.util.Map;
 
-public class ShareTaskHandler implements TaskHandler{
+public class ShareTaskHandler extends AbstractTaskHandler{
     @Override
     public boolean invoke(Context context, TaskItem taskItem, Map<String, String> params) {
         if(!TextUtils.isEmpty(taskItem.params)){

@@ -1,5 +1,5 @@
 //
-//  ProfileAboutViewController.swift
+//  ProfilePrivacyViewController.swift
 //  btccurrency
 //
 //  Created by admin on 2023/6/28.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class ProfileAboutViewController: BaseWebViewController {
-
+class ProfilePrivacyViewController: BaseWebViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationView.backMode = .normal
         navigationView.pinMode = .none
         navigationView.titleMode = .left
-        navigationView.titleLabel.text = "Abount".localized()
+        navigationView.titleLabel.text = "Privacy policy".localized()
     }
     
     override var webUrl: URL {
-        return URL(string: "https://www.google.com")!
+        return URL(string: AppConfig.settingPrivacyUrl)!
     }
 }

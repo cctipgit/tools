@@ -1,8 +1,12 @@
 package com.hash.coinconvert.ui2.adapter;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,7 +27,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder> implements TextWatcher {
+public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder> implements TextWatcher, View.OnKeyListener {
 
     public static final String TAG = "TokenAdapter";
     public static final int PAYLOAD_UPDATE_PRICE = 0b0001;
@@ -51,15 +55,32 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
         TextView tvPrice = holder.getView(R.id.tv_price);
         tvPrice.setText(getFormattedNumber(token.getPrice()));
         EditText editText = holder.getView(R.id.edit_text);
-
+        Log.d("OnFocusChange", token.getSymbol() + ":" + token.hasFocus);
         if (token.hasFocus) {
             editText.setAlpha(1f);
             tvPrice.setAlpha(0f);
+            editText.setOnKeyListener(this);
             this.afterTextChanged(editText.getText());
         } else {
+//            editText.setOnKeyListener(null);
             editText.setAlpha(0f);
             tvPrice.setAlpha(1f);
         }
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        Log.d("OnKeyDown", "code:" + keyCode);
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm.isActive()) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                v.clearFocus();
+//                clearAnchor();
+            }
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -82,9 +103,9 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
                     focusedView = v;
                     if (anchorItem != null && anchorItem != token) {
                         anchorItem.hasFocus = false;
-                        notifyItemChanged(pos, PAYLOAD_FOCUS_CHANGE);
                     }
                     anchorItem = token;
+                    notifyItemChanged(pos, PAYLOAD_FOCUS_CHANGE);
                 }
                 for (int i = 0; i < getItemCount(); i++) {
                     if (pos == i) continue;
@@ -181,7 +202,7 @@ public class TokenAdapter extends BaseQuickAdapter<TokenWrapper, BaseViewHolder>
         notifyItemRangeChanged(0, getItemCount(), PAYLOAD_FOCUS_CHANGE | PAYLOAD_UPDATE_PRICE);
     }
 
-    public void destroyView(){
+    public void destroyView() {
         anchorItem = null;
         focusedView = null;
     }

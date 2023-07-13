@@ -26,6 +26,14 @@ extension String {
 }
 
 extension TimeInterval {
+    func customGetHour() -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        let date = Date(timeIntervalSince1970: self)
+        let strVal = dateFormatter.string(from: date)
+        return Int(strVal) ?? 0
+    }
+    
     func customPointDetailTime() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"

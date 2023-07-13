@@ -150,6 +150,16 @@ class TaskGameViewController: YBaseViewController {
         SmartService().pinCheck()
             .subscribe(onNext: { [weak self] result in
                 guard let self = self else { return }
+                // task
+                let nowTime = Date().timeIntervalSince1970.customGetHour()
+                let task = self.getTaskInfo()
+                if nowTime >= 10 && nowTime <= 12 {
+                    task.pin1012Count += 1
+                } else if nowTime >= 14 && nowTime <= 16 {
+                    task.pin1416Count += 1
+                }
+                self.setLocalTaskModel(model: task)
+                
                 guard let res = result, res.isSuccess else {
                     self.showAlert(message: result?.msg ?? "")
                     return

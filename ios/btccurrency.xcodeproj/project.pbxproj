@@ -113,6 +113,7 @@
 		843018FA2A5BFD5C00A9E9B2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843018F92A5BFD5C00A9E9B2 /* UIButton+Extension.swift */; };
 		843018FC2A5C0F0A00A9E9B2 /* ToolModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */; };
 		843018FE2A5C0F1B00A9E9B2 /* ToolModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */; };
+		843019022A5D452300A9E9B2 /* QuestionSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843019012A5D452300A9E9B2 /* QuestionSuccessView.swift */; };
 		847CF9A22A5264A600AE7CBB /* MonomaniacOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */; };
 		847CF9AE2A52C94100AE7CBB /* TCDrawPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */; };
 		847CF9AF2A52C94100AE7CBB /* TCSectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */; };
@@ -380,6 +381,7 @@
 		843018F92A5BFD5C00A9E9B2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolModule.swift; sourceTree = "<group>"; };
 		843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolModule.m; sourceTree = "<group>"; };
+		843019012A5D452300A9E9B2 /* QuestionSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuccessView.swift; sourceTree = "<group>"; };
 		847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MonomaniacOne-Regular.ttf"; sourceTree = "<group>"; };
 		847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCDrawPrizeView.swift; sourceTree = "<group>"; };
 		847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSectorModel.swift; sourceTree = "<group>"; };
@@ -492,9 +494,8 @@
 				832FE1F12913AE72004C27B6 /* SettingDecimalViewController.swift */,
 				832FE1DB29137A4E004C27B6 /* DigitSettingViewController.swift */,
 				84D46A162A4BD75A00129E92 /* ProfileIndexViewController.swift */,
-				84D46A122A4BD4EC00129E92 /* ProfileAboutViewController.swift */,
 				84D46A142A4BD50400129E92 /* ProfilePrivacyViewController.swift */,
-				847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */,
+				84D46A122A4BD4EC00129E92 /* ProfileAboutViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -521,8 +522,6 @@
 				832FE1F52913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.swift */,
 				832FE1F62913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.xib */,
 				84D46A182A4BD8B400129E92 /* ProfileIndexCell.swift */,
-				847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */,
-				847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -674,10 +673,10 @@
 			isa = PBXGroup;
 			children = (
 				8352BD412900E25B00A61199 /* Base */,
-				84F89A792A49673B000936E0 /* Currency */,
 				84F89A7A2A49674C000936E0 /* TaskList */,
+				84F89A792A49673B000936E0 /* Currency */,
+				843018FF2A5D27AA00A9E9B2 /* Questionnaire */,
 				84F89A7B2A496754000936E0 /* Redeem */,
-				832FE1BD2912C70A004C27B6 /* Profile */,
 				84C4FFCC2A42EB00001068B5 /* Support */,
 				8330E1D9290A88630026CE4B /* Resources */,
 			);
@@ -907,6 +906,33 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		843018FF2A5D27AA00A9E9B2 /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				843019032A5D5E3600A9E9B2 /* Cell */,
+				843019002A5D450300A9E9B2 /* View */,
+				847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */,
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		843019002A5D450300A9E9B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843019012A5D452300A9E9B2 /* QuestionSuccessView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		843019032A5D5E3600A9E9B2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */,
+				847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		847CF9A32A52672500AE7CBB /* Spin */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,8 +1014,9 @@
 			isa = PBXGroup;
 			children = (
 				8352BD482900E25B00A61199 /* Index */,
-				8352BD5B2900E25B00A61199 /* Detail */,
 				8352BD5F2900E25B00A61199 /* Switch */,
+				8352BD5B2900E25B00A61199 /* Detail */,
+				832FE1BD2912C70A004C27B6 /* Profile */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -1402,6 +1429,7 @@
 				8352BD962906302B00A61199 /* UILabel+Extension.swift in Sources */,
 				83021D4A292CAB9800CE8DD9 /* FloatPointView.swift in Sources */,
 				84D46A152A4BD50400129E92 /* ProfilePrivacyViewController.swift in Sources */,
+				843019022A5D452300A9E9B2 /* QuestionSuccessView.swift in Sources */,
 				8352BD7D290155E200A61199 /* SwitchCurrencyInteractiveAnimation.swift in Sources */,
 				8330E200290D129C0026CE4B /* SwitchCurrencyViewModel.swift in Sources */,
 				833BB9112907961000B9B831 /* Lexer.swift in Sources */,
@@ -1651,7 +1679,7 @@
 				DEVELOPMENT_TEAM = 244VF3LMND;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = btccurrency/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Currency;
+				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
@@ -1668,7 +1696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellpeng.abcWT;
 				PRODUCT_NAME = Currency;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1701,7 +1729,7 @@
 				DEVELOPMENT_TEAM = 244VF3LMND;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = btccurrency/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Currency;
+				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
@@ -1718,7 +1746,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellpeng.abcWT;
 				PRODUCT_NAME = Currency;

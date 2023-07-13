@@ -10,8 +10,29 @@ import SnapKit
 import MJRefresh
 import RxSwift
 import RxCocoa
+import Toast_Swift
 
 class QuestionsViewController: YBaseViewController {
+    private let finishImgView = UIImageView().then { v in
+        v.contentMode = .scaleAspectFill
+        v.isHidden = true
+        v.image = UIImage(named: "n_cheers")
+    }
+    private let finishTitleLabel = UILabel().then { v in
+        v.font = .robotoBold(with: 20)
+        v.text = "Congratulations! You already completed all questions today".localized()
+        v.textAlignment = .center
+        v.isHidden = true
+        v.numberOfLines = 2
+    }
+    private let finishDescLabel = UILabel().then { v in
+        v.font = .robotoRegular(with: 16)
+        v.textColor = .contentSecondary
+        v.text = "Please try it tomorrow".localized()
+        v.textAlignment = .center
+        v.isHidden = true
+    }
+    
     private let bgView = UIView().then { v in
         v.backgroundColor = .white
         v.layer.cornerRadius = 16
@@ -19,6 +40,7 @@ class QuestionsViewController: YBaseViewController {
         v.layer.shadowOpacity = 0.05
         v.layer.shadowRadius = 5
         v.layer.shadowOffset = CGSize(width: 0, height: 3)
+        v.isHidden = true
     }
     
     private let progressTitleLabel = UILabel().then { v in
@@ -73,7 +95,7 @@ class QuestionsViewController: YBaseViewController {
     }
     var sHeight: CGFloat {
         get {
-            return UIDevice.kScreenHeight() - UIDevice.kStatusBarHeight() - 60 - 48 - 34 - 24 - UIDevice.kSafeBottomHeight() - 30 - 24 - 50 - 16
+            return UIDevice.kScreenHeight() - UIDevice.kStatusBarHeight() - 60 - 48 - 34 - 24 - UIDevice.kSafeBottomHeight() - 30 - 24 - 50 - 16 - 60
         }
     }
     
@@ -91,9 +113,26 @@ class QuestionsViewController: YBaseViewController {
         p_setElements()
         updateViewConstraints()
     }
-    
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
+        finishImgView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.centerY.equalToSuperview().offset(-50)
+            make.height.equalTo((UIDevice.kScreenWidth() - 40.0) / 308.0 * 204.0)
+        }
+        finishTitleLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(finishImgView)
+            make.top.equalTo(finishImgView.snp.bottom).offset(56)
+            make.height.greaterThanOrEqualTo(56)
+        }
+        finishDescLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(finishTitleLabel)
+            make.height.equalTo(20)
+            make.top.equalTo(finishTitleLabel.snp.bottom).offset(16)
+        }
+        
         bgView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -157,9 +196,10 @@ class QuestionsViewController: YBaseViewController {
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: sWidth, height: sHeight))
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
-        scrollView.tag = 1
+        scrollView.tag = 999
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
+
         bgView.addSubviews([progressTitleLabel,
                             progressDescLabel,
                             progressFullView,
@@ -169,7 +209,10 @@ class QuestionsViewController: YBaseViewController {
                             backBtn,
                             nextBtn
                            ])
-        view.addSubview(bgView)
+        view.addSubviews([finishImgView,
+                          finishTitleLabel,
+                          finishDescLabel,
+                          bgView])
         currentIndexRelay.asObservable()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] val in
@@ -230,12 +273,27 @@ class QuestionsViewController: YBaseViewController {
                 let answers = self.submitData.map({ $0.value })
                 SmartService().quizSubmit(answers: answers)
                     .subscribe(onNext: { [weak self] result in
-                        guard let res = result, res.isSuccess, let self = self else {
-                            self?.showAlert(message: result?.msg ?? "")
+                        guard let self = self else { return }
+                        guard let res = result, res.isSuccess else {
+                            // task
+                            let task = self.getTaskInfo()
+                            task.quizDoneTime = Date().timeIntervalSince1970.customJoinTime()
+                            self.setLocalTaskModel(model: task)
+                            
+                            ToastManager.shared.isTapToDismissEnabled = false
+                            let alertView = QuestionSuccessView(frame: .zero)
+                            alertView.doneBtn.rx.tap
+                                .subscribe(onNext: { [weak self] _ in
+                                    guard let self = self else { return }
+                                    self.view.hideAllToasts()
+                                    ToastManager.shared.isTapToDismissEnabled = true
+                                    self.p_switchView(isSubmit: true)
+                                })
+                                .disposed(by: rx.disposeBag)
+                            self.view.showToast(alertView, duration: TimeInterval(Int.max), position: .center)
                             return
                         }
                         self.showAlert(message: result?.msg ?? "")
-                        self.navigationController?.popViewController(animated: true)
                 })
                 .disposed(by: rx.disposeBag)
             } else {
@@ -245,7 +303,19 @@ class QuestionsViewController: YBaseViewController {
             }
         })
         .disposed(by: rx.disposeBag)
-        p_refresh()
+        self.p_refresh()
+    }
+    
+    private func p_switchView(isSubmit: Bool) {
+        finishImgView.isHidden = !isSubmit
+        finishTitleLabel.isHidden = !isSubmit
+        finishDescLabel.isHidden = !isSubmit
+        bgView.isHidden = isSubmit
+        if isSubmit {
+            [finishImgView, finishTitleLabel, finishDescLabel].forEach({ self.view.bringSubviewToFront($0) })
+        } else {
+            self.view.bringSubviewToFront(bgView)
+        }
     }
     
     private func p_refresh() {
@@ -253,6 +323,7 @@ class QuestionsViewController: YBaseViewController {
             .retry()
             .subscribe(onNext: { [weak self] result in
                 guard let self = self, let res = result else { return }
+                self.p_switchView(isSubmit: res.submitted)
                 guard let listArray = res.list as? [QuizPageQuestionItem] else {
                     return
                 }
@@ -265,6 +336,11 @@ class QuestionsViewController: YBaseViewController {
                     table.dataSource = self
                     table.showsHorizontalScrollIndicator = false
                     table.showsVerticalScrollIndicator = false
+                    table.rowHeight = UITableView.automaticDimension
+                    table.estimatedRowHeight = 92
+                    if #available(iOS 15.0, *) {
+                        table.sectionHeaderTopPadding = 0
+                    }
                     self.scrollView.addSubview(table)
                 }
                 self.tableData = listArray
@@ -281,7 +357,7 @@ class QuestionsViewController: YBaseViewController {
 
 extension QuestionsViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.tag == 1 {
+        if scrollView.tag == 999 {
             self.currentIndex = Int(floor(scrollView.contentOffset.x / sWidth))
             self.currentIndexRelay.accept(currentIndex)
         }
@@ -289,91 +365,88 @@ extension QuestionsViewController: UIScrollViewDelegate {
 }
 
 extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return QuestionMultiCell.calculateHeaderHeight(str: self.tableData[tableView.tag].title)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth() - 72, height: 80)).then { v in
+        let str = self.tableData[tableView.tag].title
+        let height = QuestionMultiCell.calculateHeaderHeight(str: str)
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth() - 72, height: height)).then { v in
             v.backgroundColor = .white
         }
         let label = UILabel(frame: CGRect(x: 16, y: 0, width: UIDevice.kScreenWidth() - 72, height: 40)).then { v in
             v.font = .robotoBold(with: 32)
+            v.numberOfLines = 100
         }
-        label.text = self.tableData[tableView.tag].title
+        label.text = str
         bgView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.greaterThanOrEqualTo(40)
+            make.top.equalToSuperview()
+        }
         return bgView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let index = tableView.tag
         guard tableData.count > index else { return 0 }
         return tableData[index].sonQuestion.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard tableData.count > tableView.tag else { return UITableViewCell(frame: .zero) }
         let data = tableData[tableView.tag]
         var cellIdentifier: String!
         var cell: UITableViewCell!
-        if data.sonQuestion.count > 1 {
-            cellIdentifier = "questionMultiCellID"
-            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            if cell == nil {
-                cell = QuestionMultiCell.init(style: .default, reuseIdentifier: cellIdentifier)
-            }
-            if let mCell = cell as? QuestionMultiCell {
-                let sonItem = (data.sonQuestion[indexPath.row] as? QuizSonQuestionItem) ?? QuizSonQuestionItem()
-                mCell.setData(item: sonItem)
-                mCell.delegate = self
-                submitData[sonItem.id] = QuizAnswerListItem(id: sonItem.id, options: [0])
-            }
-        } else {
+        if data.sonQuestion.count == 1 {
             cellIdentifier = "questionSimpleCellID"
             cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
             if cell == nil {
                 cell = QuestionSimpleCell.init(style: .default, reuseIdentifier: cellIdentifier)
             }
-            if let mCell = cell as? QuestionSimpleCell {
+            if let mCell = cell as? QuestionSimpleCell, data.sonQuestion.count > indexPath.row {
+                let sonItem = (data.sonQuestion.firstObject as? QuizSonQuestionItem) ?? QuizSonQuestionItem()
+                mCell.setData(item: sonItem)
+                mCell.delegate = self
+                submitData[sonItem.id] = QuizAnswerListItem(id: sonItem.id, options: [0])
+            }
+        } else {
+            cellIdentifier = "questionMultiCellID"
+            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+            if cell == nil {
+                cell = QuestionMultiCell.init(style: .default, reuseIdentifier: cellIdentifier)
+            }
+            if let mCell = cell as? QuestionMultiCell, data.sonQuestion.count > indexPath.row {
                 let sonItem = (data.sonQuestion[indexPath.row] as? QuizSonQuestionItem) ?? QuizSonQuestionItem()
                 mCell.setData(item: sonItem)
                 mCell.delegate = self
                 submitData[sonItem.id] = QuizAnswerListItem(id: sonItem.id, options: [0])
             }
         }
+        cell.clipsToBounds = true
         cell.selectionStyle = .none
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = 0
-        guard tableData.count > tableView.tag else {
-            return height
-        }
-        let data = tableData[tableView.tag]
-        if data.sonQuestion.count > 1 {
-            let item = (data.sonQuestion[indexPath.row] as? QuizSonQuestionItem) ?? QuizSonQuestionItem()
-            var height: CGFloat = 36
-            var itemTotalWidth: CGFloat = 0
-            let width = UIDevice.kScreenWidth() - 72.0
-            item.options.forEach { str in
-                itemTotalWidth += (QuestionMultiCell.calculateItemSize(str: str).width + 8)
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let index = tableView.tag
+        guard tableData.count > index else { return }
+        let count = tableData[index].sonQuestion.count
+        cell.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(count) * 0.01) {
+            cell.layer.transform = CATransform3DMakeTranslation(-cell.width, 0, 0)
+            UIView.animate(withDuration: 0.25, delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 0) {
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1
             }
-            let intVal: Int = Int(itemTotalWidth / width)
-            height += CGFloat(intVal) * 48
-            if (itemTotalWidth / width) > CGFloat(intVal) {
-                height += 48
-            }
-            return height + 24
-        } else {
-            height = 36 + CGFloat((data.sonQuestion.firstObject as? QuizSonQuestionItem)?.options.count ?? 0) * 56
         }
-        return height
     }
 }
 

@@ -121,14 +121,43 @@ class PointListItem: NSObject {
     }
 }
 
+enum kTaskType: String {
+    case TaskType_SignIn = "sign in"
+    case TaskType_ShareToFacebook = "share_to_facebook"
+    case TaskType_ShareToTwitter = "share_to_twitter"
+    case TaskType_ShareToTelegram = "share_to_telegram"
+    case TaskType_ShareToDiscord = "share_to_discord"
+    case TaskType_AskFriendToRegister_1 = "share_to_1_register"
+    case TaskType_AskFriendToRegister_3 = "share_to_3_register"
+    case TaskType_AskFriendToRegister_5 = "share_to_5_register"
+    case TaskType_Add_Token_1 = "share_add_token_1"
+    case TaskType_Add_Token_3 = "share_add_token_3"
+    case TaskType_View_Token_1 = "view_token_1"
+    case TaskType_View_Token_3 = "view_token_3"
+    case TaskType_Quiz_Done = "quiz_done"
+    case TaskType_Visit_Website = "visit_website"
+    case TaskType_Product_Exchange = "product_exchange"
+    case TaskType_Product_Get_During_10_12 = "product_get_during_10_12"
+    case TaskType_Product_Get_During_14_16 = "product_get_during_14_16"
+    case TaskType_Product_Get_App_Star = "product_get_app_star"
+    case unknown
+}
+
 @objcMembers
 class TaskListItem: NSObject {
     var taskId = ""
     var taskName = ""
     var spinTimes: Int = 0
-    var taskType = ""
+    var taskType: String = ""
     var params = ""
     var done: Bool = false
+    
+    @nonobjc
+    var taskTypeEnum: kTaskType {
+        get {
+            return kTaskType(rawValue: taskType) ?? .unknown
+        }
+    }
     
     override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
         return ["taskId": "task_id",
@@ -171,9 +200,12 @@ class ResultPinList: ResultBase {
 @objcMembers
 class ResultQuizQuestions: ResultBase {
     var list = NSArray()
+    var submitted: Bool = false
     
     override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
-        return ["list": "data.lists"]
+        return ["list": "data.lists",
+                "submitted": "data.submitted"
+        ]
     }
     
     override class func mj_objectClassInArray() -> [AnyHashable : Any]! {

@@ -49,8 +49,12 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
 
     private void startInterval() {
         interval = Observable.interval(INTERVAL_TIME, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io()).subscribe(aLong -> {
-            viewModel.fetchPrices();
-            viewModel.loadAllCurrencyInfo();
+            try {
+                viewModel.fetchPrices();
+                viewModel.loadAllCurrencyInfo();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -113,8 +117,7 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
         });
 
         //listen the keyboard visibility event
-        View rootView = binding.getRoot();
-        rootView.getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
+        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
         startInterval();
     }
 

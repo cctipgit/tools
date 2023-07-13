@@ -266,6 +266,11 @@ class SwitchCurrencyViewController: YBaseViewController {
                 }
                 self.didSelectItemHandler.onNext(item.response)
                 CurrencyTokensList.shared.insertFrequent(viewModel: item)
+                // task
+                let taskInfo = self.getTaskInfo()
+                taskInfo.addTokenCount += 1
+                self.setLocalTaskModel(model: taskInfo)
+                
                 if self.presentingViewController != nil {
                     self.dismiss(animated: true)
                 } else {
@@ -287,6 +292,11 @@ class SwitchCurrencyViewController: YBaseViewController {
                 }
                 self.didSelectItemHandler.onNext(item.response)
                 CurrencyTokensList.shared.insertFrequent(viewModel: item)
+                // task
+                let taskInfo = self.getTaskInfo()
+                taskInfo.addTokenCount += 1
+                self.setLocalTaskModel(model: taskInfo)
+                
                 if self.presentingViewController != nil {
                     self.dismiss(animated: true)
                 } else {

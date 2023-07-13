@@ -30,7 +30,7 @@ class AppSetting {
 
     var disposeBag = DisposeBag()
     
-    var userDefaults = UserDefaults(suiteName: "sharedGroupName") ?? UserDefaults.standard
+    var userDefaults = UserDefaults.standard
     private init() {
         
         userDefaults.register(defaults: [

@@ -22,12 +22,25 @@ extension NSObject {
     }
     
     func userId() -> String {
+        // TODO
+        return "05DF0C25-9551-4FD2-B334-7BCB0C95C056"
+        
+        
         if let userId = KeychainSwift().get(AppConfig.kUserIdKeychain), userId.count > 0 {
             return userId
         }
         let newUserId = UUID().uuidString
         KeychainSwift().set(newUserId, forKey: AppConfig.kUserIdKeychain, withAccess: AppConfig.keychainAccess)
         return newUserId
+    }
+    
+    func getTaskInfo() -> LocalTaskModel {
+        if let jsonStr = UserDefaults.standard.object(forKey: AppConfig.kUserDefaultTaskKey) {
+            if let task = LocalTaskModel.mj_object(withKeyValues: jsonStr) {
+                return task
+            }
+        }
+        return LocalTaskModel()
     }
     
     func getUserInfo() -> LocalUserModel {
@@ -51,6 +64,14 @@ extension NSObject {
         return true
     }
     
+    @discardableResult
+    func setLocalTaskModel(model: LocalTaskModel) -> Bool {
+        let josnStr = model.mj_JSONString()
+        UserDefaults.standard.set(josnStr, forKey: AppConfig.kUserDefaultTaskKey)
+        UserDefaults.standard.synchronize()
+        return true
+    }
+
     // Print logs
     func printLog<T>(message: T, file: String = #file, method: String = #function, line: Int = #line) {
         #if (DEBUG)
