@@ -45,7 +45,7 @@ export default () => {
 
   const navigation = useNavigation();
 
-  const url = router?.params?.url || 'https://bc.game';
+  const url = router?.params?.url || 'https://giveaway.com';
   const params: any = router?.params;
   console.log(params, '参数');
 
