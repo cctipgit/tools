@@ -26,9 +26,9 @@ import KeychainSwift
         return [String]();
     }
     
-    
     /// Js call with promise
-    @objc func openNative(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+    @objc
+    func openNative(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         DispatchQueue.main.async {
             URL.socketBaseURL = URL(string: AppConfig.socketBaseURL)! // set socket server url
             let main = CustomTabViewController()
@@ -42,5 +42,17 @@ import KeychainSwift
             }
         }
         resolve("")
+    }
+    
+    @objc
+    func getAppsFlyerConversionData(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        if let json = AppInstance.shared.appFlyerConversionInfo.jsonString() {
+            resolve(json)
+        }
+        reject("500", "conversion data get error", nil)
+    }
+    
+    @objc func logEvent(_ parameter: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        resolve("res.mj_keyValues()")
     }
 }

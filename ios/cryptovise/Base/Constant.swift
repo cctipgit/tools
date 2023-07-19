@@ -18,3 +18,12 @@ let widgetDidTappedConvertLineNotification = "widgetDidTappedConvertLineNotifica
 let widgetDidTappedQuotationNotification = "widgetDidTappedQuotationNotification"
 
 let drawPrizeChanceChangedNofification = "drawPrizeChanceChangedNofification"
+
+class AppInstance: NSObject {
+    public static let shared = AppInstance()
+    public var appFlyerConversionInfo: [AnyHashable : Any] = [AnyHashable : Any]()
+    
+    private override init() {
+        super.init()
+    }
+}
