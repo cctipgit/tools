@@ -11,7 +11,7 @@ function HomeScreen() {
         }}/>
         <Button title='logEvent' onPress={()=>{
           NativeModules.ToolModule.logEvent({
-            "event":"test_event",
+            "event":"af_login",
             "params":{
               "a":"b",
               "c":"d"
