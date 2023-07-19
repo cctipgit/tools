@@ -124,6 +124,7 @@
 		847CF9BD2A56A11300AE7CBB /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */; };
 		847CF9BF2A56A32500AE7CBB /* QuestionMultiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */; };
 		847CF9C12A56A33600AE7CBB /* QuestionSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */; };
+		8485242C2A67D7C9001EE06A /* AppsFlyerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485242B2A67D7C9001EE06A /* AppsFlyerModel.swift */; };
 		84C4FFBD2A42E31F001068B5 /* Moya+Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */; };
 		84C4FFBE2A42E31F001068B5 /* Single+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB42A42E31F001068B5 /* Single+Cache.swift */; };
 		84C4FFBF2A42E31F001068B5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FFB52A42E31F001068B5 /* Configuration.swift */; };
@@ -395,6 +396,7 @@
 		847CF9BC2A56A11300AE7CBB /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		847CF9BE2A56A32500AE7CBB /* QuestionMultiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMultiCell.swift; sourceTree = "<group>"; };
 		847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSimpleCell.swift; sourceTree = "<group>"; };
+		8485242B2A67D7C9001EE06A /* AppsFlyerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFlyerModel.swift; sourceTree = "<group>"; };
 		84B06F902A4EE030009708E4 /* btccurrency-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "btccurrency-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C4FFB32A42E31F001068B5 /* Moya+Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya+Cacheable.swift"; sourceTree = "<group>"; };
 		84C4FFB42A42E31F001068B5 /* Single+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Cache.swift"; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 			children = (
 				847CF9B22A53C18700AE7CBB /* LocalUserModel.swift */,
 				847CF9B52A53F7C700AE7CBB /* ServerModels.swift */,
+				8485242B2A67D7C9001EE06A /* AppsFlyerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1299,6 +1302,7 @@
 				843018FE2A5C0F1B00A9E9B2 /* ToolModule.m in Sources */,
 				832FE1C52912C7B5004C27B6 /* SettingViewModel.swift in Sources */,
 				832FE1C32912C780004C27B6 /* SettingViewController.swift in Sources */,
+				8485242C2A67D7C9001EE06A /* AppsFlyerModel.swift in Sources */,
 				843018FA2A5BFD5C00A9E9B2 /* UIButton+Extension.swift in Sources */,
 				8352BD632900E25B00A61199 /* YNavigationView.swift in Sources */,
 				8352BD762900EC8C00A61199 /* SwipeAnimator.swift in Sources */,

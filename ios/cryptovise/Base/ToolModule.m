@@ -13,7 +13,7 @@
 
 RCT_EXTERN_METHOD(openNative:(RCTPromiseResolveBlock)resolve reject: (RCTPromiseRejectBlock)reject);
 RCT_EXTERN_METHOD(getAppsFlyerConversionData:(RCTPromiseResolveBlock)resolve reject: (RCTPromiseRejectBlock)reject);
-RCT_EXTERN_METHOD(logEvent:(NSString *)parameter resolve:(RCTPromiseResolveBlock)resolve reject: (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(logEvent:(NSDictionary *)parameter resolve:(RCTPromiseResolveBlock)resolve reject: (RCTPromiseRejectBlock)reject);
 
 RCT_EXTERN_METHOD(supportedEvents)
 

@@ -12,6 +12,7 @@ import FluentDarkModeKit
 import OSLog
 import UIKit
 import KeychainSwift
+import AppsFlyerLib
 
 @objc(ToolModule)
 @objcMembers open class ToolModule: RCTEventEmitter {
@@ -41,18 +42,26 @@ import KeychainSwift
                 _ = CurrencyRate.shared
             }
         }
-        resolve("")
+        resolve("success")
     }
     
     @objc
     func getAppsFlyerConversionData(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         if let json = AppInstance.shared.appFlyerConversionInfo.jsonString() {
-            resolve(json)
+            return resolve(json)
         }
-        reject("500", "conversion data get error", nil)
+        return reject("500", "conversion data get error", nil)
     }
     
-    @objc func logEvent(_ parameter: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
-        resolve("res.mj_keyValues()")
+    @objc
+    func logEvent(_ parameter: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        if let model = AppsFlyerEventModel.mj_object(withKeyValues: parameter) {
+            AppsFlyerLib.shared().logEvent(name: model.event, values: model.params) { result, error in
+                self.printLog(message: result?.jsonString() ?? "")
+                self.printLog(message: error?.localizedDescription ?? "")
+            }
+            return resolve(parameter.mj_JSONString())
+        }
+        return reject("500", "logEvent get error", nil)
     }
 }
