@@ -6,6 +6,7 @@ import {NavigationContainer, RouteProp} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../Pages/Home';
 import WebView from '../Pages/WebView';
+import CCTipWebViewScreen from '../Pages/CCTipWebView';
 import type {
   NativeStackNavigationProp,
   NativeStackScreenProps,
@@ -16,6 +17,7 @@ type RootStackParamList = {
   Home: {};
   webview: {};
   webview1: {url: string};
+  webview2:{url:string};
 };
 
 // 定义全局导航器对象类型
@@ -64,6 +66,16 @@ function Route() {
             headerBackTitleVisible: false,
             presentation: 'modal',
           }}
+        />
+        <Stack.Screen
+          name="webview2"
+          component={CCTipWebViewScreen}
+          options={{
+            headerShown: false,
+            headerBackTitleVisible: false,
+            presentation: 'modal',
+          }}
+        />
         /> */}
       </Stack.Navigator>
     </NavigationContainer>
