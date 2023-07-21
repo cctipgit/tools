@@ -10,8 +10,10 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.hash.coinconvert.App;
 import com.hash.coinconvert.ui2.activity.HomeActivity;
+import com.hash.coinconvert.utils.AppsFlyerHelper;
 import com.hash.coinconvert.utils.GsonHelper;
 
 import java.util.List;
@@ -60,5 +62,27 @@ public class ToolModule extends ReactContextBaseJavaModule {
         }
         Log.d(NAME, "getParams" + GsonHelper.getGsonInstance().toJson(params));
         promise.resolve(GsonHelper.getGsonInstance().toJson(params));
+    }
+
+    @ReactMethod
+    public void logEvent(ReadableMap json, Promise promise) {
+        try {
+            Map<String, Object> map = json.toHashMap();
+            Object eventName = map.get("event");
+            if (eventName == null) {
+                promise.reject("missing \"event\" field");
+                return;
+            }
+            Object params = map.get("params");
+            Map<String, Object> paramMap = null;
+            if (params instanceof Map) {
+                paramMap = ((Map<String, Object>) params);
+            }
+            AppsFlyerHelper.logEvent(context, eventName.toString(), paramMap);
+            promise.resolve(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject(e);
+        }
     }
 }

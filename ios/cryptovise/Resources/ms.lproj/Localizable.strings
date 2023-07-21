@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  cryptovise
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+"High" = "Tinggi";
+"Low" = "Rendah";
+"Average" = "Purata";
+"Change" = "Berubah";
+"Switch Currency" = "Tukaran mata wang";
+"Rate Detail" = "Kadar terperinci";
+"Currency not found" = "Mata wang tidak dijumpai";
+"Currency" = "Mata wang";
+"Local Currency" = "Mata wang tempatan";
+"Frequently Used" = "Kerap kali diguna";
+"Switch Currency" = "Tukaran mata wang";
+"Currency symbol" = "Simbol mata wang";
+"Default Currency Value" = "Nilai mata wang lalai";
+"Set Decimical Digits" = "Set susunan penomboran";
+"More Settings" = "Lebih tetapan";
+"Plugin" = "Dipasangkan";
+"Red rise green fall" = "Merah menaik hijau menurun";
+"Green rise red fall" = "Hijau menail merah menurun";
+"Quote color" = "Petikan warna";
+"Keyboard Sound" = "Bunyi papan kekunci";
+"Cancel" = "Batal";
+"Recovery" = "Pemulihan";
+"Restore the default currency list?" = "Pemulihan senarai mata wang terencat?";
+"OK" = "Maklum";
+"Location Services" = "Lokasi perkhidmatan";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "Mohon membuka \"lokasi perkhidmatan\" didalam penetapan sistem untuk membenarkan \"btckalkulator\" untuk memastikan lokasi anda.";
+"Converter Setting" = "Tatapan penukaran";
+"More Setting" = "Tatapan lebihan";
+"This widget will display the currency list of converter." = "Tatapan ini akan memaparkan senarai penukaran mata wang.";
+"Set Decimal Digits" = "Penepatan angka penomboran";
+"Legal Tender" = "Tender sah";
+"Cryptocurrency" = "Mata wang kripto";
+"Converter Watchlist" = "Senarai pantauan penukar";
+"View all your favorite currency conversions in real-time." = "Melihat semua mata wang digital digemar pada masa yang nyata.";
+"View the top 2 of your favorites currencies conversions in real-time." = "Melihat dua penukaran mata wang paling digemari dalam senarai pada masa yang nyata.";
+"Single Rate Comparison" = "Perbandingan kadar tunggal";
+"View real-time exchange rate trend comparisons of your favorite currency." = "Melihat perbandingan aliran arah mata wang semasa waktu nyata bersama mata wang yang digemar.";
+"Rate Comparisons" = "Kadar perbandingan";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "Melihat dua aliran arah mata wang paling digemar semasa waktu nyata pada kadar tukaran.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";

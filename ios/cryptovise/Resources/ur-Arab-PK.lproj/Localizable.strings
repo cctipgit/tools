@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  cryptovise
+
+  Created by fd on 2022/10/26.
+  
+*/
+
+
+"High" = "بلند";
+"Low" = "کم ترین";
+"Average" = "اوسط";
+"Change" = "تبدیلی";
+"Switch Currency" = "کرنسی کو تبدیل کریں";
+"Rate Detail" = "ریٹ کی تفصیل";
+"Currency not found" = "کرنسی نہیں ملی";
+"Currency" = "کرنسی";
+"Local Currency" = "مقامی کرنسی";
+"Frequently Used" = "بکثرت استعمال کیا گیا";
+"Switch Currency" = "کرنسی کو تبدیل کریں";
+"Currency symbol" = "کرنسی کی علامت";
+"Default Currency Value" = "پہلے سے طے شدہ کرنسی کی قدر";
+"Set Decimical Digits" = "اعشاریہ ہندسے سیٹ کریں";
+"More Settings" = "مزید سیٹنگز";
+"Plugin" = "Plugin";
+"Red rise green fall" = "سرخ عروج سبز زوال";
+"Green rise red fall" = "سبز عروج سرخ زوال";
+"Quote color" = "اقتباس رنگ";
+"Keyboard Sound" = "کی بورڈ ساؤنڈ";
+"Cancel" = "منسوخ کریں۔";
+"Recovery" = "بحالی";
+"Restore the default currency list?" = "پہلے سے طے شدہ کرنسی کی فہرست بحال کریں?";
+"OK" = "اوکے";
+"Location Services" = "لوکیشن سروسز";
+"Please open \"Location services\" in the system settings to allow \"Currency\" to determine your location." = "براہ کرم \"Currency\" کو اپنے مقام کا تعین کرنے کی اجازت دینے کے لیے سسٹم کی سیٹنگس میں \"Location services\" کھولیں۔";
+"Converter Setting" = "کنورٹر سیٹنگ";
+"More Setting" = "مزید سیٹنگ";
+"This widget will display the currency list of converter." = "یہ ویجیٹ کنورٹر کی کرنسی کی فہرست دکھائے گا۔.";
+"Set Decimal Digits" = "اعشاریہ ہندسے سیٹ کریں";
+"Legal Tender" = "لیگل ٹینڈر";
+"Cryptocurrency" = "کریپٹو کرنسی";
+"Converter Watchlist" = "کنورٹر واچ لسٹ";
+"View all your favorite currency conversions in real-time." = "اپنے تمام پسندیدہ کرنسی کے تبادلوں کو حقیقی وقت میں دیکھیں۔.";
+"View the top 2 of your favorites currencies conversions in real-time." = "ریئل ٹائم میں اپنی پسندیدہ کرنسیوں کے تبادلوں میں سے ٹاپ 2 کو دیکھیں۔.";
+"Single Rate Comparison" = "سنگل ریٹ کا موازنہ";
+"View real-time exchange rate trend comparisons of your favorite currency." = "اپنی پسندیدہ کرنسی کے ریئل ٹائم ایکسچینج ریٹ کے رجحانات کا موازنہ دیکھیں۔.";
+"Rate Comparisons" = "ریٹ موازنہ";
+"View real-time exchange rate trend comparisons of the top 2 of your favorite currencies." = "اپنی پسندیدہ کرنسیوں میں سے سرفہرست 2 کے ریئل ٹائم ایکسچینج ریٹ رجحان کا موازنہ دیکھیں۔.";
+"Game" = "Game";
+"Redeem" = "Redeem";
+"Profile" = "Profile";
