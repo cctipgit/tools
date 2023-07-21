@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUserInfo()
         
         // AppsFlyer
-        AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
         AppsFlyerLib.shared().appsFlyerDevKey = AppConfig.appsFlyerDevKey
         AppsFlyerLib.shared().appleAppID = AppConfig.appstoreAppId
         AppsFlyerLib.shared().isDebug = true
@@ -59,27 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppsFlyerLib.shared().start()
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { (status) in
-                switch status {
-                    case .denied:
-                        self.printLog(message: "AuthorizationSatus is denied")
-                        break
-                    case .notDetermined:
-                        self.printLog(message: "AuthorizationSatus is notDetermined")
-                        break
-                    case .restricted:
-                        self.printLog(message: "AuthorizationSatus is restricted")
-                        break
-                    case .authorized:
-                        self.printLog(message: "AuthorizationSatus is authorized")
-                        break
-                    @unknown default:
-                        fatalError("Invalid authorization status")
-                        break
-                }
-            }
-        }
     }
     
     func setUserInfo() {

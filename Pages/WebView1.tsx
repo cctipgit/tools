@@ -8,37 +8,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 
-const jscode = `var obj = {
-    href: "",
-    ...window.location,
-  };
-
-
-  Object.defineProperty(obj, "href", {
-    set: function (newVal) {
-      let data={
-        type:1,
-        url:newVal
-      }
-      data=JSON.stringify(data)
-      window.parent.ReactNativeWebView.postMessage(data)
-  
-    },
-  })
-  window.open = function (url) {
-    if(url){
-      let data={
-        type:1,
-        url:url
-      };
-      data=JSON.stringify(data)
-      window.parent.ReactNativeWebView.postMessage(data)
-      return
-    };
-    return {
-      location: obj,
-    };
-  };`;
+const jscode = ``;
 
 // const po=`window.open=()=>alert(123)`
 
@@ -64,27 +34,20 @@ export default () => {
 
     if (params?.type == 'login') {
       Alert.alert('登陆');
-      console.log(params);
-      
       webRef.current.postMessage(JSON.stringify(params));
     }
   }, [params]);
 
   const webRef = useRef<any>(null);
 
-  //   React.useEffect(() => {
-  //     setTimeout(() => {
-  //       webRef?.current.injectJavaScript(jscode);
-  //     }, 3000);
-  //   }, []);
-
   const onMessage = (event: WebViewMessageEvent) => {
+    console.log(event.nativeEvent,'sdfdsfsdkfghdsfhskdhf');
+
     
     try {
-      if(typeof event.nativeEvent.data!='string') return
-    
+      if (typeof event.nativeEvent.data != 'string') return;
+      
       let data = JSON.parse(event.nativeEvent.data);
-      console.log(data);
       if (!data.type) {
         data.type = 'login';
         navigation.navigate('webview', data);
@@ -93,12 +56,7 @@ export default () => {
       if (data.type == 1) {
         navigation.navigate('webview1', {url: data.url});
       }
-      
-    } catch (error) {
-      
-    }
-
-  
+    } catch (error) {}
   };
 
   return (
@@ -112,7 +70,8 @@ export default () => {
           javaScriptCanOpenWindowsAutomatically={true}
           javaScriptEnabled
           mixedContentMode="always"
-          injectedJavaScript={jscode}
+          injectedJavaScript="function loginCancel(e) {e.preventDefault();window.ReactNativeWebView.postMessage('close');} ; window.opener = {postMessage: (e)=>{window.ReactNativeWebView.postMessage(e)}} "
+          injectedJavaScriptBeforeContentLoaded="window.postMessage = function (e) {window.ReactNativeWebView.postMessage(e)};window.opener = {postMessage: (e)=>{window.ReactNativeWebView.postMessage(e)}}"
           style={{flex: 1, backgroundColor: '#25272C'}}
           onMessage={onMessage}
           injectedJavaScriptForMainFrameOnly={false}

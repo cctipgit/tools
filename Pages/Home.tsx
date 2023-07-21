@@ -1,15 +1,31 @@
-import { useNavigation } from '@react-navigation/native';
-import {Button, NativeModules, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useEffect} from 'react';
+import {Alert, Button, NativeModules, Text, View} from 'react-native';
 
-function HomeScreen() { 
-    const navigation =useNavigation()
+function HomeScreen() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    NativeModules.ToolModule.getAppsFlyerConversionData().then((e: any) => {
+      e = JSON.parse(e);
+      if (e.media_source) {
+        NativeModules.ToolModule.openNative();
+      } else {
+      }
+    });
+  }, []);
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-       <Button title='openNative' onPress={()=>{
-            NativeModules.ToolModule.openNative();
-        }}/>
-        <Button title='logEvent' onPress={()=>{
+      <Button
+        title="openNative"
+        onPress={() => {
+          NativeModules.ToolModule.openNative();
+        }}
+      />
+      <Button
+        title="logEvent"
+        onPress={() => {
           NativeModules.ToolModule.logEvent({
             "event":"af_login",
             "params":{
@@ -27,8 +43,29 @@ function HomeScreen() {
       <Button title="webveiw2" onPress={() => {
        navigation.navigate('webview2',{}) 
       }} />
+      <Button
+        title="appsflyer data"
+        onPress={() => {
+          NativeModules.ToolModule.getAppsFlyerConversionData().then(
+            (e: any) => {
+              
+              e = JSON.parse(e);
+              console.log(e);
+              
+            },
+          );
+        }}
+      />
+      <Button
+        title="webveiw"
+        onPress={() => {
+          navigation.navigate('webview', {});
+        }}
+      />
     </View>
   );
 }
 
 export default HomeScreen;
+
+// 保存原始的 window.open() 方法
