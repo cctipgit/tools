@@ -17,6 +17,7 @@ public class HomeTaskListAdapter extends BaseQuickAdapter<TaskItem, BaseViewHold
 
     public HomeTaskListAdapter() {
         super(R.layout.adapter_task_list);
+        addChildClickViewIds(R.id.btn_check);
     }
 
     @Override
@@ -25,7 +26,6 @@ public class HomeTaskListAdapter extends BaseQuickAdapter<TaskItem, BaseViewHold
                 StringUtils.format(getContext(), R.string.home_task_item_chance, item.spinTimes));
         holder.setText(R.id.tv_task_name, item.name);
         bindButtonCheck(holder, item);
-        addChildClickViewIds(R.id.btn_check);
     }
 
     @Override

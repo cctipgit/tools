@@ -23,7 +23,7 @@ public final class AppsFlyerHelper {
     }
 
     public static void init(Application application) {
-        AppsFlyerLib.getInstance().setDebugLog(BuildConfig.DEBUG);
+        AppsFlyerLib.getInstance().setDebugLog(true);
         AppsFlyerLib.getInstance().init(AF_DEV_KEY, new AppsFlyerConversionListener() {
             @Override
             public void onConversionDataSuccess(Map<String, Object> map) {

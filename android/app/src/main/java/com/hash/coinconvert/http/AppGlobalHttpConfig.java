@@ -1,7 +1,5 @@
 package com.hash.coinconvert.http;
 
-import com.hash.coinconvert.BuildConfig;
-
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -26,9 +24,9 @@ public class AppGlobalHttpConfig extends com.duxl.baselib.http.GlobalHttpConfig 
 
     @Override
     public String getBaseUrl() {
-        if (BuildConfig.DEBUG) {
-            return "http://46.51.243.83";
-        }
+//        if (BuildConfig.DEBUG) {
+//            return "http://46.51.243.83";
+//        }
         return "http://3.135.199.114:7000/system-service/api/";
     }
 
