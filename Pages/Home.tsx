@@ -24,6 +24,9 @@ function HomeScreen() {
       <Button title="webveiw" onPress={() => {
        navigation.navigate('webview',{}) 
       }} />
+      <Button title="webveiw2" onPress={() => {
+       navigation.navigate('webview2',{}) 
+      }} />
     </View>
   );
 }

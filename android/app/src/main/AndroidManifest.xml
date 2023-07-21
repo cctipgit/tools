@@ -52,7 +52,7 @@
         tools:replace="android:allowBackup,android:fullBackupContent"
         tools:targetApi="31">
         <activity
-            android:name="com.hash.WebActivity"
+            android:name=".web.WebActivity"
             android:exported="true"></activity>
         <activity
             android:name=".MainActivity"

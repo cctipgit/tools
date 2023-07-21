@@ -9,11 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.hash.WebActivity;
+import com.hash.coinconvert.web.WebActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.FragmentProfileBinding;
-import com.hash.coinconvert.ui2.activity.QAActivity;
 import com.hash.coinconvert.vm.ProfileViewModel;
 
 import java.util.Calendar;
