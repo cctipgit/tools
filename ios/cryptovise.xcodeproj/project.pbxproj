@@ -1700,7 +1700,6 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "give users a more customized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1751,7 +1750,6 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "give users a more customized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
