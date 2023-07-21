@@ -14,6 +14,7 @@ import RxSwift
 import MJRefresh
 import RAMAnimatedTabBarController
 import SafariServices
+import AppsFlyerLib
 
 class TaskIndexViewController: YBaseViewController {
 

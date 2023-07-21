@@ -23,5 +23,7 @@ struct AppConfig {
     // UserDefault
     static let kUserDefaultUserInfoKey = "kUserDefaultUserInfoKey"
     static let kUserDefaultTaskKey = "kUserDefaultTaskKey"
-    static let appstoreAppId = "1142110895"
+    static let appstoreAppId = "1191692207"
+    // appsflyer
+    static let appsFlyerDevKey = "CZ4LVytuPZHPKph23snDr9" // use for appsflyer
 }
