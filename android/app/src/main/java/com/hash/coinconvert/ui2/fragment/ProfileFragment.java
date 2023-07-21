@@ -58,8 +58,8 @@ public class ProfileFragment extends BaseMVVMFragment<ProfileViewModel, Fragment
     protected void initView() {
         binding.actionBar.setBackViewTintColor(ContextCompat.getColor(requireContext(), R.color.theme_bg));
         binding.menuSettings.setOnClickListener(v -> navigateTo(ProfileFragmentDirections.actionFragmentProfileToFragmentSetting()));
-        binding.menuAbout.setOnClickListener(v -> WebActivity.load(requireContext(), ""));
-        binding.menuPrivacy.setOnClickListener(v -> WebActivity.load(requireContext(), ""));
+        binding.menuAbout.setOnClickListener(v -> WebActivity.load(requireContext(), "file:///android_asset/html/about.html"));
+        binding.menuPrivacy.setOnClickListener(v -> WebActivity.load(requireContext(), "file:///android_asset/html/privacy.html"));
     }
 
     @Override
