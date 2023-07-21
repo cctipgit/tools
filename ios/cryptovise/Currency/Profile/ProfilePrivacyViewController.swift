@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfilePrivacyViewController: BaseWebViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,8 +17,9 @@ class ProfilePrivacyViewController: BaseWebViewController {
         navigationView.titleMode = .left
         navigationView.titleLabel.text = "Privacy policy".localized()
     }
-    
     override var webUrl: URL {
-        return URL(string: AppConfig.settingPrivacyUrl)!
+        let urlStr = Bundle.main.path(forResource: "privacy", ofType: "html")
+        let mUrl = URL.init(fileURLWithPath: urlStr!)
+        return mUrl
     }
 }

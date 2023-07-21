@@ -169,6 +169,8 @@
 		84D46A2A2A4D295F00129E92 /* TaskGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46A292A4D295F00129E92 /* TaskGameViewController.swift */; };
 		84D46A2D2A4D299600129E92 /* TaskIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46A2C2A4D299600129E92 /* TaskIndexCell.swift */; };
 		84D46A2F2A4D60A200129E92 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46A2E2A4D60A200129E92 /* UIScrollView+Extension.swift */; };
+		84ED1DA82A6A29A300A5F3EE /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 84ED1DA72A6A29A200A5F3EE /* privacy.html */; };
+		84ED1DAA2A6A2F5200A5F3EE /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 84ED1DA92A6A2F5200A5F3EE /* about.html */; };
 		84F89A7D2A496798000936E0 /* TaskIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F89A7C2A496798000936E0 /* TaskIndexViewController.swift */; };
 		84F89A7F2A4967A1000936E0 /* RedeemIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F89A7E2A4967A1000936E0 /* RedeemIndexViewController.swift */; };
 		84F89A812A4967B3000936E0 /* CustomTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F89A802A4967B3000936E0 /* CustomTabViewController.swift */; };
@@ -436,6 +438,8 @@
 		84D46A292A4D295F00129E92 /* TaskGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGameViewController.swift; sourceTree = "<group>"; };
 		84D46A2C2A4D299600129E92 /* TaskIndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIndexCell.swift; sourceTree = "<group>"; };
 		84D46A2E2A4D60A200129E92 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		84ED1DA72A6A29A200A5F3EE /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
+		84ED1DA92A6A2F5200A5F3EE /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		84F89A7C2A496798000936E0 /* TaskIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskIndexViewController.swift; sourceTree = "<group>"; };
 		84F89A7E2A4967A1000936E0 /* RedeemIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemIndexViewController.swift; sourceTree = "<group>"; };
 		84F89A802A4967B3000936E0 /* CustomTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabViewController.swift; sourceTree = "<group>"; };
@@ -988,6 +992,8 @@
 		84C4FFCC2A42EB00001068B5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				84ED1DA92A6A2F5200A5F3EE /* about.html */,
+				84ED1DA72A6A29A200A5F3EE /* privacy.html */,
 				83C721E8293F66380099D2C7 /* GoogleService-Info.plist */,
 				8352BD0B2900E07600A61199 /* Info.plist */,
 				8352BD062900E07600A61199 /* Assets.xcassets */,
@@ -1155,6 +1161,7 @@
 				84C4FFF02A42FAF7001068B5 /* Roboto-Thin.ttf in Resources */,
 				84F89A822A49698E000936E0 /* SelectDecimalDigitTableViewCell.xib in Resources */,
 				84C4FFEF2A42FAF7001068B5 /* Roboto-Regular.ttf in Resources */,
+				84ED1DAA2A6A2F5200A5F3EE /* about.html in Resources */,
 				84C4FFEE2A42FAF7001068B5 /* Roboto-Bold.ttf in Resources */,
 				84C4FFEB2A42FAF7001068B5 /* Roboto-Light.ttf in Resources */,
 				84C4FFE92A42FAF7001068B5 /* Roboto-LightItalic.ttf in Resources */,
@@ -1170,6 +1177,7 @@
 				84C4FFCD2A42F211001068B5 /* GoogleService-Info.plist in Resources */,
 				84C4FFEA2A42FAF7001068B5 /* Roboto-Italic.ttf in Resources */,
 				84C4FFD62A42F39D001068B5 /* InfoPlist.strings in Resources */,
+				84ED1DA82A6A29A300A5F3EE /* privacy.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,7 +1692,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 244VF3LMND;
+				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
@@ -1692,6 +1700,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "give users a more customized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1705,7 +1714,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hellpeng.com.BarcodeScan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rescuedog.cryptovise;
 				PRODUCT_NAME = Cryptovise;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1734,7 +1743,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 244VF3LMND;
+				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
@@ -1742,6 +1751,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "give users a more customized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1756,7 +1766,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = hellpeng.com.BarcodeScan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rescuedog.cryptovise;
 				PRODUCT_NAME = Cryptovise;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

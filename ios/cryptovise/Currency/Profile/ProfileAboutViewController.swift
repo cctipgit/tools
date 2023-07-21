@@ -19,6 +19,8 @@ class ProfileAboutViewController: BaseWebViewController {
     }
     
     override var webUrl: URL {
-        return URL(string: AppConfig.settingAboutUrl)!
+        let urlStr = Bundle.main.path(forResource: "about", ofType: "html")
+        let mUrl = URL.init(fileURLWithPath: urlStr!)
+        return mUrl
     }
 }
