@@ -40,8 +40,8 @@ function HomeScreen() {
       <Button title="webveiw" onPress={() => {
        navigation.navigate('webview',{}) 
       }} />
-      <Button title="webveiw2" onPress={() => {
-       navigation.navigate('webview2',{}) 
+      <Button title="2webveiw2" onPress={() => {
+       navigation.navigate('webview2',{url:""}) 
       }} />
       <Button
         title="appsflyer data"
