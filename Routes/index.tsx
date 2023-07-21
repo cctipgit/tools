@@ -10,6 +10,7 @@ import type {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
+import WebView1 from '../Pages/WebView1';
 
 type RootStackParamList = {
   Home: {};
@@ -57,7 +58,7 @@ function Route() {
         />
         <Stack.Screen
           name="webview1"
-          component={WebView}
+          component={WebView1}
           options={{
             headerShown: false,
             headerBackTitleVisible: false,

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import {Button, NativeModules, Text, View} from 'react-native';
+import {Alert, Button, NativeModules, Text, View} from 'react-native';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 function HomeScreen() { 
@@ -33,3 +33,8 @@ function HomeScreen() {
 }
 
 export default HomeScreen;
+
+
+// 保存原始的 window.open() 方法
+
+
