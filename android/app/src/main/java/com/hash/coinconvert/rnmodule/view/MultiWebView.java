@@ -93,8 +93,10 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setSupportMultipleWindows(true);
         webView.addJavascriptInterface(new JsBridge(evaluate), JsBridge.NAME);
-        webView.setWebChromeClient(new CustomWebChromeClient(proxy));
-        webView.setWebViewClient(new CustomWebViewClient(proxy));
+        if(proxy!=null) {
+            webView.setWebChromeClient(new CustomWebChromeClient(proxy));
+            webView.setWebViewClient(new CustomWebViewClient(proxy));
+        }
     }
 
     @Override
