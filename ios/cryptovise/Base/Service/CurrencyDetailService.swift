@@ -72,7 +72,9 @@ extension CurrencyDetailAPI: Moya.TargetType {
     
     var headers: [String : String]? {
         return ["Content-Type": "application/json",
-                "Accept": "application/json"]
+                "Accept": "application/json",
+                "Auth-Token": "2y5iH44N87PKEYNHlyoqhTjIijAB6ACD"
+        ]
     }
     
     var task: Moya.Task {
