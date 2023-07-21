@@ -23,8 +23,8 @@ export default ()=>{
     //     createFragment(viewId)
     // })
     return (
-        <CCTipWebView style={{flex:1}} url="192.168.31.35:3000" onMessage={(e)=>{
-            console.log("onMessage",e)
+        <CCTipWebView style={{flex:1}} url='https://bc.game' onMessage={(e)=>{
+            console.log("onMessage",e.nativeEvent.message)
         }} ref={ref}/>
     )
 }

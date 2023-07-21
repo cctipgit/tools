@@ -50,7 +50,7 @@ function Route() {
        
         }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        {/* <Stack.Screen
+         <Stack.Screen
           name="webview"
           component={WebView}
           options={{
@@ -76,7 +76,6 @@ function Route() {
             presentation: 'modal',
           }}
         />
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
