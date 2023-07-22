@@ -7,7 +7,6 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.hash.coinconvert.rnmodule.view.WebViewViewManager;
-import com.hash.coinconvert.rnmodule.view.WebViewViewManager2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +27,7 @@ public class ToolModulePackage implements ReactPackage {
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactApplicationContext) {
         List<ViewManager> managers = new ArrayList<>();
 //        managers.add(new WebViewViewManager(reactApplicationContext));
-        managers.add(new WebViewViewManager2(reactApplicationContext));
+        managers.add(new WebViewViewManager(reactApplicationContext));
         return managers;
     }
 }

@@ -1,12 +1,14 @@
 package com.hash.coinconvert.rnmodule.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Message;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -33,6 +35,13 @@ public class CustomWebChromeClient extends WebChromeClient {
         dialog.setContentView(webView);
         dialog.show();
         updateWindow(dialog.getWindow());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onCloseWindow(WebView window) {
+                dialog.dismiss();
+            }
+        });
+        webView.setWebViewClient(new WebViewClient());
 
         if (resultMsg.obj instanceof WebView.WebViewTransport) {
             ((WebView.WebViewTransport) resultMsg.obj).setWebView(webView);

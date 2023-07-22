@@ -5,21 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:parentTag="LinearLayout">
+    tools:parentTag="android.widget.LinearLayout">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:layout_scrollFlags="enterAlways"
-        app:title="@string/app_name" />
+        android:layout_height="2dp"
+        android:backgroundTint="@color/theme_bg"
+        android:max="100"
+        android:progressTint="@color/colorPrimary"
+        tools:progress="50" />
 
     <FrameLayout
-        android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-        <!--        WebView here-->
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <!--        WebView here-->
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/img_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_web_back"
+            android:elevation="3dp"
+            android:src="@drawable/ic_actionbar_arrow_left"
+            app:tint="@color/white" />
     </FrameLayout>
 </merge>
