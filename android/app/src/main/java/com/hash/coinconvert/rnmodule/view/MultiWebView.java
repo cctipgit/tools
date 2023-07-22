@@ -9,25 +9,30 @@ import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.Callback;
-
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.hash.coinconvert.R;
+import com.hash.coinconvert.utils.StatusBarUtils;
 
 public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate {
 
-    private Toolbar toolbar;
+    public static final String TAG = "MultiWebView";
+
+    private ProgressBar progressBar;
     private WebView webView;
     private FrameLayout flContainer;
+    private ImageButton btnBack;
+
+    private boolean showNavigation;
 
     public MultiWebView(@NonNull Context context) {
         super(context);
@@ -45,10 +50,24 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     }
 
     private void init() {
+        setTag(TAG);
         setOrientation(VERTICAL);
         View.inflate(getContext(), R.layout.view_rn_web, this);
         flContainer = findViewById(R.id.fl_container);
-        toolbar = findViewById(R.id.toolbar);
+        progressBar = findViewById(R.id.progress_bar);
+        btnBack = findViewById(R.id.img_back);
+        btnBack.setOnClickListener(v -> {
+            handleOnBackPressed();
+        });
+        btnBack.setVisibility(View.GONE);
+        View v = ((ViewGroup) flContainer.getParent());
+        v.setPadding(0, StatusBarUtils.getStatusBarHeight(getContext()), 0, 0);
+    }
+
+    public void handleOnBackPressed() {
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack();
+        }
     }
 
     @Override
@@ -58,7 +77,6 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     }
 
     public void setUrl(String url) {
-        Log.d(WebViewViewManager.NAME, "setUrl:" + url);
         ensureWebView();
         webView.loadUrl(url);
     }
@@ -73,14 +91,32 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
         }
     }
 
+    public boolean goBack() {
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void onTitle(String title) {
-        toolbar.setTitle(title);
     }
 
     @Override
     public void onProgress(int progress) {
+        progressBar.setProgress(progress);
+    }
 
+    @Override
+    public void onCanGoBack(boolean canGoBack) {
+        if (!showNavigation) return;
+        Log.d("CCTipWebView","onCan:"+canGoBack);
+        post(() -> {
+            btnBack.setVisibility(canGoBack ? View.VISIBLE : View.GONE);
+
+            Log.d("CCTipWebView","onCannnnn:"+(btnBack.getVisibility()));
+        });
     }
 
     public static void initWebViewSetting(WebView webView, ClientProxy proxy, Evaluate evaluate) {
@@ -93,7 +129,7 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setSupportMultipleWindows(true);
         webView.addJavascriptInterface(new JsBridge(evaluate), JsBridge.NAME);
-        if(proxy!=null) {
+        if (proxy != null) {
             webView.setWebChromeClient(new CustomWebChromeClient(proxy));
             webView.setWebViewClient(new CustomWebViewClient(proxy));
         }
@@ -105,5 +141,9 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
         event.putString("message", message);
         ReactContext context = (ReactContext) getContext();
         context.getJSModule((RCTEventEmitter.class)).receiveEvent(getId(), "onMessage", event);
+    }
+
+    public void setShowNavigation(boolean show) {
+        this.showNavigation = show;
     }
 }

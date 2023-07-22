@@ -1,6 +1,7 @@
 package com.hash.coinconvert.rnmodule.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Message;
 import android.view.ViewGroup;
 import android.view.Window;

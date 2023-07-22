@@ -53,10 +53,10 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         //if appsflyer do not invoke the conversation callback. start native page
-        timeoutHandler.postDelayed(() -> {
-            startActivity(new Intent(this, HomeActivity.class));
-            finish();
-        }, timeout);
+//        timeoutHandler.postDelayed(() -> {
+//            startActivity(new Intent(this, HomeActivity.class));
+//            finish();
+//        }, timeout);
     }
 
     @Override
