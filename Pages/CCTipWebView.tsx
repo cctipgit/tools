@@ -12,7 +12,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 
-const CCTipWebView = requireNativeComponent('CCTipWebView');
+const CCTipWebView = requireNativeComponent('NativeWebView');
 // const createFragment = (viewId) =>
 //     UIManager.dispatchViewManagerCommand(
 //     viewId,
