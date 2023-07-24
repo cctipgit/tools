@@ -12,10 +12,10 @@
 /// CompoentName: ToolBigWebView
 /// ToolWebModule: Class name
 /// RCTViewManager: Super name
-@interface RCT_EXTERN_REMAP_MODULE(CCTipWebView, ToolWebModule, RCTViewManager)
+@interface RCT_EXTERN_REMAP_MODULE(NativeWebView, ToolWebModule, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(data, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(url, NSString)
+RCT_EXPORT_VIEW_PROPERTY(onMessage, RCTBubblingEventBlock)
 
 + (BOOL)requiresMainQueueSetup {
     return YES;

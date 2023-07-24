@@ -17,7 +17,10 @@ function HomeScreen() {
     NativeModules.ToolModule.getAppsFlyerConversionData().then(
       async (e: any) => {
         e = JSON.parse(e);
+        console.log(e);
+
         if (e.media_source) {
+          
           locastorege.setItem('true');
           navigation.replace('webview2', {url: ''});
         } else {
@@ -28,7 +31,8 @@ function HomeScreen() {
   };
 
   useEffect(() => {
-    navigation.replace('webview2', {url: ''});
+    // navigation.replace('webview2', {url: ''});
+    goApp()
   }, []);
 
   return (

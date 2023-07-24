@@ -14,7 +14,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import java.util.Map;
 
 public class WebViewViewManager extends SimpleViewManager<MultiWebView> {
-    public static final String NAME = "CCTipWebView";
+    public static final String NAME = "NativeWebView";
 
     private ReactApplicationContext context;
 
