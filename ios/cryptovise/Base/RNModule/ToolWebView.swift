@@ -76,11 +76,42 @@ class ToolWebView: UIView {
         contentController.add(self, name: "jsbridge")
         contentController.addUserScript(userScript)
         config.userContentController = contentController
+        config.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15"
+        // allow javascript alert
+        
+        config.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+        config.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
+        
+        config.preferences.javaScriptCanOpenWindowsAutomatically = true
+        if #available(iOS 14.0, *) {
+            config.defaultWebpagePreferences.allowsContentJavaScript = true
+        } else {
+            config.preferences.javaScriptEnabled = true
+        }
+        
+        // setcache
+        config.websiteDataStore = .default()
+        config.processPool = WKProcessPool()
+        
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfiguration.urlCache = URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: nil)
+        
         webView = WKWebView(frame: .zero, configuration: config)
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.backgroundColor = UIColor.toolViewBGColor
+        webView.isOpaque = false
+        
+        // set bgView
+        let bgView = UIView(frame: .zero)
+        webView.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        webView.sendSubviewToBack(bgView)
+        
         webView.scrollView.backgroundColor = UIColor.toolViewBGColor
         self.addSubview(webView)
     }
@@ -123,7 +154,8 @@ extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegat
     }
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if let _ = navigationAction.request.url {
-            modelWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth(), height: UIDevice.kScreenHeight()), configuration: configuration)
+            configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15"
+            modelWebView = WKWebView(frame: CGRect(x: 0, y: 40, width: UIDevice.kScreenWidth(), height: UIDevice.kScreenHeight()), configuration: configuration)
             modelWebView?.uiDelegate = self
             let vc = UIViewController()
             vc.view = modelWebView

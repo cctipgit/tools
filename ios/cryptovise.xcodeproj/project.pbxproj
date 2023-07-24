@@ -1715,8 +1715,8 @@
 				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Vise";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_CFBundleDisplayName = CryptoVise;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
@@ -1765,8 +1765,8 @@
 				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Vise";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_CFBundleDisplayName = CryptoVise;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
