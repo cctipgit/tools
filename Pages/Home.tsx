@@ -16,7 +16,7 @@ function HomeScreen() {
   }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor:'#24262B'}}>
       <Button
         title="openNative"
         onPress={() => {
@@ -41,7 +41,7 @@ function HomeScreen() {
         navigation.navigate('webview', {})
       }} />
       <Button title="2webveiw2" onPress={() => {
-        navigation.navigate('webview2', { url: "" })
+        navigation.replace('webview2', { url: "" })
       }} />
       <Button
         title="appsflyer data"
