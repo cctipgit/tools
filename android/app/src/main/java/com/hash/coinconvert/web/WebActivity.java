@@ -1,4 +1,4 @@
-package com.hash;
+package com.hash.coinconvert.web;
 
 import android.content.Context;
 import android.content.Intent;

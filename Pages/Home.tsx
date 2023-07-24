@@ -43,14 +43,22 @@ function HomeScreen() {
         title="logEvent"
         onPress={() => {
           NativeModules.ToolModule.logEvent({
-            event: 'af_login',
-            params: {
-              a: 'b',
-              c: 'd',
-            },
-          });
-        }}
-      />
+            "event":"af_login",
+            "params":{
+              "a":"b",
+              "c":"d"
+            }
+          })
+        }}/>
+        <Button title='appsflyer data' onPress={()=>{
+            NativeModules.ToolModule.getAppsFlyerConversionData().then(console.log);
+        }}/>
+      <Button title="webveiw" onPress={() => {
+       navigation.navigate('webview',{}) 
+      }} />
+      <Button title="2webveiw2" onPress={() => {
+       navigation.navigate('webview2',{url:""}) 
+      }} />
       <Button
         title="appsflyer data"
         onPress={() => {
