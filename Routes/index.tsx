@@ -1,9 +1,9 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import {View, Text} from 'react-native';
-import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { View, Text } from 'react-native';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../Pages/Home';
 import WebView from '../Pages/WebView';
 import CCTipWebViewScreen from '../Pages/CCTipWebView';
@@ -16,14 +16,14 @@ import WebView1 from '../Pages/WebView1';
 type RootStackParamList = {
   Home: {};
   webview: {};
-  webview1: {url: string};
-  webview2:{url:string};
+  webview1: { url: string };
+  webview2: { url: string };
 };
 
 // 定义全局导航器对象类型
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 
@@ -47,10 +47,10 @@ function Route() {
           headerShown: false,
           headerBackTitleVisible: false,
           headerBackTitle: '',
-       
+
         }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-         <Stack.Screen
+        <Stack.Screen
           name="webview"
           component={WebView}
           options={{
@@ -73,7 +73,7 @@ function Route() {
           options={{
             headerShown: false,
             headerBackTitleVisible: false,
-            presentation: 'modal',
+            // presentation: 'modal',
           }}
         />
       </Stack.Navigator>
