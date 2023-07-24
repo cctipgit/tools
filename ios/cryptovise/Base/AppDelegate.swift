@@ -53,11 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             loadRN()
             lView?.removeFromSuperview()
         }).disposed(by: rx.disposeBag)
+        AppsFlyerLib.shared().start()
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        AppsFlyerLib.shared().start()
+        
     }
     
     func setUserInfo() {

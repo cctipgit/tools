@@ -125,8 +125,20 @@ class TaskIndexViewController: YBaseViewController {
         navigationView.addSubviews([gameIcon, gameCorner, gameBtn])
         gameCorner.addSubview(gameLabel)
         gameBtn.rx.tap.subscribe(onNext: { _ in
-            let vc = TaskGameViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            // TODO
+            let xxx = ToolWebView(frame: CGRect(x: 0, y: 0, width: UIDevice.kScreenWidth(), height: UIDevice.kScreenHeight()))
+            xxx.url = "http://localhost:3000/index1.html"
+            
+            UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(xxx)
+          
+            
+            
+            
+            
+            
+            
+//            let vc = TaskGameViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
         })
         .disposed(by: rx.disposeBag)
         Observable<Int>.interval(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)

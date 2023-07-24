@@ -113,6 +113,9 @@
 		843018FC2A5C0F0A00A9E9B2 /* ToolModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */; };
 		843018FE2A5C0F1B00A9E9B2 /* ToolModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */; };
 		843019022A5D452300A9E9B2 /* QuestionSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843019012A5D452300A9E9B2 /* QuestionSuccessView.swift */; };
+		8445E3192A6A80E3004228AE /* ToolWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445E3182A6A80E3004228AE /* ToolWebView.swift */; };
+		8445E31B2A6A8175004228AE /* ToolWebModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445E31A2A6A8175004228AE /* ToolWebModule.swift */; };
+		8445E31D2A6A818A004228AE /* ToolWebModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445E31C2A6A818A004228AE /* ToolWebModule.m */; };
 		847CF9A22A5264A600AE7CBB /* MonomaniacOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */; };
 		847CF9AE2A52C94100AE7CBB /* TCDrawPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */; };
 		847CF9AF2A52C94100AE7CBB /* TCSectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */; };
@@ -387,6 +390,9 @@
 		843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolModule.swift; sourceTree = "<group>"; };
 		843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolModule.m; sourceTree = "<group>"; };
 		843019012A5D452300A9E9B2 /* QuestionSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuccessView.swift; sourceTree = "<group>"; };
+		8445E3182A6A80E3004228AE /* ToolWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolWebView.swift; sourceTree = "<group>"; };
+		8445E31A2A6A8175004228AE /* ToolWebModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolWebModule.swift; sourceTree = "<group>"; };
+		8445E31C2A6A818A004228AE /* ToolWebModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolWebModule.m; sourceTree = "<group>"; };
 		847CF9A12A5264A600AE7CBB /* MonomaniacOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MonomaniacOne-Regular.ttf"; sourceTree = "<group>"; };
 		847CF9AC2A52C94100AE7CBB /* TCDrawPrizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCDrawPrizeView.swift; sourceTree = "<group>"; };
 		847CF9AD2A52C94100AE7CBB /* TCSectorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSectorModel.swift; sourceTree = "<group>"; };
@@ -696,6 +702,7 @@
 		8352BD412900E25B00A61199 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8445E3172A6A809A004228AE /* RNModule */,
 				847CF9B72A5401EE00AE7CBB /* Service */,
 				847CF9B42A53F73300AE7CBB /* Models */,
 				84F89A802A4967B3000936E0 /* CustomTabViewController.swift */,
@@ -703,8 +710,6 @@
 				84C4FFC72A42E32D001068B5 /* AppConfig.swift */,
 				8391A7EB293E43D7006012E2 /* Constant.swift */,
 				8352BCFD2900E07500A61199 /* AppDelegate.swift */,
-				843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */,
-				843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */,
 				83BB5F6B29697A0E00AD1B5C /* SocketAPI.swift */,
 				84C4FFB22A42E2F9001068B5 /* Network */,
 				834685DE29875FD400C1B35D /* Language */,
@@ -941,6 +946,18 @@
 				847CF9C02A56A33600AE7CBB /* QuestionSimpleCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8445E3172A6A809A004228AE /* RNModule */ = {
+			isa = PBXGroup;
+			children = (
+				843018FB2A5C0F0A00A9E9B2 /* ToolModule.swift */,
+				843018FD2A5C0F1B00A9E9B2 /* ToolModule.m */,
+				8445E3182A6A80E3004228AE /* ToolWebView.swift */,
+				8445E31A2A6A8175004228AE /* ToolWebModule.swift */,
+				8445E31C2A6A818A004228AE /* ToolWebModule.m */,
+			);
+			path = RNModule;
 			sourceTree = "<group>";
 		};
 		847CF9A32A52672500AE7CBB /* Spin */ = {
@@ -1323,6 +1340,7 @@
 				832FE1E029137A92004C27B6 /* QuoteColorSettingViewController.swift in Sources */,
 				8352BCFE2900E07500A61199 /* AppDelegate.swift in Sources */,
 				832FE20829179784004C27B6 /* CurrencyTokensList.swift in Sources */,
+				8445E3192A6A80E3004228AE /* ToolWebView.swift in Sources */,
 				8330E207290E65490026CE4B /* CurrencyDetailViewModel.swift in Sources */,
 				832FE1CD2912CC34004C27B6 /* SettingCellViewModel.swift in Sources */,
 				832FE1CB2912CC29004C27B6 /* SettingSection.swift in Sources */,
@@ -1383,6 +1401,7 @@
 				84C4FFC42A42E31F001068B5 /* UserAgentPlugin.swift in Sources */,
 				84C4FFC32A42E31F001068B5 /* TargetType+Cache.swift in Sources */,
 				832FE1C72912C83F004C27B6 /* SettingTableViewCell.swift in Sources */,
+				8445E31B2A6A8175004228AE /* ToolWebModule.swift in Sources */,
 				84F89A812A4967B3000936E0 /* CustomTabViewController.swift in Sources */,
 				832FE1D32913507A004C27B6 /* CustomSwitch.swift in Sources */,
 				8330E1C72909071E0026CE4B /* KeyboardController.swift in Sources */,
@@ -1401,6 +1420,7 @@
 				84D46A2F2A4D60A200129E92 /* UIScrollView+Extension.swift in Sources */,
 				847CF9B62A53F7C700AE7CBB /* ServerModels.swift in Sources */,
 				84F89A7F2A4967A1000936E0 /* RedeemIndexViewController.swift in Sources */,
+				8445E31D2A6A818A004228AE /* ToolWebModule.m in Sources */,
 				833BB9202907B1DD00B9B831 /* Value.swift in Sources */,
 				832FE1F72913D0A0004C27B6 /* SelectDecimalDigitTableViewCell.swift in Sources */,
 				8391A7EC293E43D7006012E2 /* Constant.swift in Sources */,
@@ -1695,7 +1715,7 @@
 				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
+				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Vise";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
@@ -1745,7 +1765,7 @@
 				DEVELOPMENT_TEAM = XM5P83K84A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cryptovise/Support/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cryptovise;
+				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Vise";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to get your location to get the currency of your region";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Please allow \"APP name\" to use your location";
