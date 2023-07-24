@@ -84,14 +84,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rnUrl = Bundle.main.url(forResource: "main", withExtension: "jsbundle")
         #endif
         let rootView = RCTRootView(bundleURL: rnUrl, moduleName: "MyApp", initialProperties: nil)
-        rootView.backgroundColor = UIColor.white
+        rootView.backgroundColor = UIColor.toolViewBGColor
 
-        let rootViewController = UIViewController()
-        rootViewController.view = rootView
-
-        let navi = YNavigationController(rootViewController: rootViewController)
-        navi.navigationBar.isHidden = true
-        window?.rootViewController = navi
+        let main = UIViewController()
+        main.view.backgroundColor = UIColor.toolViewBGColor
+        
+        main.view = rootView
+        window?.rootViewController = main
         window?.makeKeyAndVisible()
     }
 }

@@ -79,15 +79,27 @@ class ToolWebView: UIView {
     }
     // MARK: Private
     private func p_setElements() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor.toolViewBGColor
         let config = WKWebViewConfiguration()
+        
         // window.jsbridge.postMessage('jack')
+        let scriptString = """
+            window.jsbridge = {
+              postMessage: function(message) {
+                window.webkit.messageHandlers.jsbridge.postMessage(message)
+              }
+            };
+        """
+        let userScript = WKUserScript(source: scriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
         contentController.add(self, name: "jsbridge")
+        contentController.addUserScript(userScript)
         config.userContentController = contentController
         webView = WKWebView(frame: .zero, configuration: config)
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.backgroundColor = UIColor.red
+        webView.scrollView.backgroundColor = UIColor.red
         self.addSubviews([backBtn, webView])
     }
     private func p_makeEvents() {

@@ -220,4 +220,8 @@ extension UIColor {
     static var primarySuccess: UIColor {
         return .color(with: "#0CC96A", darkHexString: "#0CC96A")
     }
+    
+    static var toolViewBGColor: UIColor {
+        return .color(with: "#24262B", darkHexString: "#24262B")
+    }
 }
