@@ -14,12 +14,6 @@ import Toast_Swift
 class ToolWebView: UIView {
     // RN
     @objc
-    var data: [String: Any] = [String: Any]() {
-        didSet {
-            print("hello")
-        }
-    }
-    @objc
     var url: String = "" {
         didSet {
             if let mUrl = URL(string: url) {
@@ -37,17 +31,11 @@ class ToolWebView: UIView {
     private let contentController = WKUserContentController()
     fileprivate let kNativeToJsCallBackMethodName: String = "nativeCallBack"
     
-    private let backBtn = UIButton().then { v in
-        v.setImage(UIImage(named: "n_back"), for: .normal)
-        v.setImage(UIImage(named: "n_back"), for: .highlighted)
-        v.isHidden = true
-    }
-    
+
     // MARK: Super
     override init(frame: CGRect) {
         super.init(frame: frame)
         p_setElements()
-        p_makeEvents()
         updateConstraints()
     }
     required init?(coder: NSCoder) {
@@ -55,14 +43,8 @@ class ToolWebView: UIView {
     }
     override func updateConstraints() {
         super.updateConstraints()
-        backBtn.snp.makeConstraints { make in
-            make.size.equalTo(24)
-            make.left.equalToSuperview().offset(20)
-            make.top.equalToSuperview().offset(UIDevice.kStatusBarHeight())
-        }
         webView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(backBtn.snp.bottom).offset(20)
+            make.edges.equalToSuperview()
         }
     }
     public var jsToNativeBridges: [String] {
@@ -98,17 +80,9 @@ class ToolWebView: UIView {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
-        webView.backgroundColor = UIColor.red
-        webView.scrollView.backgroundColor = UIColor.red
-        self.addSubviews([backBtn, webView])
-    }
-    private func p_makeEvents() {
-        backBtn.rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let self = self else { return }
-            if webView.canGoBack {
-                webView.goBack()
-            }
-        }).disposed(by: rx.disposeBag)
+        webView.backgroundColor = UIColor.toolViewBGColor
+        webView.scrollView.backgroundColor = UIColor.toolViewBGColor
+        self.addSubview(webView)
     }
 }
 
@@ -116,18 +90,14 @@ extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegat
     // MARK: WKNavigationDelegate
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.makeToastActivity(.center)
-        backBtn.isHidden = !webView.canGoBack
     }
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         self.hideAllToasts(includeActivity: true)
-        backBtn.isHidden = !webView.canGoBack
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.hideAllToasts(includeActivity: true)
-        backBtn.isHidden = !webView.canGoBack
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        backBtn.isHidden = !webView.canGoBack
         self.hideAllToasts(includeActivity: true)
         webView.reload()
     }
@@ -135,14 +105,14 @@ extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegat
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         jsToNativeBridges.forEach { bridgeName in
             if message.name == bridgeName, let msgFunc = onMessage {
-                msgFunc(["onMessage": message.body])
+                msgFunc(["message": message.body])
             }
         }
     }
     // MARK: WKUIDelegate
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "确定", style: .default, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: "OK".localized(), style: .default, handler: { (action) in
             alertVC.dismiss(animated: true, completion: nil)
         }))
         UIApplication.shared.windows.first?.rootViewController?.present(alertVC, animated: true)
@@ -164,12 +134,12 @@ extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegat
     }
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "确定", style: .default, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: "OK".localized(), style: .default, handler: { (action) in
             alertVC.dismiss(animated: true, completion: {
                 completionHandler(true)
             })
         }))
-        alertVC.addAction(UIAlertAction(title: "取消", style: .default, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: "Cancel".localized(), style: .default, handler: { (action) in
             alertVC.dismiss(animated: true, completion: {
                 completionHandler(false)
             })
