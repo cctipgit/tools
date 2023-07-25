@@ -24,4 +24,6 @@ struct AppConfig {
     static let appstoreAppId = "6451831333"
     // appsflyer
     static let appsFlyerDevKey = "gUyT294NkvpnTkQBYSDLXC" // use for appsflyer
+    // app link
+    static let appDownloadLink = "https://itunes.apple.com/app/id6451831333"
 }

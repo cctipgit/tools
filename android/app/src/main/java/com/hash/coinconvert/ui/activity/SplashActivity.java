@@ -15,7 +15,6 @@ import com.hash.coinconvert.MainActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.livedatabus.event.AppsFlyerEvent;
 import com.hash.coinconvert.rnmodule.ToolModulePackage;
-import com.hash.coinconvert.ui2.activity.HomeActivity;
 import com.hash.coinconvert.utils.Dispatch;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.jeremyliao.liveeventbus.core.Observable;
@@ -28,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
     private final String TAG = "SplashActivity";
     private long mStartTime; // page start time
     private final long mPageDuration = 800; // page duration
-    private long timeout = 5000L;
+    private long timeout = 8000L;
     private Handler timeoutHandler = new Handler();
 
     @Override

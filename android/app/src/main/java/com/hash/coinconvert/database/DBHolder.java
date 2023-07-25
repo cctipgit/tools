@@ -83,8 +83,6 @@ public class DBHolder {
         try {
             InputStream inputStream = am.open("db/currency.csv");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            String head = br.readLine();
-            String[] headArr = head.split(",");
             String line;
             List<Token> tokens = new ArrayList<>();
             while ((line = br.readLine()) != null) {

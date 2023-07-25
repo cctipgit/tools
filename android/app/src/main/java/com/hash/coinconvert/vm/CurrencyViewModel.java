@@ -1,12 +1,10 @@
 package com.hash.coinconvert.vm;
 
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.duxl.baselib.utils.SPUtils;
 import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.base.BaseViewModel;
-import com.hash.coinconvert.database.DBHolder;
 import com.hash.coinconvert.database.entity.Token;
 import com.hash.coinconvert.database.repository.TokenRepository;
 import com.hash.coinconvert.entity.TokenWrapper;
@@ -31,11 +29,12 @@ public class CurrencyViewModel extends BaseViewModel {
         String tokensString = "[" +
                 tokenSymbols.stream().reduce((s, s2) -> s + "," + s2).get()
                 + "]";
-        SPUtils.getInstance().put(Constants.SP.KEY.HOME_TOKEN_LIST, tokensString);
+        SPUtils.getInstance().put(Constants.SP.KEY.HOME_TOKEN_LIST, tokensString, true);
     }
 
     public void fetchPrices() {
-        SocketSender.sendSymbolsRateRequest(SPUtils.getInstance().getString(Constants.SP.KEY.HOME_TOKEN_LIST));
+        String tokenString = SPUtils.getInstance().getString(Constants.SP.KEY.HOME_TOKEN_LIST);
+        SocketSender.sendSymbolsRateRequest(tokenString);
     }
 
     private int indexOfDefaultTokens(String token) {

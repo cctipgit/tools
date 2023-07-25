@@ -54,6 +54,10 @@
 # 实体类不混淆
 -keep class com.hash.coinconvert.entity.** {*;}
 -keep class com.exchange2currency.ef.currencyprice.grpc.**{*;}
+# 数据库相关类不混淆
+-keep class com.hash.coinconvert.database.** {*;}
+#项目下代码不混淆
+-keep class com.hash.coinconvert.** {*;}
 # butterknife不混淆
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**

@@ -201,7 +201,7 @@ class TaskGameViewController: YBaseViewController {
     }
     
     private func p_share(content: String) {
-        self.share(text: content, image: nil, url: nil, completion: {
+        self.share(text: content, image: nil, url: URL(string: AppConfig.appDownloadLink), completion: {
             self.view.hideAllToasts()
             ToastManager.shared.isTapToDismissEnabled = true
         })
@@ -269,7 +269,7 @@ extension TaskGameViewController: TCDrawPrizeDelegate {
         alertView.prizeShareBtn.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.p_share(content: self.pinList[index].pinRewardDesc)
+                self.p_share(content: "Win reward from CryptoVise")
             })
             .disposed(by: rx.disposeBag)
         alertView.closeBtn.rx.tap
