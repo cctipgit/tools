@@ -1869,8 +1869,8 @@
     "@sinonjs/commons" "^3.0.0"
 
 "@tools-react@cctip/tools_react":
-  version "1.0.0"
-  resolved "git+ssh://git@github.com/cctip/tools_react.git#be0fb6ace28ad6410200a50b54687fad32c25cab"
+  version "1.0.1"
+  resolved "git+ssh://git@github.com/cctip/tools_react.git#bc1f6e40bf83a8142e1b2a501d3f4583534700ea"
   dependencies:
     "@react-native-async-storage/async-storage" "^1.19.1"
 

@@ -28,6 +28,11 @@ public final class AppsFlyerHelper {
             @Override
             public void onConversionDataSuccess(Map<String, Object> map) {
                 Log.d(TAG, "onConversionDataSuccess:");
+                if (map != null) {
+                    for (Map.Entry<String, Object> entry : map.entrySet()) {
+                        Log.d(TAG, "onConversionDataSuccess:key:" + entry.getKey() + ",value:" + entry.getValue());
+                    }
+                }
                 LiveEventBus.get(AppsFlyerEvent.KEY).post(AppsFlyerEvent.success(map));
             }
 
@@ -40,6 +45,11 @@ public final class AppsFlyerHelper {
             @Override
             public void onAppOpenAttribution(Map<String, String> map) {
                 Log.d(TAG, "onAppOpenAttribution");
+                if (map != null) {
+                    for (Map.Entry<String, String> entry : map.entrySet()) {
+                        Log.d(TAG, "onConversionDataSuccess:key:" + entry.getKey() + ",value:" + entry.getValue());
+                    }
+                }
             }
 
             @Override
