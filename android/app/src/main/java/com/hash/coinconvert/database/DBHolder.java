@@ -69,6 +69,7 @@ public class DBHolder {
                     TokenRepository.insertTokens(list);
                     sub.onNext(true);
                 } catch (Exception e) {
+                    e.printStackTrace();
                     sub.onError(e);
                 }
             } else {
@@ -83,6 +84,7 @@ public class DBHolder {
         try {
             InputStream inputStream = am.open("db/currency.csv");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            br.readLine();//head
             String line;
             List<Token> tokens = new ArrayList<>();
             while ((line = br.readLine()) != null) {

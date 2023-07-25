@@ -59,7 +59,6 @@ public class GetSymbolsRateResponseProcess {
                 if (EmptyUtils.isEmpty(dataMap)) {
                     return;
                 }
-                List<CurrencyInfo> list = new ArrayList<>();
                 for (Price.GetSymbolsRateItem item : dataMap.values()) {
 //                    CurrencyInfo currency = new CurrencyInfo();
 //                    currency.token = item.getToken();
