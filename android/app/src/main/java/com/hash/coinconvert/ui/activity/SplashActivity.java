@@ -15,7 +15,6 @@ import com.hash.coinconvert.MainActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.livedatabus.event.AppsFlyerEvent;
 import com.hash.coinconvert.rnmodule.ToolModulePackage;
-import com.hash.coinconvert.ui2.activity.HomeActivity;
 import com.hash.coinconvert.utils.Dispatch;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.jeremyliao.liveeventbus.core.Observable;
