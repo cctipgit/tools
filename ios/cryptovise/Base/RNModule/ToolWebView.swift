@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
-import Toast_Swift
 
 class ToolWebView: UIView {
     // RN
@@ -31,11 +30,20 @@ class ToolWebView: UIView {
     private let contentController = WKUserContentController()
     fileprivate let kNativeToJsCallBackMethodName: String = "nativeCallBack"
     
-
+    private let progressView = UIProgressView(progressViewStyle: .default) // Progress view
+    private var estimatedProgressObserver: NSKeyValueObservation?
+    public var isNeedShowProgress: Bool {
+        get {
+            return true
+        }
+    }
+    
     // MARK: Super
     override init(frame: CGRect) {
         super.init(frame: frame)
         p_setElements()
+        p_setupProgressView()
+        p_setupEstimatedProgressObserver()
         updateConstraints()
     }
     required init?(coder: NSCoder) {
@@ -60,6 +68,24 @@ class ToolWebView: UIView {
         }
     }
     // MARK: Private
+    private func p_setupEstimatedProgressObserver() {
+        estimatedProgressObserver = webView.observe(\.estimatedProgress, options: [.new]) { [weak self] webView, _ in
+            self?.progressView.progress = Float(webView.estimatedProgress)
+        }
+    }
+    private func p_setupProgressView() {
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.trackTintColor = UIColor.toolViewBGColor
+        progressView.progressTintColor = UIColor(red: 62.0 / 255.0, green: 161.0 / 255.0, blue: 39.0 / 255.0, alpha: 1)
+        progressView.isHidden = true
+        self.addSubview(progressView)
+        NSLayoutConstraint.activate([
+            progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            progressView.topAnchor.constraint(equalTo: self.topAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 1)
+            ])
+    }
     private func p_setElements() {
         self.backgroundColor = UIColor.toolViewBGColor
         let config = WKWebViewConfiguration()
@@ -120,16 +146,29 @@ class ToolWebView: UIView {
 extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
     // MARK: WKNavigationDelegate
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        self.makeToastActivity(.center)
+        if isNeedShowProgress {
+            if progressView.isHidden {
+                progressView.isHidden = false
+            }
+            UIView.animate(withDuration: 0.01) {
+                self.progressView.alpha = 1.0
+            }
+        }
     }
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        self.hideAllToasts(includeActivity: true)
+        
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.hideAllToasts(includeActivity: true)
+        if isNeedShowProgress {
+            UIView.animate(withDuration: 0.01, animations: {
+                self.progressView.alpha = 0.0
+            }) { (isFinished) in
+                self.progressView.isHidden = isFinished
+            }
+        }
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        self.hideAllToasts(includeActivity: true)
+        self.progressView.isHidden = true
         webView.reload()
     }
     // MARK: WKScriptMessageHandler

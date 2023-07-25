@@ -21,6 +21,7 @@ class RedeemHistoryViewController: YBaseViewController {
     
     // data
     private var data = [RedeemHistoryItem]()
+    private var isFirstLoad: Bool = true
     
     // MARK: Super Method
     override func viewDidLoad() {
@@ -66,6 +67,7 @@ class RedeemHistoryViewController: YBaseViewController {
                 self.data = (res.list as? [RedeemHistoryItem]) ?? [RedeemHistoryItem]()
                 self.tableView.reloadData()
                 self.tableView.mj_header?.endRefreshing()
+                self.isFirstLoad = false
             })
             .disposed(by: rx.disposeBag)
     }
@@ -93,13 +95,15 @@ extension RedeemHistoryViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let count = data.count
-        cell.alpha = 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(count) * 0.01) {
-            cell.layer.transform = CATransform3DMakeTranslation(-cell.width, 0, 0)
-            UIView.animate(withDuration: 0.25, delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 0) {
-                cell.layer.transform = CATransform3DIdentity
-                cell.alpha = 1
+        if isFirstLoad {
+            let count = data.count
+            cell.alpha = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(count) * 0.01) {
+                cell.layer.transform = CATransform3DMakeTranslation(-cell.width, 0, 0)
+                UIView.animate(withDuration: 0.25, delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 0) {
+                    cell.layer.transform = CATransform3DIdentity
+                    cell.alpha = 1
+                }
             }
         }
     }

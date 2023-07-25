@@ -61,7 +61,7 @@ class YBaseViewController: UIViewController {
     func makeLayout() {
     }
     
-    func share(text: String?, image: UIImage?, url: URL?, completion: @escaping (() -> Void)) {
+    func share(text: String?, image: UIImage?, url: URL? = URL(string: AppConfig.appDownloadLink), completion: @escaping (() -> Void)) {
         var itemsToShare = [Any]()
         
         if let text = text {
