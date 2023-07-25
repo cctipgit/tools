@@ -111,11 +111,11 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     @Override
     public void onCanGoBack(boolean canGoBack) {
         if (!showNavigation) return;
-        Log.d("CCTipWebView","onCan:"+canGoBack);
+        Log.d("CCTipWebView", "onCan:" + canGoBack);
         post(() -> {
             btnBack.setVisibility(canGoBack ? View.VISIBLE : View.GONE);
 
-            Log.d("CCTipWebView","onCannnnn:"+(btnBack.getVisibility()));
+            Log.d("CCTipWebView", "onCannnnn:" + (btnBack.getVisibility()));
         });
     }
 
@@ -128,6 +128,7 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
         settings.setUserAgentString(settings.getUserAgentString().replace("; wv", ""));
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setSupportMultipleWindows(true);
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webView.addJavascriptInterface(new JsBridge(evaluate), JsBridge.NAME);
         if (proxy != null) {
             webView.setWebChromeClient(new CustomWebChromeClient(proxy));

@@ -23,10 +23,10 @@ import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.TaskItem;
 import com.hash.coinconvert.ui2.adapter.HomeTaskListAdapter;
 import com.hash.coinconvert.utils.StatusBarUtils;
-import com.hash.coinconvert.utils.task.TaskHandler;
 import com.hash.coinconvert.utils.task.TaskHandlerFactory;
 import com.hash.coinconvert.vm.TaskViewModel;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -80,26 +80,14 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         super.observer();
         observer(viewModel.getTaskList(), taskList -> {
             if (taskList.list != null) {
-                int total = taskList.list.size();
-                int done = (int) taskList.list.stream().filter(i -> i.done).count();
-                binding.tvProgress.setText(getString(R.string.home_task_list_preview, done, total));
+                updateTaskProgressText(taskList.list);
                 taskListAdapter.setNewInstance(taskList.list);
                 expireInMills = taskList.expireTime;
-                Log.d("Time", "expireInMills," + expireInMills);
                 startInterval();
             }
             updatePinNum(taskList.pinNum);
         });
-        observer(viewModel.getCheckResult(), id -> {
-            for (int i = 0; i < taskListAdapter.getData().size(); i++) {
-                TaskItem item = taskListAdapter.getItem(i);
-                if (item.id.equals(id)) {
-                    item.done = true;
-                    taskListAdapter.notifyItemChanged(i, HomeTaskListAdapter.PAYLOAD_STATE);
-                    break;
-                }
-            }
-        });
+        observer(viewModel.getCheckResult(), this::updateTaskStatus);
         observer(viewModel.getPinList(), res -> {
             this.pinList = res;
             if (isWaitingPinList) {
@@ -109,6 +97,24 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
         });
         observer(viewModel.getPinNum(), this::updatePinNum);
         observer(profileViewModel.getUserInfo(), user -> updatePinNum(user.pinChance));
+    }
+
+    private void updateTaskProgressText(List<TaskItem> taskList) {
+        int total = taskList.size();
+        int done = (int) taskList.stream().filter(i -> i.done).count();
+        binding.tvProgress.setText(getString(R.string.home_task_list_preview, done, total));
+    }
+
+    private void updateTaskStatus(String taskId) {
+        for (int i = 0; i < taskListAdapter.getData().size(); i++) {
+            TaskItem item = taskListAdapter.getItem(i);
+            if (item.id.equals(taskId)) {
+                item.done = true;
+                taskListAdapter.notifyItemChanged(i, HomeTaskListAdapter.PAYLOAD_STATE);
+                break;
+            }
+        }
+        updateTaskProgressText(taskListAdapter.getData());
     }
 
     private void updatePinNum(int pinNum) {
@@ -141,7 +147,7 @@ public class TaskListFragment extends BaseMVVMFragment<TaskViewModel, FragmentTa
                         binding.tvExpire.setText(getString(R.string.home_task_list_time, h, m, s));
                         if (clock == null) {
                             clock = ContextCompat.getDrawable(requireContext(), R.drawable.ic_task_list_clock);
-                            int size = DisplayUtil.dip2px(getContext(), 24f);
+                            int size = DisplayUtil.dip2px(requireContext(), 24f);
                             clock.setBounds(0, 0, size, size);
                             binding.tvExpire.setCompoundDrawables(clock, null, null, null);
                         }

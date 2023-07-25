@@ -228,7 +228,7 @@ extension BaseWebViewController: WKScriptMessageHandler, WKUIDelegate, WKNavigat
     }
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        if let url = navigationAction.request.url {
+        if let _ = navigationAction.request.url {
                 // 创建一个新的WKWebView来打开弹出窗口
              newWebView = WKWebView(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: self.view.bounds.height), configuration: configuration)
                 newWebView?.uiDelegate = self
