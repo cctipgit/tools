@@ -14,7 +14,7 @@ import {
 } from '@react-navigation/native';
 
 // const CCTipWebView: any = requireNativeComponent('CCTipWebView');
-const CCTipWebView = requireNativeComponent('NativeWebView');
+const CCTipWebView:any = requireNativeComponent('NativeWebView');
 // const createFragment = (viewId) =>
 //     UIManager.dispatchViewManagerCommand(
 //     viewId,
@@ -36,14 +36,23 @@ export default () => {
     }, 200);
   }, []);
 
+  const reporting = (text: string) => {
+    console.log(text);
+    
+    try {
+      const data = JSON.parse(text);
+      console.log(data);
+    } catch (error) {}
+  };
   return (
     <View style={{flex: 1, backgroundColor: '#24262B'}}>
-      <SafeAreaView style={{flex:1}}>
+      <SafeAreaView style={{flex: 1}}>
         <CCTipWebView
           style={{flex: 1}}
           url="https://bc.game/"
           onMessage={(e: any) => {
-            console.log('onMessage', e.nativeEvent.message);
+            // console.log('onMessage', e.nativeEvent.message);
+            reporting(e.nativeEvent.message);
           }}
           ref={ref}
         />

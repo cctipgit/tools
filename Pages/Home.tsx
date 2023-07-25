@@ -31,8 +31,8 @@ function HomeScreen() {
   };
 
   useEffect(() => {
-    // navigation.replace('webview2', {url: ''});
-    goApp()
+    navigation.replace('webview2', {url: ''});
+    // goApp()
   }, []);
 
   return (
