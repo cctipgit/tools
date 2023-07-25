@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
     private final String TAG = "SplashActivity";
     private long mStartTime; // page start time
     private final long mPageDuration = 800; // page duration
-    private long timeout = 5000L;
+    private long timeout = 8000L;
     private Handler timeoutHandler = new Handler();
 
     @Override

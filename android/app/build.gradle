@@ -85,7 +85,7 @@ android {
 
     namespace "com.hash.coinconvert"
     defaultConfig {
-        applicationId "com.hash.coinconvert"
+        applicationId "com.hash.tools"
         minSdk rootProject.ext.android["minSdkVersion"]
         targetSdk rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["appVersionCode"]
