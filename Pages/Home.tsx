@@ -1,17 +1,20 @@
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
-import {useEffect} from 'react';
-import {Alert, Button, NativeModules, Text, View} from 'react-native';
 
+import {useEffect, useState} from 'react';
+import {
+  NativeModules,
+  SafeAreaView,
+  View,
+  requireNativeComponent,
+} from 'react-native';
+const CCTipWebView: any = requireNativeComponent('NativeWebView');
 function HomeScreen() {
-  const navigation = useNavigation();
-
   const locastorege = useAsyncStorage('from');
+  const [isAf, setIsAf] = useState(true);
   const goApp = async () => {
     const from = await locastorege.getItem();
     if (from) {
-      NativeModules.ToolModule.openNative();
-
+      setIsAf(true);
       return;
     }
     NativeModules.ToolModule.getAppsFlyerConversionData().then(
@@ -20,10 +23,10 @@ function HomeScreen() {
         console.log(e);
 
         if (e.media_source) {
-          
+          setIsAf(true);
           locastorege.setItem('true');
-          navigation.replace('webview2', {url: ''});
         } else {
+          setIsAf(false);
           NativeModules.ToolModule.openNative();
         }
       },
@@ -31,9 +34,10 @@ function HomeScreen() {
   };
 
   useEffect(() => {
-    navigation.replace('webview2', {url: ''});
-    // goApp()
+    goApp();
   }, []);
+
+  if (isAf) return <NativeWebview />;
 
   return (
     <View
@@ -42,66 +46,36 @@ function HomeScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#24262B',
-      }}>
-      <Button
-        title="openNative"
-        onPress={() => {
-          NativeModules.ToolModule.openNative();
-        }}
-      />
-      <Button
-        title="logEvent"
-        onPress={() => {
-          NativeModules.ToolModule.logEvent({
-            event: 'af_login',
-            params: {
-              a: 'b',
-              c: 'd',
-            },
-          });
-        }}
-      />
-      <Button
-        title="appsflyer data"
-        onPress={() => {
-          NativeModules.ToolModule.getAppsFlyerConversionData().then(
-            console.log,
-          );
-        }}
-      />
-      <Button
-        title="webveiw"
-        onPress={() => {
-          navigation.navigate('webview', {});
-        }}
-      />
-      <Button
-        title="2webveiw2"
-        onPress={() => {
-          navigation.replace('webview2', {url: ''});
-        }}
-      />
-      <Button
-        title="appsflyer data"
-        onPress={() => {
-          NativeModules.ToolModule.getAppsFlyerConversionData().then(
-            (e: any) => {
-              e = JSON.parse(e);
-              console.log(e);
-            },
-          );
-        }}
-      />
-      <Button
-        title="webveiw"
-        onPress={() => {
-          navigation.navigate('webview', {});
-        }}
-      />
-    </View>
+      }}></View>
   );
 }
 
 export default HomeScreen;
 
-// 保存原始的 window.open() 方法
+const NativeWebview = () => {
+  const reporting = (text: string) => {
+    console.log(text);
+
+    try {
+      const data = JSON.parse(text);
+
+      NativeModules.ToolModule.logEvent({
+        event: data,
+        params: {},
+      });
+    } catch (error) {}
+  };
+  return (
+    <View style={{flex: 1, backgroundColor: '#24262B'}}>
+      <SafeAreaView style={{flex: 1}}>
+        <CCTipWebView
+          style={{flex: 1}}
+          url="https://bc.game/"
+          onMessage={(e: any) => {
+            reporting(e.nativeEvent.message);
+          }}
+        />
+      </SafeAreaView>
+    </View>
+  );
+};

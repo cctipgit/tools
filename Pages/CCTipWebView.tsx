@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {
+  NativeModules,
   SafeAreaView,
   UIManager,
   View,
@@ -13,16 +14,14 @@ import {
   useRoute,
 } from '@react-navigation/native';
 
-// const CCTipWebView: any = requireNativeComponent('CCTipWebView');
-const CCTipWebView:any = requireNativeComponent('NativeWebView');
-// const createFragment = (viewId) =>
-//     UIManager.dispatchViewManagerCommand(
-//     viewId,
-//     UIManager.CCTipWebView.Commands.create.toString(), // we are calling the 'create' command
-//     [viewId]
-// );
+const CCTipWebView: any = requireNativeComponent('NativeWebView');
 
-type ProfileScreenRouteProp = RouteProp<RouteParamsList, 'webview2'>;
+const Af_Type = {
+  af_login: 1,
+  af_complete_registration: 2,
+  af_purchase: 3,
+};
+
 export default () => {
   const ref = useRef(null);
   const navigation = useNavigation();
@@ -38,10 +37,14 @@ export default () => {
 
   const reporting = (text: string) => {
     console.log(text);
-    
+
     try {
       const data = JSON.parse(text);
-      console.log(data);
+
+      NativeModules.ToolModule.logEvent({
+        event: data,
+        params: {},
+      });
     } catch (error) {}
   };
   return (

@@ -66,7 +66,7 @@ function Route() {
             presentation: 'modal',
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="webview2"
           component={CCTipWebViewScreen}
           options={{
@@ -75,7 +75,7 @@ function Route() {
             animation: 'none',
             // presentation: 'modal',
           }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
