@@ -27,13 +27,13 @@ public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
         PinItem item = RewardDialogArgs.fromBundle(getArguments()).getData();
 
         binding.imgReward.setImageResource(item.picResId);
-        binding.tvMessage.setText(getString(R.string.dialog_reward_message,item.desc));
+        binding.tvMessage.setText(getString(R.string.dialog_reward_message, item.desc));
 
-        binding.btnClose.setOnClickListener(v->dismiss());
-        binding.btnShare.setOnClickListener(v->onPositiveClick(new AutoCloseAction() {
+        binding.btnClose.setOnClickListener(v -> dismiss());
+        binding.btnShare.setOnClickListener(v -> onPositiveClick(new AutoCloseAction() {
             @Override
             public void invoke(SavedStateHandle stateHandle) {
-                stateHandle.set(KEY,"https://www.ratetool.com");
+                stateHandle.set(KEY, "https://play.google.com/store/apps/details?id=com.hash.tools");
             }
         }));
     }
