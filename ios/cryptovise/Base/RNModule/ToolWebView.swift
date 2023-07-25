@@ -34,7 +34,7 @@ class ToolWebView: UIView {
     private var estimatedProgressObserver: NSKeyValueObservation?
     public var isNeedShowProgress: Bool {
         get {
-            return true
+            return false
         }
     }
     
