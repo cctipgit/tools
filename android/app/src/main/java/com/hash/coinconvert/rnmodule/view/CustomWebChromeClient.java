@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Message;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
@@ -34,6 +35,12 @@ public class CustomWebChromeClient extends WebChromeClient {
         BottomSheetDialog dialog = new BottomSheetDialog(context);
         dialog.setContentView(webView);
         dialog.show();
+        dialog.setOnDismissListener(d -> {
+            ViewParent parent = webView.getParent();
+            if (parent instanceof ViewGroup) {
+                ((ViewGroup) parent).removeView(webView);
+            }
+        });
         updateWindow(dialog.getWindow());
         webView.setWebChromeClient(new WebChromeClient() {
             @Override

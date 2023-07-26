@@ -50,7 +50,7 @@ public class App extends BaseApplication implements ReactApplication {
         Utils.setApp(this);
 //        initDatabase();
         DBHolder.init(this);
-        initWebSocket();
+//        initWebSocket();
         SoundPoolManager.init(this);
         mCurrentUIModel = getResources().getConfiguration().uiMode;
         AppsFlyerHelper.init(this);
@@ -69,7 +69,11 @@ public class App extends BaseApplication implements ReactApplication {
         return new AppGlobalHttpConfig();
     }
 
-    private void initWebSocket() {
+    private boolean isWebSocketInit = false;
+
+    public void initWebSocket() {
+        if (isWebSocketInit) return;
+        isWebSocketInit = true;
         WebSocketSetting setting = new WebSocketSetting();
         // wss://echo.websocket.org
         //setting.setConnectUrl("wss://echo.websocket.org");

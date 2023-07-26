@@ -23,13 +23,17 @@ public class CurrencyViewModel extends BaseViewModel {
     private static final String[] DEFAULT_TOKENS = new String[]{"BTC", "USDT", "DOGE", "ETH"};
 
     public void loadAllCurrencyInfo() {
-        List<Token> tokens = TokenRepository.getFavorites();
-        currencies.postValue(tokens.stream().map(TokenWrapper::new).collect(Collectors.toList()));
-        List<String> tokenSymbols = tokens.stream().map(it -> it.token).collect(Collectors.toList());
-        String tokensString = "[" +
-                tokenSymbols.stream().reduce((s, s2) -> s + "," + s2).get()
-                + "]";
-        SPUtils.getInstance().put(Constants.SP.KEY.HOME_TOKEN_LIST, tokensString, true);
+        try {
+            List<Token> tokens = TokenRepository.getFavorites();
+            if (tokens == null || tokens.isEmpty()) return;
+            currencies.postValue(tokens.stream().map(TokenWrapper::new).collect(Collectors.toList()));
+            List<String> tokenSymbols = tokens.stream().map(it -> it.token).collect(Collectors.toList());
+            String tokensString =
+                    tokenSymbols.stream().reduce((s, s2) -> s + "," + s2).get();
+            SPUtils.getInstance().put(Constants.SP.KEY.HOME_TOKEN_LIST, tokensString, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void fetchPrices() {

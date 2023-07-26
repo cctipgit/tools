@@ -17,9 +17,11 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.duxl.baselib.BaseApplication;
 import com.duxl.baselib.utils.NullUtils;
 import com.duxl.baselib.utils.SPUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.hash.coinconvert.App;
 import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.http.SocketSender;
@@ -45,6 +47,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((App) getApplication()).initWebSocket();
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         qaViewModel = new ViewModelProvider(this).get(QAViewModel.class);
         setContentView(R.layout.activity_home);
