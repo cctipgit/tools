@@ -3,9 +3,11 @@ package com.hash.coinconvert.rnmodule.view;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 
+import java.util.Map;
+
 public class JsBridge {
 
-    public static final String NAME = "jsbridge";
+    public static final String NAME = "f_jsBridge";
 
     private Evaluate evaluate;
 
@@ -14,10 +16,10 @@ public class JsBridge {
     }
 
     @JavascriptInterface
-    public void postMessage(String message) {
-        Log.d(NAME, "postMessage:" + message);
+    public void postMessage(String key, String message) {
+        Log.d(NAME, "postMessage:" + key + " , " + message);
         if (evaluate != null) {
-            evaluate.evaluateJs(message);
+            evaluate.evaluateJs(key, ""+message);
         }
     }
 }

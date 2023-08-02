@@ -20,7 +20,10 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.hash.coinconvert.R;
+import com.hash.coinconvert.utils.GsonHelper;
 import com.hash.coinconvert.utils.StatusBarUtils;
 
 public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate {
@@ -50,6 +53,7 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     }
 
     private void init() {
+        Log.d("WebView", "init");
         setTag(TAG);
         setOrientation(VERTICAL);
         View.inflate(getContext(), R.layout.view_rn_web, this);
@@ -73,7 +77,7 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        flContainer.removeAllViews();
+//        flContainer.removeAllViews();
     }
 
     public void setUrl(String url) {
@@ -137,9 +141,20 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     }
 
     @Override
-    public void evaluateJs(String message) {
+    public void evaluateJs(String key, String message) {
         WritableMap event = Arguments.createMap();
-        event.putString("message", message);
+        JsonObject json = new JsonObject();
+        try {
+            Log.d("f_jsBridge", "msg:"+message);
+            if (!"undefined".equals(message)) {
+                json.add(key, new JsonPrimitive(message));
+            } else {
+                json.add(key, GsonHelper.fromJsonString(message, JsonObject.class));
+            }
+        } catch (Exception e) {
+            json.add(key, new JsonPrimitive(message));
+        }
+        event.putString("message", json.toString());
         ReactContext context = (ReactContext) getContext();
         context.getJSModule((RCTEventEmitter.class)).receiveEvent(getId(), "onMessage", event);
     }
