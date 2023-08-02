@@ -14,10 +14,10 @@ public class JsBridge {
     }
 
     @JavascriptInterface
-    public void postMessage(String message) {
+    public void postMessage(String key,String message) {
         Log.d(NAME, "postMessage:" + message);
         if (evaluate != null) {
-            evaluate.evaluateJs(message);
+            evaluate.evaluateJs(key,message);
         }
     }
 }
