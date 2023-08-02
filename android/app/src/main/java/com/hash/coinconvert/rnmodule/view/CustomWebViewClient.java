@@ -22,6 +22,11 @@ public class CustomWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
+        /*
+            jsBridge can not get type with object.
+            inject js to execute our jsBridge method with primitive type
+         */
+        view.loadUrl("javascript:window.jsBridge = {\"postMessage\":function(a,b){window.f_jsBridge.postMessage(a,JSON.stringify(b))}}");
     }
 
     @Override
