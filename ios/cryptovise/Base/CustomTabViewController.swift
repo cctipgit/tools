@@ -20,12 +20,7 @@ class CustomTabViewController: RAMAnimatedTabBarController {
         currencyItem.animation = CustomTabItemAnimation()
         currencyVC = HomeCurrencyViewController()
         currencyVC?.tabBarItem = currencyItem
-        
-        let gameItem = CustomTabBarItem(title: "Task list".localized(), image: UIImage(named: "n_tab_tasklist")!, selectedImage: UIImage(named: "n_tab_tasklist")!)
-        gameItem.animation = CustomTabItemAnimation()
-        gameVC = TaskIndexViewController()
-        gameVC?.tabBarItem = gameItem
-        
+
         let questionItem = CustomTabBarItem(title: "Questionnaire", image: UIImage(named: "n_questionare")!, selectedImage: UIImage(named: "n_questionare")!)
         questionItem.animation = CustomTabItemAnimation()
         questionVC = QuestionsViewController()
@@ -36,7 +31,7 @@ class CustomTabViewController: RAMAnimatedTabBarController {
         redeemVC = RedeemIndexViewController()
         redeemVC?.tabBarItem = redeemItem
         
-        self.viewControllers = [gameVC!, currencyVC!, questionVC!, redeemVC!]
+        self.viewControllers = [currencyVC!, questionVC!, redeemVC!]
         super.viewDidLoad()
     }
 }

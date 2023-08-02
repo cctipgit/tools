@@ -86,6 +86,10 @@ class QuestionsViewController: YBaseViewController {
         v.setTitle("Next".localized(), for: .normal)
         v.isHidden = true
     }
+    private let gameBtn = UIButton().then { v in
+        v.setImage(UIImage(named: "n_game_icon"), for: .normal)
+        v.setImage(UIImage(named: "n_game_icon"), for: .highlighted)
+    }
     
     private var progress: CGFloat = 0
     var sWidth: CGFloat {
@@ -121,6 +125,11 @@ class QuestionsViewController: YBaseViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
+        gameBtn.snp.makeConstraints { make in
+            make.size.equalTo(32)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-32)
+        }
         finishImgView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -173,7 +182,6 @@ class QuestionsViewController: YBaseViewController {
             make.top.equalTo(progressFullView.snp.bottom).offset(24)
             make.left.equalToSuperview()
         }
-        
         fullNextBtn.snp.makeConstraints { make in
             make.height.equalTo(50)
             make.bottom.equalToSuperview().offset(-24)
@@ -204,7 +212,7 @@ class QuestionsViewController: YBaseViewController {
         scrollView.tag = 999
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
-
+        navigationView.addSubview(gameBtn)
         bgView.addSubviews([progressTitleLabel,
                             progressDescLabel,
                             progressFullView,
@@ -218,6 +226,9 @@ class QuestionsViewController: YBaseViewController {
                           finishTitleLabel,
                           finishDescLabel,
                           bgView])
+        gameBtn.rx.tap.subscribe(onNext: { _ in
+            self.navigationController?.pushViewController(TaskGameViewController(), animated: true)
+        }).disposed(by: rx.disposeBag)
         currentIndexRelay.asObservable()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] val in

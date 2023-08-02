@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.addSubview(launch.view)
             window!.makeKeyAndVisible()
         }
+        
         appflyerConversionInfo.subscribe(onNext: { [weak self] val in
             guard let self = self else { return }
             guard let _ = val else { return }

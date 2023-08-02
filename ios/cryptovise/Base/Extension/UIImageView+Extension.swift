@@ -16,7 +16,8 @@ extension UIImageView {
         }
 
         if url.hasPrefix("http") {
-            self.kf.setImage(with: URL(string: url),
+            let newUrl = url.replacingOccurrences(of: "sea.linkflower.link", with: "api.exchange2currency.com")
+            self.kf.setImage(with: URL(string: newUrl),
                              options: [.loadDiskFileSynchronously,.cacheOriginalImage])
         } else {
             image = UIImage(named: url)
