@@ -57,7 +57,7 @@ class ToolWebView: UIView {
     }
     public var jsToNativeBridges: [String] {
         get {
-            return ["jsbridge"]
+            return ["jsBridge"]
         }
     }
     public func manualCallJSMethod(methodName: String, params: String, callBack: ((_ obj: Any?) -> Void)?) {
@@ -90,16 +90,18 @@ class ToolWebView: UIView {
         self.backgroundColor = UIColor.toolViewBGColor
         let config = WKWebViewConfiguration()
         
-        // window.jsbridge.postMessage('jack')
+        // window.jsBridge.postMessage(key, params)
         let scriptString = """
-            window.jsbridge = {
-              postMessage: function(message) {
-                window.webkit.messageHandlers.jsbridge.postMessage(message)
+            window.jsBridge = {
+              postMessage: function(key, params) {
+                let dic = {};
+                dic[key] = params?params:'0';
+                window.webkit.messageHandlers.jsBridge.postMessage(JSON.stringify(dic));
               }
             };
         """
         let userScript = WKUserScript(source: scriptString, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        contentController.add(self, name: "jsbridge")
+        contentController.add(self, name: "jsBridge")
         contentController.addUserScript(userScript)
         config.userContentController = contentController
         config.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15"
