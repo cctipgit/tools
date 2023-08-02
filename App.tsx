@@ -7,7 +7,7 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import HomeScreen  from '@tools-react'
+import HomeScreen from '@tools-react';
 import {
   SafeAreaView,
   ScrollView,
@@ -27,8 +27,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Route from './Routes';
-
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -68,10 +66,8 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={{flex:1}}>
-      {/* <Route /> */}
-      <HomeScreen/>
-
+    <View style={{flex: 1}}>
+      <HomeScreen url="https://bc.game"  />
     </View>
   );
 }

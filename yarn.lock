@@ -1870,7 +1870,7 @@
 
 "@tools-react@cctip/tools_react":
   version "1.0.1"
-  resolved "git+ssh://git@github.com/cctip/tools_react.git#bc1f6e40bf83a8142e1b2a501d3f4583534700ea"
+  resolved "git+ssh://git@github.com/cctip/tools_react.git#41b043dc0615516877338d74617a2264ddc2dc3c"
   dependencies:
     "@react-native-async-storage/async-storage" "^1.19.1"
 
