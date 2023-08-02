@@ -137,9 +137,10 @@ public class MultiWebView extends LinearLayout implements ClientProxy, Evaluate 
     }
 
     @Override
-    public void evaluateJs(String message) {
+    public void evaluateJs(String key,String message) {
         WritableMap event = Arguments.createMap();
         event.putString("message", message);
+        event.putString("key",key);
         ReactContext context = (ReactContext) getContext();
         context.getJSModule((RCTEventEmitter.class)).receiveEvent(getId(), "onMessage", event);
     }
