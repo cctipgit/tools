@@ -5,12 +5,12 @@ ext {
             // 是否开启混淆
             minifyEnabled : true,
             // 版本号
-            appVersionCode: 5,
+            appVersionCode: 6,
             // 版本名称
             // dev：开发阶段
             // beta: 实现软件功能为主（内部测试打包）
             // release：发布版本
-            appVersionName: "1.0.4",
+            appVersionName: "1.0.5",
             // 是否上架GooglePlay市场
             isGooglePlay  : true,
     ]
