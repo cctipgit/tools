@@ -9,7 +9,12 @@ import UIKit
 
 @objc(ToolWebModule)
 class ToolWebModule: RCTViewManager {
+    var toolWebView: ToolWebView?
+    
     override func view() -> UIView! {
-        return ToolWebView(frame: .zero)
+        if toolWebView == nil {
+            toolWebView = ToolWebView(frame: .zero)
+        }
+        return toolWebView
     }
 }

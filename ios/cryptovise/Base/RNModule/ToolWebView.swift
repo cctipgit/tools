@@ -15,14 +15,16 @@ class ToolWebView: UIView {
     @objc
     var url: String = "" {
         didSet {
-            if let mUrl = URL(string: url) {
-                let request = NSMutableURLRequest(url: mUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 60)
+            if let mUrl = URL(string: url), !webViewLoaded {
+                let request = NSMutableURLRequest(url: mUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
                 webView.load(request as URLRequest)
+                webViewLoaded = true
             }
         }
     }
     @objc
     var onMessage: RCTBubblingEventBlock?
+    var webViewLoaded: Bool = false
     
     // private
     private var webView: WKWebView!
