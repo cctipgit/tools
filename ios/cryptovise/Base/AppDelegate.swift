@@ -63,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let reachAble: Bool = status == .reachable(.cellular) || status == .reachable(.ethernetOrWiFi)
             if reachAble && self.isAppflyerStarted == false {
                 AppsFlyerLib.shared().start()
-                self.isAppflyerStarted = true
             } else {
                 DispatchQueue.main.async {
                     if !reachAble && self.isAppflyerStarted == false {
@@ -121,8 +120,8 @@ extension AppDelegate: AppsFlyerLibDelegate {
     func onConversionDataFail(_ error: Error) {
         loadOrigin()
     }
-    
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        self.isAppflyerStarted = true
         appflyerConversionInfo.accept(conversionInfo)
         AppInstance.shared.appFlyerConversionInfo = conversionInfo
     }

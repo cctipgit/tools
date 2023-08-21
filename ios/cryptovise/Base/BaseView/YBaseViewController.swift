@@ -50,15 +50,19 @@ class YBaseViewController: UIViewController {
     }
 
     func makeUI() {
+        
     }
 
     func makeConstraint() {
+        
     }
 
     func makeEvent() {
+        
     }
 
     func makeLayout() {
+        
     }
     
     func share(text: String?, image: UIImage?, url: URL? = URL(string: AppConfig.appDownloadLink), completion: @escaping (() -> Void)) {
