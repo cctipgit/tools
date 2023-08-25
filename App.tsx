@@ -66,8 +66,10 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <HomeScreen url="https://bc.ai/i-nnhpocqr-n/?p=/pt&ch=mjb2" />
+    <View style={{ flex: 1, backgroundColor: "#24262B" }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <HomeScreen />
+      </SafeAreaView>
     </View>
   );
 }

@@ -174,10 +174,8 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
         
         self.lastResponseDateRange = dateUnit
         CurrencyDetailService().queryDetail(fromSymbol: fromItem.token,
-                                            fromType: kCustomChartItemType.initBy(str: fromItem.currencyType),
                                             toSymbol: toItem.token,
-                                            toType: kCustomChartItemType.initBy(str: toItem.currencyType),
-                                            interval: kCustomChartTimeType.initBy(type: SegementTapedKind.init(with: dateUnit)))
+                                            rangeType: kCustomChartTimeType.initBy(type: SegementTapedKind.init(with: dateUnit)))
         .subscribe(onNext: { [weak self] res in
             
             guard let self = self else { return }
@@ -324,10 +322,10 @@ class CurrencyDetailViewModel: NSObject, ViewModel {
         newResponse.subscribe(onNext: { [weak self] resp in
             guard let self = self else { return }
             self.isRequesting.accept(false)
-            guard let result = resp, let listItem = result.data as? [ResultCurrencyDetailListItem] else { return }
+            guard let result = resp, let listItem = result.series as? [ResultCurrencyDetailListItem] else { return }
             var entries: [ChartDataEntry] = []
             listItem.forEach { item in
-                let point = ChartDataEntry(x: Double(item.t), y: Double(item.c) ?? 0)
+                let point = ChartDataEntry(x: Double(item.ts), y: Double(item.price) ?? 0)
                 entries.append(point)
             }
             self.entries = entries

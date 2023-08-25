@@ -23,11 +23,11 @@ enum kCustomChartItemType: Int {
     }
 }
 
-enum kCustomChartTimeType: Int {
-    case day = 1
-    case week = 2
-    case month = 3
-    case year = 4
+enum kCustomChartTimeType: String {
+    case day = "1d"
+    case week = "7d"
+    case month = "1m"
+    case year = "1y"
     
     static func initBy(type: SegementTapedKind) -> kCustomChartTimeType {
         switch type {
@@ -47,10 +47,8 @@ enum kCustomChartTimeType: Int {
 
 enum CurrencyDetailAPI {
     case queryDetail(fromSymbol: String,
-                     fromType: kCustomChartItemType,
                      toSymbol: String,
-                     toType: kCustomChartItemType,
-                     interval: kCustomChartTimeType
+                     rangeType: kCustomChartTimeType
     )
 }
 
@@ -58,53 +56,43 @@ extension CurrencyDetailAPI: Moya.TargetType {
     var baseURL: URL {
         return URL(string: AppConfig.baseURLForChart)!
     }
-    
     var path: String {
         switch self {
-        case .queryDetail(_, _, _, _, _):
-            return "/charts"
+        case .queryDetail(_, _, _):
+            return "history"
         }
     }
-    
     var method: Moya.Method {
-        return .post
+        return .get
     }
-    
     var headers: [String : String]? {
         return ["Content-Type": "application/json",
-                "Accept": "application/json",
-                "Auth-Token": "2y5iH44N87PKEYNHlyoqhTjIijAB6ACD"
+                "Accept": "application/json"
         ]
     }
-    
     var task: Moya.Task {
         switch self {
-        case let .queryDetail(fromSymbol, fromType, toSymbol, toType, interval):
-            return .requestParameters(parameters: ["fromSymbol": fromSymbol,
-                                                   "fromType": fromType.rawValue,
-                                                   "toSymbol": toSymbol,
-                                                   "toType": toType.rawValue,
-                                                   "interval": interval.rawValue],
-                                      encoding: JSONEncoding.default)
+        case let .queryDetail(fromSymbol, toSymbol, range):
+                return .requestParameters(parameters: ["range": range.rawValue,
+                                                   "currency": "\(fromSymbol)/\(toSymbol)"],
+                                      encoding: URLEncoding.default)
         }
     }
 }
 
 class CurrencyDetailService {
     func queryDetail(fromSymbol: String,
-                     fromType: kCustomChartItemType,
                      toSymbol: String,
-                     toType: kCustomChartItemType,
-                     interval: kCustomChartTimeType) -> Observable<ResultCurrencyDetail?> {
+                     rangeType: kCustomChartTimeType) -> Observable<ResultCurrencyDetail?> {
         return CurrencyDetailAPI
             .queryDetail(fromSymbol: fromSymbol,
-                         fromType: fromType,
                          toSymbol: toSymbol,
-                         toType: toType,
-                         interval: interval)
+                         rangeType: rangeType)
             .cache
             .request()
-            .map( { ResultCurrencyDetail.mj_object(withKeyValues: $0.data) } )
+            .map( {
+                return ResultCurrencyDetail.mj_object(withKeyValues: $0.data)
+            } )
             .asObservable()
     }
 }
@@ -112,8 +100,8 @@ class CurrencyDetailService {
 @objcMembers
 class ResultCurrencyDetail: NSObject {
     var code: Int = 0
-    var message = ""
-    var data = NSArray()
+    var message: String = ""
+    var series = NSArray()
     
     @nonobjc
     var isSuccess: Bool {
@@ -121,12 +109,17 @@ class ResultCurrencyDetail: NSObject {
     }
     
     override class func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["data": ResultCurrencyDetailListItem.self]
+        return ["series": ResultCurrencyDetailListItem.self]
+    }
+    override class func mj_replacedKeyFromPropertyName() -> [AnyHashable : Any]! {
+        return ["code": "meta.status",
+                "message": "meta.msg",
+        ]
     }
 }
 
 @objcMembers
 class ResultCurrencyDetailListItem: NSObject {
-    var c = "0"
-    var t: TimeInterval = Date().timeIntervalSince1970
+    var price = "0"
+    var ts: Int = 0
 }
