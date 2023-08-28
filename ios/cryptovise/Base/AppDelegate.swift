@@ -16,13 +16,16 @@ import AppsFlyerLib
 import AppTrackingTransparency
 import RxSwift
 import RxRelay
+import Network
+import Alamofire
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var lView: UIView?
     var appflyerConversionInfo: BehaviorRelay<[AnyHashable : Any]?> = BehaviorRelay(value: nil)
- 
+    var isAppflyerStarted: Bool = false
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = DMEnvironmentConfiguration()
         configuration.themeChangeHandler = {}
@@ -54,16 +57,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             loadRN()
             lView?.removeFromSuperview()
         }).disposed(by: rx.disposeBag)
-        AppsFlyerLib.shared().start()
-        return true
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
         
+        // network
+        networkManager?.startListening(onUpdatePerforming: { status in
+            let reachAble: Bool = status == .reachable(.cellular) || status == .reachable(.ethernetOrWiFi)
+            if reachAble && self.isAppflyerStarted == false {
+                AppsFlyerLib.shared().start()
+            } else {
+                DispatchQueue.main.async {
+                    if !reachAble && self.isAppflyerStarted == false {
+                        self.loadOrigin()
+                    }
+                }
+            }
+        })
+        return true
     }
     
     func setUserInfo() {
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        var conversionInfo: [AnyHashable : Any] = [:]
+        conversionInfo["media_source"] = "normal"
+        AppInstance.shared.appFlyerConversionInfo = conversionInfo
+        loadRN()
+        return true
     }
     
     func loadOrigin() {
@@ -100,8 +120,8 @@ extension AppDelegate: AppsFlyerLibDelegate {
     func onConversionDataFail(_ error: Error) {
         loadOrigin()
     }
-    
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        self.isAppflyerStarted = true
         appflyerConversionInfo.accept(conversionInfo)
         AppInstance.shared.appFlyerConversionInfo = conversionInfo
     }

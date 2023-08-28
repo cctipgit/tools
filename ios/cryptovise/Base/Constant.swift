@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 let selectIndexPathCacheKey = "SelectIndexPath.Row"
 let selectTokenCacheKey = "SelectTokenCacheKey"
@@ -18,6 +19,8 @@ let widgetDidTappedConvertLineNotification = "widgetDidTappedConvertLineNotifica
 let widgetDidTappedQuotationNotification = "widgetDidTappedQuotationNotification"
 
 let drawPrizeChanceChangedNofification = "drawPrizeChanceChangedNofification"
+
+let networkManager = NetworkReachabilityManager(host: "www.apple.com")
 
 class AppInstance: NSObject {
     public static let shared = AppInstance()

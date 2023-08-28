@@ -37,8 +37,6 @@ class SettingViewModel: NSObject, ViewModel {
 
         input.trigger
             .map { _ in
-
-                
                 var locationEnabled = false
                 if LocationManager.shared.locationEnabled {
                      locationEnabled = AppSetting.shared.localCurrencyMark.value

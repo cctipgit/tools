@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import HomeScreen from '@tools-react';
 import {
   SafeAreaView,
@@ -32,7 +32,7 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): JSX.Element {
+function Section({ children, title }: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -66,8 +66,10 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <HomeScreen url="https://bc.game"  />
+    <View style={{ flex: 1, backgroundColor: "#24262B" }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <HomeScreen />
+      </SafeAreaView>
     </View>
   );
 }
