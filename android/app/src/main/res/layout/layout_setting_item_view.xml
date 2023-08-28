@@ -16,10 +16,10 @@
         android:id="@+id/tv_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Default Currency Value"
         android:textColor="@color/theme_text_color"
         android:textSize="16sp"
-        app:fountType="poppinsRegular" />
+        app:fountType="poppinsRegular"
+        tools:text="Default Currency Value" />
 
     <Space
         android:layout_width="0dp"
@@ -31,10 +31,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="14dp"
-        tools:text="10"
-        android:textColor="@color/theme_text_color_alpha50"
         android:textSize="16sp"
-        app:fountType="poppinsRegular" />
+        app:fountType="poppinsRegular"
+        tools:text="10" />
 
     <Switch
         android:id="@+id/v_switch"
@@ -50,6 +49,7 @@
         android:id="@+id/iv_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_more" />
+        android:src="@mipmap/icon_more"
+        app:tint="@color/theme_text_color" />
 
 </com.flyco.roundview.RoundLinearLayout>

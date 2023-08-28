@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:rv_backgroundColor="@color/theme_bg"
+    app:rv_backgroundColor="@color/theme_text_color_alpha40"
     app:rv_backgroundPressColor="@color/bg_secondary"
     app:rv_cornerRadius="16dp">
 
@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginStart="8dp"
-        android:textColor="@color/title"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_sort_name"
         app:layout_constraintLeft_toRightOf="@+id/iv_icon"

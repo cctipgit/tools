@@ -1,5 +1,6 @@
 package com.hash.coinconvert.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,19 +16,18 @@ import com.hash.coinconvert.MainActivity;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.livedatabus.event.AppsFlyerEvent;
 import com.hash.coinconvert.rnmodule.ToolModulePackage;
+import com.hash.coinconvert.ui2.activity.HomeActivity;
 import com.hash.coinconvert.utils.Dispatch;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.jeremyliao.liveeventbus.core.Observable;
 
 import java.util.List;
 
-
 public class SplashActivity extends AppCompatActivity {
 
     private final String TAG = "SplashActivity";
     private long mStartTime; // page start time
-    private final long mPageDuration = 800; // page duration
-    private long timeout = 8000L;
+    private final long mPageDuration = 1200; // page duration
     private Handler timeoutHandler = new Handler();
 
     @Override
@@ -39,23 +39,22 @@ public class SplashActivity extends AppCompatActivity {
         observable.observe(this, new Observer<AppsFlyerEvent>() {
             @Override
             public void onChanged(AppsFlyerEvent event) {
-                App app = (App) getApplicationContext();
-                List<ReactPackage> list = app.getReactNativeHost().getReactInstanceManager().getPackages();
-                for (ReactPackage item : list) {
-                    if (item instanceof ToolModulePackage) {
-                        ((ToolModulePackage) item).appsFlyerConversation = event.map;
-                        toNextPage();
-                        break;
+                if (event.success) {
+                    App app = (App) getApplicationContext();
+                    List<ReactPackage> list = app.getReactNativeHost().getReactInstanceManager().getPackages();
+                    for (ReactPackage item : list) {
+                        if (item instanceof ToolModulePackage) {
+                            ((ToolModulePackage) item).appsFlyerConversation = event.map;
+                            toNextPage(HomeActivity.class);
+                            break;
+                        }
                     }
+                } else {
+                    toNextPage(HomeActivity.class);
                 }
                 observable.removeObserver(this);
             }
         });
-        //if appsflyer do not invoke the conversation callback. start native page
-//        timeoutHandler.postDelayed(() -> {
-//            startActivity(new Intent(this, HomeActivity.class));
-//            finish();
-//        }, timeout);
     }
 
     @Override
@@ -65,10 +64,12 @@ public class SplashActivity extends AppCompatActivity {
         timeoutHandler = null;
     }
 
-    private void toNextPage() {
+    private void toNextPage(Class<? extends Activity> clz) {
         long pageDuration = Math.min(SystemClock.elapsedRealtime() - mStartTime, mPageDuration);
         Dispatch.I.postUIDelayed(() -> {
-            startActivity(new Intent(this, MainActivity.class));
+            Intent intent = new Intent(this, clz);
+            intent.putExtra("from_splash", true);
+            startActivity(intent);
             finish();
         }, mPageDuration - pageDuration);
     }

@@ -26,19 +26,11 @@ public class SettingListAdapter extends BaseQuickAdapter<SettingListAdapter.List
         viewHolder.setText(R.id.tv_label_2, NullUtils.format(listItem.label2));
         viewHolder.setVisible(R.id.iv_check, listItem.isChecked);
         viewHolder.setGone(R.id.tv_label_1, EmptyUtils.isEmpty(listItem.label1));
-        viewHolder.setTextColor(R.id.tv_label_1, ContextCompat.getColor(Utils.getActContextOrApp(), listItem.isChecked ? R.color.list_checked_alpha80 : R.color.theme_text_color_alpha60));
+        viewHolder.setTextColor(R.id.tv_label_1, ContextCompat.getColor(Utils.getActContextOrApp(), listItem.isChecked ? R.color.white : R.color.text_unselect));
 
         TextView tv2 = viewHolder.getView(R.id.tv_label_2);
-        tv2.setTextColor(ContextCompat.getColor(Utils.getActContextOrApp(), listItem.isChecked ? R.color.list_checked_alpha80 : getLabel2DefaultColor(listItem)));
+        tv2.setTextColor(ContextCompat.getColor(Utils.getActContextOrApp(), listItem.isChecked ? R.color.white : R.color.text_unselect));
         FontUtil.setType(tv2, TextUtils.isEmpty(listItem.label1) ? FontUtil.FOUNT_TYPE.POPPINS_MEDIUM : FontUtil.FOUNT_TYPE.POPPINS_REGULAR);
-    }
-
-    protected int getLabel2DefaultColor(ListItem listItem) {
-        if (EmptyUtils.isNotEmpty(listItem.label1)) {
-            return R.color.theme_text_color_alpha30;
-        } else {
-            return R.color.theme_text_color_alpha60;
-        }
     }
 
     public static class ListItem<T> {

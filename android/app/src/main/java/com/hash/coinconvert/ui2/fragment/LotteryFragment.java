@@ -3,7 +3,11 @@ package com.hash.coinconvert.ui2.fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,15 +51,7 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
 
     @Override
     protected void initView() {
-        binding.actionBar.setBackViewTintColor(Color.WHITE);
         initMenuPointsView();
-        PinItem[] data = LotteryFragmentArgs.fromBundle(getArguments()).getData();
-        if (data.length == 0) {
-            getNavController().popBackStack();
-            return;
-        }
-        binding.lotteryView.setData(data);
-
         binding.lotteryView.setOnRewardListener(this);
         binding.btnStart.setOnClickListener(v -> {
             if (!binding.lotteryView.isRunning()) {
@@ -63,6 +59,9 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
                 viewModel.pinCheck();
             }
         });
+        binding.lotteryView.setVisibility(View.INVISIBLE);
+        binding.btnStart.setVisibility(View.INVISIBLE);
+        viewModel.fetchPinList();
     }
 
     public void setPointsViewText(String points) {
@@ -75,9 +74,14 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
     private void initMenuPointsView() {
         this.pointsView = genMenuPointsView();
         this.pointsView.setVisibility(View.INVISIBLE);
-        binding.actionBar.addMenu(this.pointsView, v -> {
-            navigateTo(LotteryFragmentDirections.actionFragmentLotteryToActivityRedeem());
-        });
+    }
+
+    @Override
+    protected void setupProgressGravity(ProgressBar progressBar) {
+        FrameLayout.LayoutParams params = ((FrameLayout.LayoutParams) progressBar.getLayoutParams());
+        params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+        params.topMargin = DisplayUtil.dip2px(requireContext(), 40);
+        progressBar.setLayoutParams(params);
     }
 
     private RoundTextView genMenuPointsView() {
@@ -107,13 +111,17 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
         observer(viewModel.getPinCheckId(), id -> {
             TaskHelper.pin();
             binding.lotteryView.startRotate(id);
-            profileViewModel.fetchUserInfo();
         });
 
         observer(profileViewModel.getUserInfo(), user -> {
             this.setPointsViewText(user.getFormattedPoint());
-            binding.tvChance.setText(getString(R.string.lottery_chance, user.pinChance));
             binding.btnStart.setEnabled(user.pinChance > 0);
+        });
+
+        observer(viewModel.getPinList(), pinList -> {
+            binding.lotteryView.setData(pinList.lists.toArray(new PinItem[0]));
+            binding.lotteryView.setVisibility(View.VISIBLE);
+            binding.btnStart.setVisibility(View.VISIBLE);
         });
     }
 
@@ -128,7 +136,14 @@ public class LotteryFragment extends BaseMVVMFragment<LotteryViewModel, Fragment
             ToastUtils.show(R.string.dialog_reward_error_none_pin_item);
             return;
         }
-        navigateTo(LotteryFragmentDirections.actionFragmentLotteryToDialogReward(item));
+        profileViewModel.fetchUserInfo();
+        RewardDialog dialog = new RewardDialog();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("data", item);
+        dialog.setArguments(bundle);
+        dialog.setOnPositiveClickListener(url -> ShareHelper.shareText(requireContext(), url));
+        dialog.show(getChildFragmentManager(), "reward");
+//        navigateTo(LotteryFragmentDirections.actionFragmentLotteryToDialogReward(item));
     }
 
     @Override

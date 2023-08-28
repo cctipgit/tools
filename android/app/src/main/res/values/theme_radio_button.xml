@@ -22,7 +22,7 @@
     <style name="RadioButton.BaseQuoteColor">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/sub_title</item>
+        <item name="android:textColor">@color/theme_text_color</item>
         <item name="android:drawablePadding">8dp</item>
     </style>
 </resources>

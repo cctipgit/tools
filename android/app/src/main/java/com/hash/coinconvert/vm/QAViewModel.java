@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.hash.coinconvert.entity.AnswerBody;
 import com.hash.coinconvert.entity.AnswersBody;
+import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.entity.QuestionList;
 import com.hash.coinconvert.entity.QuestionsItem;
 
@@ -25,6 +26,12 @@ public class QAViewModel extends ToolApiViewModel {
 
     public LiveData<Map<String, List<Integer>>> getAnswer() {
         return answer;
+    }
+
+    private MutableLiveData<PinList> pinList = new MutableLiveData<>();
+
+    public LiveData<PinList> getPinList(){
+        return pinList;
     }
 
     public LiveData<Progress> getProgress() {
@@ -51,6 +58,13 @@ public class QAViewModel extends ToolApiViewModel {
             if (questions.getValue() != null) {
                 updateProgress(getQuestionSize() + 1);
             }
+        });
+    }
+
+    public void fetchPinList(){
+        startLoadingIfNeeded(pinList);
+        execute(api.pinList(),res -> {
+            pinList.postValue(res);
         });
     }
 

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.flyco.roundview.RoundTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tv_title"
     style="@style/TextView.Medium"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="4dp"
     android:paddingVertical="4dp"
-    android:paddingStart="16dp"
     android:textColor="@color/sub_title"
     android:textSize="16sp"
-    app:rv_backgroundColor="@color/bg_secondary"
-    app:rv_cornerRadius="16dp"
-    tools:text="Local Currency">
-
-</com.flyco.roundview.RoundTextView>
+    tools:text="Local Currency" />

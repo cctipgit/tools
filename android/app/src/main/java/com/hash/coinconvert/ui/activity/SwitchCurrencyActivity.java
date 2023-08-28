@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.duxl.baselib.utils.DisplayUtil;
 import com.duxl.baselib.utils.EmptyUtils;
 import com.duxl.baselib.utils.SPUtils;
 import com.google.common.reflect.TypeToken;
@@ -13,6 +14,7 @@ import com.hash.coinconvert.R;
 import com.hash.coinconvert.database.repository.TokenRepository;
 import com.hash.coinconvert.databinding.ActivitySwitchCurrencyBinding;
 import com.hash.coinconvert.ui.adapter.SwitchCurrencyAdapter;
+import com.hash.coinconvert.ui2.adapter.SpaceDecoration;
 import com.hash.coinconvert.utils.Dispatch;
 import com.hash.coinconvert.utils.task.TaskHelper;
 import com.hash.coinconvert.widget.SearchView;
@@ -39,6 +41,7 @@ public class SwitchCurrencyActivity extends SearchCurrencyActivity {
         mBinding = ActivitySwitchCurrencyBinding.bind(v);
         super.initView(v);
         hideActionBar();
+        mSmartRecyclerView.getContentView().addItemDecoration(new SpaceDecoration(0, 0, 0, DisplayUtil.dip2px(this, 8)));
     }
 
     @Override

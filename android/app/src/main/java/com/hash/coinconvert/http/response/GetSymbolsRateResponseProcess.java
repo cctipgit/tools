@@ -1,28 +1,19 @@
 package com.hash.coinconvert.http.response;
 
-import static com.hash.coinconvert.livedatabus.LiveDataKey.SYMBOLS_RATE_CHANGED;
-
-import android.util.Log;
-
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.duxl.baselib.utils.EmptyUtils;
 import com.duxl.baselib.utils.SPUtils;
-//import com.exchange2currency.ef.currencyprice.grpc.Price;
 import com.exchange2currency.ef.currencyconvert.grpc.Price;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.hash.coinconvert.Constants;
 import com.hash.coinconvert.database.CurrencyDaoWrap;
 import com.hash.coinconvert.database.repository.TokenRepository;
-import com.hash.coinconvert.entity.CurrencyInfo;
 import com.hash.coinconvert.http.SocketSender;
-import com.hash.coinconvert.livedatabus.event.SymbolsRateEvent;
 import com.hash.coinconvert.utils.Dispatch;
-import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -60,16 +51,8 @@ public class GetSymbolsRateResponseProcess {
                     return;
                 }
                 for (Price.GetSymbolsRateItem item : dataMap.values()) {
-//                    CurrencyInfo currency = new CurrencyInfo();
-//                    currency.token = item.getToken();
-//                    currency.price = item.getPrice();
-//                    list.add(currency);
-                    Log.d("Update", item.getToken() + ":" + item.getPrice());
                     TokenRepository.updatePrice(item.getToken(), item.getPrice());
                 }
-//                mCurrencyDaoWrap.updatePrice(list);
-//
-//                LiveEventBus.get(SYMBOLS_RATE_CHANGED).post(new SymbolsRateEvent(list));
             } catch (Exception e) {
                 e.printStackTrace();
             }

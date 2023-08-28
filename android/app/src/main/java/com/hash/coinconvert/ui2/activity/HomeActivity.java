@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity {
             R.id.fragment_currency,
             R.id.fragment_task_list,
             R.id.fragment_redeem,
-            R.id.fragment_qa_all
+            R.id.fragment_quiz
     };
 
     @Override

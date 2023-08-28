@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:991061356423:android:880f49937b4530ece16d22",
         "android_client_info": {
-          "package_name": "com.hash.tools"
+          "package_name": "com.rate.quiz"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "991061356423-nnqg5jivpu8vfrard0ddr516bisgkotf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.hash.tools",
+            "package_name": "com.rate.quiz",
             "certificate_hash": "0d8237638a3ad6312723a7ce1b81d198a2fa7c3f"
           }
         },

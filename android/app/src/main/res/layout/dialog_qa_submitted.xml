@@ -12,17 +12,27 @@
         android:layout_gravity="center"
         android:layout_marginHorizontal="20dp"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="16dp"
         app:rv_backgroundColor="@color/theme_bg"
-        app:rv_cornerRadius="24dp">
+        app:rv_backgroundEndColor="@color/colorPrimaryDark"
+        app:rv_backgroundStartColor="@color/colorPrimary"
+        app:rv_cornerRadius="24dp"
+        app:rv_gradient_angle="270">
 
-        <ImageButton
-            android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
+        <com.flyco.roundview.RoundFrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:src="@drawable/ic_action_bar_close" />
+            app:rv_backgroundColor="@color/colorPrimary"
+            app:rv_cornerRadius_TL="24dp"
+            app:rv_cornerRadius_TR="24dp">
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_action_bar_close"
+                app:tint="@color/theme_text_color" />
+        </com.flyco.roundview.RoundFrameLayout>
 
         <ImageView
             android:layout_width="56dp"
@@ -45,6 +55,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
+            android:paddingHorizontal="16dp"
             android:text="@string/qa_submit_succ_sub"
             android:textSize="20sp" />
 
@@ -52,7 +63,9 @@
             android:id="@+id/btn_done"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/qa_btn_done"
             app:rb_radius="8dp" />
 

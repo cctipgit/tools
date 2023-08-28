@@ -18,9 +18,9 @@
     <item android:id="@+id/background"
         android:gravity="center_vertical|fill_horizontal">
         <shape android:shape="rectangle"
-            android:tint="@color/bg_group_branding">
+            android:tint="@color/theme_text_color_alpha40">
             <corners android:radius="4dp" />
-            <solid android:color="@color/bg_group_branding" />
+            <solid android:color="@color/black" />
         </shape>
     </item>
     <item android:id="@+id/progress"

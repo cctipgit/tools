@@ -85,7 +85,7 @@ android {
 
     namespace "com.hash.coinconvert"
     defaultConfig {
-        applicationId "com.hash.tools"
+        applicationId "com.rate.quiz"
         minSdk rootProject.ext.android["minSdkVersion"]
         targetSdk rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["appVersionCode"]
@@ -103,9 +103,9 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('store.jks')
+            storeFile file('release.keystore')
             storePassword 'hash2023'
-            keyAlias 'key0'
+            keyAlias 'hash'
             keyPassword 'hash2023'
         }
         debug {
@@ -132,9 +132,9 @@ android {
                 variant.outputs.all {output->
                     def architecture = output.getFilter(com.android.build.OutputFile.ABI)
                     if (variant.buildType.name == 'debug') {
-                        outputFileName = "CurrencyConverter_debug_${architecture}_${defaultConfig.versionName}.apk"
+                        outputFileName = "Ratequiz_debug_${architecture}_${defaultConfig.versionName}.apk"
                     } else {
-                        outputFileName = "CurrencyConverter_release_${architecture}_${defaultConfig.versionName}.apk"
+                        outputFileName = "Ratequiz_release_${architecture}_${defaultConfig.versionName}.apk"
                     }
                 }
         }

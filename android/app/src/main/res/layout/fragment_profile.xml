@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:abTitle="@string/home_profile"
-        app:abTitleColor="@color/theme_bg"
         app:abTitleGravity="left" />
 
     <LinearLayout
@@ -24,13 +23,15 @@
         android:paddingHorizontal="20dp"
         android:paddingBottom="24dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_avatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_profile_avatar"
-            android:padding="2dp"
+            app:shapeAppearance="@style/Shape.Circle"
+            app:strokeColor="@color/yellow"
+            app:strokeWidth="2dp"
+            android:padding="1dp"
             tools:src="@mipmap/avator01" />
 
         <TextView
@@ -39,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/theme_bg"
             android:textSize="18sp"
             tools:text="asdadsa" />
 
@@ -47,7 +47,6 @@
             android:id="@+id/tv_create_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/theme_bg"
             android:textSize="16sp"
             tools:text="Member since 6/19/2023" />
 
@@ -59,7 +58,6 @@
             android:background="@drawable/bg_gradient"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:textColor="@color/theme_bg"
             android:textSize="16sp"
             tools:text="1000 points" />
     </LinearLayout>

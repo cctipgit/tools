@@ -4,6 +4,9 @@
         <shape>
             <corners android:radius="6dp" />
             <solid android:color="@color/colorPrimary" />
+            <gradient android:startColor="@color/colorPrimary"
+                android:angle="270"
+                android:endColor="#32235A"/>
         </shape>
     </item>
     <item android:drawable="@android:color/transparent" />

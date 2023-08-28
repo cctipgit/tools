@@ -4,4 +4,5 @@
         android:angle="0"
         android:startColor="#00000000"
         android:endColor="@color/chart_red_h_border" />
+    <corners android:radius="16dp"/>
 </shape>

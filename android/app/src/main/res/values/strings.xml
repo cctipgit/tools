@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CryptoVise</string>
+    <string name="app_name">RateQuiz</string>
     <string name="app_slogan">Visualize the world of crypto</string>
     <string name="switch_currency">Switch Currency</string>
     <string name="search_currency_hint">Search</string>
@@ -69,6 +69,8 @@
     <string name="home_task_item_go">Go</string>
     <string name="home_task_item_completed">Completed</string>
     <string name="game_point">2,700</string>
+    <string name="quiz_answer_times">Your answer times</string>
+    <string name="quiz_play">Play quiz</string>
 
 
     <string-array name="names">

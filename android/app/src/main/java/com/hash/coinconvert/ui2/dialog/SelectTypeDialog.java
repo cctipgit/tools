@@ -2,6 +2,7 @@ package com.hash.coinconvert.ui2.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.TextViewCompat;
 
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.databinding.DialogSelectTypeBinding;
@@ -73,10 +75,14 @@ public class SelectTypeDialog extends BaseBottomSheetDialog {
             RadioButton rb = (RadioButton) binding.radios.getChildAt(i);
             rb.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
-                    buttonView.setTextColor(ContextCompat.getColor(requireContext(), R.color.title));
+                    int color = ContextCompat.getColor(requireContext(), R.color.theme_text_color);
+                    buttonView.setTextColor(color);
+                    TextViewCompat.setCompoundDrawableTintList(buttonView,ColorStateList.valueOf(color));
                     buttonView.getPaint().setFakeBoldText(true);
                 } else {
-                    buttonView.setTextColor(ContextCompat.getColor(requireContext(), R.color.sub_title));
+                    int color = ContextCompat.getColor(requireContext(), R.color.sub_title);
+                    buttonView.setTextColor(color);
+                    TextViewCompat.setCompoundDrawableTintList(buttonView,ColorStateList.valueOf(color));
                     buttonView.getPaint().setFakeBoldText(false);
                 }
             });

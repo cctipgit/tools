@@ -22,6 +22,8 @@ public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
         return DialogRewardBinding.bind(view);
     }
 
+    private OnPositiveClickListener listener;
+
     @Override
     protected void initView() {
         PinItem item = RewardDialogArgs.fromBundle(getArguments()).getData();
@@ -33,8 +35,20 @@ public class RewardDialog extends BaseFragmentDialog<DialogRewardBinding> {
         binding.btnShare.setOnClickListener(v -> onPositiveClick(new AutoCloseAction() {
             @Override
             public void invoke(SavedStateHandle stateHandle) {
-                stateHandle.set(KEY, "https://play.google.com/store/apps/details?id=com.hash.tools");
+                String url = "https://play.google.com/store/apps/details?id=" + getContext().getPackageName();
+                stateHandle.set(KEY, url);
+                if (listener != null) {
+                    listener.onPositionClick(url);
+                }
             }
         }));
+    }
+
+    public void setOnPositiveClickListener(OnPositiveClickListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnPositiveClickListener {
+        void onPositionClick(String shareUrl);
     }
 }

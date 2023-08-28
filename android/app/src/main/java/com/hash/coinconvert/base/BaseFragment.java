@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -132,14 +133,19 @@ public abstract class BaseFragment extends Fragment {
             if (progressBar == null) {
                 getLayoutInflater().inflate(R.layout.view_page_loading, root, true);
                 progressBar = root.findViewById(R.id.global_progress_bar);
+                setupProgressGravity(progressBar);
             }
         }
         progressBar.getIndeterminateDrawable().setColorFilter(getProgressBarTint(), PorterDuff.Mode.MULTIPLY);
     }
 
+    protected void setupProgressGravity(ProgressBar progressBar){
+
+    }
+
     @ColorInt
     protected int getProgressBarTint() {
-        return requireContext().getColor(R.color.colorPrimary);
+        return requireContext().getColor(R.color.theme_text_color);
     }
 
     protected void hideLoading() {

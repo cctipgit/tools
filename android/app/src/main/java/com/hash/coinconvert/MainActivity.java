@@ -1,5 +1,6 @@
 package com.hash.coinconvert;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import com.hash.coinconvert.rnmodule.view.MultiWebView;
+import com.hash.coinconvert.ui2.activity.HomeActivity;
 
 public class MainActivity extends ReactActivity {
 
@@ -43,6 +45,19 @@ public class MainActivity extends ReactActivity {
             setStateBarLightMode();
         } else {
             setStateBarDarkMode();
+        }
+        if (!getIntent().getBooleanExtra("from_splash", false)) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (!intent.getBooleanExtra("from_splash", false)) {
+//            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         }
     }
 

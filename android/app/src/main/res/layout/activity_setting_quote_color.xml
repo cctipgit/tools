@@ -3,26 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingHorizontal="24dp"
     android:paddingTop="22dp">
 
     <com.flyco.roundview.RoundLinearLayout
         android:id="@+id/ll_red"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingVertical="16dp"
-        app:rv_backgroundColor="@color/keyboard_num_item_bg"
+        app:rv_backgroundColor="@color/theme_text_color_alpha40"
         app:rv_cornerRadius="16dp">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:src="@mipmap/red_rise_green_fall"
-            app:layout_constraintDimensionRatio="1:1" />
+            android:background="@drawable/rate_quote_red"
+            android:gravity="center"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1.3340%"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_trend" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rate_quote_green"
+            android:gravity="center"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-1.3340%"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:scaleY="-1"
+                android:src="@drawable/ic_trend" />
+        </LinearLayout>
 
         <RadioButton
             android:id="@+id/rb_red_up"
@@ -36,23 +73,59 @@
 
     <com.flyco.roundview.RoundLinearLayout
         android:id="@+id/ll_green"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_weight="1"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingVertical="16dp"
-        app:rv_backgroundColor="@color/keyboard_num_item_bg"
+        app:rv_backgroundColor="@color/theme_text_color_alpha40"
         app:rv_cornerRadius="16dp">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:src="@mipmap/green_rise_red_fall"
-            app:layout_constraintDimensionRatio="1:1" />
+            android:background="@drawable/rate_quote_green"
+            android:gravity="center"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1.3340%"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_trend" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rate_quote_red"
+            android:gravity="center"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-1.3340%"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:scaleY="-1"
+                android:src="@drawable/ic_trend" />
+        </LinearLayout>
 
         <RadioButton
             android:id="@+id/rb_green_up"

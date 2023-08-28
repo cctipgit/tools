@@ -45,6 +45,7 @@ public class PointsComponent extends Component {
     private RectF rectF;
     private RectF textRectF;
     private Path textPath;
+    private int colorPrimary;
     private float rewardImageRadiusRate = 0.5f;
 
     public static final int[] rewardImageArray = new int[]{
@@ -67,6 +68,7 @@ public class PointsComponent extends Component {
         }
         arcWidth = DisplayUtil.dip2px(context, 34f);
         strokeColor = Color.parseColor("#B671FF");
+        colorPrimary = ContextCompat.getColor(context,R.color.colorPrimary);
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
@@ -138,6 +140,7 @@ public class PointsComponent extends Component {
             //text
             textPath.reset();
             textPath.addArc(textRectF, startDrawAngle, itemArcAngle);
+            textPaint.setColor((i&1)==0 ? Color.WHITE : colorPrimary);
             canvas.drawTextOnPath(data[i].desc, textPath, 0, 0, textPaint);
 
             //pic
@@ -163,18 +166,16 @@ public class PointsComponent extends Component {
     }
 
     private void ensureLinearGradients(int w, int h) {
-        //#AE94FF, #7747F2
         if (linear1 == null) {
             linear1 = new LinearGradient(0, 0, w, h, new int[]{
-                    Color.parseColor("#AE94FF"),
-                    Color.parseColor("#7747F2")
+                    Color.parseColor("#0B327E"),
+                    Color.parseColor("#8458F3")
             }, null, Shader.TileMode.CLAMP);
         }
-        //#94D1FF, #4598F2
         if (linear2 == null) {
             linear2 = new LinearGradient(0, 0, w, h, new int[]{
-                    Color.parseColor("#94D1FF"),
-                    Color.parseColor("#4598F2")
+                    Color.parseColor("#FFFFFF"),
+                    Color.parseColor("#FFFFFF")
             }, null, Shader.TileMode.CLAMP);
         }
     }

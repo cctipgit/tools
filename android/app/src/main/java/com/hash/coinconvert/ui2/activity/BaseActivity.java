@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnConfig
             }
             onActivityResult(requestCode, result);
         });
-        if (isNightMode()) {
+        if (!isNightMode()) {
             setStateBarLightMode();
         } else {
             setStateBarDarkMode();

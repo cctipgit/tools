@@ -53,9 +53,10 @@ public class KLineView extends View {
 
     private void init(Context context) {
         paint = new Paint();
-        lineColor = Color.parseColor("#0CC96A");
+        lineColor = Color.parseColor("#8458F3");
         lineWidth = DisplayUtil.dip2px(context, 2f);
-        gradientStartColor = Color.parseColor("#300CC96A");
+        gradientStartColor = Color.parseColor("#778458F3");
+        //#7747F299, #7747F275, #1E065B00
 
         gradientPath = new Path();
         paint.setColor(lineColor);

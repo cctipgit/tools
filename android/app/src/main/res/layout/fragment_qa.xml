@@ -1,46 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hash.coinconvert.widget.RoundButton
-        android:id="@+id/btn_back"
-        style="@style/RoundButton.R8"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/qa_btn_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btn_next" />
-
-    <com.hash.coinconvert.widget.RoundButton
-        android:id="@+id/btn_next"
-        style="@style/RoundButton.R8"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="@string/qa_btn_next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/btn_back"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <ScrollView
+    <com.flyco.roundview.RoundFrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/btn_next"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:rotation="6"
+        app:rv_backgroundEndColor="@color/qaGradient1"
+        app:rv_backgroundStartColor="@color/lightBranding"
+        app:rv_cornerRadius="24dp"
+        app:rv_gradient_angle="270" />
 
-        <LinearLayout
-            android:id="@+id/ll_questions"
+    <com.flyco.roundview.RoundFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:rotation="3"
+        app:rv_backgroundEndColor="@color/qaGradient1"
+        app:rv_backgroundStartColor="@color/lightBranding"
+        app:rv_cornerRadius="24dp"
+        app:rv_gradient_angle="270" />
+
+    <com.flyco.roundview.RoundConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="24dp"
+        app:rv_backgroundEndColor="@color/colorPrimaryDark"
+        app:rv_backgroundStartColor="@color/colorPrimary"
+        app:rv_cornerRadius="24dp"
+        app:rv_gradient_angle="270">
+
+        <com.hash.coinconvert.widget.RoundButton
+            android:id="@+id/btn_back"
+            style="@style/RoundButton.R8"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/qa_btn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_next" />
+
+        <com.hash.coinconvert.widget.RoundButton
+            android:id="@+id/btn_next"
+            style="@style/RoundButton.R8"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="@string/qa_btn_next"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+            app:layout_constraintLeft_toRightOf="@+id/btn_back"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
             android:orientation="vertical"
-            android:paddingBottom="32dp" />
-    </ScrollView>
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/ll_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="32dp" />
+        </ScrollView>
+    </com.flyco.roundview.RoundConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

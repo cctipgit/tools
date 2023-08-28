@@ -1,36 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--<manifest xmlns:android="http://schemas.android.com/apk/res/android">-->
 
-<!--    <uses-permission android:name="android.permission.INTERNET" />-->
-
-<!--    <application-->
-<!--      android:name=".MainApplication"-->
-<!--      android:label="@string/app_name"-->
-<!--      android:icon="@mipmap/ic_launcher"-->
-<!--      android:roundIcon="@mipmap/ic_launcher_round"-->
-<!--      android:allowBackup="false"-->
-<!--      android:theme="@style/AppTheme">-->
-<!--      <activity-->
-<!--        android:name=".MainActivity"-->
-<!--        android:label="@string/app_name"-->
-<!--        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"-->
-<!--        android:launchMode="singleTask"-->
-<!--        android:windowSoftInputMode="adjustResize"-->
-<!--        android:exported="true">-->
-<!--        <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN" />-->
-<!--            <category android:name="android.intent.category.LAUNCHER" />-->
-<!--        </intent-filter>-->
-<!--      </activity>-->
-<!--    </application>-->
-<!--</manifest>-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!--<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
@@ -46,21 +22,17 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExchangeRate"
         tools:replace="android:allowBackup,android:fullBackupContent"
         tools:targetApi="31">
-        <activity
-            android:name=".web.WebActivity"
-            android:exported="true"></activity>
+        <activity android:name=".web.WebActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-            android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true"
@@ -70,15 +42,17 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter  android:autoVerify="true">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
-                    android:host="coinconvert.onelink.me"
-                    android:pathPrefix="/{onelinkID}" />
-            </intent-filter>
 
+                <data
+                    android:host="coinconvert.onelink.me"
+                    android:pathPrefix="/qkDv"
+                    android:scheme="https" />
+            </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -142,11 +116,8 @@
 
         <activity
             android:name=".ui2.activity.HomeActivity"
-            android:exported="true"
             android:launchMode="singleTop" />
-        <activity
-            android:name=".ui2.activity.QAActivity"
-            android:exported="true" />
+        <activity android:name=".ui2.activity.QAActivity" />
         <activity android:name="com.hash.coinconvert.ui2.activity.RedeemActivity" />
     </application>
 

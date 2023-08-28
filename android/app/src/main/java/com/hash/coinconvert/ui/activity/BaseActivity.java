@@ -292,7 +292,7 @@ public abstract class BaseActivity extends com.duxl.baselib.ui.activity.BaseActi
     private void addIOSCloseBar() {
         RelativeLayout rlBar = mActionBarView.getRlBar();
         RoundTextView roundTextView = new RoundTextView(this);
-        roundTextView.getDelegate().setBackgroundColor(getResources().getColor(R.color.slide_close_bar));
+        roundTextView.getDelegate().setBackgroundColor(getResources().getColor(R.color.theme_text_color));
         roundTextView.getDelegate().setIsRadiusHalfHeight(true);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(this, 50), DisplayUtil.dip2px(this, 4));
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);

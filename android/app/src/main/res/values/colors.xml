@@ -15,16 +15,21 @@
 
     <color name="colorPrimary">#7747F2</color>
     <color name="colorDisable">#E4E4E7</color>
+    <color name="lightBranding">#8458F3</color>
+    <color name="colorPrimaryLight">#AE94FF</color>
+    <color name="colorPrimaryDark">#1E065B</color>
+    <color name="qaGradient1">#0D8458F3</color>
+    <color name="yellow">#F9A01E</color>
 
     <!-- 主题背景色 -->
-    <color name="theme_bg">#FFFFFF</color>
+    <color name="theme_bg">#1E065B</color>
     <color name="global_background_color">@color/theme_bg</color>
 
     <!-- 首页更新时间字体颜色 -->
     <color name="main_refresh_time_color">#99000000</color>
 
     <!-- 主题字体颜色（首页货币名称） -->
-    <color name="theme_text_color">#000000</color>
+    <color name="theme_text_color">#FFFFFF</color>
     <color name="text_unselect">#A1A1AA</color>
     <color name="title">#000000</color>
     <color name="sub_title">#A1A1AA</color>
@@ -52,7 +57,7 @@
     <color name="cursor_color">#B6CEFE</color>
 
     <!-- 搜索框背景色 -->
-    <color name="search_edit_bg">#F2F2F5</color>
+    <color name="search_edit_bg">#000000</color>
     <!-- 搜索框背景色 -->
     <color name="search_edit_border">#E7E7EC</color>
     <!-- 搜索框提示文字颜色 -->
@@ -110,8 +115,8 @@
     <color name="slide_close_bar">#000000</color>
 
     <!-- 图表顶部横向线条 -->
-    <color name="chart_red_h_border">#4DF24E45</color>
-    <color name="chart_green_h_border">#4D53F245</color>
+    <color name="chart_red_h_border">#B3F24E45</color>
+    <color name="chart_green_h_border">#B353F245</color>
 
     <!-- 图表背景色 -->
     <color name="chart_red_bg">#33FA5B64</color>

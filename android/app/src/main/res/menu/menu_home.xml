@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/task_list"
-        android:icon="@drawable/ic_home_game"
-        android:title="@string/home_task_list" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--    <item-->
+<!--        android:id="@+id/task_list"-->
+<!--        android:icon="@drawable/ic_home_game"-->
+<!--        android:title="@string/home_task_list" />-->
     <item
         android:id="@+id/currency"
         android:icon="@drawable/ic_home_currency"
@@ -14,6 +15,6 @@
         android:title="@string/qa_title" />
     <item
         android:id="@+id/redeem"
-        android:icon="@drawable/ic_home_redeem"
-        android:title="@string/home_redeem" />
+        android:icon="@drawable/ic_home_profile"
+        android:title="@string/home_profile" />
 </menu>

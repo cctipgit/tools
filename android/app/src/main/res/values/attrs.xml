@@ -43,7 +43,7 @@
             <enum name="left" value="1" />
             <enum name="right" value="2" />
         </attr>
-        <attr name="abTitleColor" format="color"/>
+        <attr name="abTitleColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="wheelSurfView">
@@ -70,8 +70,13 @@
 
     <attr name="RoundButtonStyle" format="reference" />
     <declare-styleable name="RoundButton">
-        <attr name="rb_background" format="color"/>
-        <attr name="rb_radius" format="dimension"/>
-        <attr name="rb_ripple" format="boolean"/>
+        <attr name="rb_background" format="color" />
+        <attr name="rb_radius" format="dimension" />
+        <attr name="rb_ripple" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="StrokeTextView">
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
     </declare-styleable>
 </resources>

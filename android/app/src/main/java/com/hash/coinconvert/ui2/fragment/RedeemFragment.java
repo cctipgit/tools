@@ -57,9 +57,9 @@ public class RedeemFragment extends BaseMVVMFragment<RedeemViewModel, FragmentRe
                 int width = v.getWidth();
                 float x = event.getX();
                 if (x < width / 2) {
-                    navigateTo(RedeemFragmentDirections.actionFragmentRedeemToFragmentPointsDetails());
+                    navigateTo(Redeem2FragmentDirections.actionFragmentRedeemToFragmentPointsDetails());
                 } else {
-                    navigateTo(RedeemFragmentDirections.actionFragmentRedeemToFragmentRedeemHistory());
+                    navigateTo(Redeem2FragmentDirections.actionFragmentRedeemToFragmentRedeemHistory());
                 }
             }
             return true;

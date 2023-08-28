@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.hash.coinconvert.base.BaseViewModel;
+import com.hash.coinconvert.entity.PinList;
 import com.hash.coinconvert.http.RetrofitHelper;
 import com.hash.coinconvert.http.api.ToolApi;
 
@@ -14,6 +15,12 @@ public class LotteryViewModel extends BaseViewModel {
     private MutableLiveData<String> pinCheckId = new MutableLiveData<>();
     public LiveData<String> getPinCheckId(){
         return pinCheckId;
+    }
+
+    private MutableLiveData<PinList> pinList = new MutableLiveData<>();
+
+    public LiveData<PinList> getPinList(){
+        return pinList;
     }
 
     public LotteryViewModel(){
@@ -27,5 +34,12 @@ public class LotteryViewModel extends BaseViewModel {
                 pinCheckId.postValue(res.id);
             });
         }
+    }
+
+    public void fetchPinList(){
+        startLoadingIfNeeded(pinList);
+        execute(api.pinList(),res -> {
+            pinList.postValue(res);
+        });
     }
 }

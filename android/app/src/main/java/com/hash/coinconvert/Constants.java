@@ -20,7 +20,8 @@ public interface Constants {
     int MAX_FREQUENTLY_TOKEN = 12;
 
     /*** socket address */
-    String SOCKET_SERVER = "ws://sea.linkflower.link:2100/wss";
+//    String SOCKET_SERVER = "ws://sea.linkflower.link:2100/wss";
+    String SOCKET_SERVER = "ws://api.exchange2currency.com/wss";
 
     /*** CURRENCY TYPE */
     interface CURRENCY_TYPE {

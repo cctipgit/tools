@@ -1,10 +1,10 @@
 <resources>
-    <string name="home_currency_title">Cryptovise</string>
-    <string name="home_currency">Currency</string>
+    <string name="home_currency_title">Ratequiz</string>
+    <string name="home_currency">exchange</string>
     <string name="home_game">Game</string>
     <string name="home_task_list">Task list</string>
     <string name="home_redeem">Redeem</string>
-    <string name="home_profile">Profile</string>
+    <string name="home_profile">profile</string>
     <string name="select_title">Select</string>
     <string name="select_type_currency">Select currency</string>
     <string name="select_type_tokens">Select tokens</string>
@@ -31,6 +31,7 @@
     <string name="redeem_points_details">points details</string>
     <string name="redeem_redeem_history">redeem history</string>
     <string name="redeem_for">Redeem for %1$d</string>
+    <string name="redeem_lucky_draw">Lucky draw</string>
 
     <string name="lottery_chance">Chance left %1$d</string>
 
@@ -57,7 +58,7 @@
 
     <string name="adapter_empty1">No record yet</string>
 
-    <string name="qa_title">Questionnaire</string>
+    <string name="qa_title">quiz</string>
     <string name="qa_btn_back">Back</string>
     <string name="qa_btn_next">Next</string>
     <string name="qa_btn_done">Done</string>

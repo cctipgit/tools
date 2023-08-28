@@ -19,8 +19,8 @@
         android:id="@+id/radios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginBottom="24dp"
+        android:orientation="vertical"
         android:paddingHorizontal="16dp">
 
         <RadioButton
@@ -32,12 +32,12 @@
             android:background="?android:selectableItemBackground"
             android:button="@null"
             android:drawableRight="?android:attr/listChoiceIndicatorSingle"
-            android:drawableTint="@color/colorPrimary"
+            android:drawableTint="@color/theme_text_color"
             android:layoutDirection="rtl"
             android:padding="16dp"
-            android:textColor="@color/sub_title"
             android:text="@string/select_type_currency"
             android:textAlignment="textStart"
+            android:textColor="@color/sub_title"
             android:textSize="14sp" />
 
         <RadioButton
@@ -49,12 +49,12 @@
             android:background="?android:selectableItemBackground"
             android:button="@null"
             android:drawableRight="?android:attr/listChoiceIndicatorSingle"
-            android:drawableTint="@color/colorPrimary"
+            android:drawableTint="@color/theme_text_color"
             android:layoutDirection="rtl"
             android:padding="16dp"
-            android:textColor="@color/sub_title"
             android:text="@string/select_type_tokens"
             android:textAlignment="textStart"
+            android:textColor="@color/sub_title"
             android:textSize="14sp" />
     </RadioGroup>
 </LinearLayout>

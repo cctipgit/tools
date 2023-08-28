@@ -101,16 +101,17 @@ public abstract class SearchCurrencyActivity extends BaseRecyclerViewActivity im
         if (actionBar != null) {
             actionBar.setFitsSystemWindows(false);
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_arrow_down);
+            drawable.setTint(ContextCompat.getColor(this, R.color.theme_text_color));
             int size = DisplayUtil.dip2px(this, 24f);
             drawable.setBounds(0, 0, size, size);
             actionBar.getTitleView().setCompoundDrawables(null, null, drawable, null);
             actionBar.getTitleView().setCompoundDrawablePadding(DisplayUtil.dip2px(this, 8f));
-            actionBar.getTitleView().setPadding(0,0,0,0);
+            actionBar.getTitleView().setPadding(0, 0, 0, 0);
             actionBar.getTitleView().setOnClickListener(v -> {
                 //show dialog
                 SelectTypeDialog.newInstance(selectType).show(getSupportFragmentManager(), "select_type");
             });
-            actionBar.setPadding(0,0,0,0);
+            actionBar.setPadding(0, 0, 0, 0);
         }
     }
 

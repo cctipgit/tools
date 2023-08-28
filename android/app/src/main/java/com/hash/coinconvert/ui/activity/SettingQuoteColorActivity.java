@@ -1,5 +1,7 @@
 package com.hash.coinconvert.ui.activity;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.View;
 
 import com.duxl.baselib.utils.SPUtils;
@@ -24,6 +26,8 @@ public class SettingQuoteColorActivity extends BaseActivity {
     @Override
     protected void initView(View v) {
         super.initView(v);
+        getActionBarView().setBackImage(R.drawable.ic_actionbar_arrow_left);
+        getActionBarView().getIvBack().setImageTintList(ColorStateList.valueOf(Color.WHITE));
         setTitle(R.string.quote_color);
         setDialogStyle();
         setSlideEnable(SwipeBackLayout.FROM_TOP);

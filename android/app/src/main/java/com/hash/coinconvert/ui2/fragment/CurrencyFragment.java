@@ -9,12 +9,14 @@ import androidx.navigation.NavDirections;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.duxl.baselib.utils.DisplayUtil;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.database.DBHolder;
 import com.hash.coinconvert.databinding.FragmentCurrencyBinding;
 import com.hash.coinconvert.entity.TokenWrapper;
 import com.hash.coinconvert.ui2.adapter.LineItemDecoration;
+import com.hash.coinconvert.ui2.adapter.SpaceDecoration;
 import com.hash.coinconvert.ui2.adapter.TokenAdapter;
 import com.hash.coinconvert.utils.StatusBarUtils;
 import com.hash.coinconvert.vm.CurrencyViewModel;
@@ -73,11 +75,8 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
     @Override
     protected void initView() {
         StatusBarUtils.setViewHeightEqualsStatusBarHeightLinear(binding.paddingView);
-        binding.actionBar.setFitsSystemWindows(false);
-        binding.actionBar.setOnBackButtonClickListener(v -> navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToActivitySelectTokens()));
-        binding.actionBar.addMenu(R.drawable.ic_setting_24, (v) -> {
-            navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToFragmentProfile());
-        });
+
+        binding.btnAddCurrency.setOnClickListener(v -> navigateTo(CurrencyFragmentDirections.actionFragmentCurrencyToActivitySelectTokens()));
         initRecyclerView(binding.recyclerview);
         DBHolder.getInstance().prepareTokenAsync(requireContext()).subscribeOn(Schedulers.io()).subscribe(ignore -> viewModel.loadAllCurrencyInfo());
 
@@ -139,7 +138,8 @@ public class CurrencyFragment extends BaseMVVMFragment<CurrencyViewModel, Fragme
 
     private void initRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerView.addItemDecoration(new LineItemDecoration(requireContext(), true));
+        int verticalSpace = DisplayUtil.dip2px(requireContext(), 8);
+        recyclerView.addItemDecoration(new SpaceDecoration(0, verticalSpace, 0, verticalSpace));
         tokenAdapter = new TokenAdapter();
         tokenAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             if (view.getId() == R.id.cl_detail) {

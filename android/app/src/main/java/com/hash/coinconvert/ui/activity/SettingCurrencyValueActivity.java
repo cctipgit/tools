@@ -1,6 +1,8 @@
 package com.hash.coinconvert.ui.activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,8 @@ public class SettingCurrencyValueActivity extends BaseRecyclerViewActivity imple
     @Override
     protected void initView(View v) {
         super.initView(v);
+        getActionBarView().setBackImage(R.drawable.ic_actionbar_arrow_left);
+        getActionBarView().getIvBack().setImageTintList(ColorStateList.valueOf(Color.WHITE));
         setDialogStyle();
         setSlideEnable(SwipeBackLayout.FROM_TOP);
         setObserveOtherSlideFinish();
@@ -49,7 +53,7 @@ public class SettingCurrencyValueActivity extends BaseRecyclerViewActivity imple
 
     @Override
     protected BaseQuickAdapter getAdapter() {
-        if(mAdapter == null) {
+        if (mAdapter == null) {
             mAdapter = new SettingListAdapter();
             int defaultValue = SPUtils.getInstance().getInt(Constants.SP.KEY.DEFAULT_CURRENCY_VALUE, Constants.SP.DEFAULT.DEFAULT_CURRENCY_VALUE);
             List<SettingListAdapter.ListItem> listData = new ArrayList();

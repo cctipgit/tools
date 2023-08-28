@@ -21,7 +21,6 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="NONE"
-            android:textColor="@color/theme_text_color_alpha60"
             android:textSize="16sp"
             app:fountType="poppinsMedium" />
 
@@ -30,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1,234.00"
-            android:textColor="@color/theme_text_color_alpha30"
             app:fountType="poppinsRegular" />
 
         <Space
@@ -43,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:src="@mipmap/ic_check_on" />
+            android:src="@drawable/ic_check" />
 
     </com.flyco.roundview.RoundLinearLayout>
 

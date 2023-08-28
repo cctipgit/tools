@@ -6,4 +6,18 @@
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 
+    
+    <style name="AppToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/AppToolbarTitle</item>
+    </style>
+
+    <style name="AppToolbarTitle">
+        <item name="fontFamily">@font/racingsansone_regular</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="StrokeTextViewStyle">
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">4dp</item>
+    </style>
 </resources>

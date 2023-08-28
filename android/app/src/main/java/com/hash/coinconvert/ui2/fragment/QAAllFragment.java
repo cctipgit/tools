@@ -9,13 +9,15 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.duxl.baselib.utils.ToastUtils;
+import com.duxl.baselib.utils.DisplayUtil;
 import com.hash.coinconvert.R;
 import com.hash.coinconvert.base.BaseMVVMFragment;
 import com.hash.coinconvert.databinding.ActivityQaBinding;
@@ -26,6 +28,7 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
 
     public static final int PROGRESS_RATE = 100;
     private ValueAnimator progressBarAnim;
+    private boolean submitted = false;
 
     public QAAllFragment() {
         super(R.layout.activity_qa);
@@ -45,8 +48,23 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
 
     @Override
     protected void initView() {
+        binding.actionBar.setOnBackButtonClickListener(v -> {
+            if (submitted) {
+                getNavController().popBackStack(R.id.fragment_quiz, false);
+            } else {
+                navigateBack();
+            }
+        });
         binding.progressBar.setMax(PROGRESS_RATE);
         binding.progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private View genMenuView() {
+        ImageView imageView = new ImageView(requireContext());
+        imageView.setImageResource(R.drawable.ic_task_list_wheel);
+        int size = DisplayUtil.dip2px(requireContext(), 24);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(size, size));
+        return imageView;
     }
 
     @Override
@@ -64,6 +82,7 @@ public class QAAllFragment extends BaseMVVMFragment<QAViewModel, ActivityQaBindi
         });
 
         observer(viewModel.getQuestions(), questionList -> {
+            submitted = questionList.submitted;
             if (questionList.submitted) {
                 if (binding.flQa.findViewById(R.id.ll_qa_submitted) == null) {
                     binding.flQa.addView(getLayoutInflater().inflate(R.layout.layout_qa_submitted, binding.flQa, false));
