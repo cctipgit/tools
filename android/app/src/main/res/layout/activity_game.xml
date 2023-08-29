@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@id/padding_view"
         app:tint="@color/white" />
 
-    <com.hash.coinconvert.widget.wheelview.WheelSurfView
+    <com.rate.quiz.widget.wheelview.WheelSurfView
         android:id="@+id/wheelSurfView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

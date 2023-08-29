@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_qa"
-        android:name="com.hash.coinconvert.ui2.fragment.QAFragment"
+        android:name="com.rate.quiz.ui2.fragment.QAFragment"
         android:label="QAFragment"
         tools:layout="@layout/fragment_qa">
         <action
@@ -24,7 +24,7 @@
 
     <dialog
         android:id="@+id/dialog_qa_submitted"
-        android:name="com.hash.coinconvert.ui2.dialog.QASubmittedDialog"
+        android:name="com.rate.quiz.ui2.dialog.QASubmittedDialog"
         android:label="QASubmitted"
         tools:layout="@layout/dialog_qa_submitted" />
 </navigation>

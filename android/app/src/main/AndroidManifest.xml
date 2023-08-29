@@ -61,7 +61,7 @@
 
                 <data
                     android:host="main"
-                    android:scheme="coinconvert" />
+                    android:scheme="ratequiz" />
             </intent-filter>
         </activity>
         <activity
@@ -118,7 +118,7 @@
             android:name=".ui2.activity.HomeActivity"
             android:launchMode="singleTop" />
         <activity android:name=".ui2.activity.QAActivity" />
-        <activity android:name="com.hash.coinconvert.ui2.activity.RedeemActivity" />
+        <activity android:name="com.rate.quiz.ui2.activity.RedeemActivity" />
     </application>
 
 </manifest>

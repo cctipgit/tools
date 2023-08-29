@@ -9,7 +9,7 @@
     app:rv_backgroundColor="@color/theme_bg"
     app:rv_cornerRadius="16dp">
 
-    <com.hash.coinconvert.widget.AppTextView
+    <com.rate.quiz.widget.AppTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <com.hash.coinconvert.widget.AppTextView
+    <com.rate.quiz.widget.AppTextView
         android:id="@+id/tv_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

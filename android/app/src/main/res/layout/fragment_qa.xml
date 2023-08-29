@@ -38,7 +38,7 @@
         app:rv_cornerRadius="24dp"
         app:rv_gradient_angle="270">
 
-        <com.hash.coinconvert.widget.RoundButton
+        <com.rate.quiz.widget.RoundButton
             android:id="@+id/btn_back"
             style="@style/RoundButton.R8"
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btn_next" />
 
-        <com.hash.coinconvert.widget.RoundButton
+        <com.rate.quiz.widget.RoundButton
             android:id="@+id/btn_next"
             style="@style/RoundButton.R8"
             android:layout_width="0dp"

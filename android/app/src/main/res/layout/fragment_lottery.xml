@@ -5,28 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
         tools:context=".ui2.activity.HomeActivity">
 
-        <com.hash.coinconvert.widget.lottery.LotteryView
+        <com.rate.quiz.widget.lottery.LotteryView
             android:id="@+id/lottery_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintDimensionRatio="315:428"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
             android:importantForAccessibility="no"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/lottery_view"
+            app:layout_constraintDimensionRatio="64:66.8"
+            app:layout_constraintLeft_toLeftOf="@+id/lottery_view"
+            app:layout_constraintRight_toRightOf="@+id/lottery_view"
+            app:layout_constraintTop_toTopOf="@+id/lottery_view"
+            app:layout_constraintWidth_percent="0.1495"
             app:srcCompat="@drawable/bg_wheel_start" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_quiz"
-        android:name="com.hash.coinconvert.ui2.fragment.QuizFragment"
+        android:name="com.rate.quiz.ui2.fragment.QuizFragment"
         android:label="Quiz"
         tools:layout="@layout/fragment_quiz_home">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/fragment_qa_all"
-        android:name="com.hash.coinconvert.ui2.fragment.QAAllFragment"
+        android:name="com.rate.quiz.ui2.fragment.QAAllFragment"
         android:label="QAAllFragment"
         tools:layout="@layout/activity_qa">
         <action
@@ -30,13 +30,13 @@
 
     <dialog
         android:id="@+id/dialog_qa_submitted"
-        android:name="com.hash.coinconvert.ui2.dialog.QASubmittedDialog"
+        android:name="com.rate.quiz.ui2.dialog.QASubmittedDialog"
         android:label="QASubmitted"
         tools:layout="@layout/dialog_qa_submitted" />
 
     <fragment
         android:id="@+id/fragment_lottery"
-        android:name="com.hash.coinconvert.ui2.fragment.LotteryFragment"
+        android:name="com.rate.quiz.ui2.fragment.LotteryFragment"
         android:label="Lottery"
         tools:layout="@layout/fragment_lottery">
         <action
@@ -45,7 +45,7 @@
 
         <argument
             android:name="data"
-            app:argType="com.hash.coinconvert.entity.PinItem[]"
+            app:argType="com.rate.quiz.entity.PinItem[]"
             app:nullable="false" />
         <action
             android:id="@+id/action_fragment_lottery_to_activity_redeem"
@@ -54,17 +54,17 @@
 
     <dialog
         android:id="@+id/dialog_reward"
-        android:name="com.hash.coinconvert.ui2.dialog.RewardDialog"
+        android:name="com.rate.quiz.ui2.dialog.RewardDialog"
         android:label="Reward"
         tools:layout="@layout/dialog_reward">
         <argument
             android:name="data"
-            app:argType="com.hash.coinconvert.entity.PinItem"
+            app:argType="com.rate.quiz.entity.PinItem"
             app:nullable="false" />
     </dialog>
 
     <activity
         android:id="@+id/activity_redeem"
-        android:name="com.hash.coinconvert.ui2.activity.RedeemActivity"
+        android:name="com.rate.quiz.ui2.activity.RedeemActivity"
         tools:layout="@layout/activity_redeem" />
 </navigation>

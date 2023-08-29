@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:layout_width="match_parent"
         app:abTitle="@string/points_details_title"
         app:abTitleGravity="left"

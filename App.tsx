@@ -66,7 +66,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#24262B" }}>
+    <View style={{ flex: 1, backgroundColor: "#008800" }}>
       <SafeAreaView style={{ flex: 1 }}>
         <HomeScreen />
       </SafeAreaView>

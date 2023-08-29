@@ -16,7 +16,7 @@
         app:rv_backgroundPressColor="@color/setting_item_press"
         app:rv_cornerRadius="16dp">
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_label_1"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textSize="16sp"
             app:fountType="poppinsMedium" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_label_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

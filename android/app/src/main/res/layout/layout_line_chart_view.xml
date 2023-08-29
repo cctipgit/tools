@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:visibility="invisible">
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textColor="@color/theme_text_color"
             android:textSize="22sp" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:background="@mipmap/up_down"
             android:layout_height="wrap_content">
 
-            <com.hash.coinconvert.widget.AutoSplitTextView
+            <com.rate.quiz.widget.AutoSplitTextView
                 android:id="@+id/tv_income"
                 android:padding="8dp"
                 android:textSize="9sp"

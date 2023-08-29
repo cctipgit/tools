@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.SettingItemView
+    <com.rate.quiz.widget.SettingItemView
         android:id="@+id/v_plugin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,14 +19,14 @@
         android:layout_marginHorizontal="24dp"
         android:background="@color/line_color" />
 
-    <com.hash.coinconvert.widget.SettingItemView
+    <com.rate.quiz.widget.SettingItemView
         android:id="@+id/v_quote_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftText="@string/quote_color"
         app:rightText="Red rise green fall" />
 
-    <com.hash.coinconvert.widget.SettingItemView
+    <com.rate.quiz.widget.SettingItemView
         android:id="@+id/v_keyboard_sound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

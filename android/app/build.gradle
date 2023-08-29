@@ -83,7 +83,7 @@ android {
 
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
-    namespace "com.hash.coinconvert"
+    namespace "com.rate.quiz"
     defaultConfig {
         applicationId "com.rate.quiz"
         minSdk rootProject.ext.android["minSdkVersion"]

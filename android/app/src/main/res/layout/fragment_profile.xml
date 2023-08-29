@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             tools:text="1000 points" />
     </LinearLayout>
 
-    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+    <com.rate.quiz.widget.ProfileSettingMenuItem
         android:id="@+id/menu_settings"
         style="@style/ProfileSetting"
         android:layout_width="match_parent"
@@ -70,7 +70,7 @@
         android:layout_marginTop="24dp"
         app:psm_Title="@string/profile_settings" />
 
-    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+    <com.rate.quiz.widget.ProfileSettingMenuItem
         android:id="@+id/menu_privacy"
         style="@style/ProfileSetting"
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         android:layout_marginTop="16dp"
         app:psm_Title="@string/profile_privacy_policy" />
 
-    <com.hash.coinconvert.widget.ProfileSettingMenuItem
+    <com.rate.quiz.widget.ProfileSettingMenuItem
         android:id="@+id/menu_about"
         style="@style/ProfileSetting"
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_profile"
-        android:name="com.hash.coinconvert.ui2.fragment.ProfileFragment"
+        android:name="com.rate.quiz.ui2.fragment.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/fragment_setting"
-        android:name="com.hash.coinconvert.ui2.fragment.SettingFragment"
+        android:name="com.rate.quiz.ui2.fragment.SettingFragment"
         android:label="setting"
         tools:layout="@layout/fragment_setting">
         <action
@@ -30,11 +30,11 @@
 
     <activity
         android:id="@+id/activity_def_currency_value"
-        android:name="com.hash.coinconvert.ui.activity.SettingCurrencyValueActivity"
+        android:name="com.rate.quiz.ui.activity.SettingCurrencyValueActivity"
         android:label="SettingCurrencyValueActivity" />
 
     <activity
         android:id="@+id/activity_quote_color"
-        android:name="com.hash.coinconvert.ui.activity.SettingQuoteColorActivity"
+        android:name="com.rate.quiz.ui.activity.SettingQuoteColorActivity"
         android:label="SettingQuoteColorActivity" />
 </navigation>

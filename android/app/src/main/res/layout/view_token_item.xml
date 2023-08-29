@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:parentTag="LinearLayout">
 
-    <com.hash.coinconvert.widget.ColoredLayout
+    <com.rate.quiz.widget.ColoredLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                 tools:text="100" />
         </FrameLayout>
 
-    </com.hash.coinconvert.widget.ColoredLayout>
+    </com.rate.quiz.widget.ColoredLayout>
 
     <View
         android:layout_width="match_parent"

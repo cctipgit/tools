@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RateQuiz</string>
+    <string name="app_name">Ratequiz</string>
     <string name="app_slogan">Visualize the world of crypto</string>
     <string name="switch_currency">Switch Currency</string>
     <string name="search_currency_hint">Search</string>

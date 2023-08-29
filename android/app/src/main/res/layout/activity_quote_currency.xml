@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.SearchView
+    <com.rate.quiz.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.hash.coinconvert.widget.SideBar
+        <com.rate.quiz.widget.SideBar
             android:id="@+id/side_bar"
             android:layout_width="30dp"
             android:layout_height="match_parent"

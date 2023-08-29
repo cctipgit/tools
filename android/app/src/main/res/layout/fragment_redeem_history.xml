@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:layout_width="match_parent"
         app:abTitleGravity="left"
         app:abTitle="@string/redeem_history_title"

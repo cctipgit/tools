@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:abTitle="@string/token_details_title"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp">
 
-                <com.hash.coinconvert.widget.KLineView
+                <com.rate.quiz.widget.KLineView
                     android:id="@+id/k_line_view"
                     android:layout_width="match_parent"
                     android:layout_height="159dp"
@@ -171,28 +171,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_stat" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.hash.coinconvert.widget.TokenDetailStatItemView
+            <com.rate.quiz.widget.TokenDetailStatItemView
                 android:id="@+id/stat_high"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp" />
 
-            <com.hash.coinconvert.widget.TokenDetailStatItemView
+            <com.rate.quiz.widget.TokenDetailStatItemView
                 android:id="@+id/stat_low"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp" />
 
-            <com.hash.coinconvert.widget.TokenDetailStatItemView
+            <com.rate.quiz.widget.TokenDetailStatItemView
                 android:id="@+id/stat_avg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp" />
 
-            <com.hash.coinconvert.widget.TokenDetailStatItemView
+            <com.rate.quiz.widget.TokenDetailStatItemView
                 android:id="@+id/stat_change"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

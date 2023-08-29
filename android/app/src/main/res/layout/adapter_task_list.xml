@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Daily check-in" />
 
-    <com.hash.coinconvert.widget.RoundButton
+    <com.rate.quiz.widget.RoundButton
         android:id="@+id/btn_check"
         style="@style/RoundButton.R4"
         android:layout_width="wrap_content"

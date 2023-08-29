@@ -42,6 +42,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="$5USDT" />
 
+    <ImageView
+        android:layout_width="234dp"
+        android:layout_height="234dp"
+        android:background="@drawable/bg_redeem_decor1"
+        android:translationX="113dp"
+        android:translationY="-138dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_logo"
         android:layout_width="80dp"
@@ -57,7 +66,7 @@
         app:strokeWidth="2dp"
         tools:src="@mipmap/avator01" />
 
-    <com.hash.coinconvert.widget.RoundButton
+    <com.rate.quiz.widget.RoundButton
         android:id="@+id/btn_redeem"
         style="@style/RoundButton.Disabled.R4"
         android:layout_width="wrap_content"

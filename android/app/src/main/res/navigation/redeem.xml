@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_redeem"
-        android:name="com.hash.coinconvert.ui2.fragment.Redeem2Fragment"
+        android:name="com.rate.quiz.ui2.fragment.Redeem2Fragment"
         android:label="RedeemFragment"
         tools:layout="@layout/fragment_redeem">
         <action
@@ -27,19 +27,19 @@
 
     <fragment
         android:id="@+id/fragment_points_details"
-        android:name="com.hash.coinconvert.ui2.fragment.PointsDetailsFragment"
+        android:name="com.rate.quiz.ui2.fragment.PointsDetailsFragment"
         android:label="PointsDetails"
         tools:layout="@layout/fragment_points_details" />
 
     <fragment
         android:id="@+id/fragment_redeem_history"
-        android:name="com.hash.coinconvert.ui2.fragment.RedeemHistoryFragment"
+        android:name="com.rate.quiz.ui2.fragment.RedeemHistoryFragment"
         android:label="RedeemHistory"
         tools:layout="@layout/fragment_redeem_history" />
 
     <fragment
         android:id="@+id/fragment_profile"
-        android:name="com.hash.coinconvert.ui2.fragment.ProfileFragment"
+        android:name="com.rate.quiz.ui2.fragment.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <action
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/fragment_setting"
-        android:name="com.hash.coinconvert.ui2.fragment.SettingFragment"
+        android:name="com.rate.quiz.ui2.fragment.SettingFragment"
         android:label="setting"
         tools:layout="@layout/fragment_setting">
         <action
@@ -62,11 +62,11 @@
 
     <activity
         android:id="@+id/activity_def_currency_value"
-        android:name="com.hash.coinconvert.ui.activity.SettingCurrencyValueActivity"
+        android:name="com.rate.quiz.ui.activity.SettingCurrencyValueActivity"
         android:label="SettingCurrencyValueActivity" />
 
     <activity
         android:id="@+id/activity_quote_color"
-        android:name="com.hash.coinconvert.ui.activity.SettingQuoteColorActivity"
+        android:name="com.rate.quiz.ui.activity.SettingQuoteColorActivity"
         android:label="SettingQuoteColorActivity" />
 </navigation>

@@ -6,7 +6,7 @@
     app:rv_backgroundColor="@color/letter_pop_bg"
     app:rv_cornerRadius="6dp">
 
-    <com.hash.coinconvert.widget.AppTextView
+    <com.rate.quiz.widget.AppTextView
         android:id="@+id/tv_letter"
         android:layout_width="36dp"
         android:layout_height="36dp"

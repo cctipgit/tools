@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:abTitle="@string/switch_currency" />
 
-    <com.hash.coinconvert.widget.SearchView
+    <com.rate.quiz.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -28,7 +28,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="64dp" />
 
-        <com.hash.coinconvert.widget.SideBar
+        <com.rate.quiz.widget.SideBar
             android:id="@+id/side_bar"
             android:layout_width="28dp"
             android:layout_height="match_parent"

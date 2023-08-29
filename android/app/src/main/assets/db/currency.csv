@@ -88,7 +88,7 @@ TWD,TWD,Taiwan New Dollar,currency,NT$,1,T,0.03267013,0
 UAH,UAH,Ukraine Hryvnia,currency,₴,1,U,0.0250540468774178,0
 UNI,UNI,UNICORN Token,digital,☼,1,U,5.08926412489603,0
 USD,USD,United States Dollar,currency,$,US,U,0.99999967360934,0
-USDT,USDT,Tether,digital,☼,1,U,0.999539536467028,1
+USDT,USDT,Tether,digital,$,1,U,0.999539536467028,1
 UYU,UYU,Uruguay Peso,currency,$U,UY,U,0.02543,0
 VET,VET,VeChain,digital,☼,1,V,0.0156298979271607,0
 VND,VND,Viet Nam Dong,currency,₫,VN,V,3.65303999401639e-05,0

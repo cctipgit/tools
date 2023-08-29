@@ -14,7 +14,7 @@
             android:layout_height="24dp"
             android:background="#00F"/>
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:layout_width="wrap_content"
             android:textColor="@color/theme_text_color"
             android:text="Bitcoin"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"/>
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:layout_width="wrap_content"
             android:textColor="@color/theme_text_color_alpha30"
             android:text="BTC"

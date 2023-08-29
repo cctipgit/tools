@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_task_list"
-        android:name="com.hash.coinconvert.ui2.fragment.TaskListFragment"
+        android:name="com.rate.quiz.ui2.fragment.TaskListFragment"
         android:label="TaskListFragment"
         tools:layout="@layout/fragment_task_list" >
         <action
@@ -16,27 +16,27 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_lottery"
-        android:name="com.hash.coinconvert.ui2.fragment.LotteryFragment"
+        android:name="com.rate.quiz.ui2.fragment.LotteryFragment"
         android:label="Lottery"
         tools:layout="@layout/fragment_lottery">
         <action
             android:id="@+id/action_fragment_lottery_to_dialog_reward"
             app:destination="@id/dialog_reward" />
 
-        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem[]" app:nullable="false"/>
+        <argument android:name="data" app:argType="com.rate.quiz.entity.PinItem[]" app:nullable="false"/>
         <action
             android:id="@+id/action_fragment_lottery_to_activity_redeem"
             app:destination="@id/activity_redeem" />
     </fragment>
 
     <dialog android:id="@+id/dialog_reward"
-        android:name="com.hash.coinconvert.ui2.dialog.RewardDialog"
+        android:name="com.rate.quiz.ui2.dialog.RewardDialog"
         android:label="Reward"
         tools:layout="@layout/dialog_reward">
-        <argument android:name="data" app:argType="com.hash.coinconvert.entity.PinItem" app:nullable="false"/>
+        <argument android:name="data" app:argType="com.rate.quiz.entity.PinItem" app:nullable="false"/>
     </dialog>
 
     <activity android:id="@+id/activity_redeem"
-        android:name="com.hash.coinconvert.ui2.activity.RedeemActivity"
+        android:name="com.rate.quiz.ui2.activity.RedeemActivity"
         tools:layout="@layout/activity_redeem"/>
 </navigation>

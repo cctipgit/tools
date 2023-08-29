@@ -5,37 +5,37 @@
     android:id="@+id/item_group"
     android:layout_height="match_parent">
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_0"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.hash.coinconvert.widget.ConvertItemView
+    <com.rate.quiz.widget.ConvertItemView
         android:id="@+id/convert_item_view_5"
         android:layout_width="match_parent"
         android:layout_height="0dp"

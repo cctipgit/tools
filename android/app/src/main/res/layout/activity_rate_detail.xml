@@ -25,7 +25,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_origin_currency_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="16sp"
             tools:text="1" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_origin_currency_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_target_currency_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
 
     </com.flyco.roundview.RoundLinearLayout>
 
-    <com.hash.coinconvert.widget.AppTextView
+    <com.rate.quiz.widget.AppTextView
         android:id="@+id/tv_current_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <com.hash.coinconvert.widget.LineChartView
+        <com.rate.quiz.widget.LineChartView
             android:id="@+id/line_chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -144,7 +144,7 @@
                 android:adjustViewBounds="true"
                 android:src="@mipmap/chart_floor" />
 
-            <com.hash.coinconvert.widget.DateSwitchView
+            <com.rate.quiz.widget.DateSwitchView
                 android:id="@+id/date_switch_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <com.hash.coinconvert.widget.AppTextView
+    <com.rate.quiz.widget.AppTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
@@ -179,7 +179,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_high_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_high_value"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_high_label"
             app:layout_constraintTop_toBottomOf="@id/tv_high_label" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_low_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -215,7 +215,7 @@
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintTop_toTopOf="@id/tv_high_label" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_low_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -226,7 +226,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_low_label"
             app:layout_constraintTop_toTopOf="@id/tv_high_value" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_average_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -238,7 +238,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_high_label"
             app:layout_constraintTop_toBottomOf="@id/tv_high_value" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_average_value"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
@@ -251,7 +251,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_average_label"
             app:layout_constraintTop_toBottomOf="@id/tv_average_label" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_change_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -262,7 +262,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_low_label"
             app:layout_constraintTop_toTopOf="@id/tv_average_label" />
 
-        <com.hash.coinconvert.widget.AppTextView
+        <com.rate.quiz.widget.AppTextView
             android:id="@+id/tv_change_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

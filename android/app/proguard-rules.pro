@@ -52,12 +52,12 @@
 -keep class com.google.gson.examples.android.model.** { *; }
 -keep interface com.google.gson.**{*;}
 # 实体类不混淆
--keep class com.hash.coinconvert.entity.** {*;}
+-keep class com.rate.quiz.entity.** {*;}
 -keep class com.exchange2currency.ef.currencyprice.grpc.**{*;}
 # 数据库相关类不混淆
--keep class com.hash.coinconvert.database.** {*;}
+-keep class com.rate.quiz.database.** {*;}
 #项目下代码不混淆
--keep class com.hash.coinconvert.** {*;}
+-keep class com.rate.quiz.** {*;}
 # butterknife不混淆
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**

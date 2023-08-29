@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hash.coinconvert.widget.ActionBar
+    <com.rate.quiz.widget.ActionBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:abTitle="@string/setting_title"
         app:abTitleGravity="left" />
 
-    <com.hash.coinconvert.widget.SettingMenuItem
+    <com.rate.quiz.widget.SettingMenuItem
         android:id="@+id/menu_def_value"
         style="@style/SettingItem"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         android:layout_marginTop="16dp"
         app:sm_title="@string/setting_def_value" />
 
-    <com.hash.coinconvert.widget.SettingMenuItem
+    <com.rate.quiz.widget.SettingMenuItem
         android:id="@+id/menu_point"
         style="@style/SettingItem"
         android:layout_width="match_parent"
@@ -32,14 +32,14 @@
         android:layout_marginHorizontal="20dp"
         android:background="@color/bg_divider" />
 
-    <com.hash.coinconvert.widget.SettingMenuItem
+    <com.rate.quiz.widget.SettingMenuItem
         android:id="@+id/menu_price_color"
         style="@style/SettingItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:sm_title="@string/setting_price_color" />
 
-    <com.hash.coinconvert.widget.RoundButton
+    <com.rate.quiz.widget.RoundButton
         android:id="@+id/btn_reset"
         android:layout_width="match_parent"
         android:layout_height="50dp"

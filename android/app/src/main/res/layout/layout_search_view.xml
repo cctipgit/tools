@@ -9,7 +9,7 @@
     app:rv_backgroundColor="@color/search_edit_bg"
     app:rv_cornerRadius="52dp">
 
-    <com.hash.coinconvert.widget.AppEditText
+    <com.rate.quiz.widget.AppEditText
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
