@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
 import com.appsflyer.attribution.AppsFlyerRequestListener;
-import com.rate.quiz.livedatabus.event.AppsFlyerEvent;
 import com.jeremyliao.liveeventbus.LiveEventBus;
+import com.rate.quiz.livedatabus.event.AppsFlyerEvent;
 
 import java.util.Map;
 
