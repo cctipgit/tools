@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        getFromAsyncLocalStorage();
+        getFromAsyncLocalStorage();
         mStartTime = SystemClock.elapsedRealtime();
         Observable<AppsFlyerEvent> observable = LiveEventBus.get(AppsFlyerEvent.KEY);
         observable.observe(this, new Observer<AppsFlyerEvent>() {

@@ -16,6 +16,7 @@ import com.rate.quiz.ui2.activity.HomeActivity;
 import com.rate.quiz.utils.AppsFlyerHelper;
 import com.rate.quiz.utils.GsonHelper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -77,6 +78,8 @@ public class ToolModule extends ReactContextBaseJavaModule {
             Map<String, Object> paramMap = null;
             if (params instanceof Map) {
                 paramMap = ((Map<String, Object>) params);
+            } else if (params instanceof String) {
+                paramMap = GsonHelper.fromJsonString(((String) params), HashMap.class);
             }
             AppsFlyerHelper.logEvent(context, eventName.toString(), paramMap);
             promise.resolve(null);
