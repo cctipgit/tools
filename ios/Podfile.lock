@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (5.7.1)
-  - AppsFlyerFramework (6.11.2):
-    - AppsFlyerFramework/Main (= 6.11.2)
-  - AppsFlyerFramework/Main (6.11.2)
+  - AppsFlyerFramework (6.12.1):
+    - AppsFlyerFramework/Main (= 6.12.1)
+  - AppsFlyerFramework/Main (6.12.1)
   - BetterSegmentedControl (2.0.1)
   - boost (1.76.0)
   - Charts (4.1.0):
@@ -633,7 +633,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - AppsFlyerFramework (= 6.11.2)
+  - AppsFlyerFramework (= 6.12.1)
   - BetterSegmentedControl (= 2.0.1)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - Charts (= 4.1.0)
@@ -905,7 +905,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
-  AppsFlyerFramework: e22e8f0e746b4f568d9bb0b078180c6ad95e2609
+  AppsFlyerFramework: e29b63fc5441400a38a31c5501c1da500b9d53d0
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
@@ -1008,6 +1008,6 @@ SPEC CHECKSUMS:
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 74c9441ccb4add0c249e7846b1f9b21531db4d31
+PODFILE CHECKSUM: 9ced54ca3dff18e3f56170e626962ee1477c912f
 
 COCOAPODS: 1.12.1

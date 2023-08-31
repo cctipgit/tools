@@ -81,7 +81,7 @@ target 'cryptovise' do
   pod 'Moya/RxSwift', '15.0.0' #https://github.com/Moya/Moya.git
   pod 'CleanJSON', '1.0.9' #https://github.com/Pircate/CleanJSON.git
   pod 'MJExtension', '3.4.1', :modular_headers => true #https://github.com/CoderMJLee/MJExtension.git
-  pod 'AppsFlyerFramework', '6.11.2' #https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.11.2/AppsFlyerLib-Binaries.zip
+  pod 'AppsFlyerFramework', '6.12.1' #https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.11.2/AppsFlyerLib-Binaries.zip
   pod 'RAMAnimatedTabBarController', '5.2.0' #https://github.com/Ramotion/animated-tab-bar.git
   pod 'Moya', '15.0.0' #https://github.com/Moya/Moya.git
   pod 'FittedSheets', '2.5.3' #https://github.com/gordontucker/FittedSheets.git
