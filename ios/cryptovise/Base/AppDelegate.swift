@@ -18,6 +18,7 @@ import RxSwift
 import RxRelay
 import Network
 import Alamofire
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // AppsFlyer
         AppsFlyerLib.shared().appsFlyerDevKey = AppConfig.appsFlyerDevKey
         AppsFlyerLib.shared().appleAppID = AppConfig.appstoreAppId
-        AppsFlyerLib.shared().isDebug = true
+        AppsFlyerLib.shared().isDebug = false
         AppsFlyerLib.shared().delegate = self
         
         // default window
@@ -71,6 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         })
+        
+        // fackbook sdk init
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
     
@@ -84,6 +89,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppInstance.shared.appFlyerConversionInfo = conversionInfo
         loadRN()
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        // facebook sdk
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
     
     func loadOrigin() {
