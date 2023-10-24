@@ -31,8 +31,6 @@ local.properties
 *.iml
 *.hprof
 .cxx/
-*.keystore
-!debug.keystore
 android/app/release/*
 
 # node.js

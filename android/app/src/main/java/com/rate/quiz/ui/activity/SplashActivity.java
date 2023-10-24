@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
                     for (ReactPackage item : list) {
                         if (item instanceof ToolModulePackage) {
                             ((ToolModulePackage) item).appsFlyerConversation = event.map;
-                            toNextPage(HomeActivity.class);
+                            toNextPage(MainActivity.class);
                             break;
                         }
                     }

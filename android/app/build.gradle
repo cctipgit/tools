@@ -219,7 +219,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     // 侧滑菜单
-    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+//    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     // 圆角控件
     implementation 'com.github.duxl:FlycoRoundView:v2.1.1'
     // ViewPagerIndicator

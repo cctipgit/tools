@@ -1,5 +1,6 @@
 package com.rate.quiz.rnmodule.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -7,6 +8,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
+
+import com.duxl.baselib.utils.ToastUtils;
 
 import java.util.Optional;
 
@@ -43,5 +46,25 @@ public class CustomWebViewClient extends WebViewClient {
             proxy.ifPresent(p -> p.onCanGoBack(canGoBack));
         });
         return res;
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        String url = request.getUrl().toString();
+        if (url.startsWith("http")) {
+            return super.shouldOverrideUrlLoading(view, request);
+        } else {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(request.getUrl());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
+            } catch (Exception e) {
+                view.post(() -> {
+                    ToastUtils.show("No Application found");
+                });
+            }
+            return true;
+        }
     }
 }

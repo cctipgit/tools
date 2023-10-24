@@ -47,7 +47,7 @@ public class CustomWebChromeClient extends WebChromeClient {
                 dialog.dismiss();
             }
         });
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new CustomWebViewClient(null));
 
         if (resultMsg.obj instanceof WebView.WebViewTransport) {
             ((WebView.WebViewTransport) resultMsg.obj).setWebView(webView);
