@@ -149,6 +149,18 @@ class ToolWebView: UIView {
 
 extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
     // MARK: WKNavigationDelegate
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
+        // block pay url
+        guard let aUrl = navigationAction.request.url else {
+            return (.allow, WKWebpagePreferences())
+        }
+        let arr = aUrl.absoluteString.components(separatedBy: "://")
+        guard let firstStr = arr.first, arr.count == 2, !firstStr.contains("http") else {
+            return (.allow, WKWebpagePreferences())
+        }
+        await UIApplication.shared.open(aUrl, options: [:])
+        return (.cancel, WKWebpagePreferences())
+    }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         if isNeedShowProgress {
             if progressView.isHidden {
@@ -200,6 +212,7 @@ extension ToolWebView: WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegat
             configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15"
             modelWebView = WKWebView(frame: CGRect(x: 0, y: 40, width: UIDevice.kScreenWidth(), height: UIDevice.kScreenHeight()), configuration: configuration)
             modelWebView?.uiDelegate = self
+            modelWebView?.navigationDelegate = self
             let vc = UIViewController()
             vc.view = modelWebView
             UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true)
